@@ -4,9 +4,9 @@
 #include <cassert>
 
 //Monoid
-// value_t
-// op
-// id
+// type value_t
+// static var id
+// static (value_t,value_t)->value_t op
 
 template<typename Monoid>
 class SegmentTree{
