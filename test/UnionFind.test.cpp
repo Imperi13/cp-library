@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/unionfind"
 
 #include <iostream>
-#include "UnionFind.cpp"
+#include "../lib/UnionFind.cpp"
 
 #define rep(i, a, b) for (long long i = (a); (i) < (b); (i)++)
 
