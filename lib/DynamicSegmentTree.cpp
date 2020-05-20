@@ -48,6 +48,7 @@ class DynamicSegmentTree{
     size_t l=0,r=n0;
     while(r-l>1){
       size_t mid=l+(r-l)/2;
+      
       if(i<mid){
         if(!now->left)now->left=std::make_shared<Node>(Monoid::id,now);
         now=now->left;
