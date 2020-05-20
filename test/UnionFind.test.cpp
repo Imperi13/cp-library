@@ -8,6 +8,8 @@
 using ll=long long;
 
 int main(){
+  std::cin.tie(nullptr);
+  std::ios::sync_with_stdio(false);
   ll n,q;
   std::cin>>n>>q;
 

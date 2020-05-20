@@ -19,6 +19,8 @@ using ll=long long;
 using P=std::pair<ll,ll>;
 
 int main(){
+  std::cin.tie(nullptr);
+  std::ios::sync_with_stdio(false);
   ll n,q;
   std::cin>>n>>q;
 

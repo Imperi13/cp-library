@@ -39,7 +39,7 @@ class DynamicSegmentTree{
   public:
   DynamicSegmentTree(size_t n_):n(n_),root(new Node(Monoid::id)){
     n0=1;
-    while(n0<n)n0>>=1;
+    while(n0<n)n0<<=1;
   }
 
   void update(size_t i,value_t val,bool change){
