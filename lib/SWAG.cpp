@@ -37,8 +37,8 @@ class SWAG{
   void push_front(value_t val){
     if(front.empty())front.emplace(val,val);
     else{
-      P tmp=back.top();
-      back.emplace(val,Semigroup::op(val,tmp.second));
+      P tmp=front.top();
+      front.emplace(val,Semigroup::op(val,tmp.second));
     }
   }
 
