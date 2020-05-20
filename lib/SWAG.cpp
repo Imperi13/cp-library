@@ -60,7 +60,7 @@ class SWAG{
     }
     while(!tmp.empty()){
       push_front(tmp.top());
-      front.pop();
+      tmp.pop();
     }
     back.pop();
   }
