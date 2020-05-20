@@ -39,6 +39,7 @@ layout: default
 ### lib
 
 * :heavy_check_mark: <a href="library/lib/DynamicSegmentTree.cpp.html">lib/DynamicSegmentTree.cpp</a>
+* :heavy_check_mark: <a href="library/lib/SWAG.cpp.html">lib/SWAG.cpp</a>
 * :heavy_check_mark: <a href="library/lib/SegmentTree.cpp.html">lib/SegmentTree.cpp</a>
 * :heavy_check_mark: <a href="library/lib/UnionFind.cpp.html">lib/UnionFind.cpp</a>
 
@@ -46,6 +47,7 @@ layout: default
 ## Verify Files
 
 * :heavy_check_mark: <a href="verify/test/DynamicSegmentTree.test.cpp.html">test/DynamicSegmentTree.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/SWAG.test.cpp.html">test/SWAG.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/SegmentTree.test.cpp.html">test/SegmentTree.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/UnionFind.test.cpp.html">test/UnionFind.test.cpp</a>
 
