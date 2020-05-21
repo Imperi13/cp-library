@@ -5,7 +5,7 @@
 template<typename Monoid>
 class RBST_Seq{
   public:
-  using value_t=Monoid::value_t;
+  using value_t=typename Monoid::value_t;
   using size_t=std::size_t;
   private:
   unsigned int rnd(){
@@ -72,7 +72,7 @@ class RBST_Seq{
     t=merge(temp2.first,temp.second);
   }
 
-  void build(node_ptr& t,const std::vector<T>& val_,size_t l,size_t r){
+  void build(node_ptr& t,const std::vector<value_t>& val_,size_t l,size_t r){
     if(l==r){
       t=nullptr;
       return;
