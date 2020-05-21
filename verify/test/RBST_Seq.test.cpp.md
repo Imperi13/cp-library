@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :x: test/RBST_Seq.test.cpp
+# :heavy_check_mark: test/RBST_Seq.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/RBST_Seq.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-22 04:10:27+09:00
+    - Last commit date: 2020-05-22 04:16:28+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/point_set_range_composite">https://judge.yosupo.jp/problem/point_set_range_composite</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../library/lib/RBST_Seq.cpp.html">lib/RBST_Seq.cpp</a>
+* :heavy_check_mark: <a href="../../library/lib/RBST_Seq.cpp.html">lib/RBST_Seq.cpp</a>
 
 
 ## Code
@@ -114,7 +114,7 @@ int main(){
 template<typename Monoid>
 class RBST_Seq{
   public:
-  using value_t=Monoid::value_t;
+  using value_t=typename Monoid::value_t;
   using size_t=std::size_t;
   private:
   unsigned int rnd(){
@@ -181,7 +181,7 @@ class RBST_Seq{
     t=merge(temp2.first,temp.second);
   }
 
-  void build(node_ptr& t,const std::vector<T>& val_,size_t l,size_t r){
+  void build(node_ptr& t,const std::vector<value_t>& val_,size_t l,size_t r){
     if(l==r){
       t=nullptr;
       return;

@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :x: lib/RBST_Seq.cpp
+# :heavy_check_mark: lib/RBST_Seq.cpp
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#e8acc63b1e238f3255c900eed37254b8">lib</a>
 * <a href="{{ site.github.repository_url }}/blob/master/lib/RBST_Seq.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-22 04:10:27+09:00
+    - Last commit date: 2020-05-22 04:16:28+09:00
 
 
 
 
 ## Verified with
 
-* :x: <a href="../../verify/test/RBST_Seq.test.cpp.html">test/RBST_Seq.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/RBST_Seq.test.cpp.html">test/RBST_Seq.test.cpp</a>
 
 
 ## Code
@@ -53,7 +53,7 @@ layout: default
 template<typename Monoid>
 class RBST_Seq{
   public:
-  using value_t=Monoid::value_t;
+  using value_t=typename Monoid::value_t;
   using size_t=std::size_t;
   private:
   unsigned int rnd(){
@@ -120,7 +120,7 @@ class RBST_Seq{
     t=merge(temp2.first,temp.second);
   }
 
-  void build(node_ptr& t,const std::vector<T>& val_,size_t l,size_t r){
+  void build(node_ptr& t,const std::vector<value_t>& val_,size_t l,size_t r){
     if(l==r){
       t=nullptr;
       return;
@@ -172,7 +172,7 @@ class RBST_Seq{
 template<typename Monoid>
 class RBST_Seq{
   public:
-  using value_t=Monoid::value_t;
+  using value_t=typename Monoid::value_t;
   using size_t=std::size_t;
   private:
   unsigned int rnd(){
@@ -239,7 +239,7 @@ class RBST_Seq{
     t=merge(temp2.first,temp.second);
   }
 
-  void build(node_ptr& t,const std::vector<T>& val_,size_t l,size_t r){
+  void build(node_ptr& t,const std::vector<value_t>& val_,size_t l,size_t r){
     if(l==r){
       t=nullptr;
       return;
