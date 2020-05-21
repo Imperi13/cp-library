@@ -97,27 +97,9 @@ class RBST_Multiset{
     if(k<count(t->left))return topk(t->left,k);
     else return topk(t->right,k-count(t->left)-1);
   }
-
-  void build(node_ptr& t,const std::vector<value_t>& val_,size_t l,size_t r){
-    if(l==r){t=nullptr;return;}
-    if(r==l+1){
-      t=std::make_shared<Node>(val_[l]);
-      return;
-    }
-
-    size_t mid=l+(r-l)/2;
-    t=std::make_shared<Node>(val_[mid]);
-    build(t->left,val_,l,mid);
-    build(t->right,val_,mid+1,r);
-    update(t);
-  }
   public:
   RBST_Multiset():comp(),root(){}
   RBST_Multiset(Comp comp_):comp(comp_),root(){}
-
-  void build(const std::vector<value_t>& val_){
-    build(root,val_,0,val_.size());
-  }
 
   size_t size(){return count(root);}
   bool find(const value_t& value){return find(root,value);}
