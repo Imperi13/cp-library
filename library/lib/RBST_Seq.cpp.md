@@ -25,15 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :warning: lib/RBST_Multiset.cpp
+# :x: lib/RBST_Seq.cpp
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#e8acc63b1e238f3255c900eed37254b8">lib</a>
-* <a href="{{ site.github.repository_url }}/blob/master/lib/RBST_Multiset.cpp">View this file on GitHub</a>
+* <a href="{{ site.github.repository_url }}/blob/master/lib/RBST_Seq.cpp">View this file on GitHub</a>
     - Last commit date: 2020-05-22 04:10:27+09:00
 
 
+
+
+## Verified with
+
+* :x: <a href="../../verify/test/RBST_Seq.test.cpp.html">test/RBST_Seq.test.cpp</a>
 
 
 ## Code
@@ -42,15 +47,14 @@ layout: default
 {% raw %}
 ```cpp
 #include <memory>
-#include <utility>
 #include <vector>
+#include <utility>
 
-template<typename T,typename Comp=std::less<T>>
-class RBST_Multiset{
+template<typename Monoid>
+class RBST_Seq{
   public:
-  using value_t=T;
+  using value_t=Monoid::value_t;
   using size_t=std::size_t;
-
   private:
   unsigned int rnd(){
     static unsigned int x(123456789),y(362436069),z(521288629),w(88675123);
@@ -60,25 +64,21 @@ class RBST_Multiset{
   }
 
   struct Node{
-    value_t val;
+    value_t val,sum;
     size_t cnt;
     std::shared_ptr<Node> left,right;
-    Node(value_t val_):val(val_),cnt(1),left(),right(){}
+    Node(value_t val_):val(val_),sum(val_),cnt(1),left(),right(){}
   };
 
   using node_ptr=std::shared_ptr<Node>;
-
-  Comp comp;
-  bool equal(const value_t& a,const value_t& b){
-    return (!comp(a,b) && !comp(b,a));
-  }
-
   node_ptr root;
 
+  value_t calc(const node_ptr& t){return t?t->sum:Monoid::id;}
   size_t count(const node_ptr& t){return t?t->cnt:0;}
 
   node_ptr update(node_ptr t){
     if(!t)return t;
+    t->sum=Monoid::op(Monoid::op(calc(t->left),t->val),calc(t->right));
     t->cnt=count(t->left)+count(t->right)+1;
     return t;
   }
@@ -109,64 +109,54 @@ class RBST_Multiset{
     }
   }
 
-  bool find(const node_ptr& t,const value_t& value){
-    if(!t)return false;
-    if(equal(t->val,value))return true;
-    if(comp(value,t->val))return find(t->left,value);
-    else return find(t->right,value);
-  }
-
-  size_t lower_bound(const node_ptr& t,const value_t& value){
-    if(!t)return 0;
-    if(comp(value,t->val)||equal(value,t->val))return lower_bound(t->left,value);
-    else return lower_bound(t->right,value)+count(t->left)+1;
-  }
-  size_t upper_bound(const node_ptr& t,const value_t& value){
-    if(!t)return 0;
-    if(comp(value,t->val))return upper_bound(t->left,value);
-    else return upper_bound(t->right,value)+count(t->left)+1;
-  }
   void insert(node_ptr& t,node_ptr newnode,size_t k){
     auto temp=split(t,k);
     t=merge(merge(temp.first,newnode),temp.second);
   }
+
   void erase(node_ptr& t,size_t k){
     auto temp=split(t,k+1);
     auto temp2=split(temp.first,k);
     t=merge(temp2.first,temp.second);
   }
-  value_t topk(const node_ptr& t,size_t k){
-    if(count(t->left)==k)return t->val;
-    if(k<count(t->left))return topk(t->left,k);
-    else return topk(t->right,k-count(t->left)-1);
+
+  void build(node_ptr& t,const std::vector<T>& val_,size_t l,size_t r){
+    if(l==r){
+      t=nullptr;
+      return;
+    }
+    if(r==l+1){
+      t=std::make_shared<Node>(val_[l]);
+      return;
+    }
+
+    size_t mid=l+(r-l)/2;
+    t=std::make_shared<Node>(val_[mid]);
+    build(t->left,val_,l,mid);
+    build(t->right,val_,mid+1,r);
+    update(t);
   }
+
+  RBST_Seq(const node_ptr& t):root(t){}
   public:
-  RBST_Multiset():comp(),root(){}
-  RBST_Multiset(Comp comp_):comp(comp_),root(){}
+  RBST_Seq():root(){}
+  RBST_Seq(const std::vector<value_t>& seq_):root(){
+    build(root,seq_,0,seq_.size());
+  }
 
   size_t size(){return count(root);}
-  bool find(const value_t& value){return find(root,value);}
-  size_t lower_bound(const value_t& value){return lower_bound(root,value);}
-  size_t upper_bound(const value_t& value){return upper_bound(root,value);}
-  void insert(const value_t& value){
-    insert(root,std::make_shared<Node>(value),lower_bound(value));
-  }
+  void insert(size_t k,const value_t& value){insert(root,std::make_shared<Node>(value),k);}
+  void erase(size_t k){erase(root,k);}
 
-  void erase(const value_t& value){
-    if(!find(value))return;
-    erase(root,lower_bound(value));
-  }
-
-  value_t topk(size_t l,size_t r,size_t k){
-    assert(0<=k&&k<r-l);
+  value_t fold_all(){return calc(root);}
+  value_t fold(size_t l,size_t r){
     auto temp=split(root,r);
     auto temp2=split(temp.first,l);
-    value_t ret=topk(temp2.second,k);
+    value_t ret=calc(temp2.second);
     root=merge(merge(temp2.first,temp2.second),temp.second);
-    return
-  }
 
-  value_t topk(size_t k){return topk(root,k);}
+    return ret;
+  }
 };
 ```
 {% endraw %}
@@ -174,17 +164,16 @@ class RBST_Multiset{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "lib/RBST_Multiset.cpp"
+#line 1 "lib/RBST_Seq.cpp"
 #include <memory>
-#include <utility>
 #include <vector>
+#include <utility>
 
-template<typename T,typename Comp=std::less<T>>
-class RBST_Multiset{
+template<typename Monoid>
+class RBST_Seq{
   public:
-  using value_t=T;
+  using value_t=Monoid::value_t;
   using size_t=std::size_t;
-
   private:
   unsigned int rnd(){
     static unsigned int x(123456789),y(362436069),z(521288629),w(88675123);
@@ -194,25 +183,21 @@ class RBST_Multiset{
   }
 
   struct Node{
-    value_t val;
+    value_t val,sum;
     size_t cnt;
     std::shared_ptr<Node> left,right;
-    Node(value_t val_):val(val_),cnt(1),left(),right(){}
+    Node(value_t val_):val(val_),sum(val_),cnt(1),left(),right(){}
   };
 
   using node_ptr=std::shared_ptr<Node>;
-
-  Comp comp;
-  bool equal(const value_t& a,const value_t& b){
-    return (!comp(a,b) && !comp(b,a));
-  }
-
   node_ptr root;
 
+  value_t calc(const node_ptr& t){return t?t->sum:Monoid::id;}
   size_t count(const node_ptr& t){return t?t->cnt:0;}
 
   node_ptr update(node_ptr t){
     if(!t)return t;
+    t->sum=Monoid::op(Monoid::op(calc(t->left),t->val),calc(t->right));
     t->cnt=count(t->left)+count(t->right)+1;
     return t;
   }
@@ -243,64 +228,54 @@ class RBST_Multiset{
     }
   }
 
-  bool find(const node_ptr& t,const value_t& value){
-    if(!t)return false;
-    if(equal(t->val,value))return true;
-    if(comp(value,t->val))return find(t->left,value);
-    else return find(t->right,value);
-  }
-
-  size_t lower_bound(const node_ptr& t,const value_t& value){
-    if(!t)return 0;
-    if(comp(value,t->val)||equal(value,t->val))return lower_bound(t->left,value);
-    else return lower_bound(t->right,value)+count(t->left)+1;
-  }
-  size_t upper_bound(const node_ptr& t,const value_t& value){
-    if(!t)return 0;
-    if(comp(value,t->val))return upper_bound(t->left,value);
-    else return upper_bound(t->right,value)+count(t->left)+1;
-  }
   void insert(node_ptr& t,node_ptr newnode,size_t k){
     auto temp=split(t,k);
     t=merge(merge(temp.first,newnode),temp.second);
   }
+
   void erase(node_ptr& t,size_t k){
     auto temp=split(t,k+1);
     auto temp2=split(temp.first,k);
     t=merge(temp2.first,temp.second);
   }
-  value_t topk(const node_ptr& t,size_t k){
-    if(count(t->left)==k)return t->val;
-    if(k<count(t->left))return topk(t->left,k);
-    else return topk(t->right,k-count(t->left)-1);
+
+  void build(node_ptr& t,const std::vector<T>& val_,size_t l,size_t r){
+    if(l==r){
+      t=nullptr;
+      return;
+    }
+    if(r==l+1){
+      t=std::make_shared<Node>(val_[l]);
+      return;
+    }
+
+    size_t mid=l+(r-l)/2;
+    t=std::make_shared<Node>(val_[mid]);
+    build(t->left,val_,l,mid);
+    build(t->right,val_,mid+1,r);
+    update(t);
   }
+
+  RBST_Seq(const node_ptr& t):root(t){}
   public:
-  RBST_Multiset():comp(),root(){}
-  RBST_Multiset(Comp comp_):comp(comp_),root(){}
+  RBST_Seq():root(){}
+  RBST_Seq(const std::vector<value_t>& seq_):root(){
+    build(root,seq_,0,seq_.size());
+  }
 
   size_t size(){return count(root);}
-  bool find(const value_t& value){return find(root,value);}
-  size_t lower_bound(const value_t& value){return lower_bound(root,value);}
-  size_t upper_bound(const value_t& value){return upper_bound(root,value);}
-  void insert(const value_t& value){
-    insert(root,std::make_shared<Node>(value),lower_bound(value));
-  }
+  void insert(size_t k,const value_t& value){insert(root,std::make_shared<Node>(value),k);}
+  void erase(size_t k){erase(root,k);}
 
-  void erase(const value_t& value){
-    if(!find(value))return;
-    erase(root,lower_bound(value));
-  }
-
-  value_t topk(size_t l,size_t r,size_t k){
-    assert(0<=k&&k<r-l);
+  value_t fold_all(){return calc(root);}
+  value_t fold(size_t l,size_t r){
     auto temp=split(root,r);
     auto temp2=split(temp.first,l);
-    value_t ret=topk(temp2.second,k);
+    value_t ret=calc(temp2.second);
     root=merge(merge(temp2.first,temp2.second),temp.second);
-    return
-  }
 
-  value_t topk(size_t k){return topk(root,k);}
+    return ret;
+  }
 };
 
 ```
