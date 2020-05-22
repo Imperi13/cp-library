@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/DynamicSegmentTree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-22 10:46:01+09:00
+    - Last commit date: 1970-01-01 00:00:00+00:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/point_set_range_composite">https://judge.yosupo.jp/problem/point_set_range_composite</a>
