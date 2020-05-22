@@ -31,10 +31,10 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/DualSegmentTree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-22 20:29:38+09:00
+    - Last commit date: 2020-05-22 20:31:25+09:00
 
 
-* see: <a href="https://judge.yosupo.jp/problem/rectangle_sum">https://judge.yosupo.jp/problem/rectangle_sum</a>
+* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_E">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_E</a>
 
 
 ## Depends on
@@ -47,7 +47,7 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#define PROBLEM "https://judge.yosupo.jp/problem/rectangle_sum"
+#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_E"
 
 #include <iostream>
 #include <algorithm>
@@ -100,7 +100,7 @@ int main(){
 {% raw %}
 ```cpp
 #line 1 "test/DualSegmentTree.test.cpp"
-#define PROBLEM "https://judge.yosupo.jp/problem/rectangle_sum"
+#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_E"
 
 #include <iostream>
 #include <algorithm>
