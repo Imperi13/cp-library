@@ -21,24 +21,19 @@ layout: default
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-balloon-js@1.1.2/jquery.balloon.min.js" integrity="sha256-ZEYs9VrgAeNuPvs15E39OsyOJaIkXEEt10fzxJ20+2I=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="../../assets/js/copy-button.js"></script>
-<link rel="stylesheet" href="../../assets/css/copy-button.css" />
+<script type="text/javascript" src="../../../assets/js/copy-button.js"></script>
+<link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: lib/SegmentTree.cpp
+# :warning: lib/SegmentTree/SegmentTree.cpp
 
-<a href="../../index.html">Back to top page</a>
+<a href="../../../index.html">Back to top page</a>
 
-* category: <a href="../../index.html#e8acc63b1e238f3255c900eed37254b8">lib</a>
-* <a href="{{ site.github.repository_url }}/blob/master/lib/SegmentTree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-19 16:28:24+09:00
-
-
+* category: <a href="../../../index.html#8d75131a1ef4f10f86f251b50b9a3462">lib/SegmentTree</a>
+* <a href="{{ site.github.repository_url }}/blob/master/lib/SegmentTree/SegmentTree.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-05-22 10:43:21+09:00
 
 
-## Verified with
-
-* :heavy_check_mark: <a href="../../verify/test/SegmentTree.test.cpp.html">test/SegmentTree.test.cpp</a>
 
 
 ## Code
@@ -119,7 +114,7 @@ class SegmentTree{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "lib/SegmentTree.cpp"
+#line 2 "lib/SegmentTree/SegmentTree.cpp"
 
 #include <vector>
 #include <cassert>
@@ -190,5 +185,5 @@ class SegmentTree{
 ```
 {% endraw %}
 
-<a href="../../index.html">Back to top page</a>
+<a href="../../../index.html">Back to top page</a>
 

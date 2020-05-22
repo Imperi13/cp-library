@@ -38,20 +38,26 @@ layout: default
 
 ### lib
 
-* :heavy_check_mark: <a href="library/lib/DynamicSegmentTree.cpp.html">lib/DynamicSegmentTree.cpp</a>
 * :warning: <a href="library/lib/RBST_Multiset.cpp.html">lib/RBST_Multiset.cpp</a>
 * :heavy_check_mark: <a href="library/lib/RBST_Seq.cpp.html">lib/RBST_Seq.cpp</a>
 * :heavy_check_mark: <a href="library/lib/SWAG.cpp.html">lib/SWAG.cpp</a>
-* :heavy_check_mark: <a href="library/lib/SegmentTree.cpp.html">lib/SegmentTree.cpp</a>
 * :heavy_check_mark: <a href="library/lib/UnionFind.cpp.html">lib/UnionFind.cpp</a>
+
+
+<div id="8d75131a1ef4f10f86f251b50b9a3462"></div>
+
+### lib/SegmentTree
+
+* :warning: <a href="library/lib/SegmentTree/DynamicSegmentTree.cpp.html">lib/SegmentTree/DynamicSegmentTree.cpp</a>
+* :warning: <a href="library/lib/SegmentTree/SegmentTree.cpp.html">lib/SegmentTree/SegmentTree.cpp</a>
 
 
 ## Verify Files
 
-* :heavy_check_mark: <a href="verify/test/DynamicSegmentTree.test.cpp.html">test/DynamicSegmentTree.test.cpp</a>
+* :x: <a href="verify/test/DynamicSegmentTree.test.cpp.html">test/DynamicSegmentTree.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/RBST_Seq.test.cpp.html">test/RBST_Seq.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/SWAG.test.cpp.html">test/SWAG.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/SegmentTree.test.cpp.html">test/SegmentTree.test.cpp</a>
+* :x: <a href="verify/test/SegmentTree.test.cpp.html">test/SegmentTree.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/UnionFind.test.cpp.html">test/UnionFind.test.cpp</a>
 
 
