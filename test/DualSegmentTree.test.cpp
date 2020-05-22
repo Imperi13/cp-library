@@ -1,4 +1,4 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/rectangle_sum"
+#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_E"
 
 #include <iostream>
 #include <algorithm>
