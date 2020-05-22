@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: lib/SegmentTree/SegmentTree.cpp
+# :heavy_check_mark: lib/SegmentTree/SegmentTree.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -34,6 +34,11 @@ layout: default
     - Last commit date: 2020-05-22 10:43:21+09:00
 
 
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../verify/test/SegmentTree.test.cpp.html">test/SegmentTree.test.cpp</a>
 
 
 ## Code
