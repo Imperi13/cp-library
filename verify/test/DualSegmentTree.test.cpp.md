@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :x: test/DualSegmentTree.test.cpp
+# :heavy_check_mark: test/DualSegmentTree.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/DualSegmentTree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-22 20:31:25+09:00
+    - Last commit date: 2020-05-22 20:33:16+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_E">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_E</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../library/lib/SegmentTree/DualSegmentTree.cpp.html">lib/SegmentTree/DualSegmentTree.cpp</a>
+* :heavy_check_mark: <a href="../../library/lib/SegmentTree/DualSegmentTree.cpp.html">lib/SegmentTree/DualSegmentTree.cpp</a>
 
 
 ## Code
@@ -135,7 +135,7 @@ class DualSegmentTree{
 
   void update(size_t a,size_t b,value_t value,const node_ptr& now,size_t l,size_t r){
     if(a<=l&&r<=b){
-      now->val=Monoid::op(now->val,val);
+      now->val=Monoid::op(now->val,value);
       return;
     }
     if(b<=l||r<=a)return;

@@ -49,7 +49,7 @@ layout: default
 
 ### lib/SegmentTree
 
-* :x: <a href="library/lib/SegmentTree/DualSegmentTree.cpp.html">lib/SegmentTree/DualSegmentTree.cpp</a>
+* :heavy_check_mark: <a href="library/lib/SegmentTree/DualSegmentTree.cpp.html">lib/SegmentTree/DualSegmentTree.cpp</a>
 * :heavy_check_mark: <a href="library/lib/SegmentTree/DynamicSegmentTree.cpp.html">lib/SegmentTree/DynamicSegmentTree.cpp</a>
 * :heavy_check_mark: <a href="library/lib/SegmentTree/PersistentSegmentTree.cpp.html">lib/SegmentTree/PersistentSegmentTree.cpp</a>
 * :heavy_check_mark: <a href="library/lib/SegmentTree/SegmentTree.cpp.html">lib/SegmentTree/SegmentTree.cpp</a>
@@ -57,7 +57,7 @@ layout: default
 
 ## Verify Files
 
-* :x: <a href="verify/test/DualSegmentTree.test.cpp.html">test/DualSegmentTree.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/DualSegmentTree.test.cpp.html">test/DualSegmentTree.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/DynamicSegmentTree.test.cpp.html">test/DynamicSegmentTree.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/PersistentSegmentTree.test.cpp.html">test/PersistentSegmentTree.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/RBST_Seq.test.cpp.html">test/RBST_Seq.test.cpp</a>
