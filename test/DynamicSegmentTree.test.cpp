@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 
-#include "../lib/DynamicSegmentTree.cpp"
+#include "../lib/SegmentTree/DynamicSegmentTree.cpp"
 
 constexpr long long MOD=998244353;
 

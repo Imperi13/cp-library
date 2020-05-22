@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "../lib/SegmentTree.cpp"
+#include "../lib/SegmentTree/SegmentTree.cpp"
 
 constexpr long long MOD=998244353;
 
