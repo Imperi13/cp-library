@@ -27,7 +27,7 @@ class DualSegmentTree{
 
   void update(size_t a,size_t b,value_t value,const node_ptr& now,size_t l,size_t r){
     if(a<=l&&r<=b){
-      now->val=Monoid::op(now->val,val);
+      now->val=Monoid::op(now->val,value);
       return;
     }
     if(b<=l||r<=a)return;
