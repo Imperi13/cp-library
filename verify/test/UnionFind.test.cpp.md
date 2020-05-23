@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/UnionFind.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-20 12:57:51+09:00
+    - Last commit date: 2020-05-23 03:38:17+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/unionfind">https://judge.yosupo.jp/problem/unionfind</a>
@@ -88,24 +88,24 @@ int main(){
 #include <numeric>
 
 class UnionFind{
+  public:
+  using size_t=std::size_t;
   private:
-  using size_type=std::size_t;
-
-  std::vector<size_type> par,sz;
-  size_type group;
+  std::vector<size_t> par,sz;
+  size_t group;
 
   public:
 
-  UnionFind(size_type n):par(n,0),sz(n,1),group(n){
+  UnionFind(size_t n=0):par(n,0),sz(n,1),group(n){
     std::iota(par.begin(),par.end(),0);
   }
 
-  size_type root(size_type n){
+  size_t root(size_t n){
     if(par[n]==n)return n;
     return par[n]=root(par[n]);
   }
 
-  bool unite(size_type a,size_type b){
+  bool unite(size_t a,size_t b){
     a=root(a);b=root(b);
     if(a==b)return false;
     if(sz[a]<sz[b])std::swap(a,b);
@@ -114,11 +114,11 @@ class UnionFind{
     return true;
   }
 
-  size_type size(){return par.size();}
-  size_type groups(){return group;}
-  size_type group_size(size_type n){return sz[root(n)];}
+  size_t size(){return par.size();}
+  size_t groups(){return group;}
+  size_t group_size(size_t n){return sz[root(n)];}
 
-  bool same(size_type a,size_type b){return root(a)==root(b);}
+  bool same(size_t a,size_t b){return root(a)==root(b);}
 };
 #line 5 "test/UnionFind.test.cpp"
 
