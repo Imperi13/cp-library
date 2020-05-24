@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#8d75131a1ef4f10f86f251b50b9a3462">lib/SegmentTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/lib/SegmentTree/LazySegmentTree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-24 21:52:44+09:00
+    - Last commit date: 2020-05-24 23:01:39+09:00
 
 
 
@@ -60,6 +60,29 @@ layout: default
 // static (value_t,lazy_t) -> value_t g
 // static (lazy_t,lazy_t) -> lazy_t h
 // static (lazy_t,size_t) -> lazy_t p
+
+/* Lazy template
+
+struct Lazy{
+  using value_t= ~~ ;
+  using lazy_t= ~~ ;
+  static constexpr value_t id_val= ~~ ;
+  static constexpr lazy_t id_lazy= ~~ ;
+  static value_t f(value_t a,value_t b){
+    return ~~ ;
+  }
+  static value_t g(value_t a,lazy_t b){
+    return ~~ ;
+  }
+  static lazy_t h(lazy_t a,lazy_t b){
+    return ~~ ;
+  }
+  static lazy_t p(lazy_t a,std::size_t n){
+    return ~~ ;
+  }
+};
+
+*/
 
 
 template<typename Lazy>
@@ -151,6 +174,29 @@ class LazySegmentTree{
 // static (value_t,lazy_t) -> value_t g
 // static (lazy_t,lazy_t) -> lazy_t h
 // static (lazy_t,size_t) -> lazy_t p
+
+/* Lazy template
+
+struct Lazy{
+  using value_t= ~~ ;
+  using lazy_t= ~~ ;
+  static constexpr value_t id_val= ~~ ;
+  static constexpr lazy_t id_lazy= ~~ ;
+  static value_t f(value_t a,value_t b){
+    return ~~ ;
+  }
+  static value_t g(value_t a,lazy_t b){
+    return ~~ ;
+  }
+  static lazy_t h(lazy_t a,lazy_t b){
+    return ~~ ;
+  }
+  static lazy_t p(lazy_t a,std::size_t n){
+    return ~~ ;
+  }
+};
+
+*/
 
 
 template<typename Lazy>

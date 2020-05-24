@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/LazySegmentTree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-24 21:55:10+09:00
+    - Last commit date: 2020-05-24 23:01:39+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_affine_range_sum">https://judge.yosupo.jp/problem/range_affine_range_sum</a>
@@ -136,6 +136,29 @@ int main() {
 // static (value_t,lazy_t) -> value_t g
 // static (lazy_t,lazy_t) -> lazy_t h
 // static (lazy_t,size_t) -> lazy_t p
+
+/* Lazy template
+
+struct Lazy{
+  using value_t= ~~ ;
+  using lazy_t= ~~ ;
+  static constexpr value_t id_val= ~~ ;
+  static constexpr lazy_t id_lazy= ~~ ;
+  static value_t f(value_t a,value_t b){
+    return ~~ ;
+  }
+  static value_t g(value_t a,lazy_t b){
+    return ~~ ;
+  }
+  static lazy_t h(lazy_t a,lazy_t b){
+    return ~~ ;
+  }
+  static lazy_t p(lazy_t a,std::size_t n){
+    return ~~ ;
+  }
+};
+
+*/
 
 
 template<typename Lazy>
