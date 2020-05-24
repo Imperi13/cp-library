@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :x: lib/SegmentTree/LazySegmentTree.cpp
+# :heavy_check_mark: lib/SegmentTree/LazySegmentTree.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -38,7 +38,7 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../verify/test/LazySegmentTree.test.cpp.html">test/LazySegmentTree.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/LazySegmentTree.test.cpp.html">test/LazySegmentTree.test.cpp</a>
 
 
 ## Code
