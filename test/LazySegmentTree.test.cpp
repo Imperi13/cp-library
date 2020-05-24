@@ -1,31 +1,7 @@
-#include <algorithm>
-#include <array>
-#include <bitset>
-#include <cassert>
-#include <cctype>
-#include <cstdint>
-#include <cstdlib>
-#include <cmath>
-#include <complex>
-#include <chrono>
-#include <deque>
-#include <functional>
-#include <iomanip>
+#define PROBLEM "https://judge.yosupo.jp/problem/range_affine_range_sum"
+
 #include <iostream>
-#include <map>
-#include <memory>
-#include <numeric>
-#include <queue>
-#include <set>
-#include <stack>
-#include <string>
-#include <unordered_map>
 #include <vector>
-#include <random>
-#include <utility>
-#include <limits>
-#include <list>
-#include <cmath>
 
 #include "../lib/SegmentTree/LazySegmentTree.cpp"
 
