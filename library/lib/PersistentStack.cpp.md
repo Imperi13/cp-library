@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :x: lib/PersistentStack.cpp
+# :warning: lib/PersistentStack.cpp
 
 <a href="../../index.html">Back to top page</a>
 
@@ -34,16 +34,6 @@ layout: default
     - Last commit date: 2020-05-25 10:44:16+09:00
 
 
-
-
-## Required by
-
-* :x: <a href="PersistentDeque.cpp.html">lib/PersistentDeque.cpp</a>
-
-
-## Verified with
-
-* :x: <a href="../../verify/test/PersistentDeque.test.cpp.html">test/PersistentDeque.test.cpp</a>
 
 
 ## Code
