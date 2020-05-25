@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: lib/PersistentArray.cpp
+# :heavy_check_mark: lib/PersistentVector.cpp
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#e8acc63b1e238f3255c900eed37254b8">lib</a>
-* <a href="{{ site.github.repository_url }}/blob/master/lib/PersistentArray.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-23 03:38:17+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/lib/PersistentVector.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-05-26 01:22:58+09:00
 
 
 
@@ -57,7 +57,7 @@ layout: default
 #include <cassert>
 
 template<typename T>
-class PersistentArray{
+class PersistentVector{
   public:
   using value_t=T;
   using size_t=std::size_t;
@@ -81,11 +81,11 @@ class PersistentArray{
     }
   }
 
-  PersistentArray(size_t n_,size_t n0_,node_ptr root_):n(n_),n0(n0_),root(root_){}
+  PersistentVector(size_t n_,size_t n0_,node_ptr root_):n(n_),n0(n0_),root(root_){}
 
   public:
 
-  PersistentArray(size_t n_=0,value_t init=value_t()):n(n_),root(new Node(init)){
+  PersistentVector(size_t n_=0,value_t init=value_t()):n(n_),root(new Node(init)){
     n0=1;
     while(n0<n)n0<<=1;
     build(root,0,n0,init);
@@ -110,7 +110,7 @@ class PersistentArray{
     return now->val;
   }
 
-  PersistentArray update(size_t pos,value_t value){
+  PersistentVector update(size_t pos,value_t value){
     node_ptr newroot=std::make_shared<Node>(value);
     node_ptr now=root,cur=newroot;
     size_t l=0,r=n0;
@@ -131,7 +131,7 @@ class PersistentArray{
       }
     }
 
-    return PersistentArray(n,n0,newroot);
+    return PersistentVector(n,n0,newroot);
   }
 };
 ```
@@ -140,13 +140,13 @@ class PersistentArray{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "lib/PersistentArray.cpp"
+#line 2 "lib/PersistentVector.cpp"
 
 #include <memory>
 #include <cassert>
 
 template<typename T>
-class PersistentArray{
+class PersistentVector{
   public:
   using value_t=T;
   using size_t=std::size_t;
@@ -170,11 +170,11 @@ class PersistentArray{
     }
   }
 
-  PersistentArray(size_t n_,size_t n0_,node_ptr root_):n(n_),n0(n0_),root(root_){}
+  PersistentVector(size_t n_,size_t n0_,node_ptr root_):n(n_),n0(n0_),root(root_){}
 
   public:
 
-  PersistentArray(size_t n_=0,value_t init=value_t()):n(n_),root(new Node(init)){
+  PersistentVector(size_t n_=0,value_t init=value_t()):n(n_),root(new Node(init)){
     n0=1;
     while(n0<n)n0<<=1;
     build(root,0,n0,init);
@@ -199,7 +199,7 @@ class PersistentArray{
     return now->val;
   }
 
-  PersistentArray update(size_t pos,value_t value){
+  PersistentVector update(size_t pos,value_t value){
     node_ptr newroot=std::make_shared<Node>(value);
     node_ptr now=root,cur=newroot;
     size_t l=0,r=n0;
@@ -220,7 +220,7 @@ class PersistentArray{
       }
     }
 
-    return PersistentArray(n,n0,newroot);
+    return PersistentVector(n,n0,newroot);
   }
 };
 

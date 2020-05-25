@@ -38,9 +38,9 @@ layout: default
 
 ### lib
 
-* :heavy_check_mark: <a href="library/lib/PersistentArray.cpp.html">lib/PersistentArray.cpp</a>
 * :warning: <a href="library/lib/PersistentStack.cpp.html">lib/PersistentStack.cpp</a>
 * :heavy_check_mark: <a href="library/lib/PersistentUnionFind.cpp.html">lib/PersistentUnionFind.cpp</a>
+* :heavy_check_mark: <a href="library/lib/PersistentVector.cpp.html">lib/PersistentVector.cpp</a>
 * :warning: <a href="library/lib/RBST_Multiset.cpp.html">lib/RBST_Multiset.cpp</a>
 * :heavy_check_mark: <a href="library/lib/RBST_Seq.cpp.html">lib/RBST_Seq.cpp</a>
 * :heavy_check_mark: <a href="library/lib/SWAG.cpp.html">lib/SWAG.cpp</a>

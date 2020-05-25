@@ -31,14 +31,14 @@ layout: default
 
 * category: <a href="../../index.html#e8acc63b1e238f3255c900eed37254b8">lib</a>
 * <a href="{{ site.github.repository_url }}/blob/master/lib/PersistentUnionFind.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-23 03:38:17+09:00
+    - Last commit date: 2020-05-26 01:22:58+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="PersistentArray.cpp.html">lib/PersistentArray.cpp</a>
+* :heavy_check_mark: <a href="PersistentVector.cpp.html">lib/PersistentVector.cpp</a>
 
 
 ## Verified with
@@ -53,16 +53,16 @@ layout: default
 ```cpp
 #pragma once
 
-#include "./PersistentArray.cpp"
+#include "./PersistentVector.cpp"
 
 class PersistentUnionFind{
   public:
   using size_t=std::size_t;
   private:
-  PersistentArray<long long> uni;
+  PersistentVector<long long> uni;
   size_t group;
 
-  PersistentUnionFind(PersistentArray<long long> uni_,size_t group_):uni(uni_),group(group_){}
+  PersistentUnionFind(PersistentVector<long long> uni_,size_t group_):uni(uni_),group(group_){}
   public:
   PersistentUnionFind(size_t n=0):uni(n,-1),group(n){}
 
@@ -80,7 +80,7 @@ class PersistentUnionFind{
     group--;
     if(uni[a]>uni[b])std::swap(a,b);
 
-    PersistentArray<long long> newuni=uni;
+    PersistentVector<long long> newuni=uni;
     long long va=uni[a],vb=uni[b];
     newuni=newuni.update(a,va+vb);
     newuni=newuni.update(b,a);
@@ -99,13 +99,13 @@ class PersistentUnionFind{
 ```cpp
 #line 2 "lib/PersistentUnionFind.cpp"
 
-#line 2 "lib/PersistentArray.cpp"
+#line 2 "lib/PersistentVector.cpp"
 
 #include <memory>
 #include <cassert>
 
 template<typename T>
-class PersistentArray{
+class PersistentVector{
   public:
   using value_t=T;
   using size_t=std::size_t;
@@ -129,11 +129,11 @@ class PersistentArray{
     }
   }
 
-  PersistentArray(size_t n_,size_t n0_,node_ptr root_):n(n_),n0(n0_),root(root_){}
+  PersistentVector(size_t n_,size_t n0_,node_ptr root_):n(n_),n0(n0_),root(root_){}
 
   public:
 
-  PersistentArray(size_t n_=0,value_t init=value_t()):n(n_),root(new Node(init)){
+  PersistentVector(size_t n_=0,value_t init=value_t()):n(n_),root(new Node(init)){
     n0=1;
     while(n0<n)n0<<=1;
     build(root,0,n0,init);
@@ -158,7 +158,7 @@ class PersistentArray{
     return now->val;
   }
 
-  PersistentArray update(size_t pos,value_t value){
+  PersistentVector update(size_t pos,value_t value){
     node_ptr newroot=std::make_shared<Node>(value);
     node_ptr now=root,cur=newroot;
     size_t l=0,r=n0;
@@ -179,7 +179,7 @@ class PersistentArray{
       }
     }
 
-    return PersistentArray(n,n0,newroot);
+    return PersistentVector(n,n0,newroot);
   }
 };
 #line 4 "lib/PersistentUnionFind.cpp"
@@ -188,10 +188,10 @@ class PersistentUnionFind{
   public:
   using size_t=std::size_t;
   private:
-  PersistentArray<long long> uni;
+  PersistentVector<long long> uni;
   size_t group;
 
-  PersistentUnionFind(PersistentArray<long long> uni_,size_t group_):uni(uni_),group(group_){}
+  PersistentUnionFind(PersistentVector<long long> uni_,size_t group_):uni(uni_),group(group_){}
   public:
   PersistentUnionFind(size_t n=0):uni(n,-1),group(n){}
 
@@ -209,7 +209,7 @@ class PersistentUnionFind{
     group--;
     if(uni[a]>uni[b])std::swap(a,b);
 
-    PersistentArray<long long> newuni=uni;
+    PersistentVector<long long> newuni=uni;
     long long va=uni[a],vb=uni[b];
     newuni=newuni.update(a,va+vb);
     newuni=newuni.update(b,a);
