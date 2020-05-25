@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#e8acc63b1e238f3255c900eed37254b8">lib</a>
 * <a href="{{ site.github.repository_url }}/blob/master/lib/PersistentStack.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-25 10:44:16+09:00
+    - Last commit date: 2020-05-22 12:09:00+09:00
 
 
 
@@ -59,27 +59,25 @@ class PersistentStack{
   };
 
   using node_ptr=std::shared_ptr<Node>;
-  size_t n;
   node_ptr root;
 
-  PersistentStack(size_t n_,const node_ptr& root_):n(n_),root(root_){}
+  PersistentStack(const node_ptr& root_):root(root_){}
   public:
-  PersistentStack():n(0),root(){}
+  PersistentStack():root(){}
 
-  size_t size(){return n;}
-  bool empty(){return n==0;}
+  bool empty(){return !root;}
   value_t top(){
-    assert(!empty());
+    assert(root);
     return root->val;
   }
 
   PersistentStack push(value_t value){
-    return PersistentStack(n+1,std::make_shared<Node>(value,root));
+    return PersistentStack(std::make_shared<Node>(value,root));
   }
 
   PersistentStack pop(){
-    assert(!empty());
-    return PersistentStack(n-1,root->next);
+    assert(root);
+    return PersistentStack(root->next);
   }
 };
 ```
@@ -106,27 +104,25 @@ class PersistentStack{
   };
 
   using node_ptr=std::shared_ptr<Node>;
-  size_t n;
   node_ptr root;
 
-  PersistentStack(size_t n_,const node_ptr& root_):n(n_),root(root_){}
+  PersistentStack(const node_ptr& root_):root(root_){}
   public:
-  PersistentStack():n(0),root(){}
+  PersistentStack():root(){}
 
-  size_t size(){return n;}
-  bool empty(){return n==0;}
+  bool empty(){return !root;}
   value_t top(){
-    assert(!empty());
+    assert(root);
     return root->val;
   }
 
   PersistentStack push(value_t value){
-    return PersistentStack(n+1,std::make_shared<Node>(value,root));
+    return PersistentStack(std::make_shared<Node>(value,root));
   }
 
   PersistentStack pop(){
-    assert(!empty());
-    return PersistentStack(n-1,root->next);
+    assert(root);
+    return PersistentStack(root->next);
   }
 };
 
