@@ -25,15 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :warning: lib/PersistentStack.cpp
+# :x: lib/PersistentStack.cpp
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#e8acc63b1e238f3255c900eed37254b8">lib</a>
 * <a href="{{ site.github.repository_url }}/blob/master/lib/PersistentStack.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-22 12:09:00+09:00
+    - Last commit date: 2020-05-25 10:44:16+09:00
 
 
+
+
+## Required by
+
+* :x: <a href="PersistentDeque.cpp.html">lib/PersistentDeque.cpp</a>
+
+
+## Verified with
+
+* :x: <a href="../../verify/test/PersistentDeque.test.cpp.html">test/PersistentDeque.test.cpp</a>
 
 
 ## Code
@@ -59,25 +69,27 @@ class PersistentStack{
   };
 
   using node_ptr=std::shared_ptr<Node>;
+  size_t n;
   node_ptr root;
 
-  PersistentStack(const node_ptr& root_):root(root_){}
+  PersistentStack(size_t n_,const node_ptr& root_):n(n_),root(root_){}
   public:
-  PersistentStack():root(){}
+  PersistentStack():n(0),root(){}
 
-  bool empty(){return !root;}
+  size_t size(){return n;}
+  bool empty(){return n==0;}
   value_t top(){
-    assert(root);
+    assert(!empty());
     return root->val;
   }
 
   PersistentStack push(value_t value){
-    return PersistentStack(std::make_shared<Node>(value,root));
+    return PersistentStack(n+1,std::make_shared<Node>(value,root));
   }
 
   PersistentStack pop(){
-    assert(root);
-    return PersistentStack(root->next);
+    assert(!empty());
+    return PersistentStack(n-1,root->next);
   }
 };
 ```
@@ -104,25 +116,27 @@ class PersistentStack{
   };
 
   using node_ptr=std::shared_ptr<Node>;
+  size_t n;
   node_ptr root;
 
-  PersistentStack(const node_ptr& root_):root(root_){}
+  PersistentStack(size_t n_,const node_ptr& root_):n(n_),root(root_){}
   public:
-  PersistentStack():root(){}
+  PersistentStack():n(0),root(){}
 
-  bool empty(){return !root;}
+  size_t size(){return n;}
+  bool empty(){return n==0;}
   value_t top(){
-    assert(root);
+    assert(!empty());
     return root->val;
   }
 
   PersistentStack push(value_t value){
-    return PersistentStack(std::make_shared<Node>(value,root));
+    return PersistentStack(n+1,std::make_shared<Node>(value,root));
   }
 
   PersistentStack pop(){
-    assert(root);
-    return PersistentStack(root->next);
+    assert(!empty());
+    return PersistentStack(n-1,root->next);
   }
 };
 
