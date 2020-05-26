@@ -21,24 +21,24 @@ layout: default
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-balloon-js@1.1.2/jquery.balloon.min.js" integrity="sha256-ZEYs9VrgAeNuPvs15E39OsyOJaIkXEEt10fzxJ20+2I=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="../../assets/js/copy-button.js"></script>
-<link rel="stylesheet" href="../../assets/css/copy-button.css" />
+<script type="text/javascript" src="../../../assets/js/copy-button.js"></script>
+<link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: lib/PotentialUnionFind.cpp
+# :heavy_check_mark: lib/UnionFind/PotentialUnionFind.cpp
 
-<a href="../../index.html">Back to top page</a>
+<a href="../../../index.html">Back to top page</a>
 
-* category: <a href="../../index.html#e8acc63b1e238f3255c900eed37254b8">lib</a>
-* <a href="{{ site.github.repository_url }}/blob/master/lib/PotentialUnionFind.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-26 13:06:12+09:00
+* category: <a href="../../../index.html#d8ce77e7929e89891ebe5f859497af18">lib/UnionFind</a>
+* <a href="{{ site.github.repository_url }}/blob/master/lib/UnionFind/PotentialUnionFind.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-05-26 13:15:45+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../verify/test/PotentialUnionFind.test.cpp.html">test/PotentialUnionFind.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/PotentialUnionFind.test.cpp.html">test/PotentialUnionFind.test.cpp</a>
 
 
 ## Code
@@ -122,7 +122,7 @@ class PotentialUnionFind{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "lib/PotentialUnionFind.cpp"
+#line 2 "lib/UnionFind/PotentialUnionFind.cpp"
 
 #include <vector>
 #include <cassert>
@@ -196,5 +196,5 @@ class PotentialUnionFind{
 ```
 {% endraw %}
 
-<a href="../../index.html">Back to top page</a>
+<a href="../../../index.html">Back to top page</a>
 
