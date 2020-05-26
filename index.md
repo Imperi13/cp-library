@@ -38,7 +38,7 @@ layout: default
 
 ### lib
 
-* :heavy_check_mark: <a href="library/lib/PersistentArray.cpp.html">lib/PersistentArray.cpp</a>
+* :question: <a href="library/lib/PersistentArray.cpp.html">lib/PersistentArray.cpp</a>
 * :warning: <a href="library/lib/PersistentStack.cpp.html">lib/PersistentStack.cpp</a>
 * :heavy_check_mark: <a href="library/lib/PersistentUnionFind.cpp.html">lib/PersistentUnionFind.cpp</a>
 * :warning: <a href="library/lib/RBST_Multiset.cpp.html">lib/RBST_Multiset.cpp</a>
@@ -64,6 +64,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/DualSegmentTree.test.cpp.html">test/DualSegmentTree.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/DynamicSegmentTree.test.cpp.html">test/DynamicSegmentTree.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/LazySegmentTree.test.cpp.html">test/LazySegmentTree.test.cpp</a>
+* :x: <a href="verify/test/PersistentArray.test.cpp.html">test/PersistentArray.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/PersistentSegmentTree.test.cpp.html">test/PersistentSegmentTree.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/PersistentUnionFind.test.cpp.html">test/PersistentUnionFind.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/RBST_Seq.test.cpp.html">test/RBST_Seq.test.cpp</a>

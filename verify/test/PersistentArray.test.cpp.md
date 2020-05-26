@@ -25,22 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/PersistentUnionFind.test.cpp
+# :x: test/PersistentArray.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
-* <a href="{{ site.github.repository_url }}/blob/master/test/PersistentUnionFind.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-26 09:09:51+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/test/PersistentArray.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-05-26 09:29:12+09:00
 
 
-* see: <a href="https://judge.yosupo.jp/problem/persistent_unionfind">https://judge.yosupo.jp/problem/persistent_unionfind</a>
 
 
 ## Depends on
 
 * :question: <a href="../../library/lib/PersistentArray.cpp.html">lib/PersistentArray.cpp</a>
-* :heavy_check_mark: <a href="../../library/lib/PersistentUnionFind.cpp.html">lib/PersistentUnionFind.cpp</a>
 
 
 ## Code
@@ -48,42 +46,67 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#define PROBLEM "https://judge.yosupo.jp/problem/persistent_unionfind"
-
-#include <iostream>
 #include <algorithm>
+#include <array>
+#include <bitset>
+#include <cassert>
+#include <cctype>
+#include <cstdint>
+#include <cstdlib>
+#include <cmath>
+#include <complex>
+#include <chrono>
+#include <deque>
+#include <functional>
+#include <iomanip>
+#include <iostream>
+#include <map>
+#include <memory>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
 #include <vector>
+#include <random>
+#include <utility>
+#include <limits>
+#include <list>
+#include <cmath>
 
-#include "../lib/PersistentUnionFind.cpp"
-
+/* template start */
+ 
 #define rep(i, a, b) for (long long i = (a); (i) < (b); (i)++)
-#define all(a) a.begin(),a.end()
+#define all(i) i.begin(), i.end()
 
 using ll=long long;
 
-int main(){
+#include "../lib/PersistentArray.cpp"
+
+int main() {
   std::cin.tie(nullptr);
   std::ios::sync_with_stdio(false);
 
-  ll n,q;
-  std::cin>>n>>q;
-
-  PersistentUnionFind base(n);
-  std::vector<PersistentUnionFind> G(q);
-
-  rep(i,0,q){
-    ll t,k,u,v;
-    std::cin>>t>>k>>u>>v;
-    if(t==0){
-      if(k==-1)G[i]=base.unite(u,v);
-      else G[i]=G[k].unite(u,v);
+  PersistentArray<ll> ary(0);
+  
+  ll q;
+  std::cin>>q;
+  while(q--){
+    ll mode;
+    std::cin>>mode;
+    if(mode==0){
+      ll k,v;
+      std::cin>>k>>v;
+      ary=ary.update(k,v);
     }else{
-      if(k==-1)std::cout<<base.isconnect(u,v)<<"\n";
-      else std::cout<<G[k].isconnect(u,v)<<"\n";
+      ll k;
+      std::cin>>k;
+      std::cout<<ary[k]<<"\n";
     }
   }
 
-  return 0; 
+  return 0;
 }
 ```
 {% endraw %}
@@ -91,19 +114,46 @@ int main(){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/PersistentUnionFind.test.cpp"
-#define PROBLEM "https://judge.yosupo.jp/problem/persistent_unionfind"
-
-#include <iostream>
+#line 1 "test/PersistentArray.test.cpp"
 #include <algorithm>
+#include <array>
+#include <bitset>
+#include <cassert>
+#include <cctype>
+#include <cstdint>
+#include <cstdlib>
+#include <cmath>
+#include <complex>
+#include <chrono>
+#include <deque>
+#include <functional>
+#include <iomanip>
+#include <iostream>
+#include <map>
+#include <memory>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
 #include <vector>
+#include <random>
+#include <utility>
+#include <limits>
+#include <list>
+#line 29 "test/PersistentArray.test.cpp"
 
-#line 2 "lib/PersistentUnionFind.cpp"
+/* template start */
+ 
+#define rep(i, a, b) for (long long i = (a); (i) < (b); (i)++)
+#define all(i) i.begin(), i.end()
+
+using ll=long long;
 
 #line 2 "lib/PersistentArray.cpp"
 
-#include <memory>
-#include <cassert>
+#line 5 "lib/PersistentArray.cpp"
 
 template<typename T,std::size_t BITSIZE=4>
 class PersistentArray{
@@ -149,74 +199,31 @@ class PersistentArray{
     return at(k,root);
   }
 };
-#line 4 "lib/PersistentUnionFind.cpp"
+#line 38 "test/PersistentArray.test.cpp"
 
-class PersistentUnionFind{
-  public:
-  using size_t=std::size_t;
-  private:
-  PersistentArray<long long> uni;
-  size_t group;
-
-  PersistentUnionFind(PersistentArray<long long> uni_,size_t group_):uni(uni_),group(group_){}
-  public:
-  PersistentUnionFind(size_t n=0):uni(-1),group(n){}
-
-  size_t root(size_t a){
-    if(uni[a]<0)return a;
-    size_t tmp=root(uni[a]);
-    uni=uni.update(a,tmp);
-    return tmp;
-  }
-
-  PersistentUnionFind unite(size_t a,size_t b){
-    a=root(a);
-    b=root(b);
-    if(a==b)return *this;
-    group--;
-    if(uni[a]>uni[b])std::swap(a,b);
-
-    PersistentArray<long long> newuni=uni;
-    long long va=uni[a],vb=uni[b];
-    newuni=newuni.update(a,va+vb);
-    newuni=newuni.update(b,a);
-    return PersistentUnionFind(newuni,group);
-  }
-
-  bool isconnect(size_t a,size_t b){return root(a)==root(b);}
-  size_t group_size(size_t a){return -uni[root(a)];}
-  size_t groups(){return group;}
-};
-#line 8 "test/PersistentUnionFind.test.cpp"
-
-#define rep(i, a, b) for (long long i = (a); (i) < (b); (i)++)
-#define all(a) a.begin(),a.end()
-
-using ll=long long;
-
-int main(){
+int main() {
   std::cin.tie(nullptr);
   std::ios::sync_with_stdio(false);
 
-  ll n,q;
-  std::cin>>n>>q;
-
-  PersistentUnionFind base(n);
-  std::vector<PersistentUnionFind> G(q);
-
-  rep(i,0,q){
-    ll t,k,u,v;
-    std::cin>>t>>k>>u>>v;
-    if(t==0){
-      if(k==-1)G[i]=base.unite(u,v);
-      else G[i]=G[k].unite(u,v);
+  PersistentArray<ll> ary(0);
+  
+  ll q;
+  std::cin>>q;
+  while(q--){
+    ll mode;
+    std::cin>>mode;
+    if(mode==0){
+      ll k,v;
+      std::cin>>k>>v;
+      ary=ary.update(k,v);
     }else{
-      if(k==-1)std::cout<<base.isconnect(u,v)<<"\n";
-      else std::cout<<G[k].isconnect(u,v)<<"\n";
+      ll k;
+      std::cin>>k;
+      std::cout<<ary[k]<<"\n";
     }
   }
 
-  return 0; 
+  return 0;
 }
 
 ```
