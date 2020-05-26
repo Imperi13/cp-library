@@ -1,3 +1,5 @@
+#define PROBLEM "https://judge.yosupo.jp/problem/associative_array"
+
 #include <algorithm>
 #include <array>
 #include <bitset>
