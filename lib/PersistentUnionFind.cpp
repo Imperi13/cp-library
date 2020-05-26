@@ -11,7 +11,7 @@ class PersistentUnionFind{
 
   PersistentUnionFind(PersistentArray<long long> uni_,size_t group_):uni(uni_),group(group_){}
   public:
-  PersistentUnionFind(size_t n=0):uni(n,-1),group(n){}
+  PersistentUnionFind(size_t n=0):uni(-1),group(n){}
 
   size_t root(size_t a){
     if(uni[a]<0)return a;
