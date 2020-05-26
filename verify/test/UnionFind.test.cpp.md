@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/UnionFind.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-23 03:38:17+09:00
+    - Last commit date: 2020-05-26 13:06:12+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/unionfind">https://judge.yosupo.jp/problem/unionfind</a>
@@ -108,6 +108,7 @@ class UnionFind{
   bool unite(size_t a,size_t b){
     a=root(a);b=root(b);
     if(a==b)return false;
+    group--;
     if(sz[a]<sz[b])std::swap(a,b);
     sz[a]+=sz[b];
     par[b]=a;
