@@ -61,7 +61,7 @@ layout: default
 
 ### lib/UnionFind
 
-* :warning: <a href="library/lib/UnionFind/PersistentUnionFind.cpp.html">lib/UnionFind/PersistentUnionFind.cpp</a>
+* :heavy_check_mark: <a href="library/lib/UnionFind/PersistentUnionFind.cpp.html">lib/UnionFind/PersistentUnionFind.cpp</a>
 * :heavy_check_mark: <a href="library/lib/UnionFind/PotentialUnionFind.cpp.html">lib/UnionFind/PotentialUnionFind.cpp</a>
 * :heavy_check_mark: <a href="library/lib/UnionFind/UnionFind.cpp.html">lib/UnionFind/UnionFind.cpp</a>
 
@@ -74,7 +74,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/PersistentArray.test.cpp.html">test/PersistentArray.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/PersistentArray_2.test.cpp.html">test/PersistentArray_2.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/PersistentSegmentTree.test.cpp.html">test/PersistentSegmentTree.test.cpp</a>
-* :x: <a href="verify/test/PersistentUnionFind.test.cpp.html">test/PersistentUnionFind.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/PersistentUnionFind.test.cpp.html">test/PersistentUnionFind.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/PotentialUnionFind.test.cpp.html">test/PotentialUnionFind.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/RBST_Seq.test.cpp.html">test/RBST_Seq.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/SWAG.test.cpp.html">test/SWAG.test.cpp</a>

@@ -25,15 +25,22 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :x: test/PersistentUnionFind.test.cpp
+# :heavy_check_mark: test/PersistentUnionFind.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/PersistentUnionFind.test.cpp">View this file on GitHub</a>
-    - Last commit date: 1970-01-01 00:00:00+00:00
+    - Last commit date: 2020-05-26 13:21:03+09:00
 
 
+* see: <a href="https://judge.yosupo.jp/problem/persistent_unionfind">https://judge.yosupo.jp/problem/persistent_unionfind</a>
+
+
+## Depends on
+
+* :heavy_check_mark: <a href="../../library/lib/PersistentArray.cpp.html">lib/PersistentArray.cpp</a>
+* :heavy_check_mark: <a href="../../library/lib/UnionFind/PersistentUnionFind.cpp.html">lib/UnionFind/PersistentUnionFind.cpp</a>
 
 
 ## Code
@@ -84,18 +91,133 @@ int main(){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-Traceback (most recent call last):
-  File "/opt/hostedtoolcache/Python/3.8.3/x64/lib/python3.8/site-packages/onlinejudge_verify/docs.py", line 349, in write_contents
-    bundled_code = language.bundle(self.file_class.file_path, basedir=pathlib.Path.cwd())
-  File "/opt/hostedtoolcache/Python/3.8.3/x64/lib/python3.8/site-packages/onlinejudge_verify/languages/cplusplus.py", line 185, in bundle
-    bundler.update(path)
-  File "/opt/hostedtoolcache/Python/3.8.3/x64/lib/python3.8/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py", line 307, in update
-    self.update(self._resolve(pathlib.Path(included), included_from=path))
-  File "/opt/hostedtoolcache/Python/3.8.3/x64/lib/python3.8/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py", line 307, in update
-    self.update(self._resolve(pathlib.Path(included), included_from=path))
-  File "/opt/hostedtoolcache/Python/3.8.3/x64/lib/python3.8/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py", line 187, in _resolve
-    raise BundleErrorAt(path, -1, "no such header")
-onlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: PersistentArray.cpp: line -1: no such header
+#line 1 "test/PersistentUnionFind.test.cpp"
+#define PROBLEM "https://judge.yosupo.jp/problem/persistent_unionfind"
+
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+#line 2 "lib/UnionFind/PersistentUnionFind.cpp"
+
+#line 2 "lib/PersistentArray.cpp"
+
+#include <memory>
+#include <cassert>
+
+template<typename T,std::size_t BITSIZE=4>
+class PersistentArray{
+  public:
+  using value_t=T;
+  using size_t=std::size_t;
+  private:
+  struct Node{
+    value_t val;
+    std::array<std::shared_ptr<Node>,1<<BITSIZE> ch;
+    Node(value_t val_):val(val_){ch.fill(nullptr);}
+  };
+  using node_ptr=std::shared_ptr<Node>;
+
+  value_t init;
+  node_ptr root;
+
+  node_ptr update(size_t k,value_t value,node_ptr now){
+    node_ptr ret=(now?std::make_shared<Node>(*now):std::make_shared<Node>(init));
+    if(k==0)ret->val=value;
+    else{
+      size_t mask=(1<<BITSIZE)-1;
+      ret->ch[k&mask]=update(k>>BITSIZE,value,ret->ch[k&mask]);
+    }
+    return ret;
+  }
+
+  value_t at(size_t k,node_ptr now){
+    if(!now)return init;
+    if(k==0)return now->val;
+    return at(k>>BITSIZE,now->ch[k&((1<<BITSIZE)-1)]);
+  }
+
+  PersistentArray(value_t init_,const node_ptr& root_):init(init_),root(root_){}
+  public:
+  PersistentArray(value_t init_=value_t()):init(init_),root(nullptr){}
+
+  PersistentArray update(size_t k,const value_t& value){
+    return PersistentArray(init,update(k,value,root));
+  }
+
+  value_t operator[](size_t k){
+    return at(k,root);
+  }
+};
+#line 4 "lib/UnionFind/PersistentUnionFind.cpp"
+
+class PersistentUnionFind{
+  public:
+  using size_t=std::size_t;
+  private:
+  PersistentArray<long long> uni;
+  size_t group;
+
+  PersistentUnionFind(PersistentArray<long long> uni_,size_t group_):uni(uni_),group(group_){}
+  public:
+  PersistentUnionFind(size_t n=0):uni(-1),group(n){}
+
+  size_t root(size_t a){
+    if(uni[a]<0)return a;
+    size_t tmp=root(uni[a]);
+    uni=uni.update(a,tmp);
+    return tmp;
+  }
+
+  PersistentUnionFind unite(size_t a,size_t b){
+    a=root(a);
+    b=root(b);
+    if(a==b)return *this;
+    group--;
+    if(uni[a]>uni[b])std::swap(a,b);
+
+    PersistentArray<long long> newuni=uni;
+    long long va=uni[a],vb=uni[b];
+    newuni=newuni.update(a,va+vb);
+    newuni=newuni.update(b,a);
+    return PersistentUnionFind(newuni,group);
+  }
+
+  bool isconnect(size_t a,size_t b){return root(a)==root(b);}
+  size_t group_size(size_t a){return -uni[root(a)];}
+  size_t groups(){return group;}
+};
+#line 8 "test/PersistentUnionFind.test.cpp"
+
+#define rep(i, a, b) for (long long i = (a); (i) < (b); (i)++)
+#define all(a) a.begin(),a.end()
+
+using ll=long long;
+
+int main(){
+  std::cin.tie(nullptr);
+  std::ios::sync_with_stdio(false);
+
+  ll n,q;
+  std::cin>>n>>q;
+
+  PersistentUnionFind base(n);
+  std::vector<PersistentUnionFind> G(q);
+
+  rep(i,0,q){
+    ll t,k,u,v;
+    std::cin>>t>>k>>u>>v;
+    if(t==0){
+      if(k==-1)G[i]=base.unite(u,v);
+      else G[i]=G[k].unite(u,v);
+    }else{
+      if(k==-1)std::cout<<base.isconnect(u,v)<<"\n";
+      else std::cout<<G[k].isconnect(u,v)<<"\n";
+    }
+  }
+
+  return 0; 
+}
 
 ```
 {% endraw %}
