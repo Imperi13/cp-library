@@ -65,6 +65,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/DynamicSegmentTree.test.cpp.html">test/DynamicSegmentTree.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/LazySegmentTree.test.cpp.html">test/LazySegmentTree.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/PersistentArray.test.cpp.html">test/PersistentArray.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/PersistentArray_2.test.cpp.html">test/PersistentArray_2.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/PersistentSegmentTree.test.cpp.html">test/PersistentSegmentTree.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/PersistentUnionFind.test.cpp.html">test/PersistentUnionFind.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/RBST_Seq.test.cpp.html">test/RBST_Seq.test.cpp</a>

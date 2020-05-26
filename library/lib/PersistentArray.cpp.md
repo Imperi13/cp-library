@@ -44,6 +44,7 @@ layout: default
 ## Verified with
 
 * :heavy_check_mark: <a href="../../verify/test/PersistentArray.test.cpp.html">test/PersistentArray.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/PersistentArray_2.test.cpp.html">test/PersistentArray_2.test.cpp</a>
 * :heavy_check_mark: <a href="../../verify/test/PersistentUnionFind.test.cpp.html">test/PersistentUnionFind.test.cpp</a>
 
 
