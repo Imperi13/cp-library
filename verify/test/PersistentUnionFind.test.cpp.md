@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/PersistentUnionFind.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-23 03:38:17+09:00
+    - Last commit date: 2020-05-26 09:09:51+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/persistent_unionfind">https://judge.yosupo.jp/problem/persistent_unionfind</a>
@@ -105,7 +105,7 @@ int main(){
 #include <memory>
 #include <cassert>
 
-template<typename T>
+template<typename T,std::size_t BITSIZE=4>
 class PersistentArray{
   public:
   using value_t=T;
@@ -113,74 +113,40 @@ class PersistentArray{
   private:
   struct Node{
     value_t val;
-    std::shared_ptr<Node> left,right;
-    Node(value_t val_):val(val_),left(),right(){}
+    std::array<std::shared_ptr<Node>,1<<BITSIZE> ch;
+    Node(value_t val_):val(val_){ch.fill(nullptr);}
   };
   using node_ptr=std::shared_ptr<Node>;
 
-  size_t n,n0;
+  value_t init;
   node_ptr root;
 
-  void build(node_ptr now,size_t l,size_t r,value_t value){
-    if(r-l>1){
-      now->left=std::make_shared<Node>(value);
-      now->right=std::make_shared<Node>(value);
-      build(now->left,l,l+(r-l)/2,value);
-      build(now->right,l+(r-l)/2,r,value);
+  node_ptr update(size_t k,value_t value,node_ptr now){
+    node_ptr ret=(now?std::make_shared<Node>(*now):std::make_shared<Node>(init));
+    if(k==0)ret->val=value;
+    else{
+      size_t mask=(1<<BITSIZE)-1;
+      ret->ch[k&mask]=update(k>>BITSIZE,value,ret->ch[k&mask]);
     }
+    return ret;
   }
 
-  PersistentArray(size_t n_,size_t n0_,node_ptr root_):n(n_),n0(n0_),root(root_){}
+  value_t at(size_t k,node_ptr now){
+    if(!now)return init;
+    if(k==0)return now->val;
+    return at(k>>BITSIZE,now->ch[k&((1<<BITSIZE)-1)]);
+  }
 
+  PersistentArray(value_t init_,const node_ptr& root_):init(init_),root(root_){}
   public:
+  PersistentArray(value_t init_=value_t()):init(init_),root(nullptr){}
 
-  PersistentArray(size_t n_=0,value_t init=value_t()):n(n_),root(new Node(init)){
-    n0=1;
-    while(n0<n)n0<<=1;
-    build(root,0,n0,init);
+  PersistentArray update(size_t k,const value_t& value){
+    return PersistentArray(init,update(k,value,root));
   }
 
-  size_t size(){return n;}
-
-  value_t operator[](size_t pos){
-    assert(0<=pos&&pos<n);
-    size_t l=0,r=n0;
-    node_ptr now=root;
-    while(r-l>1){
-      size_t mid=l+(r-l)/2;
-      if(pos<mid){
-        now=now->left;
-        r=mid;
-      }else{
-        now=now->right;
-        l=mid;
-      }
-    }
-    return now->val;
-  }
-
-  PersistentArray update(size_t pos,value_t value){
-    node_ptr newroot=std::make_shared<Node>(value);
-    node_ptr now=root,cur=newroot;
-    size_t l=0,r=n0;
-    while(r-l>1){
-      size_t mid=l+(r-l)/2;
-      if(pos<mid){
-        cur->right=now->right;
-        cur->left=std::make_shared<Node>(value);
-        cur=cur->left;
-        now=now->left;
-        r=mid;
-      }else{
-        cur->left=now->left;
-        cur->right=std::make_shared<Node>(value);
-        cur=cur->right;
-        now=now->right;
-        l=mid;
-      }
-    }
-
-    return PersistentArray(n,n0,newroot);
+  value_t operator[](size_t k){
+    return at(k,root);
   }
 };
 #line 4 "lib/PersistentUnionFind.cpp"
@@ -194,7 +160,7 @@ class PersistentUnionFind{
 
   PersistentUnionFind(PersistentArray<long long> uni_,size_t group_):uni(uni_),group(group_){}
   public:
-  PersistentUnionFind(size_t n=0):uni(n,-1),group(n){}
+  PersistentUnionFind(size_t n=0):uni(-1),group(n){}
 
   size_t root(size_t a){
     if(uni[a]<0)return a;
