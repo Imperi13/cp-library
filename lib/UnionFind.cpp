@@ -25,6 +25,7 @@ class UnionFind{
   bool unite(size_t a,size_t b){
     a=root(a);b=root(b);
     if(a==b)return false;
+    group--;
     if(sz[a]<sz[b])std::swap(a,b);
     sz[a]+=sz[b];
     par[b]=a;
