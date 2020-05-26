@@ -38,7 +38,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="PersistentArray.cpp.html">lib/PersistentArray.cpp</a>
+* :heavy_check_mark: <a href="PersistentArray.cpp.html">lib/PersistentArray.cpp</a>
 
 
 ## Verified with

@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../library/lib/PersistentArray.cpp.html">lib/PersistentArray.cpp</a>
+* :heavy_check_mark: <a href="../../library/lib/PersistentArray.cpp.html">lib/PersistentArray.cpp</a>
 * :heavy_check_mark: <a href="../../library/lib/PersistentUnionFind.cpp.html">lib/PersistentUnionFind.cpp</a>
 
 
