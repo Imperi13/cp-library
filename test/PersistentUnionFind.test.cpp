@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <vector>
 
-#include "../lib/PersistentUnionFind.cpp"
+#include "../lib/UnionFind/PersistentUnionFind.cpp"
 
 #define rep(i, a, b) for (long long i = (a); (i) < (b); (i)++)
 #define all(a) a.begin(),a.end()

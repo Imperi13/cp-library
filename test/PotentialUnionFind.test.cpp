@@ -36,7 +36,7 @@
 
 using ll=long long;
 
-#include "../lib/PotentialUnionFind.cpp"
+#include "../lib/UnionFind/PotentialUnionFind.cpp"
 
 struct Group{
   using value_t=ll;
