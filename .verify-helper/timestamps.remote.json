@@ -11,6 +11,6 @@
 "test/RBST_Seq.test.cpp": "2020-05-22 04:16:28 +0900",
 "test/SWAG.test.cpp": "2020-05-20 19:54:08 +0900",
 "test/SegmentTree.test.cpp": "2020-05-22 10:46:01 +0900",
-"test/SparseTable.test.cpp": "2020-05-23 18:19:12 +0900",
+"test/SparseTable.test.cpp": "2020-05-30 18:36:16 +0900",
 "test/UnionFind.test.cpp": "2020-05-26 13:15:45 +0900"
 }
