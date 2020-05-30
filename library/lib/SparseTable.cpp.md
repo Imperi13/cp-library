@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#e8acc63b1e238f3255c900eed37254b8">lib</a>
 * <a href="{{ site.github.repository_url }}/blob/master/lib/SparseTable.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-23 18:19:12+09:00
+    - Last commit date: 2020-05-30 18:36:16+09:00
 
 
 
@@ -70,12 +70,12 @@ class SparseTable{
   public:
   SparseTable(const std::vector<value_t>& a):n(a.size()),ln(n+1,0){
     for(size_t i=1;i<n+1;i++)ln[i]=ln[i-1]+(i>=(1ull<<(ln[i-1]+1)));
-    table=std::vector<std::vector<value_t>>(n,std::vector<value_t>(ln[n]+1,Semigroup::none));
-    for(size_t i=0;i<n;i++)table[i][0]=a[i];
+    table=std::vector<std::vector<value_t>>(ln[n]+1,std::vector<value_t>(n,Semigroup::none));
+    for(size_t i=0;i<n;i++)table[0][i]=a[i];
     for(size_t j=1;j<ln[n]+1;j++){
       for(size_t i=0;i<n;i++){
-        if(i+(1ll<<j) > n)table[i][j]=Semigroup::none;
-        else table[i][j]=Semigroup::op(table[i][j-1],table[i+(1ll<<(j-1))][j-1]);
+        if(i+(1ll<<j) > n)table[j][i]=Semigroup::none;
+        else table[j][i]=Semigroup::op(table[j-1][i],table[j-1][i+(1ll<<(j-1))]);
       }
     }
   }
@@ -83,7 +83,7 @@ class SparseTable{
   value_t fold(size_t l,size_t r){
     assert(0<=l&&l<r&&r<=n);
     size_t m=r-l;
-    return Semigroup::op(table[l][ln[m]],table[r-(1ll<<ln[m])][ln[m]]);
+    return Semigroup::op(table[ln[m]][l],table[ln[m]][r-(1ll<<ln[m])]);
   }
 };
 ```
@@ -116,12 +116,12 @@ class SparseTable{
   public:
   SparseTable(const std::vector<value_t>& a):n(a.size()),ln(n+1,0){
     for(size_t i=1;i<n+1;i++)ln[i]=ln[i-1]+(i>=(1ull<<(ln[i-1]+1)));
-    table=std::vector<std::vector<value_t>>(n,std::vector<value_t>(ln[n]+1,Semigroup::none));
-    for(size_t i=0;i<n;i++)table[i][0]=a[i];
+    table=std::vector<std::vector<value_t>>(ln[n]+1,std::vector<value_t>(n,Semigroup::none));
+    for(size_t i=0;i<n;i++)table[0][i]=a[i];
     for(size_t j=1;j<ln[n]+1;j++){
       for(size_t i=0;i<n;i++){
-        if(i+(1ll<<j) > n)table[i][j]=Semigroup::none;
-        else table[i][j]=Semigroup::op(table[i][j-1],table[i+(1ll<<(j-1))][j-1]);
+        if(i+(1ll<<j) > n)table[j][i]=Semigroup::none;
+        else table[j][i]=Semigroup::op(table[j-1][i],table[j-1][i+(1ll<<(j-1))]);
       }
     }
   }
@@ -129,7 +129,7 @@ class SparseTable{
   value_t fold(size_t l,size_t r){
     assert(0<=l&&l<r&&r<=n);
     size_t m=r-l;
-    return Semigroup::op(table[l][ln[m]],table[r-(1ll<<ln[m])][ln[m]]);
+    return Semigroup::op(table[ln[m]][l],table[ln[m]][r-(1ll<<ln[m])]);
   }
 };
 
