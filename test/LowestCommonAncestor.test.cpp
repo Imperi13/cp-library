@@ -1,3 +1,5 @@
+#define PROBLEM "https://judge.yosupo.jp/problem/lca"
+
 #include <algorithm>
 #include <array>
 #include <bitset>
