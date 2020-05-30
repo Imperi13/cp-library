@@ -70,7 +70,7 @@ layout: default
 
 ### lib/graph
 
-* :x: <a href="library/lib/graph/LowestCommonAncestor.cpp.html">lib/graph/LowestCommonAncestor.cpp</a>
+* :heavy_check_mark: <a href="library/lib/graph/LowestCommonAncestor.cpp.html">lib/graph/LowestCommonAncestor.cpp</a>
 
 
 ## Verify Files
@@ -78,7 +78,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/DualSegmentTree.test.cpp.html">test/DualSegmentTree.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/DynamicSegmentTree.test.cpp.html">test/DynamicSegmentTree.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/LazySegmentTree.test.cpp.html">test/LazySegmentTree.test.cpp</a>
-* :x: <a href="verify/test/LowestCommonAncestor.test.cpp.html">test/LowestCommonAncestor.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/LowestCommonAncestor.test.cpp.html">test/LowestCommonAncestor.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/PersistentArray.test.cpp.html">test/PersistentArray.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/PersistentArray_2.test.cpp.html">test/PersistentArray_2.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/PersistentSegmentTree.test.cpp.html">test/PersistentSegmentTree.test.cpp</a>

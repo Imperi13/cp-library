@@ -25,20 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :x: test/LowestCommonAncestor.test.cpp
+# :heavy_check_mark: test/LowestCommonAncestor.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/LowestCommonAncestor.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-30 18:17:39+09:00
+    - Last commit date: 2020-05-30 18:18:48+09:00
 
 
+* see: <a href="https://judge.yosupo.jp/problem/lca">https://judge.yosupo.jp/problem/lca</a>
 
 
 ## Depends on
 
-* :x: <a href="../../library/lib/graph/LowestCommonAncestor.cpp.html">lib/graph/LowestCommonAncestor.cpp</a>
+* :heavy_check_mark: <a href="../../library/lib/graph/LowestCommonAncestor.cpp.html">lib/graph/LowestCommonAncestor.cpp</a>
 
 
 ## Code
@@ -46,6 +47,8 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
+#define PROBLEM "https://judge.yosupo.jp/problem/lca"
+
 #include <algorithm>
 #include <array>
 #include <bitset>
@@ -162,6 +165,8 @@ int main() {
 {% raw %}
 ```cpp
 #line 1 "test/LowestCommonAncestor.test.cpp"
+#define PROBLEM "https://judge.yosupo.jp/problem/lca"
+
 #include <algorithm>
 #include <array>
 #include <bitset>
@@ -299,7 +304,7 @@ class LowestCommonAncestor{
     return par_dbl[a][0];
   }
 };
-#line 85 "test/LowestCommonAncestor.test.cpp"
+#line 87 "test/LowestCommonAncestor.test.cpp"
 
 int main() {
   std::cin.tie(nullptr);
