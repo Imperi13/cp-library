@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/SparseTable.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-30 18:36:16+09:00
+    - Last commit date: 2020-05-31 15:13:59+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/staticrmq">https://judge.yosupo.jp/problem/staticrmq</a>
@@ -58,35 +58,37 @@ layout: default
 #include "../lib/SparseTable.cpp"
 
 struct Semigroup{
-  using value_t=long long;
-  static constexpr value_t none=2e9;
-  static constexpr value_t op(const value_t& a,const value_t& b){
-    return std::min(a,b);
+  using value_t = long long;
+  static constexpr value_t op(const value_t &a, const value_t &b){
+    return std::min(a, b);
   }
 };
 
-using ll=long long;
-using P=std::pair<ll,ll>;
+using ll = long long;
+using P = std::pair<ll, ll>;
 
-int main(){
+int main()
+{
   std::cin.tie(nullptr);
   std::ios::sync_with_stdio(false);
 
-  ll n,q;
-  std::cin>>n>>q;
+  ll n, q;
+  std::cin >> n >> q;
 
   std::vector<ll> a(n);
-  for(auto&& e:a)std::cin>>e;
+  for (auto &&e : a)
+    std::cin >> e;
 
   SparseTable<Semigroup> sp(a);
 
-  while(q--){
-    ll l,r;
-    std::cin>>l>>r;
-    std::cout<<sp.fold(l,r)<<"\n";
+  while (q--)
+  {
+    ll l, r;
+    std::cin >> l >> r;
+    std::cout << sp.fold(l, r) << "\n";
   }
 
-  return 0; 
+  return 0;
 }
 ```
 {% endraw %}
@@ -109,7 +111,6 @@ int main(){
 
 //Semigroup
 // type value_t 
-// static value_t none;
 // static (value_t ,value_t)->value_t op
 
 // a op a == a
@@ -120,18 +121,27 @@ class SparseTable{
   using value_t=typename Semigroup::value_t;
   using size_t=std::size_t;
   private:
+  using Opt=std::pair<value_t,bool>;
+  Opt id={value_t(),false};
+
   size_t n;
   std::vector<size_t> ln;
-  std::vector<std::vector<value_t>> table;
+  std::vector<std::vector<Opt>> table;
+
+  constexpr inline Opt op(Opt a,Opt b){
+    if(a.second&b.second)return Opt(Semigroup::op(a.first,b.first),true);
+    if(a.second|b.second)return a.second?a:b;
+    return id;
+  }
   public:
   SparseTable(const std::vector<value_t>& a):n(a.size()),ln(n+1,0){
     for(size_t i=1;i<n+1;i++)ln[i]=ln[i-1]+(i>=(1ull<<(ln[i-1]+1)));
-    table=std::vector<std::vector<value_t>>(ln[n]+1,std::vector<value_t>(n,Semigroup::none));
-    for(size_t i=0;i<n;i++)table[0][i]=a[i];
+    table=std::vector<std::vector<Opt>>(ln[n]+1,std::vector<Opt>(n,id));
+    for(size_t i=0;i<n;i++)table[0][i]=Opt(a[i],true);
     for(size_t j=1;j<ln[n]+1;j++){
       for(size_t i=0;i<n;i++){
-        if(i+(1ll<<j) > n)table[j][i]=Semigroup::none;
-        else table[j][i]=Semigroup::op(table[j-1][i],table[j-1][i+(1ll<<(j-1))]);
+        if(i+(1ll<<j) > n)table[j][i]=id;
+        else table[j][i]=op(table[j-1][i],table[j-1][i+(1ll<<(j-1))]);
       }
     }
   }
@@ -139,41 +149,43 @@ class SparseTable{
   value_t fold(size_t l,size_t r){
     assert(0<=l&&l<r&&r<=n);
     size_t m=r-l;
-    return Semigroup::op(table[ln[m]][l],table[ln[m]][r-(1ll<<ln[m])]);
+    return op(table[ln[m]][l],table[ln[m]][r-(1ll<<ln[m])]).first;
   }
 };
 #line 10 "test/SparseTable.test.cpp"
 
 struct Semigroup{
-  using value_t=long long;
-  static constexpr value_t none=2e9;
-  static constexpr value_t op(const value_t& a,const value_t& b){
-    return std::min(a,b);
+  using value_t = long long;
+  static constexpr value_t op(const value_t &a, const value_t &b){
+    return std::min(a, b);
   }
 };
 
-using ll=long long;
-using P=std::pair<ll,ll>;
+using ll = long long;
+using P = std::pair<ll, ll>;
 
-int main(){
+int main()
+{
   std::cin.tie(nullptr);
   std::ios::sync_with_stdio(false);
 
-  ll n,q;
-  std::cin>>n>>q;
+  ll n, q;
+  std::cin >> n >> q;
 
   std::vector<ll> a(n);
-  for(auto&& e:a)std::cin>>e;
+  for (auto &&e : a)
+    std::cin >> e;
 
   SparseTable<Semigroup> sp(a);
 
-  while(q--){
-    ll l,r;
-    std::cin>>l>>r;
-    std::cout<<sp.fold(l,r)<<"\n";
+  while (q--)
+  {
+    ll l, r;
+    std::cin >> l >> r;
+    std::cout << sp.fold(l, r) << "\n";
   }
 
-  return 0; 
+  return 0;
 }
 
 ```
