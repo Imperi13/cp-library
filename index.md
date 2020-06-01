@@ -73,6 +73,13 @@ layout: default
 * :heavy_check_mark: <a href="library/lib/graph/LowestCommonAncestor.cpp.html">lib/graph/LowestCommonAncestor.cpp</a>
 
 
+<div id="a6e10e9711dc4788c3e9e6f87d9357db"></div>
+
+### lib/utility
+
+* :heavy_check_mark: <a href="library/lib/utility/Monoid.cpp.html">lib/utility/Monoid.cpp</a>
+
+
 ## Verify Files
 
 * :heavy_check_mark: <a href="verify/test/DualSegmentTree.test.cpp.html">test/DualSegmentTree.test.cpp</a>
