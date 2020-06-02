@@ -77,7 +77,7 @@ layout: default
 
 ### lib/utility
 
-* :heavy_check_mark: <a href="library/lib/utility/Monoid.cpp.html">lib/utility/Monoid.cpp</a>
+* :warning: <a href="library/lib/utility/Monoid.cpp.html">lib/utility/Monoid.cpp</a>
 
 
 ## Verify Files

@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: lib/utility/Monoid.cpp
+# :warning: lib/utility/Monoid.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -34,16 +34,6 @@ layout: default
     - Last commit date: 2020-06-02 01:52:30+09:00
 
 
-
-
-## Required by
-
-* :heavy_check_mark: <a href="../SparseTable.cpp.html">lib/SparseTable.cpp</a>
-
-
-## Verified with
-
-* :heavy_check_mark: <a href="../../../verify/test/SparseTable.test.cpp.html">test/SparseTable.test.cpp</a>
 
 
 ## Code
