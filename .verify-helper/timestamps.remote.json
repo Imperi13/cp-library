@@ -1,5 +1,6 @@
 {
 "test/DualSegmentTree.test.cpp": "2020-05-22 20:33:16 +0900",
+"test/DynamicMatrix.test.cpp": "2020-06-06 17:09:35 +0900",
 "test/DynamicSegmentTree.test.cpp": "2020-05-22 10:46:01 +0900",
 "test/LazySegmentTree.test.cpp": "2020-05-24 23:01:39 +0900",
 "test/LowestCommonAncestor.test.cpp": "2020-05-30 18:18:48 +0900",
