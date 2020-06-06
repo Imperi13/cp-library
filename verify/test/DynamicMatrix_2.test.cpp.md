@@ -25,22 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/DynamicMatrix.test.cpp
+# :heavy_check_mark: test/DynamicMatrix_2.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
-* <a href="{{ site.github.repository_url }}/blob/master/test/DynamicMatrix.test.cpp">View this file on GitHub</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/DynamicMatrix_2.test.cpp">View this file on GitHub</a>
     - Last commit date: 2020-06-06 18:13:43+09:00
 
 
-* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1327">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1327</a>
+* see: <a href="https://judge.yosupo.jp/problem/matrix_det">https://judge.yosupo.jp/problem/matrix_det</a>
 
 
 ## Depends on
 
 * :heavy_check_mark: <a href="../../library/lib/math/DynamicMatrix.cpp.html">lib/math/DynamicMatrix.cpp</a>
-* :heavy_check_mark: <a href="../../library/lib/utility/runtime_modint.cpp.html">lib/utility/runtime_modint.cpp</a>
 
 
 ## Code
@@ -48,7 +47,7 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1327"
+#define PROBLEM "https://judge.yosupo.jp/problem/matrix_det"
 
 #include <algorithm>
 #include <array>
@@ -132,190 +131,51 @@ constexpr Num mypow(Num a, unsigned long long b) {
 /* template end */
 
 using ll = long long;
-
-#include "../lib/utility/runtime_modint.cpp"
 
 #include "../lib/math/DynamicMatrix.cpp"
 
-std::uint_fast16_t modint::Modulus;
-
-using mat=DynamicMatrix<modint>;
-
-int main() {
-  std::cin.tie(nullptr);
-  std::ios::sync_with_stdio(false);
-
-  ll n,a,b,c,t;
-
-  while(std::cin>>n>>modint::Modulus>>a>>b>>c>>t,n){
-    mat tmp(n,n);
-    rep(i,0,n){
-      if(i-1>=0)tmp(i,i-1)=a;
-      tmp(i,i)=b;
-      if(i+1<n)tmp(i,i+1)=c;
-    }
-
-
-    mat ret=mat::id(n);
-
-    while(t>0){
-      if(t&1)ret*=tmp;
-      tmp*=tmp;
-      t>>=1;
-    }
-
-    mat init(n,1);
-    rep(i,0,n){
-      ll e;
-      std::cin>>e;
-      init(i,0)=e;
-    }
-
-    ret*=init;
-
-    rep(i,0,n)std::cout<<ret(i,0).value()<<(i!=n-1?" ":"");
-    std::cout<<"\n";
-  }
-
-  return 0;
-}
-```
-{% endraw %}
-
-<a id="bundled"></a>
-{% raw %}
-```cpp
-#line 1 "test/DynamicMatrix.test.cpp"
-#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1327"
-
-#include <algorithm>
-#include <array>
-#include <bitset>
-#include <cassert>
-#include <cctype>
-#include <cstdint>
-#include <cstdlib>
-#include <cmath>
-#include <complex>
-#include <chrono>
-#include <deque>
-#include <functional>
-#include <iomanip>
-#include <iostream>
-#include <map>
-#include <memory>
-#include <numeric>
-#include <queue>
-#include <set>
-#include <stack>
-#include <string>
-#include <type_traits>
-#include <unordered_map>
-#include <vector>
-#include <random>
-#include <utility>
-#include <limits>
-#include <list>
-
-/* template start */
- 
-#define rep(i, a, b) for (long long i = (a); (i) < (b); (i)++)
-#define all(i) i.begin(), i.end()
-
-#ifdef LOCAL
-#define debug(...) std::cerr << "[" << #__VA_ARGS__ << "]:", debug_out(__VA_ARGS__)
-#else
-#define debug(...)
-#endif
-
-void debug_out(){std::cerr<<std::endl;}
-
-template<typename Head,typename... Tail>
-void debug_out(Head h,Tail... t){
-  std::cerr<<" "<<h;
-  if(sizeof...(t)>0)std::cout<<" :";
-  debug_out(t...);
-}
- 
-template <typename T1, typename T2>
-std::ostream& operator<<(std::ostream& os, std::pair<T1, T2> pa) {
-  return os << pa.first << " " << pa.second;
-}
- 
-template <typename T>
-std::ostream& operator<<(std::ostream& os, std::vector<T> vec) {
-  for (std::size_t i = 0; i < vec.size(); i++)os << vec[i] << (i + 1 == vec.size() ? "" : " ");
-  return os;
-}
- 
-template<typename T1,typename T2>
-inline bool chmax(T1& a,T2 b){return a<b && (a=b,true);}
- 
-template<typename T1,typename T2>
-inline bool chmin(T1& a,T2 b){return a>b && (a=b,true);}
-
-template<typename Num>
-constexpr Num mypow(Num a, unsigned long long b) {
-  if(b==0)return 1;
-  if (a==0)return 0;
-  Num x = 1;
-  while (b > 0) {
-    if(b & 1)x*=a;
-    a*=a;
-    b >>= 1;
-  }
-  return x;
-}
-
-/* template end */
-
-using ll = long long;
-
-#line 2 "lib/utility/runtime_modint.cpp"
-
-class modint {
+template <std::uint_fast64_t Modulus> class modint {
   using u64 = std::uint_fast64_t;
 
 public:
   u64 a;
-  static u64 Modulus;
 
-  modint(const u64 x = 0) noexcept : a(x % Modulus) {}
-  u64 &value() noexcept { return a; }
-  const u64 &value() const noexcept { return a; }
-  bool operator==(const modint rhs) const noexcept {return a==rhs.a;}
-  bool operator!=(const modint rhs) const noexcept {return !(*this==rhs);}
-  modint operator+(const modint rhs) const noexcept {
+  constexpr modint(const u64 x = 0) noexcept : a(x % Modulus) {}
+  constexpr u64 &value() noexcept { return a; }
+  constexpr const u64 &value() const noexcept { return a; }
+  constexpr bool operator==(const modint rhs) const noexcept {return a==rhs.a;}
+  constexpr bool operator!=(const modint rhs) const noexcept {return !(*this==rhs);}
+  constexpr modint operator+(const modint rhs) const noexcept {
     return modint(*this) += rhs;
   }
-  modint operator-(const modint rhs) const noexcept {
+  constexpr modint operator-(const modint rhs) const noexcept {
     return modint(*this) -= rhs;
   }
-  modint operator*(const modint rhs) const noexcept {
+  constexpr modint operator*(const modint rhs) const noexcept {
     return modint(*this) *= rhs;
   }
-  modint operator/(const modint rhs) const noexcept {
+  constexpr modint operator/(const modint rhs) const noexcept {
     return modint(*this) /= rhs;
   }
-  modint &operator+=(const modint rhs) noexcept {
+  constexpr modint &operator+=(const modint rhs) noexcept {
     a += rhs.a;
     if (a >= Modulus) {
       a -= Modulus;
     }
     return *this;
   }
-  modint &operator-=(const modint rhs) noexcept {
+  constexpr modint &operator-=(const modint rhs) noexcept {
     if (a < rhs.a) {
       a += Modulus;
     }
     a -= rhs.a;
     return *this;
   }
-  modint &operator*=(const modint rhs) noexcept {
+  constexpr modint &operator*=(const modint rhs) noexcept {
     a = a * rhs.a % Modulus;
     return *this;
   }
-  modint &operator/=(modint rhs) noexcept {
+  constexpr modint &operator/=(modint rhs) noexcept {
     u64 exp = Modulus - 2;
     while (exp) {
       if (exp % 2) {
@@ -327,7 +187,125 @@ public:
     return *this;
   }
 };
-#line 87 "test/DynamicMatrix.test.cpp"
+
+constexpr ll MOD=998244353;
+
+using mint=modint<MOD>;
+
+using mat=DynamicMatrix<mint>;
+
+int main() {
+  std::cin.tie(nullptr);
+  std::ios::sync_with_stdio(false);
+
+  ll n;
+  std::cin>>n;
+
+  mat tmp(n,n);
+
+  rep(i,0,n){
+    rep(j,0,n){
+      ll e;
+      std::cin>>e;
+      tmp(i,j)=e;
+    }
+  }
+
+  std::cout<<tmp.det().value()<<"\n";
+
+  return 0;
+}
+```
+{% endraw %}
+
+<a id="bundled"></a>
+{% raw %}
+```cpp
+#line 1 "test/DynamicMatrix_2.test.cpp"
+#define PROBLEM "https://judge.yosupo.jp/problem/matrix_det"
+
+#include <algorithm>
+#include <array>
+#include <bitset>
+#include <cassert>
+#include <cctype>
+#include <cstdint>
+#include <cstdlib>
+#include <cmath>
+#include <complex>
+#include <chrono>
+#include <deque>
+#include <functional>
+#include <iomanip>
+#include <iostream>
+#include <map>
+#include <memory>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <type_traits>
+#include <unordered_map>
+#include <vector>
+#include <random>
+#include <utility>
+#include <limits>
+#include <list>
+
+/* template start */
+ 
+#define rep(i, a, b) for (long long i = (a); (i) < (b); (i)++)
+#define all(i) i.begin(), i.end()
+
+#ifdef LOCAL
+#define debug(...) std::cerr << "[" << #__VA_ARGS__ << "]:", debug_out(__VA_ARGS__)
+#else
+#define debug(...)
+#endif
+
+void debug_out(){std::cerr<<std::endl;}
+
+template<typename Head,typename... Tail>
+void debug_out(Head h,Tail... t){
+  std::cerr<<" "<<h;
+  if(sizeof...(t)>0)std::cout<<" :";
+  debug_out(t...);
+}
+ 
+template <typename T1, typename T2>
+std::ostream& operator<<(std::ostream& os, std::pair<T1, T2> pa) {
+  return os << pa.first << " " << pa.second;
+}
+ 
+template <typename T>
+std::ostream& operator<<(std::ostream& os, std::vector<T> vec) {
+  for (std::size_t i = 0; i < vec.size(); i++)os << vec[i] << (i + 1 == vec.size() ? "" : " ");
+  return os;
+}
+ 
+template<typename T1,typename T2>
+inline bool chmax(T1& a,T2 b){return a<b && (a=b,true);}
+ 
+template<typename T1,typename T2>
+inline bool chmin(T1& a,T2 b){return a>b && (a=b,true);}
+
+template<typename Num>
+constexpr Num mypow(Num a, unsigned long long b) {
+  if(b==0)return 1;
+  if (a==0)return 0;
+  Num x = 1;
+  while (b > 0) {
+    if(b & 1)x*=a;
+    a*=a;
+    b >>= 1;
+  }
+  return x;
+}
+
+/* template end */
+
+using ll = long long;
 
 #line 2 "lib/math/DynamicMatrix.cpp"
 
@@ -465,47 +443,86 @@ class DynamicMatrix{
     return ret;
   }
 };
-#line 89 "test/DynamicMatrix.test.cpp"
+#line 87 "test/DynamicMatrix_2.test.cpp"
 
-std::uint_fast16_t modint::Modulus;
+template <std::uint_fast64_t Modulus> class modint {
+  using u64 = std::uint_fast64_t;
 
-using mat=DynamicMatrix<modint>;
+public:
+  u64 a;
+
+  constexpr modint(const u64 x = 0) noexcept : a(x % Modulus) {}
+  constexpr u64 &value() noexcept { return a; }
+  constexpr const u64 &value() const noexcept { return a; }
+  constexpr bool operator==(const modint rhs) const noexcept {return a==rhs.a;}
+  constexpr bool operator!=(const modint rhs) const noexcept {return !(*this==rhs);}
+  constexpr modint operator+(const modint rhs) const noexcept {
+    return modint(*this) += rhs;
+  }
+  constexpr modint operator-(const modint rhs) const noexcept {
+    return modint(*this) -= rhs;
+  }
+  constexpr modint operator*(const modint rhs) const noexcept {
+    return modint(*this) *= rhs;
+  }
+  constexpr modint operator/(const modint rhs) const noexcept {
+    return modint(*this) /= rhs;
+  }
+  constexpr modint &operator+=(const modint rhs) noexcept {
+    a += rhs.a;
+    if (a >= Modulus) {
+      a -= Modulus;
+    }
+    return *this;
+  }
+  constexpr modint &operator-=(const modint rhs) noexcept {
+    if (a < rhs.a) {
+      a += Modulus;
+    }
+    a -= rhs.a;
+    return *this;
+  }
+  constexpr modint &operator*=(const modint rhs) noexcept {
+    a = a * rhs.a % Modulus;
+    return *this;
+  }
+  constexpr modint &operator/=(modint rhs) noexcept {
+    u64 exp = Modulus - 2;
+    while (exp) {
+      if (exp % 2) {
+        *this *= rhs;
+      }
+      rhs *= rhs;
+      exp /= 2;
+    }
+    return *this;
+  }
+};
+
+constexpr ll MOD=998244353;
+
+using mint=modint<MOD>;
+
+using mat=DynamicMatrix<mint>;
 
 int main() {
   std::cin.tie(nullptr);
   std::ios::sync_with_stdio(false);
 
-  ll n,a,b,c,t;
+  ll n;
+  std::cin>>n;
 
-  while(std::cin>>n>>modint::Modulus>>a>>b>>c>>t,n){
-    mat tmp(n,n);
-    rep(i,0,n){
-      if(i-1>=0)tmp(i,i-1)=a;
-      tmp(i,i)=b;
-      if(i+1<n)tmp(i,i+1)=c;
-    }
+  mat tmp(n,n);
 
-
-    mat ret=mat::id(n);
-
-    while(t>0){
-      if(t&1)ret*=tmp;
-      tmp*=tmp;
-      t>>=1;
-    }
-
-    mat init(n,1);
-    rep(i,0,n){
+  rep(i,0,n){
+    rep(j,0,n){
       ll e;
       std::cin>>e;
-      init(i,0)=e;
+      tmp(i,j)=e;
     }
-
-    ret*=init;
-
-    rep(i,0,n)std::cout<<ret(i,0).value()<<(i!=n-1?" ":"");
-    std::cout<<"\n";
   }
+
+  std::cout<<tmp.det().value()<<"\n";
 
   return 0;
 }
