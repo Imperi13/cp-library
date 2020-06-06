@@ -73,6 +73,14 @@ layout: default
 * :heavy_check_mark: <a href="library/lib/graph/LowestCommonAncestor.cpp.html">lib/graph/LowestCommonAncestor.cpp</a>
 
 
+<div id="b524a7b47b8ed72180f0e5150ab6d934"></div>
+
+### lib/math
+
+* :warning: <a href="library/lib/math/DynamicMatrix.cpp.html">lib/math/DynamicMatrix.cpp</a>
+* :warning: <a href="library/lib/math/Matrix.cpp.html">lib/math/Matrix.cpp</a>
+
+
 <div id="a6e10e9711dc4788c3e9e6f87d9357db"></div>
 
 ### lib/utility

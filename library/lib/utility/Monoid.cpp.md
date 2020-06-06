@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#a6e10e9711dc4788c3e9e6f87d9357db">lib/utility</a>
 * <a href="{{ site.github.repository_url }}/blob/master/lib/utility/Monoid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 01:52:30+09:00
+    - Last commit date: 2020-06-06 14:42:42+09:00
 
 
 
@@ -60,14 +60,11 @@ class OptionalMonoid{
 };
 
 template<typename Monoid>
-class ReverseMonoid{
-  private:
-  using base_t=typename Monoid::value_t;
-  public:
-  using value_t=std::pair<base_t,base_t>;
-  constexpr static value_t id={Monoid::id,Monoid::id};
-  constexpr static value_t op(value_t a,value_t b){
-    return {Monoid::op(a.first,b.first),Monoid::op(b.second,a.second)};
+struct ReverseMonoid{
+  using value_t=typename Monoid::value_t;
+  static constexpr value_t id=Monoid::id;
+  static constexpr value_t op(value_t a,value_t b){
+    return Monoid::op(b,a);
   }
 };
 ```
@@ -95,14 +92,11 @@ class OptionalMonoid{
 };
 
 template<typename Monoid>
-class ReverseMonoid{
-  private:
-  using base_t=typename Monoid::value_t;
-  public:
-  using value_t=std::pair<base_t,base_t>;
-  constexpr static value_t id={Monoid::id,Monoid::id};
-  constexpr static value_t op(value_t a,value_t b){
-    return {Monoid::op(a.first,b.first),Monoid::op(b.second,a.second)};
+struct ReverseMonoid{
+  using value_t=typename Monoid::value_t;
+  static constexpr value_t id=Monoid::id;
+  static constexpr value_t op(value_t a,value_t b){
+    return Monoid::op(b,a);
   }
 };
 
