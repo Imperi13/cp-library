@@ -25,15 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: lib/math/DynamicMatrix.cpp
+# :heavy_check_mark: lib/math/DynamicMatrix.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#b524a7b47b8ed72180f0e5150ab6d934">lib/math</a>
 * <a href="{{ site.github.repository_url }}/blob/master/lib/math/DynamicMatrix.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-06 14:42:42+09:00
+    - Last commit date: 2020-06-06 17:09:35+09:00
 
 
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../verify/test/DynamicMatrix.test.cpp.html">test/DynamicMatrix.test.cpp</a>
 
 
 ## Code
@@ -61,8 +66,8 @@ class DynamicMatrix{
   explicit DynamicMatrix(size_t row_, size_t column_, value_t init_ = value_t())
       : row(row_), column(column_), a(row, std::vector<value_t>(column, init_)) {}
 
-  constexpr value_t &operator()(size_t i, size_t j) { return a[i][j]; }
-  constexpr bool operator==(const DynamicMatrix &rhs){
+  constexpr value_t& operator()(size_t i, size_t j) { return a[i][j]; }
+  constexpr bool operator==(const DynamicMatrix& rhs){
     if (row != rhs.row || column != rhs.column)return false;
     for (size_t i = 0; i < row; i++){
       for (size_t j = 0; j < column; j++){
@@ -71,7 +76,7 @@ class DynamicMatrix{
     }
     return true;
   }
-  constexpr bool operator!=(const DynamicMatrix &rhs) { return !(*this == rhs); }
+  constexpr bool operator!=(const DynamicMatrix& rhs) { return !(*this == rhs); }
 
   constexpr DynamicMatrix operator+(const DynamicMatrix rhs){
     return DynamicMatrix(*this) += rhs;
@@ -83,7 +88,7 @@ class DynamicMatrix{
     return DynamicMatrix(*this) *= rhs;
   }
 
-  constexpr DynamicMatrix &operator+=(const DynamicMatrix &rhs){
+  constexpr DynamicMatrix& operator+=(const DynamicMatrix& rhs){
     assert(row == rhs.row && column == rhs.column);
     for (size_t i = 0; i < row; i++){
       for (size_t j = 0; j < column; j++){
@@ -92,7 +97,7 @@ class DynamicMatrix{
     }
     return *this;
   }
-  constexpr DynamicMatrix &operator-=(const DynamicMatrix &rhs){
+  constexpr DynamicMatrix& operator-=(const DynamicMatrix& rhs){
     assert(row == rhs.row && column == rhs.column);
     for (size_t i = 0; i < row; i++){
       for (size_t j = 0; j < column; j++){
@@ -101,7 +106,7 @@ class DynamicMatrix{
     }
     return *this;
   }
-  constexpr DynamicMatrix &operator*=(const DynamicMatrix &rhs){
+  constexpr DynamicMatrix& operator*=(const DynamicMatrix& rhs){
     assert(column == rhs.row);
     std::vector<std::vector<value_t>> tmp(row, std::vector<value_t>(rhs.column, 0));
     for (size_t r = 0; r < row; r++){
@@ -148,8 +153,8 @@ class DynamicMatrix{
   explicit DynamicMatrix(size_t row_, size_t column_, value_t init_ = value_t())
       : row(row_), column(column_), a(row, std::vector<value_t>(column, init_)) {}
 
-  constexpr value_t &operator()(size_t i, size_t j) { return a[i][j]; }
-  constexpr bool operator==(const DynamicMatrix &rhs){
+  constexpr value_t& operator()(size_t i, size_t j) { return a[i][j]; }
+  constexpr bool operator==(const DynamicMatrix& rhs){
     if (row != rhs.row || column != rhs.column)return false;
     for (size_t i = 0; i < row; i++){
       for (size_t j = 0; j < column; j++){
@@ -158,7 +163,7 @@ class DynamicMatrix{
     }
     return true;
   }
-  constexpr bool operator!=(const DynamicMatrix &rhs) { return !(*this == rhs); }
+  constexpr bool operator!=(const DynamicMatrix& rhs) { return !(*this == rhs); }
 
   constexpr DynamicMatrix operator+(const DynamicMatrix rhs){
     return DynamicMatrix(*this) += rhs;
@@ -170,7 +175,7 @@ class DynamicMatrix{
     return DynamicMatrix(*this) *= rhs;
   }
 
-  constexpr DynamicMatrix &operator+=(const DynamicMatrix &rhs){
+  constexpr DynamicMatrix& operator+=(const DynamicMatrix& rhs){
     assert(row == rhs.row && column == rhs.column);
     for (size_t i = 0; i < row; i++){
       for (size_t j = 0; j < column; j++){
@@ -179,7 +184,7 @@ class DynamicMatrix{
     }
     return *this;
   }
-  constexpr DynamicMatrix &operator-=(const DynamicMatrix &rhs){
+  constexpr DynamicMatrix& operator-=(const DynamicMatrix& rhs){
     assert(row == rhs.row && column == rhs.column);
     for (size_t i = 0; i < row; i++){
       for (size_t j = 0; j < column; j++){
@@ -188,7 +193,7 @@ class DynamicMatrix{
     }
     return *this;
   }
-  constexpr DynamicMatrix &operator*=(const DynamicMatrix &rhs){
+  constexpr DynamicMatrix& operator*=(const DynamicMatrix& rhs){
     assert(column == rhs.row);
     std::vector<std::vector<value_t>> tmp(row, std::vector<value_t>(rhs.column, 0));
     for (size_t r = 0; r < row; r++){

@@ -77,7 +77,7 @@ layout: default
 
 ### lib/math
 
-* :warning: <a href="library/lib/math/DynamicMatrix.cpp.html">lib/math/DynamicMatrix.cpp</a>
+* :heavy_check_mark: <a href="library/lib/math/DynamicMatrix.cpp.html">lib/math/DynamicMatrix.cpp</a>
 * :warning: <a href="library/lib/math/Matrix.cpp.html">lib/math/Matrix.cpp</a>
 
 
@@ -86,11 +86,13 @@ layout: default
 ### lib/utility
 
 * :warning: <a href="library/lib/utility/Monoid.cpp.html">lib/utility/Monoid.cpp</a>
+* :heavy_check_mark: <a href="library/lib/utility/runtime_modint.cpp.html">lib/utility/runtime_modint.cpp</a>
 
 
 ## Verify Files
 
 * :heavy_check_mark: <a href="verify/test/DualSegmentTree.test.cpp.html">test/DualSegmentTree.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/DynamicMatrix.test.cpp.html">test/DynamicMatrix.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/DynamicSegmentTree.test.cpp.html">test/DynamicSegmentTree.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/LazySegmentTree.test.cpp.html">test/LazySegmentTree.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/LowestCommonAncestor.test.cpp.html">test/LowestCommonAncestor.test.cpp</a>
