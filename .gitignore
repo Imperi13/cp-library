@@ -2,4 +2,6 @@
 /.vscode/
 /lib/local/
 /arc/
+/agc/
+/abc/
 /copy.sh
