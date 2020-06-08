@@ -66,6 +66,14 @@ layout: default
 * :heavy_check_mark: <a href="library/lib/UnionFind/UnionFind.cpp.html">lib/UnionFind/UnionFind.cpp</a>
 
 
+<div id="e9d5fea60f5f423df499112093a5df91"></div>
+
+### lib/WaveletMatrix
+
+* :heavy_check_mark: <a href="library/lib/WaveletMatrix/BitVector.cpp.html">lib/WaveletMatrix/BitVector.cpp</a>
+* :heavy_check_mark: <a href="library/lib/WaveletMatrix/WaveletMatrix.cpp.html">lib/WaveletMatrix/WaveletMatrix.cpp</a>
+
+
 <div id="6e267a37887a7dcb68cbf7008d6c7e48"></div>
 
 ### lib/graph
@@ -107,5 +115,6 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/SegmentTree.test.cpp.html">test/SegmentTree.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/SparseTable.test.cpp.html">test/SparseTable.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/UnionFind.test.cpp.html">test/UnionFind.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/WaveletMatrix.test.cpp.html">test/WaveletMatrix.test.cpp</a>
 
 
