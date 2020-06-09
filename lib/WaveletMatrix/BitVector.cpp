@@ -5,7 +5,7 @@
 #include <cassert>
 #include <utility>
 
-template<std::uint64_t LBLOCK=400,std::uint64_t SBLOCK=16>
+template<std::size_t LBLOCK=400,std::size_t SBLOCK=16>
 class BitVector{
   static_assert(LBLOCK%SBLOCK==0,"");
   static_assert(0<SBLOCK&&SBLOCK<=16,"");

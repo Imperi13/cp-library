@@ -8,10 +8,13 @@
 
 #include "./BitVector.cpp"
 
-template<std::uint64_t BITLEN>
+template<typename UInt,std::uint64_t BITLEN>
 class WaveletMatric{
+  static_assert(std::is_integral<UInt>::value,"UInt must be integer");
+  static_assert(std::is_unsigned<UInt>::value,"UInt must be unsigned");
+  static_assert(0<BITLEN&&BITLEN<=std::numeric_limits<UInt>::digits,"");
   public:
-  using u64=std::uint64_t;
+  using u64=UInt;
   using u32=std::uint32_t;
   using size_t=std::size_t;
 

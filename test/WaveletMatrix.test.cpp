@@ -92,10 +92,12 @@ int main() {
   ll n,q;
   std::cin>>n>>q;
 
-  std::vector<WaveletMatric<36>::u64> a(n);
+  using u32=uint32_t;
+
+  std::vector<u32> a(n);
   for(auto&& e:a)std::cin>>e;
 
-  WaveletMatric<36> seq(a);
+  WaveletMatric<u32,30> seq(a);
 
   while(q--){
     ll l,r,k;
