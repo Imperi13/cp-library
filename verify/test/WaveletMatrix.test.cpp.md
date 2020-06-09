@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/WaveletMatrix.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-09 03:56:43+09:00
+    - Last commit date: 2020-06-09 13:11:01+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_kth_smallest">https://judge.yosupo.jp/problem/range_kth_smallest</a>
@@ -142,10 +142,12 @@ int main() {
   ll n,q;
   std::cin>>n>>q;
 
-  std::vector<WaveletMatric<36>::u64> a(n);
+  using u32=uint32_t;
+
+  std::vector<u32> a(n);
   for(auto&& e:a)std::cin>>e;
 
-  WaveletMatric<36> seq(a);
+  WaveletMatric<u32,30> seq(a);
 
   while(q--){
     ll l,r,k;
@@ -255,7 +257,7 @@ using ll = long long;
 
 #line 7 "lib/WaveletMatrix/BitVector.cpp"
 
-template<std::uint64_t LBLOCK=400,std::uint64_t SBLOCK=16>
+template<std::size_t LBLOCK=400,std::size_t SBLOCK=16>
 class BitVector{
   static_assert(LBLOCK%SBLOCK==0,"");
   static_assert(0<SBLOCK&&SBLOCK<=16,"");
@@ -312,10 +314,13 @@ class BitVector{
 };
 #line 10 "lib/WaveletMatrix/WaveletMatrix.cpp"
 
-template<std::uint64_t BITLEN>
+template<typename UInt,std::uint64_t BITLEN>
 class WaveletMatric{
+  static_assert(std::is_integral<UInt>::value,"UInt must be integer");
+  static_assert(std::is_unsigned<UInt>::value,"UInt must be unsigned");
+  static_assert(0<BITLEN&&BITLEN<=std::numeric_limits<UInt>::digits,"");
   public:
-  using u64=std::uint64_t;
+  using u64=UInt;
   using u32=std::uint32_t;
   using size_t=std::size_t;
 
@@ -406,10 +411,12 @@ int main() {
   ll n,q;
   std::cin>>n>>q;
 
-  std::vector<WaveletMatric<36>::u64> a(n);
+  using u32=uint32_t;
+
+  std::vector<u32> a(n);
   for(auto&& e:a)std::cin>>e;
 
-  WaveletMatric<36> seq(a);
+  WaveletMatric<u32,30> seq(a);
 
   while(q--){
     ll l,r,k;
