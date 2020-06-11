@@ -31,7 +31,7 @@ class SegmentTree{
     n0=1;
     while(n0<n)n0<<=1;
     dat=std::vector<value_t>(2*n0-1,Monoid::id);
-    for(long long i=0;i<n;i++)dat[i+n0-1]=tmp[i];
+    for(size_t i=0;i<n;i++)dat[i+n0-1]=tmp[i];
     for(long long i=n0-2;i>=0;i--)dat[i]=Monoid::op(dat[2*i+1],dat[2*i+2]);
   }
 
