@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/SegmentTree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-22 10:46:01+09:00
+    - Last commit date: 2020-06-11 12:26:31+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/point_set_range_composite">https://judge.yosupo.jp/problem/point_set_range_composite</a>
@@ -138,7 +138,7 @@ class SegmentTree{
     n0=1;
     while(n0<n)n0<<=1;
     dat=std::vector<value_t>(2*n0-1,Monoid::id);
-    for(long long i=0;i<n;i++)dat[i+n0-1]=tmp[i];
+    for(size_t i=0;i<n;i++)dat[i+n0-1]=tmp[i];
     for(long long i=n0-2;i>=0;i--)dat[i]=Monoid::op(dat[2*i+1],dat[2*i+2]);
   }
 

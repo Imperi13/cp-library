@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#8d75131a1ef4f10f86f251b50b9a3462">lib/SegmentTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/lib/SegmentTree/SegmentTree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-22 10:43:21+09:00
+    - Last commit date: 2020-06-11 12:26:31+09:00
 
 
 
@@ -79,7 +79,7 @@ class SegmentTree{
     n0=1;
     while(n0<n)n0<<=1;
     dat=std::vector<value_t>(2*n0-1,Monoid::id);
-    for(long long i=0;i<n;i++)dat[i+n0-1]=tmp[i];
+    for(size_t i=0;i<n;i++)dat[i+n0-1]=tmp[i];
     for(long long i=n0-2;i>=0;i--)dat[i]=Monoid::op(dat[2*i+1],dat[2*i+2]);
   }
 
@@ -152,7 +152,7 @@ class SegmentTree{
     n0=1;
     while(n0<n)n0<<=1;
     dat=std::vector<value_t>(2*n0-1,Monoid::id);
-    for(long long i=0;i<n;i++)dat[i+n0-1]=tmp[i];
+    for(size_t i=0;i<n;i++)dat[i+n0-1]=tmp[i];
     for(long long i=n0-2;i>=0;i--)dat[i]=Monoid::op(dat[2*i+1],dat[2*i+2]);
   }
 
