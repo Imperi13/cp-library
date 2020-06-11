@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/RBST_Seq.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-22 04:16:28+09:00
+    - Last commit date: 2020-06-11 17:41:02+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/point_set_range_composite">https://judge.yosupo.jp/problem/point_set_range_composite</a>
@@ -208,6 +208,21 @@ class RBST_Seq{
   size_t size(){return count(root);}
   void insert(size_t k,const value_t& value){insert(root,std::make_shared<Node>(value),k);}
   void erase(size_t k){erase(root,k);}
+
+  RBST_Seq split(size_t l,size_t r){
+    assert(0<=l&&l<=r&&r<=size());
+    auto tmp=split(root,r);
+    auto tmp2=split(tmp.first,l);
+    root=merge(tmp2.first,tmp.second);
+    return RBST_Seq(tmp2.second);
+  }
+
+  void insert(size_t pos,RBST_Seq seq){
+    assert(0<=pos&&pos<=size());
+    auto tmp=split(root,pos);
+    tmp.first=merge(tmp.first,seq.root);
+    root=merge(tmp.first,tmp.second);
+  }
 
   value_t fold_all(){return calc(root);}
   value_t fold(size_t l,size_t r){
