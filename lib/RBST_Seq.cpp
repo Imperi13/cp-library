@@ -100,6 +100,21 @@ class RBST_Seq{
   void insert(size_t k,const value_t& value){insert(root,std::make_shared<Node>(value),k);}
   void erase(size_t k){erase(root,k);}
 
+  RBST_Seq split(size_t l,size_t r){
+    assert(0<=l&&l<=r&&r<=size());
+    auto tmp=split(root,r);
+    auto tmp2=split(tmp.first,l);
+    root=merge(tmp2.first,tmp.second);
+    return RBST_Seq(tmp2.second);
+  }
+
+  void insert(size_t pos,RBST_Seq seq){
+    assert(0<=pos&&pos<=size());
+    auto tmp=split(root,pos);
+    tmp.first=merge(tmp.first,seq.root);
+    root=merge(tmp.first,tmp.second);
+  }
+
   value_t fold_all(){return calc(root);}
   value_t fold(size_t l,size_t r){
     auto temp=split(root,r);
