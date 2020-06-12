@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 
-#include "../lib/SegmentTree/LazySegmentTree.cpp"
+#include "../lib/SegmentTree/LazySegmentTree.hpp"
 
 /* template start */
  

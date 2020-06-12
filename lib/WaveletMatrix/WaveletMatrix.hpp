@@ -6,7 +6,7 @@
 #include <cassert>
 #include <algorithm>
 
-#include "./BitVector.cpp"
+#include "./BitVector.hpp"
 
 template<typename UInt,std::uint64_t BITLEN>
 class WaveletMatric{

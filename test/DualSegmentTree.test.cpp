@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <vector>
 
-#include "../lib/SegmentTree/DualSegmentTree.cpp"
+#include "../lib/SegmentTree/DualSegmentTree.hpp"
 
 #define rep(i, a, b) for (long long i = (a); (i) < (b); (i)++)
 #define all(a) a.begin(),a.end()

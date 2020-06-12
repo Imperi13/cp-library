@@ -83,7 +83,7 @@ constexpr Num mypow(Num a, unsigned long long b) {
 
 using ll = long long;
 
-#include "../lib/graph/LowestCommonAncestor.cpp"
+#include "../lib/graph/LowestCommonAncestor.hpp"
 
 int main() {
   std::cin.tie(nullptr);

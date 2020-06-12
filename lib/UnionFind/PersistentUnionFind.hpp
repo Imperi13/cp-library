@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../PersistentArray.cpp"
+#include "../PersistentArray.hpp"
 
 class PersistentUnionFind{
   public:

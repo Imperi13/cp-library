@@ -83,9 +83,9 @@ constexpr Num mypow(Num a, unsigned long long b) {
 
 using ll = long long;
 
-#include "../lib/utility/runtime_modint.cpp"
+#include "../lib/utility/runtime_modint.hpp"
 
-#include "../lib/math/DynamicMatrix.cpp"
+#include "../lib/math/DynamicMatrix.hpp"
 
 std::uint_fast16_t modint::Modulus;
 
