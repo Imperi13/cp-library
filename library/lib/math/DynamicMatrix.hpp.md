@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: lib/math/DynamicMatrix.cpp
+# :heavy_check_mark: lib/math/DynamicMatrix.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#b524a7b47b8ed72180f0e5150ab6d934">lib/math</a>
-* <a href="{{ site.github.repository_url }}/blob/master/lib/math/DynamicMatrix.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-06 18:13:43+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/lib/math/DynamicMatrix.hpp">View this file on GitHub</a>
+    - Last commit date: 2020-06-12 12:00:09+09:00
 
 
 
@@ -191,7 +191,7 @@ class DynamicMatrix{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "lib/math/DynamicMatrix.cpp"
+#line 2 "lib/math/DynamicMatrix.hpp"
 
 #include <vector>
 #include <cassert>

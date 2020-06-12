@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/PersistentSegmentTree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-22 12:09:00+09:00
+    - Last commit date: 2020-06-12 12:00:09+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/rectangle_sum">https://judge.yosupo.jp/problem/rectangle_sum</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/lib/SegmentTree/PersistentSegmentTree.cpp.html">lib/SegmentTree/PersistentSegmentTree.cpp</a>
+* :heavy_check_mark: <a href="../../library/lib/SegmentTree/PersistentSegmentTree.hpp.html">lib/SegmentTree/PersistentSegmentTree.hpp</a>
 
 
 ## Code
@@ -53,7 +53,7 @@ layout: default
 #include <algorithm>
 #include <vector>
 
-#include "../lib/SegmentTree/PersistentSegmentTree.cpp"
+#include "../lib/SegmentTree/PersistentSegmentTree.hpp"
 
 #define rep(i, a, b) for (long long i = (a); (i) < (b); (i)++)
 #define all(a) a.begin(),a.end()
@@ -120,7 +120,7 @@ int main(){
 #include <algorithm>
 #include <vector>
 
-#line 2 "lib/SegmentTree/PersistentSegmentTree.cpp"
+#line 2 "lib/SegmentTree/PersistentSegmentTree.hpp"
 
 #include <memory>
 #include <cassert>

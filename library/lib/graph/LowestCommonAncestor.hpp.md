@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: lib/graph/LowestCommonAncestor.cpp
+# :heavy_check_mark: lib/graph/LowestCommonAncestor.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#6e267a37887a7dcb68cbf7008d6c7e48">lib/graph</a>
-* <a href="{{ site.github.repository_url }}/blob/master/lib/graph/LowestCommonAncestor.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-30 18:17:39+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/lib/graph/LowestCommonAncestor.hpp">View this file on GitHub</a>
+    - Last commit date: 2020-06-12 12:00:09+09:00
 
 
 
@@ -106,7 +106,7 @@ class LowestCommonAncestor{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "lib/graph/LowestCommonAncestor.cpp"
+#line 2 "lib/graph/LowestCommonAncestor.hpp"
 
 #include <vector>
 

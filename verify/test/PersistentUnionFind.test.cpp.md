@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/PersistentUnionFind.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-26 13:21:03+09:00
+    - Last commit date: 2020-06-12 12:00:09+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/persistent_unionfind">https://judge.yosupo.jp/problem/persistent_unionfind</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/lib/PersistentArray.cpp.html">lib/PersistentArray.cpp</a>
-* :heavy_check_mark: <a href="../../library/lib/UnionFind/PersistentUnionFind.cpp.html">lib/UnionFind/PersistentUnionFind.cpp</a>
+* :heavy_check_mark: <a href="../../library/lib/PersistentArray.hpp.html">lib/PersistentArray.hpp</a>
+* :heavy_check_mark: <a href="../../library/lib/UnionFind/PersistentUnionFind.hpp.html">lib/UnionFind/PersistentUnionFind.hpp</a>
 
 
 ## Code
@@ -54,7 +54,7 @@ layout: default
 #include <algorithm>
 #include <vector>
 
-#include "../lib/UnionFind/PersistentUnionFind.cpp"
+#include "../lib/UnionFind/PersistentUnionFind.hpp"
 
 #define rep(i, a, b) for (long long i = (a); (i) < (b); (i)++)
 #define all(a) a.begin(),a.end()
@@ -98,9 +98,9 @@ int main(){
 #include <algorithm>
 #include <vector>
 
-#line 2 "lib/UnionFind/PersistentUnionFind.cpp"
+#line 2 "lib/UnionFind/PersistentUnionFind.hpp"
 
-#line 2 "lib/PersistentArray.cpp"
+#line 2 "lib/PersistentArray.hpp"
 
 #include <memory>
 #include <cassert>
@@ -149,7 +149,7 @@ class PersistentArray{
     return at(k,root);
   }
 };
-#line 4 "lib/UnionFind/PersistentUnionFind.cpp"
+#line 4 "lib/UnionFind/PersistentUnionFind.hpp"
 
 class PersistentUnionFind{
   public:

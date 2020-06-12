@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/SWAG.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-20 19:54:08+09:00
+    - Last commit date: 2020-06-12 12:00:09+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/queue_operate_all_composite">https://judge.yosupo.jp/problem/queue_operate_all_composite</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/lib/SWAG.cpp.html">lib/SWAG.cpp</a>
+* :heavy_check_mark: <a href="../../library/lib/SWAG.hpp.html">lib/SWAG.hpp</a>
 
 
 ## Code
@@ -50,7 +50,7 @@ layout: default
 #define PROBLEM "https://judge.yosupo.jp/problem/queue_operate_all_composite"
 
 #include <iostream>
-#include "../lib/SWAG.cpp"
+#include "../lib/SWAG.hpp"
 
 #define rep(i, a, b) for (long long i = (a); (i) < (b); (i)++)
 
@@ -105,7 +105,7 @@ int main(){
 #define PROBLEM "https://judge.yosupo.jp/problem/queue_operate_all_composite"
 
 #include <iostream>
-#line 2 "lib/SWAG.cpp"
+#line 2 "lib/SWAG.hpp"
 
 #include <stack>
 #include <cassert>

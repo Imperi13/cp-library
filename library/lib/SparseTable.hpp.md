@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: lib/SparseTable.cpp
+# :heavy_check_mark: lib/SparseTable.hpp
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#e8acc63b1e238f3255c900eed37254b8">lib</a>
-* <a href="{{ site.github.repository_url }}/blob/master/lib/SparseTable.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 09:16:06+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/lib/SparseTable.hpp">View this file on GitHub</a>
+    - Last commit date: 2020-06-12 12:00:09+09:00
 
 
 
@@ -93,7 +93,7 @@ class SparseTable{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "lib/SparseTable.cpp"
+#line 2 "lib/SparseTable.hpp"
 
 #include <vector>
 #include <cassert>

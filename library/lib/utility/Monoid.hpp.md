@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: lib/utility/Monoid.cpp
+# :warning: lib/utility/Monoid.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#a6e10e9711dc4788c3e9e6f87d9357db">lib/utility</a>
-* <a href="{{ site.github.repository_url }}/blob/master/lib/utility/Monoid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-06 14:42:42+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/lib/utility/Monoid.hpp">View this file on GitHub</a>
+    - Last commit date: 2020-06-12 12:00:09+09:00
 
 
 
@@ -73,7 +73,7 @@ struct ReverseMonoid{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "lib/utility/Monoid.cpp"
+#line 2 "lib/utility/Monoid.hpp"
 
 #include <cassert>
 

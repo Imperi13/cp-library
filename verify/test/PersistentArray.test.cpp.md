@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/PersistentArray.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-26 09:30:43+09:00
+    - Last commit date: 2020-06-12 12:00:09+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/associative_array">https://judge.yosupo.jp/problem/associative_array</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/lib/PersistentArray.cpp.html">lib/PersistentArray.cpp</a>
+* :heavy_check_mark: <a href="../../library/lib/PersistentArray.hpp.html">lib/PersistentArray.hpp</a>
 
 
 ## Code
@@ -85,7 +85,7 @@ layout: default
 
 using ll=long long;
 
-#include "../lib/PersistentArray.cpp"
+#include "../lib/PersistentArray.hpp"
 
 int main() {
   std::cin.tie(nullptr);
@@ -156,9 +156,9 @@ int main() {
 
 using ll=long long;
 
-#line 2 "lib/PersistentArray.cpp"
+#line 2 "lib/PersistentArray.hpp"
 
-#line 5 "lib/PersistentArray.cpp"
+#line 5 "lib/PersistentArray.hpp"
 
 template<typename T,std::size_t BITSIZE=4>
 class PersistentArray{

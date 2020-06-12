@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/LowestCommonAncestor.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-30 18:18:48+09:00
+    - Last commit date: 2020-06-12 12:00:09+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/lca">https://judge.yosupo.jp/problem/lca</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/lib/graph/LowestCommonAncestor.cpp.html">lib/graph/LowestCommonAncestor.cpp</a>
+* :heavy_check_mark: <a href="../../library/lib/graph/LowestCommonAncestor.hpp.html">lib/graph/LowestCommonAncestor.hpp</a>
 
 
 ## Code
@@ -132,7 +132,7 @@ constexpr Num mypow(Num a, unsigned long long b) {
 
 using ll = long long;
 
-#include "../lib/graph/LowestCommonAncestor.cpp"
+#include "../lib/graph/LowestCommonAncestor.hpp"
 
 int main() {
   std::cin.tie(nullptr);
@@ -250,9 +250,9 @@ constexpr Num mypow(Num a, unsigned long long b) {
 
 using ll = long long;
 
-#line 2 "lib/graph/LowestCommonAncestor.cpp"
+#line 2 "lib/graph/LowestCommonAncestor.hpp"
 
-#line 4 "lib/graph/LowestCommonAncestor.cpp"
+#line 4 "lib/graph/LowestCommonAncestor.hpp"
 
 class LowestCommonAncestor{
   public:

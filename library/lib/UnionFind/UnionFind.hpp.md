@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: lib/UnionFind/UnionFind.cpp
+# :heavy_check_mark: lib/UnionFind/UnionFind.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d8ce77e7929e89891ebe5f859497af18">lib/UnionFind</a>
-* <a href="{{ site.github.repository_url }}/blob/master/lib/UnionFind/UnionFind.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-26 13:15:45+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/lib/UnionFind/UnionFind.hpp">View this file on GitHub</a>
+    - Last commit date: 2020-06-12 12:00:09+09:00
 
 
 
@@ -92,7 +92,7 @@ class UnionFind{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "lib/UnionFind/UnionFind.cpp"
+#line 2 "lib/UnionFind/UnionFind.hpp"
 
 #include <cstddef>
 #include <vector>

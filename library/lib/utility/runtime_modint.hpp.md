@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: lib/utility/runtime_modint.cpp
+# :heavy_check_mark: lib/utility/runtime_modint.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#a6e10e9711dc4788c3e9e6f87d9357db">lib/utility</a>
-* <a href="{{ site.github.repository_url }}/blob/master/lib/utility/runtime_modint.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-06 17:09:35+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/lib/utility/runtime_modint.hpp">View this file on GitHub</a>
+    - Last commit date: 2020-06-12 12:00:09+09:00
 
 
 
@@ -108,7 +108,7 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "lib/utility/runtime_modint.cpp"
+#line 1 "lib/utility/runtime_modint.hpp"
 #include <cstdint>
 
 class modint {

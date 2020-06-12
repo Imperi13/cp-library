@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/DualSegmentTree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-22 20:33:16+09:00
+    - Last commit date: 2020-06-12 12:00:09+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_E">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_E</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/lib/SegmentTree/DualSegmentTree.cpp.html">lib/SegmentTree/DualSegmentTree.cpp</a>
+* :heavy_check_mark: <a href="../../library/lib/SegmentTree/DualSegmentTree.hpp.html">lib/SegmentTree/DualSegmentTree.hpp</a>
 
 
 ## Code
@@ -53,7 +53,7 @@ layout: default
 #include <algorithm>
 #include <vector>
 
-#include "../lib/SegmentTree/DualSegmentTree.cpp"
+#include "../lib/SegmentTree/DualSegmentTree.hpp"
 
 #define rep(i, a, b) for (long long i = (a); (i) < (b); (i)++)
 #define all(a) a.begin(),a.end()
@@ -106,7 +106,7 @@ int main(){
 #include <algorithm>
 #include <vector>
 
-#line 2 "lib/SegmentTree/DualSegmentTree.cpp"
+#line 2 "lib/SegmentTree/DualSegmentTree.hpp"
 
 #include <memory>
 #include <cassert>

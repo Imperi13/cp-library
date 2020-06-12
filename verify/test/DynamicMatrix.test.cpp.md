@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/DynamicMatrix.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-06 18:13:43+09:00
+    - Last commit date: 2020-06-12 12:00:09+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1327">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1327</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/lib/math/DynamicMatrix.cpp.html">lib/math/DynamicMatrix.cpp</a>
-* :heavy_check_mark: <a href="../../library/lib/utility/runtime_modint.cpp.html">lib/utility/runtime_modint.cpp</a>
+* :heavy_check_mark: <a href="../../library/lib/math/DynamicMatrix.hpp.html">lib/math/DynamicMatrix.hpp</a>
+* :heavy_check_mark: <a href="../../library/lib/utility/runtime_modint.hpp.html">lib/utility/runtime_modint.hpp</a>
 
 
 ## Code
@@ -133,9 +133,9 @@ constexpr Num mypow(Num a, unsigned long long b) {
 
 using ll = long long;
 
-#include "../lib/utility/runtime_modint.cpp"
+#include "../lib/utility/runtime_modint.hpp"
 
-#include "../lib/math/DynamicMatrix.cpp"
+#include "../lib/math/DynamicMatrix.hpp"
 
 std::uint_fast16_t modint::Modulus;
 
@@ -271,7 +271,7 @@ constexpr Num mypow(Num a, unsigned long long b) {
 
 using ll = long long;
 
-#line 2 "lib/utility/runtime_modint.cpp"
+#line 2 "lib/utility/runtime_modint.hpp"
 
 class modint {
   using u64 = std::uint_fast64_t;
@@ -329,9 +329,9 @@ public:
 };
 #line 87 "test/DynamicMatrix.test.cpp"
 
-#line 2 "lib/math/DynamicMatrix.cpp"
+#line 2 "lib/math/DynamicMatrix.hpp"
 
-#line 6 "lib/math/DynamicMatrix.cpp"
+#line 6 "lib/math/DynamicMatrix.hpp"
 
 template <typename Field>
 class DynamicMatrix{

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/PotentialUnionFind.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-26 13:15:45+09:00
+    - Last commit date: 2020-06-12 12:00:09+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/lib/UnionFind/PotentialUnionFind.cpp.html">lib/UnionFind/PotentialUnionFind.cpp</a>
+* :heavy_check_mark: <a href="../../library/lib/UnionFind/PotentialUnionFind.hpp.html">lib/UnionFind/PotentialUnionFind.hpp</a>
 
 
 ## Code
@@ -85,7 +85,7 @@ layout: default
 
 using ll=long long;
 
-#include "../lib/UnionFind/PotentialUnionFind.cpp"
+#include "../lib/UnionFind/PotentialUnionFind.hpp"
 
 struct Group{
   using value_t=ll;
@@ -167,9 +167,9 @@ int main() {
 
 using ll=long long;
 
-#line 2 "lib/UnionFind/PotentialUnionFind.cpp"
+#line 2 "lib/UnionFind/PotentialUnionFind.hpp"
 
-#line 6 "lib/UnionFind/PotentialUnionFind.cpp"
+#line 6 "lib/UnionFind/PotentialUnionFind.hpp"
 
 template<typename Group>
 class PotentialUnionFind{

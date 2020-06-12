@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: lib/UnionFind/PersistentUnionFind.cpp
+# :heavy_check_mark: lib/UnionFind/PersistentUnionFind.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d8ce77e7929e89891ebe5f859497af18">lib/UnionFind</a>
-* <a href="{{ site.github.repository_url }}/blob/master/lib/UnionFind/PersistentUnionFind.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-26 13:21:03+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/lib/UnionFind/PersistentUnionFind.hpp">View this file on GitHub</a>
+    - Last commit date: 2020-06-12 12:00:09+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../PersistentArray.cpp.html">lib/PersistentArray.cpp</a>
+* :heavy_check_mark: <a href="../PersistentArray.hpp.html">lib/PersistentArray.hpp</a>
 
 
 ## Verified with
@@ -53,7 +53,7 @@ layout: default
 ```cpp
 #pragma once
 
-#include "../PersistentArray.cpp"
+#include "../PersistentArray.hpp"
 
 class PersistentUnionFind{
   public:
@@ -97,9 +97,9 @@ class PersistentUnionFind{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "lib/UnionFind/PersistentUnionFind.cpp"
+#line 2 "lib/UnionFind/PersistentUnionFind.hpp"
 
-#line 2 "lib/PersistentArray.cpp"
+#line 2 "lib/PersistentArray.hpp"
 
 #include <memory>
 #include <cassert>
@@ -148,7 +148,7 @@ class PersistentArray{
     return at(k,root);
   }
 };
-#line 4 "lib/UnionFind/PersistentUnionFind.cpp"
+#line 4 "lib/UnionFind/PersistentUnionFind.hpp"
 
 class PersistentUnionFind{
   public:

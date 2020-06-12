@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: lib/SegmentTree/DynamicSegmentTree.cpp
+# :heavy_check_mark: lib/SegmentTree/DynamicSegmentTree.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#8d75131a1ef4f10f86f251b50b9a3462">lib/SegmentTree</a>
-* <a href="{{ site.github.repository_url }}/blob/master/lib/SegmentTree/DynamicSegmentTree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-22 10:43:21+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/lib/SegmentTree/DynamicSegmentTree.hpp">View this file on GitHub</a>
+    - Last commit date: 2020-06-12 12:00:09+09:00
 
 
 
@@ -129,7 +129,7 @@ class DynamicSegmentTree{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "lib/SegmentTree/DynamicSegmentTree.cpp"
+#line 2 "lib/SegmentTree/DynamicSegmentTree.hpp"
 
 #include <memory>
 #include <cassert>

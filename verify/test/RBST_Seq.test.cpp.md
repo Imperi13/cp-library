@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/RBST_Seq.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-11 17:41:02+09:00
+    - Last commit date: 2020-06-12 12:00:09+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/point_set_range_composite">https://judge.yosupo.jp/problem/point_set_range_composite</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/lib/RBST_Seq.cpp.html">lib/RBST_Seq.cpp</a>
+* :heavy_check_mark: <a href="../../library/lib/RBST_Seq.hpp.html">lib/RBST_Seq.hpp</a>
 
 
 ## Code
@@ -51,7 +51,7 @@ layout: default
 
 #include <iostream>
 
-#include "../lib/RBST_Seq.cpp"
+#include "../lib/RBST_Seq.hpp"
 
 constexpr long long MOD=998244353;
 
@@ -106,7 +106,7 @@ int main(){
 
 #include <iostream>
 
-#line 1 "lib/RBST_Seq.cpp"
+#line 1 "lib/RBST_Seq.hpp"
 #include <memory>
 #include <vector>
 #include <utility>

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/WaveletMatrix.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-09 13:11:01+09:00
+    - Last commit date: 2020-06-12 12:00:09+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_kth_smallest">https://judge.yosupo.jp/problem/range_kth_smallest</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/lib/WaveletMatrix/BitVector.cpp.html">lib/WaveletMatrix/BitVector.cpp</a>
-* :heavy_check_mark: <a href="../../library/lib/WaveletMatrix/WaveletMatrix.cpp.html">lib/WaveletMatrix/WaveletMatrix.cpp</a>
+* :heavy_check_mark: <a href="../../library/lib/WaveletMatrix/BitVector.hpp.html">lib/WaveletMatrix/BitVector.hpp</a>
+* :heavy_check_mark: <a href="../../library/lib/WaveletMatrix/WaveletMatrix.hpp.html">lib/WaveletMatrix/WaveletMatrix.hpp</a>
 
 
 ## Code
@@ -133,7 +133,7 @@ constexpr Num mypow(Num a, long long b) {
 
 using ll = long long;
 
-#include "../lib/WaveletMatrix/WaveletMatrix.cpp"
+#include "../lib/WaveletMatrix/WaveletMatrix.hpp"
 
 int main() {
   std::cin.tie(nullptr);
@@ -249,13 +249,13 @@ constexpr Num mypow(Num a, long long b) {
 
 using ll = long long;
 
-#line 2 "lib/WaveletMatrix/WaveletMatrix.cpp"
+#line 2 "lib/WaveletMatrix/WaveletMatrix.hpp"
 
-#line 8 "lib/WaveletMatrix/WaveletMatrix.cpp"
+#line 8 "lib/WaveletMatrix/WaveletMatrix.hpp"
 
-#line 2 "lib/WaveletMatrix/BitVector.cpp"
+#line 2 "lib/WaveletMatrix/BitVector.hpp"
 
-#line 7 "lib/WaveletMatrix/BitVector.cpp"
+#line 7 "lib/WaveletMatrix/BitVector.hpp"
 
 template<std::size_t LBLOCK=400,std::size_t SBLOCK=16>
 class BitVector{
@@ -312,7 +312,7 @@ class BitVector{
           +popcount(s[pos/SBLOCK].second&((1llu<<(pos%SBLOCK))-1));
   }
 };
-#line 10 "lib/WaveletMatrix/WaveletMatrix.cpp"
+#line 10 "lib/WaveletMatrix/WaveletMatrix.hpp"
 
 template<typename UInt,std::uint64_t BITLEN>
 class WaveletMatric{

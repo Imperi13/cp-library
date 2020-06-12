@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/SparseTable.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 09:16:06+09:00
+    - Last commit date: 2020-06-12 12:00:09+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/staticrmq">https://judge.yosupo.jp/problem/staticrmq</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/lib/SparseTable.cpp.html">lib/SparseTable.cpp</a>
+* :heavy_check_mark: <a href="../../library/lib/SparseTable.hpp.html">lib/SparseTable.hpp</a>
 
 
 ## Code
@@ -55,7 +55,7 @@ layout: default
 
 #include <vector>
 
-#include "../lib/SparseTable.cpp"
+#include "../lib/SparseTable.hpp"
 
 struct Semigroup{
   using value_t = long long;
@@ -105,9 +105,9 @@ int main()
 
 #include <vector>
 
-#line 2 "lib/SparseTable.cpp"
+#line 2 "lib/SparseTable.hpp"
 
-#line 5 "lib/SparseTable.cpp"
+#line 5 "lib/SparseTable.hpp"
 
 //Semigroup
 // type value_t 

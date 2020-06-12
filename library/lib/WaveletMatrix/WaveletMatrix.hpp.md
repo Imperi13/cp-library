@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: lib/WaveletMatrix/WaveletMatrix.cpp
+# :heavy_check_mark: lib/WaveletMatrix/WaveletMatrix.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#e9d5fea60f5f423df499112093a5df91">lib/WaveletMatrix</a>
-* <a href="{{ site.github.repository_url }}/blob/master/lib/WaveletMatrix/WaveletMatrix.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-09 13:11:01+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/lib/WaveletMatrix/WaveletMatrix.hpp">View this file on GitHub</a>
+    - Last commit date: 2020-06-12 12:00:09+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="BitVector.cpp.html">lib/WaveletMatrix/BitVector.cpp</a>
+* :heavy_check_mark: <a href="BitVector.hpp.html">lib/WaveletMatrix/BitVector.hpp</a>
 
 
 ## Verified with
@@ -59,7 +59,7 @@ layout: default
 #include <cassert>
 #include <algorithm>
 
-#include "./BitVector.cpp"
+#include "./BitVector.hpp"
 
 template<typename UInt,std::uint64_t BITLEN>
 class WaveletMatric{
@@ -155,7 +155,7 @@ class WaveletMatric{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "lib/WaveletMatrix/WaveletMatrix.cpp"
+#line 2 "lib/WaveletMatrix/WaveletMatrix.hpp"
 
 #include <vector>
 #include <cstdint>
@@ -163,9 +163,9 @@ class WaveletMatric{
 #include <cassert>
 #include <algorithm>
 
-#line 2 "lib/WaveletMatrix/BitVector.cpp"
+#line 2 "lib/WaveletMatrix/BitVector.hpp"
 
-#line 6 "lib/WaveletMatrix/BitVector.cpp"
+#line 6 "lib/WaveletMatrix/BitVector.hpp"
 #include <utility>
 
 template<std::size_t LBLOCK=400,std::size_t SBLOCK=16>
@@ -223,7 +223,7 @@ class BitVector{
           +popcount(s[pos/SBLOCK].second&((1llu<<(pos%SBLOCK))-1));
   }
 };
-#line 10 "lib/WaveletMatrix/WaveletMatrix.cpp"
+#line 10 "lib/WaveletMatrix/WaveletMatrix.hpp"
 
 template<typename UInt,std::uint64_t BITLEN>
 class WaveletMatric{

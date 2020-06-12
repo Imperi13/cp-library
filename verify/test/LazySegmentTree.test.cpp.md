@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/LazySegmentTree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-24 23:01:39+09:00
+    - Last commit date: 2020-06-12 12:00:09+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_affine_range_sum">https://judge.yosupo.jp/problem/range_affine_range_sum</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/lib/SegmentTree/LazySegmentTree.cpp.html">lib/SegmentTree/LazySegmentTree.cpp</a>
+* :heavy_check_mark: <a href="../../library/lib/SegmentTree/LazySegmentTree.hpp.html">lib/SegmentTree/LazySegmentTree.hpp</a>
 
 
 ## Code
@@ -52,7 +52,7 @@ layout: default
 #include <iostream>
 #include <vector>
 
-#include "../lib/SegmentTree/LazySegmentTree.cpp"
+#include "../lib/SegmentTree/LazySegmentTree.hpp"
 
 /* template start */
  
@@ -122,9 +122,9 @@ int main() {
 #include <iostream>
 #include <vector>
 
-#line 2 "lib/SegmentTree/LazySegmentTree.cpp"
+#line 2 "lib/SegmentTree/LazySegmentTree.hpp"
 
-#line 4 "lib/SegmentTree/LazySegmentTree.cpp"
+#line 4 "lib/SegmentTree/LazySegmentTree.hpp"
 #include <cassert>
 
 //Lazy
