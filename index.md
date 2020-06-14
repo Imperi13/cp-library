@@ -38,6 +38,7 @@ layout: default
 
 ### lib
 
+* :heavy_check_mark: <a href="library/lib/DisjointSparseTable.hpp.html">lib/DisjointSparseTable.hpp</a>
 * :heavy_check_mark: <a href="library/lib/PersistentArray.hpp.html">lib/PersistentArray.hpp</a>
 * :warning: <a href="library/lib/PersistentStack.hpp.html">lib/PersistentStack.hpp</a>
 * :warning: <a href="library/lib/RBST_Multiset.hpp.html">lib/RBST_Multiset.hpp</a>
@@ -107,6 +108,7 @@ layout: default
 
 ## Verify Files
 
+* :heavy_check_mark: <a href="verify/test/DisjointSparseTable.test.cpp.html">test/DisjointSparseTable.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/DualSegmentTree.test.cpp.html">test/DualSegmentTree.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/DynamicMatrix.test.cpp.html">test/DynamicMatrix.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/DynamicMatrix_2.test.cpp.html">test/DynamicMatrix_2.test.cpp</a>
