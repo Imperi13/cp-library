@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#8d75131a1ef4f10f86f251b50b9a3462">lib/SegmentTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/lib/SegmentTree/DynamicSegmentTree.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-12 12:00:09+09:00
+    - Last commit date: 2020-06-17 01:18:15+09:00
 
 
 
@@ -59,20 +59,24 @@ layout: default
 template<typename Monoid>
 class DynamicSegmentTree{
   public:
-  using value_t = typename Monoid::value_t;
+  using value_t=typename Monoid::value_t;
   using size_t=std::size_t;
   private:
 
   struct Node{
     value_t val;
-    std::shared_ptr<Node> left,right;
-    std::weak_ptr<Node> par;
-    Node(value_t val_,const std::shared_ptr<Node>& par_=nullptr):val(val_),left(),right(),par(par_){}
+    Node *left,*right,*par;
+    Node(value_t val_,Node *par_=nullptr):val(val_),left(),right(),par(par_){}
+    ~Node(){
+      if(left)delete left;
+      if(right)delete right;
+      left=nullptr;right=nullptr;
+      par=nullptr;
+    }
   };
 
-  using node_ptr=std::shared_ptr<Node>;
-  using weak_ptr=std::weak_ptr<Node>;
-
+  using node_ptr=Node *;
+  
   size_t n,n0;
   node_ptr root;
 
@@ -85,34 +89,37 @@ class DynamicSegmentTree{
   }
 
   public:
-  DynamicSegmentTree(size_t n_):n(n_),root(new Node(Monoid::id)){
+  DynamicSegmentTree(size_t n_):n(n_),root(nullptr){
     n0=1;
     while(n0<n)n0<<=1;
+  }
+  ~DynamicSegmentTree(){
+    if(root)delete root;
+    root=nullptr;
   }
 
   void update(size_t i,value_t val,bool change){
     assert(0<=i&&i<n);
-    node_ptr now(root);
+    if(!root)root=new Node(Monoid::id);
+    node_ptr now=root;
     size_t l=0,r=n0;
     while(r-l>1){
       size_t mid=l+(r-l)/2;
-      
       if(i<mid){
-        if(!now->left)now->left=std::make_shared<Node>(Monoid::id,now);
+        if(!now->left)now->left=new Node(Monoid::id,now);
         now=now->left;
         r=mid;
       }else{
-        if(!now->right)now->right=std::make_shared<Node>(Monoid::id,now);
+        if(!now->right)now->right=new Node(Monoid::id,now);
         now=now->right;
         l=mid;
       }
     }
-
     if(change)now->val=val;
     else now->val=Monoid::op(now->val,val);
 
-    while(now->par.lock()){
-      now=now->par.lock();
+    while(now->par){
+      now=now->par;
       now->val=Monoid::op((now->left)?now->left->val:Monoid::id,
                           (now->right)?now->right->val:Monoid::id);
     }
@@ -120,6 +127,7 @@ class DynamicSegmentTree{
 
   value_t fold(size_t a,size_t b){
     assert(0<=a&&a<=b&&b<=n);
+    if(!root)return Monoid::id;
     return fold(a,b,root,0,n0);
   }
 };
@@ -142,20 +150,24 @@ class DynamicSegmentTree{
 template<typename Monoid>
 class DynamicSegmentTree{
   public:
-  using value_t = typename Monoid::value_t;
+  using value_t=typename Monoid::value_t;
   using size_t=std::size_t;
   private:
 
   struct Node{
     value_t val;
-    std::shared_ptr<Node> left,right;
-    std::weak_ptr<Node> par;
-    Node(value_t val_,const std::shared_ptr<Node>& par_=nullptr):val(val_),left(),right(),par(par_){}
+    Node *left,*right,*par;
+    Node(value_t val_,Node *par_=nullptr):val(val_),left(),right(),par(par_){}
+    ~Node(){
+      if(left)delete left;
+      if(right)delete right;
+      left=nullptr;right=nullptr;
+      par=nullptr;
+    }
   };
 
-  using node_ptr=std::shared_ptr<Node>;
-  using weak_ptr=std::weak_ptr<Node>;
-
+  using node_ptr=Node *;
+  
   size_t n,n0;
   node_ptr root;
 
@@ -168,34 +180,37 @@ class DynamicSegmentTree{
   }
 
   public:
-  DynamicSegmentTree(size_t n_):n(n_),root(new Node(Monoid::id)){
+  DynamicSegmentTree(size_t n_):n(n_),root(nullptr){
     n0=1;
     while(n0<n)n0<<=1;
+  }
+  ~DynamicSegmentTree(){
+    if(root)delete root;
+    root=nullptr;
   }
 
   void update(size_t i,value_t val,bool change){
     assert(0<=i&&i<n);
-    node_ptr now(root);
+    if(!root)root=new Node(Monoid::id);
+    node_ptr now=root;
     size_t l=0,r=n0;
     while(r-l>1){
       size_t mid=l+(r-l)/2;
-      
       if(i<mid){
-        if(!now->left)now->left=std::make_shared<Node>(Monoid::id,now);
+        if(!now->left)now->left=new Node(Monoid::id,now);
         now=now->left;
         r=mid;
       }else{
-        if(!now->right)now->right=std::make_shared<Node>(Monoid::id,now);
+        if(!now->right)now->right=new Node(Monoid::id,now);
         now=now->right;
         l=mid;
       }
     }
-
     if(change)now->val=val;
     else now->val=Monoid::op(now->val,val);
 
-    while(now->par.lock()){
-      now=now->par.lock();
+    while(now->par){
+      now=now->par;
       now->val=Monoid::op((now->left)?now->left->val:Monoid::id,
                           (now->right)?now->right->val:Monoid::id);
     }
@@ -203,6 +218,7 @@ class DynamicSegmentTree{
 
   value_t fold(size_t a,size_t b){
     assert(0<=a&&a<=b&&b<=n);
+    if(!root)return Monoid::id;
     return fold(a,b,root,0,n0);
   }
 };
