@@ -18,7 +18,7 @@ class DynamicSegmentTree{
   struct Node{
     value_t val;
     Node *left,*right,*par;
-    Node(value_t val_,Node *par_=nullptr):val(val_),left(),right(),par(par_){}
+    Node(Node *par_=nullptr):val(Monoid::id),left(),right(),par(par_){}
     ~Node(){
       if(left)delete left;
       if(right)delete right;
@@ -40,13 +40,37 @@ class DynamicSegmentTree{
     return Monoid::op(lval,rval);
   }
 
+  void dfs(node_ptr node,node_ptr from){
+    node->val=from->val;
+    if(from->left){
+      node->left=new Node(node);
+      dfs(node->left,from->left);
+    }
+    if(from->right){
+      node->right=new Node(node);
+      dfs(node->right,from->right);
+    }
+  }
+
   public:
   DynamicSegmentTree(size_t n_=0):n(n_),root(nullptr){
     n0=1;
     while(n0<n)n0<<=1;
   }
-  DynamicSegmentTree(const DynamicSegmentTree&)=delete;
-  DynamicSegmentTree& operator=(const DynamicSegmentTree&)=delete;
+  DynamicSegmentTree(const DynamicSegmentTree& from){
+    n=from.n;n0=from.n0;root=nullptr;
+    if(from.root){
+      root=new Node();
+      dfs(root,from.root);
+    }
+  }
+  DynamicSegmentTree& operator=(const DynamicSegmentTree& from){
+    n=from.n;n0=from.n0;root=nullptr;
+    if(from.root){
+      root=new Node();
+      dfs(root,from.root);
+    }
+  }
   DynamicSegmentTree(DynamicSegmentTree&&)=default;
   DynamicSegmentTree& operator=(DynamicSegmentTree&&)=default;
   ~DynamicSegmentTree(){
@@ -56,17 +80,17 @@ class DynamicSegmentTree{
 
   void update(size_t i,value_t val,bool change){
     assert(0<=i&&i<n);
-    if(!root)root=new Node(Monoid::id);
+    if(!root)root=new Node();
     node_ptr now=root;
     size_t l=0,r=n0;
     while(r-l>1){
       size_t mid=l+(r-l)/2;
       if(i<mid){
-        if(!now->left)now->left=new Node(Monoid::id,now);
+        if(!now->left)now->left=new Node(now);
         now=now->left;
         r=mid;
       }else{
-        if(!now->right)now->right=new Node(Monoid::id,now);
+        if(!now->right)now->right=new Node(now);
         now=now->right;
         l=mid;
       }
