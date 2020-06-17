@@ -41,10 +41,14 @@ class DynamicSegmentTree{
   }
 
   public:
-  DynamicSegmentTree(size_t n_):n(n_),root(nullptr){
+  DynamicSegmentTree(size_t n_=0):n(n_),root(nullptr){
     n0=1;
     while(n0<n)n0<<=1;
   }
+  DynamicSegmentTree(const DynamicSegmentTree&)=delete;
+  DynamicSegmentTree& operator=(const DynamicSegmentTree&)=delete;
+  DynamicSegmentTree(DynamicSegmentTree&&)=default;
+  DynamicSegmentTree& operator=(DynamicSegmentTree&&)=default;
   ~DynamicSegmentTree(){
     if(root)delete root;
     root=nullptr;
