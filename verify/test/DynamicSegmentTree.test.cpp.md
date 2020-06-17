@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/DynamicSegmentTree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-17 01:18:15+09:00
+    - Last commit date: 2020-06-17 15:31:01+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/point_set_range_composite">https://judge.yosupo.jp/problem/point_set_range_composite</a>
@@ -153,10 +153,14 @@ class DynamicSegmentTree{
   }
 
   public:
-  DynamicSegmentTree(size_t n_):n(n_),root(nullptr){
+  DynamicSegmentTree(size_t n_=0):n(n_),root(nullptr){
     n0=1;
     while(n0<n)n0<<=1;
   }
+  DynamicSegmentTree(const DynamicSegmentTree&)=delete;
+  DynamicSegmentTree& operator=(const DynamicSegmentTree&)=delete;
+  DynamicSegmentTree(DynamicSegmentTree&&)=default;
+  DynamicSegmentTree& operator=(DynamicSegmentTree&&)=default;
   ~DynamicSegmentTree(){
     if(root)delete root;
     root=nullptr;
