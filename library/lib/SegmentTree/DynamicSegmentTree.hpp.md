@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#8d75131a1ef4f10f86f251b50b9a3462">lib/SegmentTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/lib/SegmentTree/DynamicSegmentTree.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-17 16:31:53+09:00
+    - Last commit date: 2020-06-19 18:50:45+09:00
 
 
 
@@ -88,7 +88,7 @@ class DynamicSegmentTree{
     return Monoid::op(lval,rval);
   }
 
-  void dfs(node_ptr node,node_ptr from){
+  void dfs(node_ptr& node,node_ptr& from){
     node->val=from->val;
     if(from->left){
       node->left=new Node(node);
@@ -207,7 +207,7 @@ class DynamicSegmentTree{
     return Monoid::op(lval,rval);
   }
 
-  void dfs(node_ptr node,node_ptr from){
+  void dfs(node_ptr& node,node_ptr& from){
     node->val=from->val;
     if(from->left){
       node->left=new Node(node);

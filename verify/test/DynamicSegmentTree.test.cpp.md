@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/DynamicSegmentTree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-17 16:31:53+09:00
+    - Last commit date: 2020-06-19 18:50:45+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/point_set_range_composite">https://judge.yosupo.jp/problem/point_set_range_composite</a>
@@ -152,7 +152,7 @@ class DynamicSegmentTree{
     return Monoid::op(lval,rval);
   }
 
-  void dfs(node_ptr node,node_ptr from){
+  void dfs(node_ptr& node,node_ptr& from){
     node->val=from->val;
     if(from->left){
       node->left=new Node(node);
