@@ -40,7 +40,7 @@ class DynamicSegmentTree{
     return Monoid::op(lval,rval);
   }
 
-  void dfs(node_ptr node,node_ptr from){
+  void dfs(node_ptr& node,node_ptr& from){
     node->val=from->val;
     if(from->left){
       node->left=new Node(node);

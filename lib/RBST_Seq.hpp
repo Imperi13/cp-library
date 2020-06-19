@@ -89,12 +89,42 @@ class RBST_Seq{
     update(t);
   }
 
+  void copy_dfs(node_ptr& now,const node_ptr& copy_from){
+    now->val=copy_from->val;
+    now->sum=copy_from->sum;
+    now->cnt=copy_from->cnt;
+    if(copy_from->left){
+      now->left=std::make_shared<Node>(Monoid::id);
+      copy_dfs(now->left,copy_from->left);
+    }
+    if(copy_from->right){
+      now->right=std::make_shared<Node>(Monoid::id);
+      copy_dfs(now->right,copy_from->right);
+    }
+  }
+
   RBST_Seq(const node_ptr& t):root(t){}
   public:
   RBST_Seq():root(){}
   RBST_Seq(const std::vector<value_t>& seq_):root(){
     build(root,seq_,0,seq_.size());
   }
+  RBST_Seq(const RBST_Seq& from){
+    root=nullptr;
+    if(from.root){
+      root=std::make_shared<Node>(Monoid::id);
+      copy_dfs(root,from.root);
+    }
+  }
+  RBST_Seq& operator=(const RBST_Seq& from){
+    root=nullptr;
+    if(from.root){
+      root=std::make_shared<Node>(Monoid::id);
+      copy_dfs(root,from.root);
+    }
+  }
+  RBST_Seq(RBST_Seq&&)=default;
+  RBST_Seq& operator=(RBST_Seq&&)=default;
 
   size_t size(){return count(root);}
   void insert(size_t k,const value_t& value){insert(root,std::make_shared<Node>(value),k);}
@@ -113,6 +143,7 @@ class RBST_Seq{
     auto tmp=split(root,pos);
     tmp.first=merge(tmp.first,seq.root);
     root=merge(tmp.first,tmp.second);
+    seq.root=nullptr;
   }
 
   value_t fold_all(){return calc(root);}
