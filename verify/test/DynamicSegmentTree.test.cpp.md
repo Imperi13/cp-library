@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/DynamicSegmentTree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-19 18:50:45+09:00
+    - Last commit date: 2020-06-19 19:03:42+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/point_set_range_composite">https://judge.yosupo.jp/problem/point_set_range_composite</a>
@@ -152,15 +152,15 @@ class DynamicSegmentTree{
     return Monoid::op(lval,rval);
   }
 
-  void dfs(node_ptr& node,node_ptr& from){
+  void copy_dfs(node_ptr& node,const node_ptr& from){
     node->val=from->val;
     if(from->left){
       node->left=new Node(node);
-      dfs(node->left,from->left);
+      copy_dfs(node->left,from->left);
     }
     if(from->right){
       node->right=new Node(node);
-      dfs(node->right,from->right);
+      copy_dfs(node->right,from->right);
     }
   }
 
@@ -173,14 +173,14 @@ class DynamicSegmentTree{
     n=from.n;n0=from.n0;root=nullptr;
     if(from.root){
       root=new Node();
-      dfs(root,from.root);
+      copy_dfs(root,from.root);
     }
   }
   DynamicSegmentTree& operator=(const DynamicSegmentTree& from){
     n=from.n;n0=from.n0;root=nullptr;
     if(from.root){
       root=new Node();
-      dfs(root,from.root);
+      copy_dfs(root,from.root);
     }
   }
   DynamicSegmentTree(DynamicSegmentTree&&)=default;
