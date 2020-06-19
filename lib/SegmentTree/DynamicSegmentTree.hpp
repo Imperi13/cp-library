@@ -40,15 +40,15 @@ class DynamicSegmentTree{
     return Monoid::op(lval,rval);
   }
 
-  void dfs(node_ptr& node,node_ptr& from){
+  void copy_dfs(node_ptr& node,const node_ptr& from){
     node->val=from->val;
     if(from->left){
       node->left=new Node(node);
-      dfs(node->left,from->left);
+      copy_dfs(node->left,from->left);
     }
     if(from->right){
       node->right=new Node(node);
-      dfs(node->right,from->right);
+      copy_dfs(node->right,from->right);
     }
   }
 
@@ -61,14 +61,14 @@ class DynamicSegmentTree{
     n=from.n;n0=from.n0;root=nullptr;
     if(from.root){
       root=new Node();
-      dfs(root,from.root);
+      copy_dfs(root,from.root);
     }
   }
   DynamicSegmentTree& operator=(const DynamicSegmentTree& from){
     n=from.n;n0=from.n0;root=nullptr;
     if(from.root){
       root=new Node();
-      dfs(root,from.root);
+      copy_dfs(root,from.root);
     }
   }
   DynamicSegmentTree(DynamicSegmentTree&&)=default;
