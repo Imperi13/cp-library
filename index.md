@@ -95,6 +95,7 @@ layout: default
 ### lib/math
 
 * :heavy_check_mark: <a href="library/lib/math/DynamicMatrix.hpp.html">lib/math/DynamicMatrix.hpp</a>
+* :warning: <a href="library/lib/math/FactorialTable.hpp.html">lib/math/FactorialTable.hpp</a>
 * :warning: <a href="library/lib/math/Matrix.hpp.html">lib/math/Matrix.hpp</a>
 
 
