@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../local/modint.hpp"
+#include "../utility/modint.hpp"
 
 #include <vector>
 #include <cassert>
