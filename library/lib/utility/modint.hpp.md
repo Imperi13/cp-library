@@ -36,9 +36,15 @@ layout: default
 
 
 
+## Required by
+
+* :heavy_check_mark: <a href="../math/FactorialTable.hpp.html">lib/math/FactorialTable.hpp</a>
+
+
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../verify/test/DynamicMatrix_2.test.cpp.html">test/DynamicMatrix_2.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/FactorialTable.test.cpp.html">test/FactorialTable.test.cpp</a>
 
 
 ## Code

@@ -95,7 +95,7 @@ layout: default
 ### lib/math
 
 * :heavy_check_mark: <a href="library/lib/math/DynamicMatrix.hpp.html">lib/math/DynamicMatrix.hpp</a>
-* :warning: <a href="library/lib/math/FactorialTable.hpp.html">lib/math/FactorialTable.hpp</a>
+* :heavy_check_mark: <a href="library/lib/math/FactorialTable.hpp.html">lib/math/FactorialTable.hpp</a>
 * :warning: <a href="library/lib/math/Matrix.hpp.html">lib/math/Matrix.hpp</a>
 
 
@@ -115,6 +115,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/DynamicMatrix.test.cpp.html">test/DynamicMatrix.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/DynamicMatrix_2.test.cpp.html">test/DynamicMatrix_2.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/DynamicSegmentTree.test.cpp.html">test/DynamicSegmentTree.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/FactorialTable.test.cpp.html">test/FactorialTable.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/LazySegmentTree.test.cpp.html">test/LazySegmentTree.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/LowestCommonAncestor.test.cpp.html">test/LowestCommonAncestor.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/PersistentArray.test.cpp.html">test/PersistentArray.test.cpp</a>
