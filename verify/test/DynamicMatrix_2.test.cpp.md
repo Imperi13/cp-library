@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/DynamicMatrix_2.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-12 12:00:09+09:00
+    - Last commit date: 2020-06-21 12:56:51+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/matrix_det">https://judge.yosupo.jp/problem/matrix_det</a>
@@ -40,6 +40,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../library/lib/math/DynamicMatrix.hpp.html">lib/math/DynamicMatrix.hpp</a>
+* :heavy_check_mark: <a href="../../library/lib/utility/modint.hpp.html">lib/utility/modint.hpp</a>
 
 
 ## Code
@@ -134,59 +135,7 @@ using ll = long long;
 
 #include "../lib/math/DynamicMatrix.hpp"
 
-template <std::uint_fast64_t Modulus> class modint {
-  using u64 = std::uint_fast64_t;
-
-public:
-  u64 a;
-
-  constexpr modint(const u64 x = 0) noexcept : a(x % Modulus) {}
-  constexpr u64 &value() noexcept { return a; }
-  constexpr const u64 &value() const noexcept { return a; }
-  constexpr bool operator==(const modint rhs) const noexcept {return a==rhs.a;}
-  constexpr bool operator!=(const modint rhs) const noexcept {return !(*this==rhs);}
-  constexpr modint operator+(const modint rhs) const noexcept {
-    return modint(*this) += rhs;
-  }
-  constexpr modint operator-(const modint rhs) const noexcept {
-    return modint(*this) -= rhs;
-  }
-  constexpr modint operator*(const modint rhs) const noexcept {
-    return modint(*this) *= rhs;
-  }
-  constexpr modint operator/(const modint rhs) const noexcept {
-    return modint(*this) /= rhs;
-  }
-  constexpr modint &operator+=(const modint rhs) noexcept {
-    a += rhs.a;
-    if (a >= Modulus) {
-      a -= Modulus;
-    }
-    return *this;
-  }
-  constexpr modint &operator-=(const modint rhs) noexcept {
-    if (a < rhs.a) {
-      a += Modulus;
-    }
-    a -= rhs.a;
-    return *this;
-  }
-  constexpr modint &operator*=(const modint rhs) noexcept {
-    a = a * rhs.a % Modulus;
-    return *this;
-  }
-  constexpr modint &operator/=(modint rhs) noexcept {
-    u64 exp = Modulus - 2;
-    while (exp) {
-      if (exp % 2) {
-        *this *= rhs;
-      }
-      rhs *= rhs;
-      exp /= 2;
-    }
-    return *this;
-  }
-};
+#include "../lib/utility/modint.hpp"
 
 constexpr ll MOD=998244353;
 
@@ -445,6 +394,20 @@ class DynamicMatrix{
 };
 #line 87 "test/DynamicMatrix_2.test.cpp"
 
+#line 2 "lib/utility/modint.hpp"
+
+/*
+  author:noshi91
+  reference:https://noshi91.hatenablog.com/entry/2019/03/31/174006
+            https://github.com/noshi91/Library/blob/master/other/modint.cpp
+
+  1つめのmodintにoperator==,!=を追加したものです
+
+  thx @noshi91!!
+*/
+
+#line 14 "lib/utility/modint.hpp"
+
 template <std::uint_fast64_t Modulus> class modint {
   using u64 = std::uint_fast64_t;
 
@@ -498,6 +461,7 @@ public:
     return *this;
   }
 };
+#line 89 "test/DynamicMatrix_2.test.cpp"
 
 constexpr ll MOD=998244353;
 

@@ -104,6 +104,7 @@ layout: default
 ### lib/utility
 
 * :warning: <a href="library/lib/utility/Monoid.hpp.html">lib/utility/Monoid.hpp</a>
+* :heavy_check_mark: <a href="library/lib/utility/modint.hpp.html">lib/utility/modint.hpp</a>
 * :heavy_check_mark: <a href="library/lib/utility/runtime_modint.hpp.html">lib/utility/runtime_modint.hpp</a>
 
 
