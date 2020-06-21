@@ -4,6 +4,7 @@
 "test/DynamicMatrix.test.cpp": "2020-06-12 12:00:09 +0900",
 "test/DynamicMatrix_2.test.cpp": "2020-06-21 12:56:51 +0900",
 "test/DynamicSegmentTree.test.cpp": "2020-06-19 19:03:42 +0900",
+"test/FactorialTable.test.cpp": "2020-06-21 13:23:31 +0900",
 "test/LazySegmentTree.test.cpp": "2020-06-12 12:00:09 +0900",
 "test/LowestCommonAncestor.test.cpp": "2020-06-12 12:00:09 +0900",
 "test/PersistentArray.test.cpp": "2020-06-12 12:00:09 +0900",
