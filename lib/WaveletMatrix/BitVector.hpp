@@ -4,6 +4,7 @@
 #include <vector>
 #include <cassert>
 #include <utility>
+#include <algorithm>
 
 template<std::size_t LBLOCK=400,std::size_t SBLOCK=16>
 class BitVector{
@@ -30,7 +31,8 @@ class BitVector{
   std::vector<std::pair<u16,u16>> s;
 
   public:
-  BitVector(size_t n_):n(n_),l(n/LBLOCK+1),s(n/SBLOCK+1,{0,0}){}
+  BitVector()=delete;
+  explicit BitVector(size_t n_):n(n_),l(n/LBLOCK+1),s(n/SBLOCK+1,{0,0}){}
 
   void set(size_t pos){
     assert(0<=pos&&pos<n);
@@ -49,7 +51,7 @@ class BitVector{
     bitcnt=num;
   }
 
-  bool access(size_t pos){
+  bool operator[](size_t pos){
     assert(0<=pos&&pos<n);
     return (s[pos/SBLOCK].second>>(pos%SBLOCK))&1;
   }

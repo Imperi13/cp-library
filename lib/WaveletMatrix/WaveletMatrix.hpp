@@ -14,18 +14,19 @@ class WaveletMatric{
   static_assert(std::is_unsigned<UInt>::value,"UInt must be unsigned");
   static_assert(0<BITLEN&&BITLEN<=std::numeric_limits<UInt>::digits,"");
   public:
-  using u64=UInt;
-  using u32=std::uint32_t;
+  using value_t=UInt;
   using size_t=std::size_t;
 
   private:
+  using u32=std::uint32_t;
+  using BitVec=BitVector<>;
 
   size_t n;
-  std::vector<BitVector<>> bitvec;
+  std::vector<BitVec> bitvec;
   std::vector<u32> zerocnt;
-  std::map<u64,std::pair<u32,u32>> index;
+  std::map<value_t,std::pair<u32,u32>> index;
 
-  size_t less(size_t l,size_t r,u64 num){
+  size_t less(size_t l,size_t r,value_t num){
     u32 ret=0;
     for(int bit=BITLEN-1;bit>=0;bit--){
       if((num>>bit)&1){
@@ -41,9 +42,10 @@ class WaveletMatric{
   }
 
   public:
-  WaveletMatric(std::vector<u64> seq):n(seq.size()),bitvec(BITLEN,n),zerocnt(BITLEN){
+  explicit WaveletMatric(std::vector<value_t> seq)
+                        :n(seq.size()),bitvec(BITLEN,BitVec(n)),zerocnt(BITLEN){
     for(int bit=BITLEN-1;bit>=0;bit--){
-      std::vector<u64> zero,one;
+      std::vector<value_t> zero,one;
       zero.reserve(n);
       for(size_t j=0;j<n;j++){
         if((seq[j]>>bit)&1){
@@ -59,7 +61,7 @@ class WaveletMatric{
       zerocnt[bit]=n-bitvec[bit].rank(n);
     }
     index[seq[0]]={0,0};
-    u64 num=seq[0];
+    value_t num=seq[0];
     for(size_t i=0;i<n;i++){
       if(seq[i]!=num){
         index[seq[i]]={i,1};
@@ -70,10 +72,10 @@ class WaveletMatric{
     }
   }
 
-  u64 quantile(size_t l,size_t r,size_t pos){
+  value_t quantile(size_t l,size_t r,size_t pos){
     assert(0<=l&&l<r&&r<=n);
     assert(0<=pos&&pos<r-l);
-    u64 ret=0;
+    value_t ret=0;
     for(int bit=BITLEN-1;bit>=0;bit--){
       size_t zero=(r-bitvec[bit].rank(r))-(l-bitvec[bit].rank(l));
       if(pos<zero){
@@ -90,7 +92,7 @@ class WaveletMatric{
     return ret;
   }
 
-  size_t rangefreq(size_t l,size_t r,u64 lower,u64 upper){
+  size_t rangefreq(size_t l,size_t r,value_t lower,value_t upper){
     assert(0<=l&&l<=r&&r<=n);
     assert(lower<=upper);
     return less(l,r,upper)-less(l,r,lower);
