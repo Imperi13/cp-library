@@ -44,7 +44,7 @@ layout: default
 * :warning: <a href="library/lib/RBST_Multiset.hpp.html">lib/RBST_Multiset.hpp</a>
 * :heavy_check_mark: <a href="library/lib/RBST_Seq.hpp.html">lib/RBST_Seq.hpp</a>
 * :heavy_check_mark: <a href="library/lib/SWAG.hpp.html">lib/SWAG.hpp</a>
-* :heavy_check_mark: <a href="library/lib/SparseTable.hpp.html">lib/SparseTable.hpp</a>
+* :x: <a href="library/lib/SparseTable.hpp.html">lib/SparseTable.hpp</a>
 
 
 <div id="8d75131a1ef4f10f86f251b50b9a3462"></div>
@@ -55,7 +55,7 @@ layout: default
 * :heavy_check_mark: <a href="library/lib/SegmentTree/DynamicSegmentTree.hpp.html">lib/SegmentTree/DynamicSegmentTree.hpp</a>
 * :heavy_check_mark: <a href="library/lib/SegmentTree/LazySegmentTree.hpp.html">lib/SegmentTree/LazySegmentTree.hpp</a>
 * :heavy_check_mark: <a href="library/lib/SegmentTree/PersistentSegmentTree.hpp.html">lib/SegmentTree/PersistentSegmentTree.hpp</a>
-* :heavy_check_mark: <a href="library/lib/SegmentTree/SegmentTree.hpp.html">lib/SegmentTree/SegmentTree.hpp</a>
+* :x: <a href="library/lib/SegmentTree/SegmentTree.hpp.html">lib/SegmentTree/SegmentTree.hpp</a>
 
 
 <div id="d8ce77e7929e89891ebe5f859497af18"></div>
@@ -64,15 +64,15 @@ layout: default
 
 * :heavy_check_mark: <a href="library/lib/UnionFind/PersistentUnionFind.hpp.html">lib/UnionFind/PersistentUnionFind.hpp</a>
 * :heavy_check_mark: <a href="library/lib/UnionFind/PotentialUnionFind.hpp.html">lib/UnionFind/PotentialUnionFind.hpp</a>
-* :heavy_check_mark: <a href="library/lib/UnionFind/UnionFind.hpp.html">lib/UnionFind/UnionFind.hpp</a>
+* :x: <a href="library/lib/UnionFind/UnionFind.hpp.html">lib/UnionFind/UnionFind.hpp</a>
 
 
 <div id="e9d5fea60f5f423df499112093a5df91"></div>
 
 ### lib/WaveletMatrix
 
-* :heavy_check_mark: <a href="library/lib/WaveletMatrix/BitVector.hpp.html">lib/WaveletMatrix/BitVector.hpp</a>
-* :heavy_check_mark: <a href="library/lib/WaveletMatrix/WaveletMatrix.hpp.html">lib/WaveletMatrix/WaveletMatrix.hpp</a>
+* :x: <a href="library/lib/WaveletMatrix/BitVector.hpp.html">lib/WaveletMatrix/BitVector.hpp</a>
+* :x: <a href="library/lib/WaveletMatrix/WaveletMatrix.hpp.html">lib/WaveletMatrix/WaveletMatrix.hpp</a>
 
 
 <div id="7096d029078708cdbb96f2303d66dee8"></div>
@@ -125,9 +125,9 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/PotentialUnionFind.test.cpp.html">test/PotentialUnionFind.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/RBST_Seq.test.cpp.html">test/RBST_Seq.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/SWAG.test.cpp.html">test/SWAG.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/SegmentTree.test.cpp.html">test/SegmentTree.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/SparseTable.test.cpp.html">test/SparseTable.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/UnionFind.test.cpp.html">test/UnionFind.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/WaveletMatrix.test.cpp.html">test/WaveletMatrix.test.cpp</a>
+* :x: <a href="verify/test/SegmentTree.test.cpp.html">test/SegmentTree.test.cpp</a>
+* :x: <a href="verify/test/SparseTable.test.cpp.html">test/SparseTable.test.cpp</a>
+* :x: <a href="verify/test/UnionFind.test.cpp.html">test/UnionFind.test.cpp</a>
+* :x: <a href="verify/test/WaveletMatrix.test.cpp.html">test/WaveletMatrix.test.cpp</a>
 
 

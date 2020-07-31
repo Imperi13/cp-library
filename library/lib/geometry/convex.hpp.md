@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#7096d029078708cdbb96f2303d66dee8">lib/geometry</a>
 * <a href="{{ site.github.repository_url }}/blob/master/lib/geometry/convex.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-12 12:00:09+09:00
+    - Last commit date: 2020-07-31 15:44:20+09:00
 
 
 
@@ -48,60 +48,63 @@ layout: default
 ```cpp
 #pragma once
 
-#include <vector>
 #include <algorithm>
+#include <vector>
 
 #include "./template.hpp"
 
-std::vector<std::pair<Point,long long>> convex(std::vector<std::pair<Point,long long>> set){
-  using Pa=std::pair<Point,long long>;
-  if(set.size()==1)return {set[0]};
-  auto comp=[&](Pa a,Pa b){
-    return (EQ(a.first.real(),b.first.real()))?(a.first.imag()>b.first.imag()):(a.first.real()<b.first.real());
+std::vector<std::pair<Point, long long>> convex(
+    std::vector<std::pair<Point, long long>> set) {
+  using Pa = std::pair<Point, long long>;
+  if (set.size() == 1) return {set[0]};
+  auto comp = [&](Pa a, Pa b) {
+    return (EQ(a.first.real(), b.first.real()))
+               ? (a.first.imag() > b.first.imag())
+               : (a.first.real() < b.first.real());
   };
 
-  std::sort(set.begin(),set.end(),comp);
+  std::sort(set.begin(), set.end(), comp);
 
-  long long n=set.size();
+  long long n = set.size();
 
-  std::vector<Pa> lower,upper;
+  std::vector<Pa> lower, upper;
 
   lower.push_back(set[0]);
-  long long lowernow=0;
-  for(long long i=1;i<n;i++){
-    while(lowernow>0){
-      Point add=set[i].first-lower[lowernow].first;
-      Point last=lower[lowernow-1].first-lower[lowernow].first;
-      if(0<std::arg(last/add)&&std::arg(last/add)<PI-EPS){
+  long long lowernow = 0;
+  for (long long i = 1; i < n; i++) {
+    while (lowernow > 0) {
+      Point add = set[i].first - lower[lowernow].first;
+      Point last = lower[lowernow - 1].first - lower[lowernow].first;
+      if (0 < std::arg(last / add) && std::arg(last / add) < PI - EPS) {
         break;
-      }else{
+      } else {
         lower.pop_back();
         lowernow--;
       }
     }
-    if(i!=n-1)lower.push_back(set[i]);
+    if (i != n - 1) lower.push_back(set[i]);
     lowernow++;
   }
 
-  upper.push_back(set[n-1]);
-  long long uppernow=0;
-  for(long long i=n-2;i>=0;i--){
-    while(uppernow>0){
-      Point add=set[i].first-upper[uppernow].first;
-      Point last=upper[uppernow-1].first-upper[uppernow].first;
-      if(0<std::arg(last/add)&&std::arg(last/add)<PI-EPS){
+  upper.push_back(set[n - 1]);
+  long long uppernow = 0;
+  for (long long i = n - 2; i >= 0; i--) {
+    while (uppernow > 0) {
+      Point add = set[i].first - upper[uppernow].first;
+      Point last = upper[uppernow - 1].first - upper[uppernow].first;
+      if (0 < std::arg(last / add) && std::arg(last / add) < PI - EPS) {
         break;
-      }else{
+      } else {
         upper.pop_back();
         uppernow--;
       }
     }
-    if(i!=0)upper.push_back(set[i]);
+    if (i != 0) upper.push_back(set[i]);
     uppernow++;
   }
 
-  lower.reserve(lowernow+uppernow);
-  std::copy(upper.begin(),upper.end(),std::back_inserter(lower));
+  lower.reserve(lowernow + uppernow);
+  std::copy(upper.begin(), upper.end(), std::back_inserter(lower));
   return lower;
 }
 ```
@@ -112,106 +115,112 @@ std::vector<std::pair<Point,long long>> convex(std::vector<std::pair<Point,long 
 ```cpp
 #line 2 "lib/geometry/convex.hpp"
 
-#include <vector>
 #include <algorithm>
+#include <vector>
 
 #line 2 "lib/geometry/template.hpp"
 
-#include <complex>
 #include <cmath>
+#include <complex>
 #line 6 "lib/geometry/template.hpp"
 
-using Point=std::complex<long double>;
+using Point = std::complex<long double>;
 
-constexpr long double EPS=1e-10;
-const long double PI=std::acos(-1.0l);
+constexpr long double EPS = 1e-10;
+const long double PI = std::acos(-1.0l);
 
-bool EQ(long double a,long double b){return std::abs(a-b)<EPS;}
-bool EQP(Point a,Point b){return EQ(a.real(),b.real())&&EQ(a.imag(),b.imag());}
-
-Point unitvec(Point a){return a/std::abs(a);}
-
-//dot a・b = |a||b|cosθ
-long double dot(Point a,Point b){
-  return a.real()*b.real()+a.imag()*b.imag();
+bool EQ(long double a, long double b) { return std::abs(a - b) < EPS; }
+bool EQP(Point a, Point b) {
+  return EQ(a.real(), b.real()) && EQ(a.imag(), b.imag());
 }
 
-//cross a×b = |a||b|sinθ
-long double cross(Point a,Point b){
-  return a.real()*b.imag()-a.imag()*b.real();
+Point unitvec(Point a) { return a / std::abs(a); }
+
+// dot a・b = |a||b|cosθ
+long double dot(Point a, Point b) {
+  return a.real() * b.real() + a.imag() * b.imag();
 }
 
-bool on_line(Point a,Point b,Point c){
-  return EQ(cross(c-a,b-a),0.0l);
+// cross a×b = |a||b|sinθ
+long double cross(Point a, Point b) {
+  return a.real() * b.imag() - a.imag() * b.real();
 }
 
-bool on_segment(Point a,Point b,Point c){
-  return std::abs(c-a)+std::abs(b-c)<std::abs(b-a)+EPS;
+bool on_line(Point a, Point b, Point c) {
+  return EQ(cross(c - a, b - a), 0.0l);
 }
 
-std::vector<Point> crosspointCC(Point a,long double ra,Point b,long double rb){
+bool on_segment(Point a, Point b, Point c) {
+  return std::abs(c - a) + std::abs(b - c) < std::abs(b - a) + EPS;
+}
+
+std::vector<Point> crosspointCC(Point a, long double ra, Point b,
+                                long double rb) {
   std::vector<Point> ret;
-  Point ab=b-a;
-  long double d=std::abs(ab);
-  long double crL= (std::norm(ab)+ra*ra-rb*rb) / (2*d);
-  if(EQ(d,0)|| ra<std::abs(crL))return ret;
-  Point abN=ab*Point(0,std::sqrt(ra*ra-crL*crL)/d);
-  Point cp = a+crL/d*ab;
-  ret.emplace_back(cp+abN);
-  if(!EQ(std::abs(abN),0))ret.emplace_back(cp-abN);
+  Point ab = b - a;
+  long double d = std::abs(ab);
+  long double crL = (std::norm(ab) + ra * ra - rb * rb) / (2 * d);
+  if (EQ(d, 0) || ra < std::abs(crL)) return ret;
+  Point abN = ab * Point(0, std::sqrt(ra * ra - crL * crL) / d);
+  Point cp = a + crL / d * ab;
+  ret.emplace_back(cp + abN);
+  if (!EQ(std::abs(abN), 0)) ret.emplace_back(cp - abN);
   return ret;
 }
 #line 7 "lib/geometry/convex.hpp"
 
-std::vector<std::pair<Point,long long>> convex(std::vector<std::pair<Point,long long>> set){
-  using Pa=std::pair<Point,long long>;
-  if(set.size()==1)return {set[0]};
-  auto comp=[&](Pa a,Pa b){
-    return (EQ(a.first.real(),b.first.real()))?(a.first.imag()>b.first.imag()):(a.first.real()<b.first.real());
+std::vector<std::pair<Point, long long>> convex(
+    std::vector<std::pair<Point, long long>> set) {
+  using Pa = std::pair<Point, long long>;
+  if (set.size() == 1) return {set[0]};
+  auto comp = [&](Pa a, Pa b) {
+    return (EQ(a.first.real(), b.first.real()))
+               ? (a.first.imag() > b.first.imag())
+               : (a.first.real() < b.first.real());
   };
 
-  std::sort(set.begin(),set.end(),comp);
+  std::sort(set.begin(), set.end(), comp);
 
-  long long n=set.size();
+  long long n = set.size();
 
-  std::vector<Pa> lower,upper;
+  std::vector<Pa> lower, upper;
 
   lower.push_back(set[0]);
-  long long lowernow=0;
-  for(long long i=1;i<n;i++){
-    while(lowernow>0){
-      Point add=set[i].first-lower[lowernow].first;
-      Point last=lower[lowernow-1].first-lower[lowernow].first;
-      if(0<std::arg(last/add)&&std::arg(last/add)<PI-EPS){
+  long long lowernow = 0;
+  for (long long i = 1; i < n; i++) {
+    while (lowernow > 0) {
+      Point add = set[i].first - lower[lowernow].first;
+      Point last = lower[lowernow - 1].first - lower[lowernow].first;
+      if (0 < std::arg(last / add) && std::arg(last / add) < PI - EPS) {
         break;
-      }else{
+      } else {
         lower.pop_back();
         lowernow--;
       }
     }
-    if(i!=n-1)lower.push_back(set[i]);
+    if (i != n - 1) lower.push_back(set[i]);
     lowernow++;
   }
 
-  upper.push_back(set[n-1]);
-  long long uppernow=0;
-  for(long long i=n-2;i>=0;i--){
-    while(uppernow>0){
-      Point add=set[i].first-upper[uppernow].first;
-      Point last=upper[uppernow-1].first-upper[uppernow].first;
-      if(0<std::arg(last/add)&&std::arg(last/add)<PI-EPS){
+  upper.push_back(set[n - 1]);
+  long long uppernow = 0;
+  for (long long i = n - 2; i >= 0; i--) {
+    while (uppernow > 0) {
+      Point add = set[i].first - upper[uppernow].first;
+      Point last = upper[uppernow - 1].first - upper[uppernow].first;
+      if (0 < std::arg(last / add) && std::arg(last / add) < PI - EPS) {
         break;
-      }else{
+      } else {
         upper.pop_back();
         uppernow--;
       }
     }
-    if(i!=0)upper.push_back(set[i]);
+    if (i != 0) upper.push_back(set[i]);
     uppernow++;
   }
 
-  lower.reserve(lowernow+uppernow);
-  std::copy(upper.begin(),upper.end(),std::back_inserter(lower));
+  lower.reserve(lowernow + uppernow);
+  std::copy(upper.begin(), upper.end(), std::back_inserter(lower));
   return lower;
 }
 

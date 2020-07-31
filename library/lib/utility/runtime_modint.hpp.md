@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#a6e10e9711dc4788c3e9e6f87d9357db">lib/utility</a>
 * <a href="{{ site.github.repository_url }}/blob/master/lib/utility/runtime_modint.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-12 12:00:09+09:00
+    - Last commit date: 2020-07-31 15:44:20+09:00
 
 
 
@@ -51,15 +51,15 @@ layout: default
 class modint {
   using u64 = std::uint_fast64_t;
 
-public:
+ public:
   u64 a;
   static u64 Modulus;
 
   modint(const u64 x = 0) noexcept : a(x % Modulus) {}
   u64 &value() noexcept { return a; }
   const u64 &value() const noexcept { return a; }
-  bool operator==(const modint rhs) const noexcept {return a==rhs.a;}
-  bool operator!=(const modint rhs) const noexcept {return !(*this==rhs);}
+  bool operator==(const modint rhs) const noexcept { return a == rhs.a; }
+  bool operator!=(const modint rhs) const noexcept { return !(*this == rhs); }
   modint operator+(const modint rhs) const noexcept {
     return modint(*this) += rhs;
   }
@@ -114,15 +114,15 @@ public:
 class modint {
   using u64 = std::uint_fast64_t;
 
-public:
+ public:
   u64 a;
   static u64 Modulus;
 
   modint(const u64 x = 0) noexcept : a(x % Modulus) {}
   u64 &value() noexcept { return a; }
   const u64 &value() const noexcept { return a; }
-  bool operator==(const modint rhs) const noexcept {return a==rhs.a;}
-  bool operator!=(const modint rhs) const noexcept {return !(*this==rhs);}
+  bool operator==(const modint rhs) const noexcept { return a == rhs.a; }
+  bool operator!=(const modint rhs) const noexcept { return !(*this == rhs); }
   modint operator+(const modint rhs) const noexcept {
     return modint(*this) += rhs;
   }

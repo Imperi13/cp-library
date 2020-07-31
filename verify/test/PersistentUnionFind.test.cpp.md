@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/PersistentUnionFind.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-12 12:00:09+09:00
+    - Last commit date: 2020-07-31 15:44:20+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/persistent_unionfind">https://judge.yosupo.jp/problem/persistent_unionfind</a>
@@ -102,90 +102,96 @@ int main(){
 
 #line 2 "lib/PersistentArray.hpp"
 
-#include <memory>
 #include <cassert>
+#include <memory>
 
-template<typename T,std::size_t BITSIZE=4>
-class PersistentArray{
-  public:
-  using value_t=T;
-  using size_t=std::size_t;
-  private:
-  struct Node{
+template <typename T, std::size_t BITSIZE = 4>
+class PersistentArray {
+ public:
+  using value_t = T;
+  using size_t = std::size_t;
+
+ private:
+  struct Node {
     value_t val;
-    std::array<std::shared_ptr<Node>,1<<BITSIZE> ch;
-    Node(value_t val_):val(val_){ch.fill(nullptr);}
+    std::array<std::shared_ptr<Node>, 1 << BITSIZE> ch;
+    Node(value_t val_) : val(val_) { ch.fill(nullptr); }
   };
-  using node_ptr=std::shared_ptr<Node>;
+  using node_ptr = std::shared_ptr<Node>;
 
   value_t init;
   node_ptr root;
 
-  node_ptr update(size_t k,value_t value,node_ptr now){
-    node_ptr ret=(now?std::make_shared<Node>(*now):std::make_shared<Node>(init));
-    if(k==0)ret->val=value;
-    else{
-      size_t mask=(1<<BITSIZE)-1;
-      ret->ch[k&mask]=update(k>>BITSIZE,value,ret->ch[k&mask]);
+  node_ptr update(size_t k, value_t value, node_ptr now) {
+    node_ptr ret =
+        (now ? std::make_shared<Node>(*now) : std::make_shared<Node>(init));
+    if (k == 0)
+      ret->val = value;
+    else {
+      size_t mask = (1 << BITSIZE) - 1;
+      ret->ch[k & mask] = update(k >> BITSIZE, value, ret->ch[k & mask]);
     }
     return ret;
   }
 
-  value_t at(size_t k,node_ptr now){
-    if(!now)return init;
-    if(k==0)return now->val;
-    return at(k>>BITSIZE,now->ch[k&((1<<BITSIZE)-1)]);
+  value_t at(size_t k, node_ptr now) {
+    if (!now) return init;
+    if (k == 0) return now->val;
+    return at(k >> BITSIZE, now->ch[k & ((1 << BITSIZE) - 1)]);
   }
 
-  PersistentArray(value_t init_,const node_ptr& root_):init(init_),root(root_){}
-  public:
-  PersistentArray(value_t init_=value_t()):init(init_),root(nullptr){}
+  PersistentArray(value_t init_, const node_ptr& root_)
+      : init(init_), root(root_) {}
 
-  PersistentArray update(size_t k,const value_t& value){
-    return PersistentArray(init,update(k,value,root));
+ public:
+  PersistentArray(value_t init_ = value_t()) : init(init_), root(nullptr) {}
+
+  PersistentArray update(size_t k, const value_t& value) {
+    return PersistentArray(init, update(k, value, root));
   }
 
-  value_t operator[](size_t k){
-    return at(k,root);
-  }
+  value_t operator[](size_t k) { return at(k, root); }
 };
 #line 4 "lib/UnionFind/PersistentUnionFind.hpp"
 
-class PersistentUnionFind{
-  public:
-  using size_t=std::size_t;
-  private:
+class PersistentUnionFind {
+ public:
+  using size_t = std::size_t;
+
+ private:
   PersistentArray<long long> uni;
   size_t group;
 
-  PersistentUnionFind(PersistentArray<long long> uni_,size_t group_):uni(uni_),group(group_){}
-  public:
-  PersistentUnionFind(size_t n=0):uni(-1),group(n){}
+  PersistentUnionFind(PersistentArray<long long> uni_, size_t group_)
+      : uni(uni_), group(group_) {}
 
-  size_t root(size_t a){
-    if(uni[a]<0)return a;
-    size_t tmp=root(uni[a]);
-    uni=uni.update(a,tmp);
+ public:
+  PersistentUnionFind(size_t n = 0) : uni(-1), group(n) {}
+
+  size_t root(size_t a) {
+    if (uni[a] < 0) return a;
+    size_t tmp = root(uni[a]);
+    uni = uni.update(a, tmp);
     return tmp;
   }
 
-  PersistentUnionFind unite(size_t a,size_t b){
-    a=root(a);
-    b=root(b);
-    if(a==b)return *this;
+  PersistentUnionFind unite(size_t a, size_t b) {
+    a = root(a);
+    b = root(b);
+    if (a == b) return *this;
     group--;
-    if(uni[a]>uni[b])std::swap(a,b);
+    if (uni[a] > uni[b]) std::swap(a, b);
 
-    PersistentArray<long long> newuni=uni;
-    long long va=uni[a],vb=uni[b];
-    newuni=newuni.update(a,va+vb);
-    newuni=newuni.update(b,a);
-    return PersistentUnionFind(newuni,group);
+    PersistentArray<long long> newuni = uni;
+    long long va = uni[a], vb = uni[b];
+    newuni = newuni.update(a, va + vb);
+    newuni = newuni.update(b, a);
+    return PersistentUnionFind(newuni, group);
   }
 
-  bool isconnect(size_t a,size_t b){return root(a)==root(b);}
-  size_t group_size(size_t a){return -uni[root(a)];}
-  size_t groups(){return group;}
+  bool isconnect(size_t a, size_t b) { return root(a) == root(b); }
+  size_t group_size(size_t a) { return -uni[root(a)]; }
+  size_t groups() { return group; }
 };
 #line 8 "test/PersistentUnionFind.test.cpp"
 

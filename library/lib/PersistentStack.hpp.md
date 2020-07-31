@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#e8acc63b1e238f3255c900eed37254b8">lib</a>
 * <a href="{{ site.github.repository_url }}/blob/master/lib/PersistentStack.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-12 12:00:09+09:00
+    - Last commit date: 2020-07-31 15:44:20+09:00
 
 
 
@@ -43,39 +43,42 @@ layout: default
 ```cpp
 #pragma once
 
-#include <memory>
 #include <cassert>
+#include <memory>
 
-template<typename T>
-class PersistentStack{
-  public:
-  using value_t=T;
-  using size_t=std::size_t;
-  private:
-  struct Node{
+template <typename T>
+class PersistentStack {
+ public:
+  using value_t = T;
+  using size_t = std::size_t;
+
+ private:
+  struct Node {
     value_t val;
     std::shared_ptr<Node> next;
-    Node(value_t val_,std::shared_ptr<Node> next_=nullptr):val(val_),next(next_){}
+    Node(value_t val_, std::shared_ptr<Node> next_ = nullptr)
+        : val(val_), next(next_) {}
   };
 
-  using node_ptr=std::shared_ptr<Node>;
+  using node_ptr = std::shared_ptr<Node>;
   node_ptr root;
 
-  PersistentStack(const node_ptr& root_):root(root_){}
-  public:
-  PersistentStack():root(){}
+  PersistentStack(const node_ptr& root_) : root(root_) {}
 
-  bool empty(){return !root;}
-  value_t top(){
+ public:
+  PersistentStack() : root() {}
+
+  bool empty() { return !root; }
+  value_t top() {
     assert(root);
     return root->val;
   }
 
-  PersistentStack push(value_t value){
-    return PersistentStack(std::make_shared<Node>(value,root));
+  PersistentStack push(value_t value) {
+    return PersistentStack(std::make_shared<Node>(value, root));
   }
 
-  PersistentStack pop(){
+  PersistentStack pop() {
     assert(root);
     return PersistentStack(root->next);
   }
@@ -88,39 +91,42 @@ class PersistentStack{
 ```cpp
 #line 2 "lib/PersistentStack.hpp"
 
-#include <memory>
 #include <cassert>
+#include <memory>
 
-template<typename T>
-class PersistentStack{
-  public:
-  using value_t=T;
-  using size_t=std::size_t;
-  private:
-  struct Node{
+template <typename T>
+class PersistentStack {
+ public:
+  using value_t = T;
+  using size_t = std::size_t;
+
+ private:
+  struct Node {
     value_t val;
     std::shared_ptr<Node> next;
-    Node(value_t val_,std::shared_ptr<Node> next_=nullptr):val(val_),next(next_){}
+    Node(value_t val_, std::shared_ptr<Node> next_ = nullptr)
+        : val(val_), next(next_) {}
   };
 
-  using node_ptr=std::shared_ptr<Node>;
+  using node_ptr = std::shared_ptr<Node>;
   node_ptr root;
 
-  PersistentStack(const node_ptr& root_):root(root_){}
-  public:
-  PersistentStack():root(){}
+  PersistentStack(const node_ptr& root_) : root(root_) {}
 
-  bool empty(){return !root;}
-  value_t top(){
+ public:
+  PersistentStack() : root() {}
+
+  bool empty() { return !root; }
+  value_t top() {
     assert(root);
     return root->val;
   }
 
-  PersistentStack push(value_t value){
-    return PersistentStack(std::make_shared<Node>(value,root));
+  PersistentStack push(value_t value) {
+    return PersistentStack(std::make_shared<Node>(value, root));
   }
 
-  PersistentStack pop(){
+  PersistentStack pop() {
     assert(root);
     return PersistentStack(root->next);
   }

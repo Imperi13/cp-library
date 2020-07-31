@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#7096d029078708cdbb96f2303d66dee8">lib/geometry</a>
 * <a href="{{ site.github.repository_url }}/blob/master/lib/geometry/template.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-12 12:00:09+09:00
+    - Last commit date: 2020-07-31 15:44:20+09:00
 
 
 
@@ -48,48 +48,51 @@ layout: default
 ```cpp
 #pragma once
 
-#include <complex>
 #include <cmath>
+#include <complex>
 #include <vector>
 
-using Point=std::complex<long double>;
+using Point = std::complex<long double>;
 
-constexpr long double EPS=1e-10;
-const long double PI=std::acos(-1.0l);
+constexpr long double EPS = 1e-10;
+const long double PI = std::acos(-1.0l);
 
-bool EQ(long double a,long double b){return std::abs(a-b)<EPS;}
-bool EQP(Point a,Point b){return EQ(a.real(),b.real())&&EQ(a.imag(),b.imag());}
-
-Point unitvec(Point a){return a/std::abs(a);}
-
-//dot a・b = |a||b|cosθ
-long double dot(Point a,Point b){
-  return a.real()*b.real()+a.imag()*b.imag();
+bool EQ(long double a, long double b) { return std::abs(a - b) < EPS; }
+bool EQP(Point a, Point b) {
+  return EQ(a.real(), b.real()) && EQ(a.imag(), b.imag());
 }
 
-//cross a×b = |a||b|sinθ
-long double cross(Point a,Point b){
-  return a.real()*b.imag()-a.imag()*b.real();
+Point unitvec(Point a) { return a / std::abs(a); }
+
+// dot a・b = |a||b|cosθ
+long double dot(Point a, Point b) {
+  return a.real() * b.real() + a.imag() * b.imag();
 }
 
-bool on_line(Point a,Point b,Point c){
-  return EQ(cross(c-a,b-a),0.0l);
+// cross a×b = |a||b|sinθ
+long double cross(Point a, Point b) {
+  return a.real() * b.imag() - a.imag() * b.real();
 }
 
-bool on_segment(Point a,Point b,Point c){
-  return std::abs(c-a)+std::abs(b-c)<std::abs(b-a)+EPS;
+bool on_line(Point a, Point b, Point c) {
+  return EQ(cross(c - a, b - a), 0.0l);
 }
 
-std::vector<Point> crosspointCC(Point a,long double ra,Point b,long double rb){
+bool on_segment(Point a, Point b, Point c) {
+  return std::abs(c - a) + std::abs(b - c) < std::abs(b - a) + EPS;
+}
+
+std::vector<Point> crosspointCC(Point a, long double ra, Point b,
+                                long double rb) {
   std::vector<Point> ret;
-  Point ab=b-a;
-  long double d=std::abs(ab);
-  long double crL= (std::norm(ab)+ra*ra-rb*rb) / (2*d);
-  if(EQ(d,0)|| ra<std::abs(crL))return ret;
-  Point abN=ab*Point(0,std::sqrt(ra*ra-crL*crL)/d);
-  Point cp = a+crL/d*ab;
-  ret.emplace_back(cp+abN);
-  if(!EQ(std::abs(abN),0))ret.emplace_back(cp-abN);
+  Point ab = b - a;
+  long double d = std::abs(ab);
+  long double crL = (std::norm(ab) + ra * ra - rb * rb) / (2 * d);
+  if (EQ(d, 0) || ra < std::abs(crL)) return ret;
+  Point abN = ab * Point(0, std::sqrt(ra * ra - crL * crL) / d);
+  Point cp = a + crL / d * ab;
+  ret.emplace_back(cp + abN);
+  if (!EQ(std::abs(abN), 0)) ret.emplace_back(cp - abN);
   return ret;
 }
 ```
@@ -100,48 +103,51 @@ std::vector<Point> crosspointCC(Point a,long double ra,Point b,long double rb){
 ```cpp
 #line 2 "lib/geometry/template.hpp"
 
-#include <complex>
 #include <cmath>
+#include <complex>
 #include <vector>
 
-using Point=std::complex<long double>;
+using Point = std::complex<long double>;
 
-constexpr long double EPS=1e-10;
-const long double PI=std::acos(-1.0l);
+constexpr long double EPS = 1e-10;
+const long double PI = std::acos(-1.0l);
 
-bool EQ(long double a,long double b){return std::abs(a-b)<EPS;}
-bool EQP(Point a,Point b){return EQ(a.real(),b.real())&&EQ(a.imag(),b.imag());}
-
-Point unitvec(Point a){return a/std::abs(a);}
-
-//dot a・b = |a||b|cosθ
-long double dot(Point a,Point b){
-  return a.real()*b.real()+a.imag()*b.imag();
+bool EQ(long double a, long double b) { return std::abs(a - b) < EPS; }
+bool EQP(Point a, Point b) {
+  return EQ(a.real(), b.real()) && EQ(a.imag(), b.imag());
 }
 
-//cross a×b = |a||b|sinθ
-long double cross(Point a,Point b){
-  return a.real()*b.imag()-a.imag()*b.real();
+Point unitvec(Point a) { return a / std::abs(a); }
+
+// dot a・b = |a||b|cosθ
+long double dot(Point a, Point b) {
+  return a.real() * b.real() + a.imag() * b.imag();
 }
 
-bool on_line(Point a,Point b,Point c){
-  return EQ(cross(c-a,b-a),0.0l);
+// cross a×b = |a||b|sinθ
+long double cross(Point a, Point b) {
+  return a.real() * b.imag() - a.imag() * b.real();
 }
 
-bool on_segment(Point a,Point b,Point c){
-  return std::abs(c-a)+std::abs(b-c)<std::abs(b-a)+EPS;
+bool on_line(Point a, Point b, Point c) {
+  return EQ(cross(c - a, b - a), 0.0l);
 }
 
-std::vector<Point> crosspointCC(Point a,long double ra,Point b,long double rb){
+bool on_segment(Point a, Point b, Point c) {
+  return std::abs(c - a) + std::abs(b - c) < std::abs(b - a) + EPS;
+}
+
+std::vector<Point> crosspointCC(Point a, long double ra, Point b,
+                                long double rb) {
   std::vector<Point> ret;
-  Point ab=b-a;
-  long double d=std::abs(ab);
-  long double crL= (std::norm(ab)+ra*ra-rb*rb) / (2*d);
-  if(EQ(d,0)|| ra<std::abs(crL))return ret;
-  Point abN=ab*Point(0,std::sqrt(ra*ra-crL*crL)/d);
-  Point cp = a+crL/d*ab;
-  ret.emplace_back(cp+abN);
-  if(!EQ(std::abs(abN),0))ret.emplace_back(cp-abN);
+  Point ab = b - a;
+  long double d = std::abs(ab);
+  long double crL = (std::norm(ab) + ra * ra - rb * rb) / (2 * d);
+  if (EQ(d, 0) || ra < std::abs(crL)) return ret;
+  Point abN = ab * Point(0, std::sqrt(ra * ra - crL * crL) / d);
+  Point cp = a + crL / d * ab;
+  ret.emplace_back(cp + abN);
+  if (!EQ(std::abs(abN), 0)) ret.emplace_back(cp - abN);
   return ret;
 }
 

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/FactorialTable.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-21 13:23:31+09:00
+    - Last commit date: 2020-07-31 15:44:20+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1501">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1501</a>
@@ -254,6 +254,8 @@ using ll = long long;
 
 #line 2 "lib/math/FactorialTable.hpp"
 
+#line 6 "lib/math/FactorialTable.hpp"
+
 #line 2 "lib/utility/modint.hpp"
 
 /*
@@ -268,17 +270,22 @@ using ll = long long;
 
 #line 14 "lib/utility/modint.hpp"
 
-template <std::uint_fast64_t Modulus> class modint {
+template <std::uint_fast64_t Modulus>
+class modint {
   using u64 = std::uint_fast64_t;
 
-public:
+ public:
   u64 a;
 
   constexpr modint(const u64 x = 0) noexcept : a(x % Modulus) {}
   constexpr u64 &value() noexcept { return a; }
   constexpr const u64 &value() const noexcept { return a; }
-  constexpr bool operator==(const modint rhs) const noexcept {return a==rhs.a;}
-  constexpr bool operator!=(const modint rhs) const noexcept {return !(*this==rhs);}
+  constexpr bool operator==(const modint rhs) const noexcept {
+    return a == rhs.a;
+  }
+  constexpr bool operator!=(const modint rhs) const noexcept {
+    return !(*this == rhs);
+  }
   constexpr modint operator+(const modint rhs) const noexcept {
     return modint(*this) += rhs;
   }
@@ -321,37 +328,37 @@ public:
     return *this;
   }
 };
-#line 4 "lib/math/FactorialTable.hpp"
-
 #line 8 "lib/math/FactorialTable.hpp"
 
-template<std::size_t N,std::uint_fast64_t MOD>
-class Factorial{
-  public:
-  using mint=modint<MOD>;
-  using size_t=std::size_t;
-  private:
-  std::vector<mint> factorial,factorial_inv;
-  public:
-  Factorial():factorial(N+1),factorial_inv(N+1){
-    factorial[0]=1;
-    for(size_t i=1;i<N+1;i++)factorial[i]=factorial[i-1]*i;
-    factorial_inv[N]=mint(1)/factorial[N];
-    for(size_t i=N;i>0;i--)factorial_inv[i-1]=factorial_inv[i]*i;
+template <std::size_t N, std::uint_fast64_t MOD>
+class Factorial {
+ public:
+  using mint = modint<MOD>;
+  using size_t = std::size_t;
+
+ private:
+  std::vector<mint> factorial, factorial_inv;
+
+ public:
+  Factorial() : factorial(N + 1), factorial_inv(N + 1) {
+    factorial[0] = 1;
+    for (size_t i = 1; i < N + 1; i++) factorial[i] = factorial[i - 1] * i;
+    factorial_inv[N] = mint(1) / factorial[N];
+    for (size_t i = N; i > 0; i--) factorial_inv[i - 1] = factorial_inv[i] * i;
   }
 
-  mint fact(size_t pos)const{
-    assert(0<=pos&&pos<=N);
+  mint fact(size_t pos) const {
+    assert(0 <= pos && pos <= N);
     return factorial[pos];
   }
-  mint fact_inv(size_t pos)const{
-    assert(0<=pos&&pos<=N);
+  mint fact_inv(size_t pos) const {
+    assert(0 <= pos && pos <= N);
     return factorial_inv[pos];
   }
-  mint binom(size_t n,size_t k)const{
-    assert(0<=n&&n<=N);
-    assert(0<=k&&k<=n);
-    return fact(n)*fact_inv(k)*fact_inv(n-k);
+  mint binom(size_t n, size_t k) const {
+    assert(0 <= n && n <= N);
+    assert(0 <= k && k <= n);
+    return fact(n) * fact_inv(k) * fact_inv(n - k);
   }
 };
 #line 87 "test/FactorialTable.test.cpp"
