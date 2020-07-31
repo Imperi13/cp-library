@@ -3,15 +3,15 @@
 class modint {
   using u64 = std::uint_fast64_t;
 
-public:
+ public:
   u64 a;
   static u64 Modulus;
 
   modint(const u64 x = 0) noexcept : a(x % Modulus) {}
   u64 &value() noexcept { return a; }
   const u64 &value() const noexcept { return a; }
-  bool operator==(const modint rhs) const noexcept {return a==rhs.a;}
-  bool operator!=(const modint rhs) const noexcept {return !(*this==rhs);}
+  bool operator==(const modint rhs) const noexcept { return a == rhs.a; }
+  bool operator!=(const modint rhs) const noexcept { return !(*this == rhs); }
   modint operator+(const modint rhs) const noexcept {
     return modint(*this) += rhs;
   }

@@ -12,17 +12,22 @@
 
 #include <cstdint>
 
-template <std::uint_fast64_t Modulus> class modint {
+template <std::uint_fast64_t Modulus>
+class modint {
   using u64 = std::uint_fast64_t;
 
-public:
+ public:
   u64 a;
 
   constexpr modint(const u64 x = 0) noexcept : a(x % Modulus) {}
   constexpr u64 &value() noexcept { return a; }
   constexpr const u64 &value() const noexcept { return a; }
-  constexpr bool operator==(const modint rhs) const noexcept {return a==rhs.a;}
-  constexpr bool operator!=(const modint rhs) const noexcept {return !(*this==rhs);}
+  constexpr bool operator==(const modint rhs) const noexcept {
+    return a == rhs.a;
+  }
+  constexpr bool operator!=(const modint rhs) const noexcept {
+    return !(*this == rhs);
+  }
   constexpr modint operator+(const modint rhs) const noexcept {
     return modint(*this) += rhs;
   }
