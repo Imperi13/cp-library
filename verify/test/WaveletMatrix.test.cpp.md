@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/WaveletMatrix.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-31 15:44:20+09:00
+    - Last commit date: 2020-08-07 13:20:34+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_kth_smallest">https://judge.yosupo.jp/problem/range_kth_smallest</a>
@@ -281,12 +281,15 @@ class BitVector {
   std::vector<u32> l;
   std::vector<std::pair<u16, u16>> s;
 
+  bool build_flag;
+
  public:
   BitVector() = delete;
   explicit BitVector(size_t n_)
-      : n(n_), l(n / LBLOCK + 1), s(n / SBLOCK + 1, {0, 0}) {}
+      : n(n_), l(n / LBLOCK + 1), s(n / SBLOCK + 1, {0, 0}),build_flag(false) {}
 
   void set(size_t pos) {
+    assert(!build_flag);
     assert(0 <= pos && pos < n);
     s[pos / SBLOCK].second |= 1llu << (pos % SBLOCK);
   }
@@ -301,14 +304,17 @@ class BitVector {
       }
     }
     bitcnt = num;
+    build_flag=true;
   }
 
   bool operator[](size_t pos) {
+    assert(build_flag);
     assert(0 <= pos && pos < n);
     return (s[pos / SBLOCK].second >> (pos % SBLOCK)) & 1;
   }
 
   size_t rank(size_t pos) {
+    assert(build_flag);
     assert(0 <= pos && pos <= n);
     return l[pos / LBLOCK] + s[pos / SBLOCK].first +
            popcount(s[pos / SBLOCK].second & ((1llu << (pos % SBLOCK)) - 1));
