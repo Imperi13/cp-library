@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :x: test/WaveletMatrix.test.cpp
+# :heavy_check_mark: test/WaveletMatrix.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../library/lib/WaveletMatrix/BitVector.hpp.html">lib/WaveletMatrix/BitVector.hpp</a>
-* :x: <a href="../../library/lib/WaveletMatrix/WaveletMatrix.hpp.html">lib/WaveletMatrix/WaveletMatrix.hpp</a>
+* :heavy_check_mark: <a href="../../library/lib/WaveletMatrix/BitVector.hpp.html">lib/WaveletMatrix/BitVector.hpp</a>
+* :heavy_check_mark: <a href="../../library/lib/WaveletMatrix/WaveletMatrix.hpp.html">lib/WaveletMatrix/WaveletMatrix.hpp</a>
 
 
 ## Code

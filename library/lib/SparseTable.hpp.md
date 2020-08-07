@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :x: lib/SparseTable.hpp
+# :heavy_check_mark: lib/SparseTable.hpp
 
 <a href="../../index.html">Back to top page</a>
 
@@ -38,7 +38,7 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../verify/test/SparseTable.test.cpp.html">test/SparseTable.test.cpp</a>
+* :heavy_check_mark: <a href="../../verify/test/SparseTable.test.cpp.html">test/SparseTable.test.cpp</a>
 
 
 ## Code

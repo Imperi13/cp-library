@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#b524a7b47b8ed72180f0e5150ab6d934">lib/math</a>
 * <a href="{{ site.github.repository_url }}/blob/master/lib/math/Matrix.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-31 15:44:20+09:00
+    - Last commit date: 2020-08-07 11:08:15+09:00
 
 
 
@@ -108,6 +108,7 @@ class Matrix {
   }
   constexpr Matrix& operator*=(const Matrix<Field, COLUMN, COLUMN>& rhs) {
     std::array<std::array<value_t, COLUMN>, ROW> tmp;
+    std::fill(tmp[0].begin(), tmp[ROW - 1].end(), 0);
     for (size_t r = 0; r < ROW; r++) {
       for (size_t c = 0; c < COLUMN; c++) {
         for (size_t i = 0; i < COLUMN; i++) {
@@ -124,6 +125,15 @@ class Matrix {
     Matrix<Field, ROW, COLUMN> tmp;
     for (size_t i = 0; i < ROW; i++) tmp.a[i][i] = 1;
     return tmp;
+  }
+
+  void print(){
+    for(size_t r=0;r<ROW;r++){
+      for(size_t c=0;c<COLUMN;c++){
+        std::cout<<a[r][c]<<" ";
+      }
+      std::cout<<"\n";
+    }
   }
 };
 ```
@@ -199,6 +209,7 @@ class Matrix {
   }
   constexpr Matrix& operator*=(const Matrix<Field, COLUMN, COLUMN>& rhs) {
     std::array<std::array<value_t, COLUMN>, ROW> tmp;
+    std::fill(tmp[0].begin(), tmp[ROW - 1].end(), 0);
     for (size_t r = 0; r < ROW; r++) {
       for (size_t c = 0; c < COLUMN; c++) {
         for (size_t i = 0; i < COLUMN; i++) {
@@ -215,6 +226,15 @@ class Matrix {
     Matrix<Field, ROW, COLUMN> tmp;
     for (size_t i = 0; i < ROW; i++) tmp.a[i][i] = 1;
     return tmp;
+  }
+
+  void print(){
+    for(size_t r=0;r<ROW;r++){
+      for(size_t c=0;c<COLUMN;c++){
+        std::cout<<a[r][c]<<" ";
+      }
+      std::cout<<"\n";
+    }
   }
 };
 
