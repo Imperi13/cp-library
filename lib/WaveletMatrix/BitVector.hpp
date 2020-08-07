@@ -30,12 +30,15 @@ class BitVector {
   std::vector<u32> l;
   std::vector<std::pair<u16, u16>> s;
 
+  bool build_flag;
+
  public:
   BitVector() = delete;
   explicit BitVector(size_t n_)
-      : n(n_), l(n / LBLOCK + 1), s(n / SBLOCK + 1, {0, 0}) {}
+      : n(n_), l(n / LBLOCK + 1), s(n / SBLOCK + 1, {0, 0}),build_flag(false) {}
 
   void set(size_t pos) {
+    assert(!build_flag);
     assert(0 <= pos && pos < n);
     s[pos / SBLOCK].second |= 1llu << (pos % SBLOCK);
   }
@@ -50,14 +53,17 @@ class BitVector {
       }
     }
     bitcnt = num;
+    build_flag=true;
   }
 
   bool operator[](size_t pos) {
+    assert(build_flag);
     assert(0 <= pos && pos < n);
     return (s[pos / SBLOCK].second >> (pos % SBLOCK)) & 1;
   }
 
   size_t rank(size_t pos) {
+    assert(build_flag);
     assert(0 <= pos && pos <= n);
     return l[pos / LBLOCK] + s[pos / SBLOCK].first +
            popcount(s[pos / SBLOCK].second & ((1llu << (pos % SBLOCK)) - 1));
