@@ -65,6 +65,7 @@ class Matrix {
   }
   constexpr Matrix& operator*=(const Matrix<Field, COLUMN, COLUMN>& rhs) {
     std::array<std::array<value_t, COLUMN>, ROW> tmp;
+    std::fill(tmp[0].begin(), tmp[ROW - 1].end(), 0);
     for (size_t r = 0; r < ROW; r++) {
       for (size_t c = 0; c < COLUMN; c++) {
         for (size_t i = 0; i < COLUMN; i++) {
@@ -81,5 +82,14 @@ class Matrix {
     Matrix<Field, ROW, COLUMN> tmp;
     for (size_t i = 0; i < ROW; i++) tmp.a[i][i] = 1;
     return tmp;
+  }
+
+  void print(){
+    for(size_t r=0;r<ROW;r++){
+      for(size_t c=0;c<COLUMN;c++){
+        std::cout<<a[r][c]<<" ";
+      }
+      std::cout<<"\n";
+    }
   }
 };
