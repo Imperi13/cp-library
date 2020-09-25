@@ -1,0 +1,82 @@
+---
+data:
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: lib/utility/modint.hpp
+    title: lib/utility/modint.hpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/FactorialTable.test.cpp
+    title: test/FactorialTable.test.cpp
+  _pathExtension: hpp
+  _verificationStatusIcon: ':heavy_check_mark:'
+  attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    links: []
+  bundledCode: "#line 2 \"lib/math/FactorialTable.hpp\"\n\n#include <cassert>\n#include\
+    \ <cstdint>\n#include <vector>\n\n#line 2 \"lib/utility/modint.hpp\"\n\n/*\n \
+    \ author:noshi91\n  reference:https://noshi91.hatenablog.com/entry/2019/03/31/174006\n\
+    \            https://github.com/noshi91/Library/blob/master/other/modint.cpp\n\
+    \n  1\u3064\u3081\u306Emodint\u306Boperator==,!=\u3092\u8FFD\u52A0\u3057\u305F\
+    \u3082\u306E\u3067\u3059\n\n  thx @noshi91!!\n*/\n\n#line 14 \"lib/utility/modint.hpp\"\
+    \n\ntemplate <std::uint_fast64_t Modulus>\nclass modint {\n  using u64 = std::uint_fast64_t;\n\
+    \n public:\n  u64 a;\n\n  constexpr modint(const u64 x = 0) noexcept : a(x % Modulus)\
+    \ {}\n  constexpr u64 &value() noexcept { return a; }\n  constexpr const u64 &value()\
+    \ const noexcept { return a; }\n  constexpr bool operator==(const modint rhs)\
+    \ const noexcept {\n    return a == rhs.a;\n  }\n  constexpr bool operator!=(const\
+    \ modint rhs) const noexcept {\n    return !(*this == rhs);\n  }\n  constexpr\
+    \ modint operator+(const modint rhs) const noexcept {\n    return modint(*this)\
+    \ += rhs;\n  }\n  constexpr modint operator-(const modint rhs) const noexcept\
+    \ {\n    return modint(*this) -= rhs;\n  }\n  constexpr modint operator*(const\
+    \ modint rhs) const noexcept {\n    return modint(*this) *= rhs;\n  }\n  constexpr\
+    \ modint operator/(const modint rhs) const noexcept {\n    return modint(*this)\
+    \ /= rhs;\n  }\n  constexpr modint &operator+=(const modint rhs) noexcept {\n\
+    \    a += rhs.a;\n    if (a >= Modulus) {\n      a -= Modulus;\n    }\n    return\
+    \ *this;\n  }\n  constexpr modint &operator-=(const modint rhs) noexcept {\n \
+    \   if (a < rhs.a) {\n      a += Modulus;\n    }\n    a -= rhs.a;\n    return\
+    \ *this;\n  }\n  constexpr modint &operator*=(const modint rhs) noexcept {\n \
+    \   a = a * rhs.a % Modulus;\n    return *this;\n  }\n  constexpr modint &operator/=(modint\
+    \ rhs) noexcept {\n    u64 exp = Modulus - 2;\n    while (exp) {\n      if (exp\
+    \ % 2) {\n        *this *= rhs;\n      }\n      rhs *= rhs;\n      exp /= 2;\n\
+    \    }\n    return *this;\n  }\n};\n#line 8 \"lib/math/FactorialTable.hpp\"\n\n\
+    template <std::size_t N, std::uint_fast64_t MOD>\nclass Factorial {\n public:\n\
+    \  using mint = modint<MOD>;\n  using size_t = std::size_t;\n\n private:\n  std::vector<mint>\
+    \ factorial, factorial_inv;\n\n public:\n  Factorial() : factorial(N + 1), factorial_inv(N\
+    \ + 1) {\n    factorial[0] = 1;\n    for (size_t i = 1; i < N + 1; i++) factorial[i]\
+    \ = factorial[i - 1] * i;\n    factorial_inv[N] = mint(1) / factorial[N];\n  \
+    \  for (size_t i = N; i > 0; i--) factorial_inv[i - 1] = factorial_inv[i] * i;\n\
+    \  }\n\n  mint fact(size_t pos) const {\n    assert(0 <= pos && pos <= N);\n \
+    \   return factorial[pos];\n  }\n  mint fact_inv(size_t pos) const {\n    assert(0\
+    \ <= pos && pos <= N);\n    return factorial_inv[pos];\n  }\n  mint binom(size_t\
+    \ n, size_t k) const {\n    assert(0 <= n && n <= N);\n    assert(0 <= k && k\
+    \ <= n);\n    return fact(n) * fact_inv(k) * fact_inv(n - k);\n  }\n};\n"
+  code: "#pragma once\n\n#include <cassert>\n#include <cstdint>\n#include <vector>\n\
+    \n#include \"../utility/modint.hpp\"\n\ntemplate <std::size_t N, std::uint_fast64_t\
+    \ MOD>\nclass Factorial {\n public:\n  using mint = modint<MOD>;\n  using size_t\
+    \ = std::size_t;\n\n private:\n  std::vector<mint> factorial, factorial_inv;\n\
+    \n public:\n  Factorial() : factorial(N + 1), factorial_inv(N + 1) {\n    factorial[0]\
+    \ = 1;\n    for (size_t i = 1; i < N + 1; i++) factorial[i] = factorial[i - 1]\
+    \ * i;\n    factorial_inv[N] = mint(1) / factorial[N];\n    for (size_t i = N;\
+    \ i > 0; i--) factorial_inv[i - 1] = factorial_inv[i] * i;\n  }\n\n  mint fact(size_t\
+    \ pos) const {\n    assert(0 <= pos && pos <= N);\n    return factorial[pos];\n\
+    \  }\n  mint fact_inv(size_t pos) const {\n    assert(0 <= pos && pos <= N);\n\
+    \    return factorial_inv[pos];\n  }\n  mint binom(size_t n, size_t k) const {\n\
+    \    assert(0 <= n && n <= N);\n    assert(0 <= k && k <= n);\n    return fact(n)\
+    \ * fact_inv(k) * fact_inv(n - k);\n  }\n};"
+  dependsOn:
+  - lib/utility/modint.hpp
+  isVerificationFile: false
+  path: lib/math/FactorialTable.hpp
+  requiredBy: []
+  timestamp: '2020-07-31 15:44:20+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/FactorialTable.test.cpp
+documentation_of: lib/math/FactorialTable.hpp
+layout: document
+redirect_from:
+- /library/lib/math/FactorialTable.hpp
+- /library/lib/math/FactorialTable.hpp.html
+title: lib/math/FactorialTable.hpp
+---

@@ -1,133 +1,159 @@
 ---
-layout: default
+data:
+  libraryCategories:
+  - name: lib
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: lib/DisjointSparseTable.hpp
+      title: lib/DisjointSparseTable.hpp
+    - icon: ':heavy_check_mark:'
+      path: lib/PersistentArray.hpp
+      title: lib/PersistentArray.hpp
+    - icon: ':warning:'
+      path: lib/PersistentStack.hpp
+      title: lib/PersistentStack.hpp
+    - icon: ':warning:'
+      path: lib/RBST_Multiset.hpp
+      title: lib/RBST_Multiset.hpp
+    - icon: ':heavy_check_mark:'
+      path: lib/RBST_Seq.hpp
+      title: lib/RBST_Seq.hpp
+    - icon: ':heavy_check_mark:'
+      path: lib/SWAG.hpp
+      title: lib/SWAG.hpp
+    - icon: ':heavy_check_mark:'
+      path: lib/SparseTable.hpp
+      title: lib/SparseTable.hpp
+  - name: lib/SegmentTree
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: lib/SegmentTree/DualSegmentTree.hpp
+      title: lib/SegmentTree/DualSegmentTree.hpp
+    - icon: ':heavy_check_mark:'
+      path: lib/SegmentTree/DynamicSegmentTree.hpp
+      title: lib/SegmentTree/DynamicSegmentTree.hpp
+    - icon: ':heavy_check_mark:'
+      path: lib/SegmentTree/LazySegmentTree.hpp
+      title: lib/SegmentTree/LazySegmentTree.hpp
+    - icon: ':heavy_check_mark:'
+      path: lib/SegmentTree/PersistentSegmentTree.hpp
+      title: lib/SegmentTree/PersistentSegmentTree.hpp
+    - icon: ':heavy_check_mark:'
+      path: lib/SegmentTree/SegmentTree.hpp
+      title: lib/SegmentTree/SegmentTree.hpp
+  - name: lib/UnionFind
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: lib/UnionFind/PersistentUnionFind.hpp
+      title: lib/UnionFind/PersistentUnionFind.hpp
+    - icon: ':heavy_check_mark:'
+      path: lib/UnionFind/PotentialUnionFind.hpp
+      title: lib/UnionFind/PotentialUnionFind.hpp
+    - icon: ':heavy_check_mark:'
+      path: lib/UnionFind/UnionFind.hpp
+      title: lib/UnionFind/UnionFind.hpp
+  - name: lib/WaveletMatrix
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: lib/WaveletMatrix/BitVector.hpp
+      title: lib/WaveletMatrix/BitVector.hpp
+    - icon: ':heavy_check_mark:'
+      path: lib/WaveletMatrix/WaveletMatrix.hpp
+      title: lib/WaveletMatrix/WaveletMatrix.hpp
+  - name: lib/geometry
+    pages:
+    - icon: ':warning:'
+      path: lib/geometry/convex.hpp
+      title: lib/geometry/convex.hpp
+    - icon: ':warning:'
+      path: lib/geometry/template.hpp
+      title: lib/geometry/template.hpp
+  - name: lib/graph
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: lib/graph/LowestCommonAncestor.hpp
+      title: lib/graph/LowestCommonAncestor.hpp
+  - name: lib/math
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: lib/math/DynamicMatrix.hpp
+      title: lib/math/DynamicMatrix.hpp
+    - icon: ':heavy_check_mark:'
+      path: lib/math/FactorialTable.hpp
+      title: lib/math/FactorialTable.hpp
+    - icon: ':warning:'
+      path: lib/math/Matrix.hpp
+      title: lib/math/Matrix.hpp
+  - name: lib/utility
+    pages:
+    - icon: ':warning:'
+      path: lib/utility/Monoid.hpp
+      title: lib/utility/Monoid.hpp
+    - icon: ':heavy_check_mark:'
+      path: lib/utility/modint.hpp
+      title: lib/utility/modint.hpp
+    - icon: ':heavy_check_mark:'
+      path: lib/utility/runtime_modint.hpp
+      title: lib/utility/runtime_modint.hpp
+  verificationCategories:
+  - name: test
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/DisjointSparseTable.test.cpp
+      title: test/DisjointSparseTable.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/DualSegmentTree.test.cpp
+      title: test/DualSegmentTree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/DynamicMatrix.test.cpp
+      title: test/DynamicMatrix.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/DynamicMatrix_2.test.cpp
+      title: test/DynamicMatrix_2.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/DynamicSegmentTree.test.cpp
+      title: test/DynamicSegmentTree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/FactorialTable.test.cpp
+      title: test/FactorialTable.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/LazySegmentTree.test.cpp
+      title: test/LazySegmentTree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/LowestCommonAncestor.test.cpp
+      title: test/LowestCommonAncestor.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/PersistentArray.test.cpp
+      title: test/PersistentArray.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/PersistentArray_2.test.cpp
+      title: test/PersistentArray_2.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/PersistentSegmentTree.test.cpp
+      title: test/PersistentSegmentTree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/PersistentUnionFind.test.cpp
+      title: test/PersistentUnionFind.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/PotentialUnionFind.test.cpp
+      title: test/PotentialUnionFind.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/RBST_Seq.test.cpp
+      title: test/RBST_Seq.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/SWAG.test.cpp
+      title: test/SWAG.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/SegmentTree.test.cpp
+      title: test/SegmentTree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/SparseTable.test.cpp
+      title: test/SparseTable.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/UnionFind.test.cpp
+      title: test/UnionFind.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/WaveletMatrix.test.cpp
+      title: test/WaveletMatrix.test.cpp
+layout: toppage
 ---
-
-<!-- mathjax config similar to math.stackexchange -->
-<script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    TeX: { equationNumbers: { autoNumber: "AMS" }},
-    tex2jax: {
-      inlineMath: [ ['$','$'] ],
-      processEscapes: true
-    },
-    "HTML-CSS": { matchFontHeight: false },
-    displayAlign: "left",
-    displayIndent: "2em"
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-balloon-js@1.1.2/jquery.balloon.min.js" integrity="sha256-ZEYs9VrgAeNuPvs15E39OsyOJaIkXEEt10fzxJ20+2I=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="assets/js/copy-button.js"></script>
-<link rel="stylesheet" href="assets/css/copy-button.css" />
-
-
-# {{ site.title }}
-
-[![Actions Status]({{ site.github.repository_url }}/workflows/verify/badge.svg)]({{ site.github.repository_url }}/actions)
-<a href="{{ site.github.repository_url }}"><img src="https://img.shields.io/github/last-commit/{{ site.github.owner_name }}/{{ site.github.repository_name }}" /></a>
-
-{% if site.github.project_tagline %}{{ site.github.project_tagline }}{% else %}This documentation is automatically generated by <a href="https://github.com/online-judge-tools/verification-helper">online-judge-tools/verification-helper</a>.{% endif %}
-
-## Library Files
-
-<div id="e8acc63b1e238f3255c900eed37254b8"></div>
-
-### lib
-
-* :heavy_check_mark: <a href="library/lib/DisjointSparseTable.hpp.html">lib/DisjointSparseTable.hpp</a>
-* :heavy_check_mark: <a href="library/lib/PersistentArray.hpp.html">lib/PersistentArray.hpp</a>
-* :warning: <a href="library/lib/PersistentStack.hpp.html">lib/PersistentStack.hpp</a>
-* :warning: <a href="library/lib/RBST_Multiset.hpp.html">lib/RBST_Multiset.hpp</a>
-* :heavy_check_mark: <a href="library/lib/RBST_Seq.hpp.html">lib/RBST_Seq.hpp</a>
-* :heavy_check_mark: <a href="library/lib/SWAG.hpp.html">lib/SWAG.hpp</a>
-* :heavy_check_mark: <a href="library/lib/SparseTable.hpp.html">lib/SparseTable.hpp</a>
-
-
-<div id="8d75131a1ef4f10f86f251b50b9a3462"></div>
-
-### lib/SegmentTree
-
-* :heavy_check_mark: <a href="library/lib/SegmentTree/DualSegmentTree.hpp.html">lib/SegmentTree/DualSegmentTree.hpp</a>
-* :heavy_check_mark: <a href="library/lib/SegmentTree/DynamicSegmentTree.hpp.html">lib/SegmentTree/DynamicSegmentTree.hpp</a>
-* :heavy_check_mark: <a href="library/lib/SegmentTree/LazySegmentTree.hpp.html">lib/SegmentTree/LazySegmentTree.hpp</a>
-* :heavy_check_mark: <a href="library/lib/SegmentTree/PersistentSegmentTree.hpp.html">lib/SegmentTree/PersistentSegmentTree.hpp</a>
-* :heavy_check_mark: <a href="library/lib/SegmentTree/SegmentTree.hpp.html">lib/SegmentTree/SegmentTree.hpp</a>
-
-
-<div id="d8ce77e7929e89891ebe5f859497af18"></div>
-
-### lib/UnionFind
-
-* :heavy_check_mark: <a href="library/lib/UnionFind/PersistentUnionFind.hpp.html">lib/UnionFind/PersistentUnionFind.hpp</a>
-* :heavy_check_mark: <a href="library/lib/UnionFind/PotentialUnionFind.hpp.html">lib/UnionFind/PotentialUnionFind.hpp</a>
-* :heavy_check_mark: <a href="library/lib/UnionFind/UnionFind.hpp.html">lib/UnionFind/UnionFind.hpp</a>
-
-
-<div id="e9d5fea60f5f423df499112093a5df91"></div>
-
-### lib/WaveletMatrix
-
-* :heavy_check_mark: <a href="library/lib/WaveletMatrix/BitVector.hpp.html">lib/WaveletMatrix/BitVector.hpp</a>
-* :heavy_check_mark: <a href="library/lib/WaveletMatrix/WaveletMatrix.hpp.html">lib/WaveletMatrix/WaveletMatrix.hpp</a>
-
-
-<div id="7096d029078708cdbb96f2303d66dee8"></div>
-
-### lib/geometry
-
-* :warning: <a href="library/lib/geometry/convex.hpp.html">lib/geometry/convex.hpp</a>
-* :warning: <a href="library/lib/geometry/template.hpp.html">lib/geometry/template.hpp</a>
-
-
-<div id="6e267a37887a7dcb68cbf7008d6c7e48"></div>
-
-### lib/graph
-
-* :heavy_check_mark: <a href="library/lib/graph/LowestCommonAncestor.hpp.html">lib/graph/LowestCommonAncestor.hpp</a>
-
-
-<div id="b524a7b47b8ed72180f0e5150ab6d934"></div>
-
-### lib/math
-
-* :heavy_check_mark: <a href="library/lib/math/DynamicMatrix.hpp.html">lib/math/DynamicMatrix.hpp</a>
-* :heavy_check_mark: <a href="library/lib/math/FactorialTable.hpp.html">lib/math/FactorialTable.hpp</a>
-* :warning: <a href="library/lib/math/Matrix.hpp.html">lib/math/Matrix.hpp</a>
-
-
-<div id="a6e10e9711dc4788c3e9e6f87d9357db"></div>
-
-### lib/utility
-
-* :warning: <a href="library/lib/utility/Monoid.hpp.html">lib/utility/Monoid.hpp</a>
-* :heavy_check_mark: <a href="library/lib/utility/modint.hpp.html">lib/utility/modint.hpp</a>
-* :heavy_check_mark: <a href="library/lib/utility/runtime_modint.hpp.html">lib/utility/runtime_modint.hpp</a>
-
-
-## Verify Files
-
-* :heavy_check_mark: <a href="verify/test/DisjointSparseTable.test.cpp.html">test/DisjointSparseTable.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/DualSegmentTree.test.cpp.html">test/DualSegmentTree.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/DynamicMatrix.test.cpp.html">test/DynamicMatrix.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/DynamicMatrix_2.test.cpp.html">test/DynamicMatrix_2.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/DynamicSegmentTree.test.cpp.html">test/DynamicSegmentTree.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/FactorialTable.test.cpp.html">test/FactorialTable.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/LazySegmentTree.test.cpp.html">test/LazySegmentTree.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/LowestCommonAncestor.test.cpp.html">test/LowestCommonAncestor.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/PersistentArray.test.cpp.html">test/PersistentArray.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/PersistentArray_2.test.cpp.html">test/PersistentArray_2.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/PersistentSegmentTree.test.cpp.html">test/PersistentSegmentTree.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/PersistentUnionFind.test.cpp.html">test/PersistentUnionFind.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/PotentialUnionFind.test.cpp.html">test/PotentialUnionFind.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/RBST_Seq.test.cpp.html">test/RBST_Seq.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/SWAG.test.cpp.html">test/SWAG.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/SegmentTree.test.cpp.html">test/SegmentTree.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/SparseTable.test.cpp.html">test/SparseTable.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/UnionFind.test.cpp.html">test/UnionFind.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/WaveletMatrix.test.cpp.html">test/WaveletMatrix.test.cpp</a>
-
-
