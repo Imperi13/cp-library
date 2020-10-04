@@ -6,7 +6,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"lib/math/Matrix.hpp\"\n\n#include <array>\n#include <cassert>\n\
     #include <utility>\n\ntemplate <typename Field, std::size_t ROW, std::size_t COLUMN>\n\

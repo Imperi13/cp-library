@@ -7,18 +7,17 @@ data:
     title: lib/UnionFind/PersistentUnionFind.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/PersistentUnionFind.test.cpp
-    title: test/PersistentUnionFind.test.cpp
+    path: test/PersistentArray.test.cpp
+    title: test/PersistentArray.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/PersistentArray_2.test.cpp
     title: test/PersistentArray_2.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/PersistentArray.test.cpp
-    title: test/PersistentArray.test.cpp
+    path: test/PersistentUnionFind.test.cpp
+    title: test/PersistentUnionFind.test.cpp
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"lib/PersistentArray.hpp\"\n\n#include <cassert>\n#include\
     \ <memory>\n\ntemplate <typename T, std::size_t BITSIZE = 4>\nclass PersistentArray\

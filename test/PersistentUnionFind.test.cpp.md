@@ -2,11 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: lib/UnionFind/PersistentUnionFind.hpp
-    title: lib/UnionFind/PersistentUnionFind.hpp
-  - icon: ':heavy_check_mark:'
     path: lib/PersistentArray.hpp
     title: lib/PersistentArray.hpp
+  - icon: ':heavy_check_mark:'
+    path: lib/UnionFind/PersistentUnionFind.hpp
+    title: lib/UnionFind/PersistentUnionFind.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

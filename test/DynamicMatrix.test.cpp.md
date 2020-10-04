@@ -2,11 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: lib/utility/runtime_modint.hpp
-    title: lib/utility/runtime_modint.hpp
-  - icon: ':heavy_check_mark:'
     path: lib/math/DynamicMatrix.hpp
     title: lib/math/DynamicMatrix.hpp
+  - icon: ':heavy_check_mark:'
+    path: lib/utility/runtime_modint.hpp
+    title: lib/utility/runtime_modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

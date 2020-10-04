@@ -4,15 +4,14 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/DynamicMatrix_2.test.cpp
-    title: test/DynamicMatrix_2.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/DynamicMatrix.test.cpp
     title: test/DynamicMatrix.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/DynamicMatrix_2.test.cpp
+    title: test/DynamicMatrix_2.test.cpp
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"lib/math/DynamicMatrix.hpp\"\n\n#include <cassert>\n#include\
     \ <utility>\n#include <vector>\n\ntemplate <typename Field>\nclass DynamicMatrix\

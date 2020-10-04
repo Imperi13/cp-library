@@ -6,10 +6,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/LazySegmentTree.test.cpp
     title: test/LazySegmentTree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/LazySegmentTree_2.test.cpp
+    title: test/LazySegmentTree_2.test.cpp
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"lib/SegmentTree/LazySegmentTree.hpp\"\n\n#include <cassert>\n\
     #include <vector>\n\n// Lazy\n// type value_t\n// type lazy_t\n// static value_t\
@@ -98,6 +100,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/LazySegmentTree.test.cpp
+  - test/LazySegmentTree_2.test.cpp
 documentation_of: lib/SegmentTree/LazySegmentTree.hpp
 layout: document
 redirect_from:

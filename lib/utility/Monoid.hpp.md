@@ -6,7 +6,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"lib/utility/Monoid.hpp\"\n\n#include <cassert>\n\ntemplate\
     \ <typename Semigroup>\nclass OptionalMonoid {\n private:\n  using base_t = typename\

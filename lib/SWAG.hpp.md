@@ -9,7 +9,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"lib/SWAG.hpp\"\n\n#include <cassert>\n#include <stack>\n\
     \ntemplate <typename Semigroup>\nclass SWAG {\n public:\n  using value_t = typename\

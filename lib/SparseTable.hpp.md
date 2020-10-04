@@ -9,7 +9,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"lib/SparseTable.hpp\"\n\n#include <cassert>\n#include <vector>\n\
     \n// Semigroup\n// type value_t\n// static (value_t ,value_t)->value_t op\n\n\

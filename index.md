@@ -120,6 +120,9 @@ data:
       path: test/LazySegmentTree.test.cpp
       title: test/LazySegmentTree.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/LazySegmentTree_2.test.cpp
+      title: test/LazySegmentTree_2.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/LowestCommonAncestor.test.cpp
       title: test/LowestCommonAncestor.test.cpp
     - icon: ':heavy_check_mark:'

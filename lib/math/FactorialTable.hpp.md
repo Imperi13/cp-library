@@ -12,7 +12,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"lib/math/FactorialTable.hpp\"\n\n#include <cassert>\n#include\
     \ <cstdint>\n#include <vector>\n\n#line 2 \"lib/utility/modint.hpp\"\n\n/*\n \

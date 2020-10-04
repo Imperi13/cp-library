@@ -9,7 +9,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"lib/geometry/template.hpp\"\n\n#include <cmath>\n#include\
     \ <complex>\n#include <vector>\n\nusing Point = std::complex<long double>;\n\n\

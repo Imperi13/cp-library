@@ -9,7 +9,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"lib/RBST_Seq.hpp\"\n\n#include <memory>\n#include <utility>\n\
     #include <vector>\n\ntemplate <typename Monoid>\nclass RBST_Seq {\n public:\n\

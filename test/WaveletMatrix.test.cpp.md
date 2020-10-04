@@ -2,11 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: lib/WaveletMatrix/WaveletMatrix.hpp
-    title: lib/WaveletMatrix/WaveletMatrix.hpp
-  - icon: ':heavy_check_mark:'
     path: lib/WaveletMatrix/BitVector.hpp
     title: lib/WaveletMatrix/BitVector.hpp
+  - icon: ':heavy_check_mark:'
+    path: lib/WaveletMatrix/WaveletMatrix.hpp
+    title: lib/WaveletMatrix/WaveletMatrix.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

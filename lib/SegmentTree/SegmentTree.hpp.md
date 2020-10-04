@@ -9,7 +9,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"lib/SegmentTree/SegmentTree.hpp\"\n\n#include <cassert>\n\
     #include <vector>\n\n// Monoid\n// type value_t\n// static var id\n// static (value_t,value_t)->value_t\

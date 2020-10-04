@@ -9,7 +9,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 1 \"lib/utility/runtime_modint.hpp\"\n#include <cstdint>\n\n\
     class modint {\n  using u64 = std::uint_fast64_t;\n\n public:\n  u64 a;\n  static\

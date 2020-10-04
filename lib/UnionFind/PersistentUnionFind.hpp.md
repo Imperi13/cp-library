@@ -12,7 +12,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"lib/UnionFind/PersistentUnionFind.hpp\"\n\n#line 2 \"lib/PersistentArray.hpp\"\
     \n\n#include <cassert>\n#include <memory>\n\ntemplate <typename T, std::size_t\

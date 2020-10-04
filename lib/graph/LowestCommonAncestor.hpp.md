@@ -9,7 +9,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"lib/graph/LowestCommonAncestor.hpp\"\n\n#include <vector>\n\
     \nclass LowestCommonAncestor {\n public:\n  using size_t = std::size_t;\n\n private:\n\

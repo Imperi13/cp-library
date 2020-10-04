@@ -9,7 +9,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"lib/DisjointSparseTable.hpp\"\n\n#include <cassert>\n#include\
     \ <vector>\n\ntemplate <typename Semigroup>\nclass DisjointSparseTable {\n public:\n\

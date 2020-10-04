@@ -12,7 +12,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"lib/WaveletMatrix/BitVector.hpp\"\n\n#include <algorithm>\n\
     #include <cassert>\n#include <cstdint>\n#include <utility>\n#include <vector>\n\

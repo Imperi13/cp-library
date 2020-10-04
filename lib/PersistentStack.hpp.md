@@ -6,7 +6,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"lib/PersistentStack.hpp\"\n\n#include <cassert>\n#include\
     \ <memory>\n\ntemplate <typename T>\nclass PersistentStack {\n public:\n  using\

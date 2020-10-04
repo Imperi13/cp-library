@@ -9,7 +9,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"lib/UnionFind/PotentialUnionFind.hpp\"\n\n#include <cassert>\n\
     #include <numeric>\n#include <vector>\n\ntemplate <typename Group>\nclass PotentialUnionFind\

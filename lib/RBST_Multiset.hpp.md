@@ -6,7 +6,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"lib/RBST_Multiset.hpp\"\n\n#include <memory>\n#include <utility>\n\
     #include <vector>\n\ntemplate <typename T, typename Comp = std::less<T>>\nclass\

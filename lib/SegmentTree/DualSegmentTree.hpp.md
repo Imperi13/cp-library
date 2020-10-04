@@ -9,7 +9,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"lib/SegmentTree/DualSegmentTree.hpp\"\n\n#include <cassert>\n\
     #include <memory>\n\n// commutative Monoid\n// type value_t\n// static value_t\

@@ -7,15 +7,14 @@ data:
     title: lib/math/FactorialTable.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/FactorialTable.test.cpp
-    title: test/FactorialTable.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/DynamicMatrix_2.test.cpp
     title: test/DynamicMatrix_2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/FactorialTable.test.cpp
+    title: test/FactorialTable.test.cpp
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links:
     - https://github.com/noshi91/Library/blob/master/other/modint.cpp
     - https://noshi91.hatenablog.com/entry/2019/03/31/174006

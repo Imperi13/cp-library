@@ -9,7 +9,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"lib/SegmentTree/PersistentSegmentTree.hpp\"\n\n#include\
     \ <cassert>\n#include <memory>\n\ntemplate <typename Monoid>\nclass PersistentSegmentTree\
