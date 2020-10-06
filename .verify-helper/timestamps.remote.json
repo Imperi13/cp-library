@@ -7,6 +7,7 @@
 "test/FactorialTable.test.cpp": "2020-07-31 15:44:20 +0900",
 "test/LazySegmentTree.test.cpp": "2020-07-31 15:44:20 +0900",
 "test/LazySegmentTree_2.test.cpp": "2020-10-04 14:30:33 +0900",
+"test/LiChaoSegmentTree.test.cpp": "2020-10-07 02:35:35 +0900",
 "test/LowestCommonAncestor.test.cpp": "2020-07-31 15:44:20 +0900",
 "test/PersistentArray.test.cpp": "2020-07-31 15:44:20 +0900",
 "test/PersistentArray_2.test.cpp": "2020-07-31 15:44:20 +0900",
