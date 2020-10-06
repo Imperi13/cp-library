@@ -36,6 +36,9 @@ data:
       path: lib/SegmentTree/LazySegmentTree.hpp
       title: lib/SegmentTree/LazySegmentTree.hpp
     - icon: ':heavy_check_mark:'
+      path: lib/SegmentTree/LiChaoSegmentTree.hpp
+      title: lib/SegmentTree/LiChaoSegmentTree.hpp
+    - icon: ':heavy_check_mark:'
       path: lib/SegmentTree/PersistentSegmentTree.hpp
       title: lib/SegmentTree/PersistentSegmentTree.hpp
     - icon: ':heavy_check_mark:'
@@ -122,6 +125,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/LazySegmentTree_2.test.cpp
       title: test/LazySegmentTree_2.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/LiChaoSegmentTree.test.cpp
+      title: test/LiChaoSegmentTree.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/LowestCommonAncestor.test.cpp
       title: test/LowestCommonAncestor.test.cpp
