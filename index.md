@@ -84,6 +84,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: lib/math/FactorialTable.hpp
       title: lib/math/FactorialTable.hpp
+    - icon: ':heavy_check_mark:'
+      path: lib/math/FormalPowerSeries.hpp
+      title: lib/math/FormalPowerSeries.hpp
     - icon: ':warning:'
       path: lib/math/Matrix.hpp
       title: lib/math/Matrix.hpp
@@ -116,6 +119,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/DynamicSegmentTree.test.cpp
       title: test/DynamicSegmentTree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/FPSinv.test.cpp
+      title: test/FPSinv.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/FPSmultiply.test.cpp
+      title: test/FPSmultiply.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/FactorialTable.test.cpp
       title: test/FactorialTable.test.cpp

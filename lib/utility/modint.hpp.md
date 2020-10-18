@@ -5,10 +5,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: lib/math/FactorialTable.hpp
     title: lib/math/FactorialTable.hpp
+  - icon: ':heavy_check_mark:'
+    path: lib/math/FormalPowerSeries.hpp
+    title: lib/math/FormalPowerSeries.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/DynamicMatrix_2.test.cpp
     title: test/DynamicMatrix_2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/FPSinv.test.cpp
+    title: test/FPSinv.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/FPSmultiply.test.cpp
+    title: test/FPSmultiply.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/FactorialTable.test.cpp
     title: test/FactorialTable.test.cpp
@@ -71,11 +80,14 @@ data:
   path: lib/utility/modint.hpp
   requiredBy:
   - lib/math/FactorialTable.hpp
+  - lib/math/FormalPowerSeries.hpp
   timestamp: '2020-07-31 15:44:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/FactorialTable.test.cpp
+  - test/FPSmultiply.test.cpp
   - test/DynamicMatrix_2.test.cpp
+  - test/FactorialTable.test.cpp
+  - test/FPSinv.test.cpp
 documentation_of: lib/utility/modint.hpp
 layout: document
 redirect_from:
