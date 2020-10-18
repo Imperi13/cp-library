@@ -50,9 +50,9 @@ class FPSoperator {
   }
 
  public:
-  FPSoperator(u64 len_) : len_real(len_), w(len_real * 2, 1) {
+  FPSoperator(u64 len_) : len_real(len_), w(len_real * 4, 1) {
     len = 1;
-    while (len < len_real) len <<= 1;
+    while (len < 2*len_real-1) len <<= 1;
     assert((MOD - 1) % len == 0);
     u64 bit = (MOD - 1) / len;
     mint a = PRI_ROOT;
