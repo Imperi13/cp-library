@@ -17,7 +17,7 @@ class Factorial {
   std::vector<mint> factorial, factorial_inv;
 
  public:
-  Factorial(std::size_t n_) :n(n_) factorial(n + 1), factorial_inv(n + 1) {
+  Factorial(std::size_t n_) :n(n_), factorial(n + 1), factorial_inv(n + 1) {
     factorial[0] = 1;
     for (size_t i = 1; i < n + 1; i++) factorial[i] = factorial[i - 1] * i;
     factorial_inv[n] = mint(1) / factorial[n];
