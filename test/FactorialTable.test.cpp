@@ -91,7 +91,7 @@ int main() {
   std::cin.tie(nullptr);
   std::ios::sync_with_stdio(false);
 
-  Factorial<1010,MOD> table;
+  Factorial<MOD> table(1010);
 
   ll r,c,ax,ay,bx,by;
   std::cin>>r>>c>>ax>>ay>>bx>>by;
