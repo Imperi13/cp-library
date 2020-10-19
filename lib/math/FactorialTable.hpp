@@ -32,6 +32,10 @@ class Factorial {
     assert(0 <= pos && pos <= n);
     return factorial_inv[pos];
   }
+  mint inv(size_t pos)const{
+    assert(0 < pos && pos <= n);
+    return factorial_inv[pos] * factorial[pos-1];
+  }
   mint binom(size_t ns, size_t k) const {
     assert(0 <= ns && ns <= n);
     assert(0 <= k && k <= ns);
