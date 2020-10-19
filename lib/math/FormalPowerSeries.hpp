@@ -4,6 +4,7 @@
 #include <cstdint>
 
 #include "../utility/modint.hpp"
+#include "../math/FactorialTable.hpp"
 
 using u64=std::uint_fast64_t;
 
@@ -17,6 +18,8 @@ class FPSoperator {
   u64 len_real, len;
 
   std::vector<mint> w;
+
+  Factorial<MOD> inv_table;
 
   FPS fft(FPS a, u64 l, bool inv) {
     if (l == 1) return a;
@@ -46,8 +49,7 @@ class FPSoperator {
     }
 
     if (inv) {
-      mint l_inv = mint(1) / l;
-      for (auto&& e : a) e *= l_inv;
+      for (auto&& e : a) e *= inv_table.fact_inv(l);
     }
     return a;
   }
@@ -90,10 +92,11 @@ class FPSoperator {
   }
 
  public:
-  FPSoperator(u64 len_) : len_real(len_) {
+  FPSoperator(u64 len_) : len_real(len_){
     len = 1;
     while (len < len_real) len <<= 1;
     w = FPS(2 * len, 1);
+    inv_table = Factorial<MOD>(2*len);
     assert((MOD - 1) % (2 * len) == 0);
     u64 bit = (MOD - 1) / (2 * len);
     mint a = PRI_ROOT;
