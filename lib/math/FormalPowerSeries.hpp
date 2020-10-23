@@ -17,6 +17,7 @@ class FPSoperator {
   u64 len_real, len;
 
   std::vector<mint> w;
+  std::vector<mint> inv_table;
 
   FPS fft(FPS a, u64 l, bool inv) {
     if (l == 1) return a;
@@ -46,8 +47,7 @@ class FPSoperator {
     }
 
     if (inv) {
-      mint l_inv = mint(1)/l;
-      for (auto&& e : a) e *= l_inv;
+      for (auto&& e : a) e *= inv_table[l];
     }
     return a;
   }
@@ -79,13 +79,28 @@ class FPSoperator {
   }
 
   FPS log(FPS a,u64 l){
-    assert(a.size() == l);
+    assert(!a.empty() && a.size() == l);
     assert(a[0] == 1);
     FPS ret(l,0);
     for(std::size_t i=1;i<l;i++)ret[i-1] = a[i]*i;
     ret = mul(ret,inv(a,l),l);
-    for(i64 i=l-1;i>0;i--)ret[i] = ret[i-1]/i;
+    for(i64 i=l-1;i>0;i--)ret[i] = ret[i-1] * inv_table[i];
     ret[0]=0;
+    return ret;
+  }
+
+  FPS exp(FPS a,u64 l){
+    assert(a.size() == l);
+    assert(a[0] == 0);
+    u64 now = 1;
+    FPS ret(1,1);
+    while(now < l){
+      now <<= 1;
+      ret.resize(now);
+      auto log_tmp = log(ret,now);
+      for(std::size_t i=0;i<now;i++)log_tmp[i] = a[i] - log_tmp[i] + (i==0?1:0);
+      ret = mul(ret,log_tmp,now);
+    }
     return ret;
   }
 
@@ -94,6 +109,7 @@ class FPSoperator {
     len = 1;
     while (len < len_real) len <<= 1;
     w = FPS(2 * len, 1);
+    inv_table = FPS(2*len+1,0);
     assert((MOD - 1) % (2 * len) == 0);
     u64 bit = (MOD - 1) / (2 * len);
     mint a = PRI_ROOT;
@@ -103,6 +119,9 @@ class FPSoperator {
       bit >>= 1;
     }
     for (std::size_t i = 2; i < 2 * len; i++) w[i] = w[i - 1] * w[1];
+
+    inv_table[1] = 1;
+    for(std::size_t i=2;i<2*len+1;i++)inv_table[i] -= inv_table[MOD%i]*(MOD/i);
   }
 
   FPS mul(FPS a, FPS b) {
@@ -128,6 +147,15 @@ class FPSoperator {
     assert(a[0] == 1);
     a.resize(len);
     a = log(a,len);
+    a.resize(len_real);
+    return a;
+  }
+
+  FPS exp(FPS a){
+    assert(a.size() <= len_real);
+    assert(a[0] == 0);
+    a.resize(len);
+    a = exp(a,len);
     a.resize(len_real);
     return a;
   }
