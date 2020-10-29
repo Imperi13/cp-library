@@ -73,37 +73,59 @@ data:
     \    }\n    return *this;\n  }\n};\n#line 7 \"lib/math/FormalPowerSeries.hpp\"\
     \n\nusing u64=std::uint_fast64_t;\n\ntemplate <u64 MOD, u64 PRI_ROOT>\nclass FPSoperator\
     \ {\n public:\n  using mint = modint<MOD>;\n  using FPS = std::vector<mint>;\n\
-    \n private:\n  u64 len_real, len;\n\n  std::vector<mint> w;\n\n  FPS fft(const\
-    \ FPS& a,u64 l,bool inv){\n    if(l==1)return a;\n    u64 half = l/2,haba = 2*len/l;\n\
-    \    FPS even(half),odd(half);\n    for(std::size_t i=0;i<l;i++){\n      if(i%2==0)even[i/2]=a[i];\n\
-    \      else odd[i/2]=a[i];\n    }\n    even = fft(even,half,inv);\n    odd = fft(odd,half,inv);\n\
-    \    FPS ret(l);\n    for(std::size_t i=0;i<l;i++){\n      ret[i] = even[i%half]\
-    \ + w[inv ? (2*len-haba * i)%(2*len) : haba*i] * odd[i%half];\n    }\n    return\
-    \ ret;\n  }\n\n  FPS div(FPS a,u64 x){\n    mint inv =mint(1)/x;\n    for(auto&&\
-    \ e:a)e*=inv;\n    return a;\n  }\n\n  FPS mul(FPS a,FPS b,u64 l){\n    assert(a.size()\
-    \ == l && b.size() == l);\n    a.resize(2*l);b.resize(2*l);\n    a = fft(a,2*l,false);b\
-    \ = fft(b,2*l,false);\n    for(std::size_t i=0;i<2*l;i++)a[i] *= b[i];\n    a\
-    \ = fft(a,2*l,true);\n    a = div(a,2*l);\n    a.resize(l);\n    return a;\n \
-    \ }\n\n public:\n  FPSoperator(u64 len_) : len_real(len_){\n    len = 1;\n   \
-    \ while (len < len_real) len <<= 1;\n    w = FPS(2*len,1);\n    assert((MOD -\
-    \ 1) % (2*len) == 0);\n    u64 bit = (MOD - 1) / (2*len);\n    mint a = PRI_ROOT;\n\
-    \    while (bit > 0) {\n      if (bit & 1) w[1] *= a;\n      a *= a;\n      bit\
-    \ >>= 1;\n    }\n    for (std::size_t i = 2; i < 2*len; i++) w[i] = w[i - 1] *\
-    \ w[1];\n  }\n\n  FPS mul(FPS a,FPS b){\n    assert(a.size() <= len_real && b.size()\
-    \ <= len_real);\n    a.resize(len);b.resize(len);\n    a = mul(a,b,len);\n   \
-    \ a.resize(len_real);\n    return a;\n  }\n\n  FPS inv(FPS a){\n    assert(a.size()\
-    \ <= len_real);\n    assert(a[0]!=0);\n    a.resize(len);\n    u64 now = 1;\n\
-    \    FPS ret(1,mint(1)/a[0]);\n    while(now < len){\n      now<<=1;\n      ret.resize(now);\n\
-    \      auto tmp = mul(FPS(a.begin(),a.begin()+now) , mul(ret,ret,now) ,now);\n\
-    \      for(std::size_t i=0;i<now;i++)ret[i] = ret[i] * 2 - tmp[i];\n    }\n  \
-    \  ret.resize(len_real);\n    return ret;\n  }\n};\n#line 102 \"test/FPSmultiply.test.cpp\"\
-    \n\nusing FPS = FPSoperator<998244353, 3>;\nusing mint = FPS::mint;\n\nint main()\
-    \ {\n  std::cin.tie(nullptr);\n  std::ios::sync_with_stdio(false);\n\n  i64 n,\
-    \ m;\n  std::cin >> n >> m;\n\n  FPS fps(n+m-1);\n\n  std::vector<mint> a(n),\
-    \ b(m);\n  for (auto&& e : a) {\n    i64 tmp;\n    std::cin >> tmp;\n    e = tmp;\n\
-    \  }\n\n  for (auto&& e : b) {\n    i64 tmp;\n    std::cin >> tmp;\n    e = tmp;\n\
-    \  }\n\n  auto c =fps.mul(a,b);\n\n  for(const auto& e:c)std::cout<<e.value()<<\"\
-    \ \";\n  std::cout<<\"\\n\";\n\n  return 0;\n}\n"
+    \n private:\n  u64 len_real, len;\n\n  std::vector<mint> w;\n  std::vector<mint>\
+    \ inv_table;\n\n  FPS fft(FPS a, u64 l, bool inv) {\n    if (l == 1) return a;\n\
+    \    u64 h = 0;\n    for (u64 i = 1; i < l; i <<= 1) h++;\n\n    for (u64 i =\
+    \ 0; i < l; i++) {\n      u64 bit = 0;\n      for (u64 j = 0; j < h; j++) bit\
+    \ |= ((i >> j) & 1) << (h - 1 - j);\n      if (i < bit) std::swap(a[i], a[bit]);\n\
+    \    }\n\n    for (u64 i = 1; i < l; i <<= 1) {\n      u64 haba = len / i;\n \
+    \     for (u64 j = 0; j < l; j += 2 * i) {\n        for (u64 k = 0; k < i; k++)\
+    \ {\n          mint even = a[j + k];\n          mint odd = a[j + i + k];\n   \
+    \       a[j + k] =\n              even + w[inv ? (2 * len - haba * k) % (2 * len)\
+    \ : haba * k] * odd;\n          a[j + i + k] =\n              even +\n       \
+    \       w[inv ? (2 * len - haba * (k + i)) % (2 * len) : haba * (k + i)] *\n \
+    \                 odd;\n        }\n      }\n    }\n\n    if (inv) {\n      for\
+    \ (auto&& e : a) e *= inv_table[l];\n    }\n    return a;\n  }\n\n  FPS mul(FPS\
+    \ a, FPS b, u64 l) {\n    assert(a.size() == l && b.size() == l);\n    a.resize(2\
+    \ * l);\n    b.resize(2 * l);\n    a = fft(a, 2 * l, false);\n    b = fft(b, 2\
+    \ * l, false);\n    for (std::size_t i = 0; i < 2 * l; i++) a[i] *= b[i];\n  \
+    \  a = fft(a, 2 * l, true);\n    a.resize(l);\n    return a;\n  }\n\n  FPS inv(FPS\
+    \ a,u64 l) {\n    assert(a.size() == l);\n    assert(a[0] != 0);\n    u64 now\
+    \ = 1;\n    FPS ret(1, mint(1) / a[0]);\n    while (now < l) {\n      now <<=\
+    \ 1;\n      ret.resize(now);\n      auto tmp = mul(FPS(a.begin(), a.begin() +\
+    \ now), mul(ret, ret, now), now);\n      for (std::size_t i = 0; i < now; i++)\
+    \ ret[i] = ret[i] * 2 - tmp[i];\n    }\n    return ret;\n  }\n\n  FPS log(FPS\
+    \ a,u64 l){\n    assert(!a.empty() && a.size() == l);\n    assert(a[0] == 1);\n\
+    \    FPS ret(l,0);\n    for(std::size_t i=1;i<l;i++)ret[i-1] = a[i]*i;\n    ret\
+    \ = mul(ret,inv(a,l),l);\n    for(i64 i=l-1;i>0;i--)ret[i] = ret[i-1] * inv_table[i];\n\
+    \    ret[0]=0;\n    return ret;\n  }\n\n  FPS exp(FPS a,u64 l){\n    assert(a.size()\
+    \ == l);\n    assert(a[0] == 0);\n    u64 now = 1;\n    FPS ret(1,1);\n    while(now\
+    \ < l){\n      now <<= 1;\n      ret.resize(now);\n      auto log_tmp = log(ret,now);\n\
+    \      for(std::size_t i=0;i<now;i++)log_tmp[i] = a[i] - log_tmp[i] + (i==0?1:0);\n\
+    \      ret = mul(ret,log_tmp,now);\n    }\n    return ret;\n  }\n\n public:\n\
+    \  FPSoperator(u64 len_) : len_real(len_){\n    len = 1;\n    while (len < len_real)\
+    \ len <<= 1;\n    w = FPS(2 * len, 1);\n    inv_table = FPS(2*len+1,0);\n    assert((MOD\
+    \ - 1) % (2 * len) == 0);\n    u64 bit = (MOD - 1) / (2 * len);\n    mint a =\
+    \ PRI_ROOT;\n    while (bit > 0) {\n      if (bit & 1) w[1] *= a;\n      a *=\
+    \ a;\n      bit >>= 1;\n    }\n    for (std::size_t i = 2; i < 2 * len; i++) w[i]\
+    \ = w[i - 1] * w[1];\n\n    inv_table[1] = 1;\n    for(std::size_t i=2;i<2*len+1;i++)inv_table[i]\
+    \ -= inv_table[MOD%i]*(MOD/i);\n  }\n\n  FPS mul(FPS a, FPS b) {\n    assert(a.size()\
+    \ <= len_real && b.size() <= len_real);\n    a.resize(len);\n    b.resize(len);\n\
+    \    a = mul(a, b, len);\n    a.resize(len_real);\n    return a;\n  }\n\n  FPS\
+    \ inv(FPS a) {\n    assert(a.size() <= len_real);\n    assert(a[0] != 0);\n  \
+    \  a.resize(len);\n    a = inv(a,len);\n    a.resize(len_real);\n    return a;\n\
+    \  }\n\n  FPS log(FPS a){\n    assert(a.size() <= len_real);\n    assert(a[0]\
+    \ == 1);\n    a.resize(len);\n    a = log(a,len);\n    a.resize(len_real);\n \
+    \   return a;\n  }\n\n  FPS exp(FPS a){\n    assert(a.size() <= len_real);\n \
+    \   assert(a[0] == 0);\n    a.resize(len);\n    a = exp(a,len);\n    a.resize(len_real);\n\
+    \    return a;\n  }\n};\n#line 102 \"test/FPSmultiply.test.cpp\"\n\nusing FPS\
+    \ = FPSoperator<998244353, 3>;\nusing mint = FPS::mint;\n\nint main() {\n  std::cin.tie(nullptr);\n\
+    \  std::ios::sync_with_stdio(false);\n\n  i64 n, m;\n  std::cin >> n >> m;\n\n\
+    \  FPS fps(n+m-1);\n\n  std::vector<mint> a(n), b(m);\n  for (auto&& e : a) {\n\
+    \    i64 tmp;\n    std::cin >> tmp;\n    e = tmp;\n  }\n\n  for (auto&& e : b)\
+    \ {\n    i64 tmp;\n    std::cin >> tmp;\n    e = tmp;\n  }\n\n  auto c =fps.mul(a,b);\n\
+    \n  for(const auto& e:c)std::cout<<e.value()<<\" \";\n  std::cout<<\"\\n\";\n\n\
+    \  return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\n\n#include\
     \ <algorithm>\n#include <array>\n#include <bitset>\n#include <cassert>\n#include\
     \ <cctype>\n#include <chrono>\n#include <cmath>\n#include <complex>\n#include\
@@ -147,7 +169,7 @@ data:
   isVerificationFile: true
   path: test/FPSmultiply.test.cpp
   requiredBy: []
-  timestamp: '2020-10-19 00:53:24+09:00'
+  timestamp: '2020-10-24 02:07:10+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/FPSmultiply.test.cpp

@@ -39,36 +39,41 @@ data:
     \ rhs) noexcept {\n    u64 exp = Modulus - 2;\n    while (exp) {\n      if (exp\
     \ % 2) {\n        *this *= rhs;\n      }\n      rhs *= rhs;\n      exp /= 2;\n\
     \    }\n    return *this;\n  }\n};\n#line 8 \"lib/math/FactorialTable.hpp\"\n\n\
-    template <std::size_t N, std::uint_fast64_t MOD>\nclass Factorial {\n public:\n\
-    \  using mint = modint<MOD>;\n  using size_t = std::size_t;\n\n private:\n  std::vector<mint>\
-    \ factorial, factorial_inv;\n\n public:\n  Factorial() : factorial(N + 1), factorial_inv(N\
-    \ + 1) {\n    factorial[0] = 1;\n    for (size_t i = 1; i < N + 1; i++) factorial[i]\
-    \ = factorial[i - 1] * i;\n    factorial_inv[N] = mint(1) / factorial[N];\n  \
-    \  for (size_t i = N; i > 0; i--) factorial_inv[i - 1] = factorial_inv[i] * i;\n\
-    \  }\n\n  mint fact(size_t pos) const {\n    assert(0 <= pos && pos <= N);\n \
-    \   return factorial[pos];\n  }\n  mint fact_inv(size_t pos) const {\n    assert(0\
-    \ <= pos && pos <= N);\n    return factorial_inv[pos];\n  }\n  mint binom(size_t\
-    \ n, size_t k) const {\n    assert(0 <= n && n <= N);\n    assert(0 <= k && k\
-    \ <= n);\n    return fact(n) * fact_inv(k) * fact_inv(n - k);\n  }\n};\n"
+    template <std::uint_fast64_t MOD>\nclass Factorial {\n public:\n  using mint =\
+    \ modint<MOD>;\n  using size_t = std::size_t;\n\n private:\n  std::size_t n;\n\
+    \  std::vector<mint> factorial, factorial_inv;\n\n public:\n  Factorial(std::size_t\
+    \ n_) :n(n_), factorial(n + 1), factorial_inv(n + 1) {\n    factorial[0] = 1;\n\
+    \    for (size_t i = 1; i < n + 1; i++) factorial[i] = factorial[i - 1] * i;\n\
+    \    factorial_inv[n] = mint(1) / factorial[n];\n    for (size_t i = n; i > 0;\
+    \ i--) factorial_inv[i - 1] = factorial_inv[i] * i;\n  }\n\n  mint fact(size_t\
+    \ pos) const {\n    assert(0 <= pos && pos <= n);\n    return factorial[pos];\n\
+    \  }\n  mint fact_inv(size_t pos) const {\n    assert(0 <= pos && pos <= n);\n\
+    \    return factorial_inv[pos];\n  }\n  mint inv(size_t pos)const{\n    assert(0\
+    \ < pos && pos <= n);\n    return factorial_inv[pos] * factorial[pos-1];\n  }\n\
+    \  mint binom(size_t ns, size_t k) const {\n    assert(0 <= ns && ns <= n);\n\
+    \    assert(0 <= k && k <= ns);\n    return fact(ns) * fact_inv(k) * fact_inv(ns\
+    \ - k);\n  }\n};\n"
   code: "#pragma once\n\n#include <cassert>\n#include <cstdint>\n#include <vector>\n\
-    \n#include \"../utility/modint.hpp\"\n\ntemplate <std::size_t N, std::uint_fast64_t\
-    \ MOD>\nclass Factorial {\n public:\n  using mint = modint<MOD>;\n  using size_t\
-    \ = std::size_t;\n\n private:\n  std::vector<mint> factorial, factorial_inv;\n\
-    \n public:\n  Factorial() : factorial(N + 1), factorial_inv(N + 1) {\n    factorial[0]\
-    \ = 1;\n    for (size_t i = 1; i < N + 1; i++) factorial[i] = factorial[i - 1]\
-    \ * i;\n    factorial_inv[N] = mint(1) / factorial[N];\n    for (size_t i = N;\
-    \ i > 0; i--) factorial_inv[i - 1] = factorial_inv[i] * i;\n  }\n\n  mint fact(size_t\
-    \ pos) const {\n    assert(0 <= pos && pos <= N);\n    return factorial[pos];\n\
-    \  }\n  mint fact_inv(size_t pos) const {\n    assert(0 <= pos && pos <= N);\n\
-    \    return factorial_inv[pos];\n  }\n  mint binom(size_t n, size_t k) const {\n\
-    \    assert(0 <= n && n <= N);\n    assert(0 <= k && k <= n);\n    return fact(n)\
-    \ * fact_inv(k) * fact_inv(n - k);\n  }\n};"
+    \n#include \"../utility/modint.hpp\"\n\ntemplate <std::uint_fast64_t MOD>\nclass\
+    \ Factorial {\n public:\n  using mint = modint<MOD>;\n  using size_t = std::size_t;\n\
+    \n private:\n  std::size_t n;\n  std::vector<mint> factorial, factorial_inv;\n\
+    \n public:\n  Factorial(std::size_t n_) :n(n_), factorial(n + 1), factorial_inv(n\
+    \ + 1) {\n    factorial[0] = 1;\n    for (size_t i = 1; i < n + 1; i++) factorial[i]\
+    \ = factorial[i - 1] * i;\n    factorial_inv[n] = mint(1) / factorial[n];\n  \
+    \  for (size_t i = n; i > 0; i--) factorial_inv[i - 1] = factorial_inv[i] * i;\n\
+    \  }\n\n  mint fact(size_t pos) const {\n    assert(0 <= pos && pos <= n);\n \
+    \   return factorial[pos];\n  }\n  mint fact_inv(size_t pos) const {\n    assert(0\
+    \ <= pos && pos <= n);\n    return factorial_inv[pos];\n  }\n  mint inv(size_t\
+    \ pos)const{\n    assert(0 < pos && pos <= n);\n    return factorial_inv[pos]\
+    \ * factorial[pos-1];\n  }\n  mint binom(size_t ns, size_t k) const {\n    assert(0\
+    \ <= ns && ns <= n);\n    assert(0 <= k && k <= ns);\n    return fact(ns) * fact_inv(k)\
+    \ * fact_inv(ns - k);\n  }\n};"
   dependsOn:
   - lib/utility/modint.hpp
   isVerificationFile: false
   path: lib/math/FactorialTable.hpp
   requiredBy: []
-  timestamp: '2020-07-31 15:44:20+09:00'
+  timestamp: '2020-10-19 17:06:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/FactorialTable.test.cpp

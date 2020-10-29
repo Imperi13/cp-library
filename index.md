@@ -120,8 +120,14 @@ data:
       path: test/DynamicSegmentTree.test.cpp
       title: test/DynamicSegmentTree.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/FPSexp.test.cpp
+      title: test/FPSexp.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/FPSinv.test.cpp
       title: test/FPSinv.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/FPSlog.test.cpp
+      title: test/FPSlog.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/FPSmultiply.test.cpp
       title: test/FPSmultiply.test.cpp

@@ -13,8 +13,14 @@ data:
     path: test/DynamicMatrix_2.test.cpp
     title: test/DynamicMatrix_2.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/FPSexp.test.cpp
+    title: test/FPSexp.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/FPSinv.test.cpp
     title: test/FPSinv.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/FPSlog.test.cpp
+    title: test/FPSlog.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/FPSmultiply.test.cpp
     title: test/FPSmultiply.test.cpp
@@ -84,10 +90,12 @@ data:
   timestamp: '2020-07-31 15:44:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/FPSexp.test.cpp
   - test/FPSmultiply.test.cpp
-  - test/DynamicMatrix_2.test.cpp
   - test/FactorialTable.test.cpp
+  - test/FPSlog.test.cpp
   - test/FPSinv.test.cpp
+  - test/DynamicMatrix_2.test.cpp
 documentation_of: lib/utility/modint.hpp
 layout: document
 redirect_from:

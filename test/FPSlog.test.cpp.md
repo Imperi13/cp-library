@@ -13,10 +13,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/inv_of_formal_power_series
+    PROBLEM: https://judge.yosupo.jp/problem/log_of_formal_power_series
     links:
-    - https://judge.yosupo.jp/problem/inv_of_formal_power_series
-  bundledCode: "#line 1 \"test/FPSinv.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/inv_of_formal_power_series\"\
+    - https://judge.yosupo.jp/problem/log_of_formal_power_series
+  bundledCode: "#line 1 \"test/FPSlog.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/log_of_formal_power_series\"\
     \n\n#include <algorithm>\n#include <array>\n#include <bitset>\n#include <cassert>\n\
     #include <cctype>\n#include <chrono>\n#include <cmath>\n#include <complex>\n#include\
     \ <cstdint>\n#include <cstdlib>\n#include <deque>\n#include <functional>\n#include\
@@ -118,13 +118,13 @@ data:
     \ == 1);\n    a.resize(len);\n    a = log(a,len);\n    a.resize(len_real);\n \
     \   return a;\n  }\n\n  FPS exp(FPS a){\n    assert(a.size() <= len_real);\n \
     \   assert(a[0] == 0);\n    a.resize(len);\n    a = exp(a,len);\n    a.resize(len_real);\n\
-    \    return a;\n  }\n};\n#line 102 \"test/FPSinv.test.cpp\"\n\nusing FPS = FPSoperator<998244353,3>;\n\
+    \    return a;\n  }\n};\n#line 102 \"test/FPSlog.test.cpp\"\n\nusing FPS = FPSoperator<998244353,3>;\n\
     using mint=FPS::mint;\n\nint main() {\n  std::cin.tie(nullptr);\n  std::ios::sync_with_stdio(false);\n\
     \n  i64 n;\n  std::cin>>n;\n\n  std::vector<mint> a(n);\n  for(auto&& e:a){\n\
     \    i64 tmp;\n    std::cin>>tmp;\n    e=tmp;\n  }\n\n  FPS fps(n);\n\n  for(const\
-    \ auto& e:fps.inv(a))std::cout<<e.value()<<\" \";\n  std::cout<<\"\\n\";\n\n \
+    \ auto& e:fps.log(a))std::cout<<e.value()<<\" \";\n  std::cout<<\"\\n\";\n\n \
     \ return 0;\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/inv_of_formal_power_series\"\
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/log_of_formal_power_series\"\
     \n\n#include <algorithm>\n#include <array>\n#include <bitset>\n#include <cassert>\n\
     #include <cctype>\n#include <chrono>\n#include <cmath>\n#include <complex>\n#include\
     \ <cstdint>\n#include <cstdlib>\n#include <deque>\n#include <functional>\n#include\
@@ -157,21 +157,21 @@ data:
     \n\nusing FPS = FPSoperator<998244353,3>;\nusing mint=FPS::mint;\n\nint main()\
     \ {\n  std::cin.tie(nullptr);\n  std::ios::sync_with_stdio(false);\n\n  i64 n;\n\
     \  std::cin>>n;\n\n  std::vector<mint> a(n);\n  for(auto&& e:a){\n    i64 tmp;\n\
-    \    std::cin>>tmp;\n    e=tmp;\n  }\n\n  FPS fps(n);\n\n  for(const auto& e:fps.inv(a))std::cout<<e.value()<<\"\
+    \    std::cin>>tmp;\n    e=tmp;\n  }\n\n  FPS fps(n);\n\n  for(const auto& e:fps.log(a))std::cout<<e.value()<<\"\
     \ \";\n  std::cout<<\"\\n\";\n\n  return 0;\n}\n"
   dependsOn:
   - lib/math/FormalPowerSeries.hpp
   - lib/utility/modint.hpp
   isVerificationFile: true
-  path: test/FPSinv.test.cpp
+  path: test/FPSlog.test.cpp
   requiredBy: []
   timestamp: '2020-10-24 02:07:10+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/FPSinv.test.cpp
+documentation_of: test/FPSlog.test.cpp
 layout: document
 redirect_from:
-- /verify/test/FPSinv.test.cpp
-- /verify/test/FPSinv.test.cpp.html
-title: test/FPSinv.test.cpp
+- /verify/test/FPSlog.test.cpp
+- /verify/test/FPSlog.test.cpp.html
+title: test/FPSlog.test.cpp
 ---
