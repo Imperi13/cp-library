@@ -20,8 +20,8 @@
 "test/PotentialUnionFind.test.cpp": "2020-07-31 15:44:20 +0900",
 "test/RBST_Seq.test.cpp": "2020-07-31 15:44:20 +0900",
 "test/SWAG.test.cpp": "2020-07-31 15:44:20 +0900",
-"test/SegmentTree.test.cpp": "2020-07-31 15:44:20 +0900",
+"test/SegmentTree.test.cpp": "2020-12-19 20:24:34 +0900",
 "test/SparseTable.test.cpp": "2020-07-31 15:44:20 +0900",
 "test/UnionFind.test.cpp": "2020-07-31 15:44:20 +0900",
-"test/WaveletMatrix.test.cpp": "2020-08-07 13:20:34 +0900"
+"test/WaveletMatrix.test.cpp": "2020-12-19 20:24:34 +0900"
 }
