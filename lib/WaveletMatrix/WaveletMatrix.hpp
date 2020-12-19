@@ -20,7 +20,7 @@ class WaveletMatric {
 
  private:
   using u32 = std::uint32_t;
-  using BitVec = BitVector<>;
+  using BitVec = BitVector;
 
   size_t n;
   std::vector<BitVec> bitvec;

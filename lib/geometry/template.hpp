@@ -34,6 +34,11 @@ bool on_segment(Point a, Point b, Point c) {
   return std::abs(c - a) + std::abs(b - c) < std::abs(b - a) + EPS;
 }
 
+bool is_intersected_ls(Point a1, Point a2, Point b1, Point b2) {
+  return ( cross(a2-a1, b1-a1) * cross(a2-a1, b2-a1) < EPS ) &&
+         ( cross(b2-b1, a1-b1) * cross(b2-b1, a2-b1) < EPS );
+}
+
 std::vector<Point> crosspointCC(Point a, long double ra, Point b,
                                 long double rb) {
   std::vector<Point> ret;

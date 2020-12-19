@@ -1,71 +1,64 @@
 #pragma once
 
-#include <algorithm>
 #include <cassert>
-#include <cstdint>
-#include <utility>
 #include <vector>
 
-template <std::size_t LBLOCK = 400, std::size_t SBLOCK = 16>
+#include "../utility/type_alias.hpp"
+#include "../utility/bit.hpp"
+
 class BitVector {
-  static_assert(LBLOCK % SBLOCK == 0, "");
-  static_assert(0 < SBLOCK && SBLOCK <= 16, "");
-
- public:
-  using size_t = std::size_t;
-  using u32 = std::uint32_t;
-  using u16 = std::uint16_t;
-
  private:
-  static constexpr u16 popcount(u16 x) {
-    x = (x & 0x5555) + (x >> 1 & 0x5555);
-    x = (x & 0x3333) + (x >> 2 & 0x3333);
-    x = (x & 0x0f0f) + (x >> 4 & 0x0f0f);
-    return (x & 0x00ff) + (x >> 8 & 0x00ff);
-  }
+  constexpr static std::size_t LBLOCK = 1ul << 16;
+  constexpr static std::size_t SBLOCK = 64;
 
-  size_t n;
-  size_t bitcnt;
+  usize n;
+  usize bitcnt;
 
-  std::vector<u32> l;
-  std::vector<std::pair<u16, u16>> s;
+  std::vector<u64> raw_bit;
+
+  std::vector<u32> rank_l;
+  std::vector<u16> rank_s;
 
   bool build_flag;
 
  public:
   BitVector() = delete;
-  explicit BitVector(size_t n_)
-      : n(n_), l(n / LBLOCK + 1), s(n / SBLOCK + 1, {0, 0}),build_flag(false) {}
+  explicit BitVector(usize n_)
+      : n(n_),
+        raw_bit(n / SBLOCK + 1),
+        rank_l(n / LBLOCK + 1),
+        rank_s(n / SBLOCK + 1),
+        build_flag(false) {
+    assert(n_ <= std::numeric_limits<u32>::max());
+  }
 
-  void set(size_t pos) {
+  void set(usize pos) {
     assert(!build_flag);
-    assert(0 <= pos && pos < n);
-    s[pos / SBLOCK].second |= 1llu << (pos % SBLOCK);
+    assert(pos < n);
+    raw_bit[pos / SBLOCK] |= 1_u64 << (pos % SBLOCK);
   }
 
   void build() {
-    u32 num = 0;
-    for (size_t i = 0; i <= n; i++) {
-      if (i % LBLOCK == 0) l[i / LBLOCK] = num;
-      if (i % SBLOCK == 0) s[i / SBLOCK].first = num - l[i / LBLOCK];
-      if (i != n && i % SBLOCK == 0) {
-        num += popcount(s[i / SBLOCK].second);
-      }
+    assert(!build_flag);
+    u32 cnt = 0;
+    for (usize i = 0; i <= n; i++) {
+      if (i % LBLOCK == 0) rank_l[i / LBLOCK] = cnt;
+      if (i % SBLOCK == 0) rank_s[i / SBLOCK] = cnt - rank_l[i / LBLOCK];
+      if (i != n && i % SBLOCK == 0) cnt += popcount64(raw_bit[i / SBLOCK]);
     }
-    bitcnt = num;
-    build_flag=true;
+    bitcnt = cnt;
+    build_flag = true;
   }
 
-  bool operator[](size_t pos) {
+  bool operator[](usize pos){
     assert(build_flag);
-    assert(0 <= pos && pos < n);
-    return (s[pos / SBLOCK].second >> (pos % SBLOCK)) & 1;
+    assert(pos < n);
+    return (raw_bit[pos/SBLOCK] >> (pos % SBLOCK)) & 1;
   }
 
-  size_t rank(size_t pos) {
+  usize rank(usize pos){
     assert(build_flag);
-    assert(0 <= pos && pos <= n);
-    return l[pos / LBLOCK] + s[pos / SBLOCK].first +
-           popcount(s[pos / SBLOCK].second & ((1llu << (pos % SBLOCK)) - 1));
+    assert(pos <= n);
+    return rank_l[pos/LBLOCK] + rank_s[pos / SBLOCK] + popcount64(raw_bit[pos/SBLOCK] & ((1_u64 << (pos % SBLOCK))-1) );
   }
 };

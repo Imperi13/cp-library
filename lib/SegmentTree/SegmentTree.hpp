@@ -5,7 +5,7 @@
 
 // Monoid
 // type value_t
-// static var id
+// static value_t id
 // static (value_t,value_t)->value_t op
 
 template <typename Monoid>
