@@ -62,9 +62,9 @@ data:
   timestamp: '2020-07-31 15:44:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/PersistentArray_2.test.cpp
   - test/PersistentArray.test.cpp
   - test/PersistentUnionFind.test.cpp
-  - test/PersistentArray_2.test.cpp
 documentation_of: lib/PersistentArray.hpp
 layout: document
 redirect_from:

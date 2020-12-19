@@ -11,12 +11,12 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"lib/SegmentTree/SegmentTree.hpp\"\n\n#include <cassert>\n\
-    #include <vector>\n\n// Monoid\n// type value_t\n// static var id\n// static (value_t,value_t)->value_t\
-    \ op\n\ntemplate <typename Monoid>\nclass SegmentTree {\n public:\n  using value_t\
-    \ = typename Monoid::value_t;\n  using size_t = std::size_t;\n\n private:\n  size_t\
-    \ n, n0;\n  std::vector<value_t> dat;\n\n public:\n  SegmentTree(size_t n_) :\
-    \ n(n_) {\n    assert(n_ > 0);\n    n0 = 1;\n    while (n0 < n) n0 <<= 1;\n  \
-    \  dat = std::vector<value_t>(2 * n0 - 1, Monoid::id);\n  }\n\n  SegmentTree(const\
+    #include <vector>\n\n// Monoid\n// type value_t\n// static value_t id\n// static\
+    \ (value_t,value_t)->value_t op\n\ntemplate <typename Monoid>\nclass SegmentTree\
+    \ {\n public:\n  using value_t = typename Monoid::value_t;\n  using size_t = std::size_t;\n\
+    \n private:\n  size_t n, n0;\n  std::vector<value_t> dat;\n\n public:\n  SegmentTree(size_t\
+    \ n_) : n(n_) {\n    assert(n_ > 0);\n    n0 = 1;\n    while (n0 < n) n0 <<= 1;\n\
+    \    dat = std::vector<value_t>(2 * n0 - 1, Monoid::id);\n  }\n\n  SegmentTree(const\
     \ std::vector<value_t>& tmp) : n(tmp.size()) {\n    assert(n > 0);\n    n0 = 1;\n\
     \    while (n0 < n) n0 <<= 1;\n    dat = std::vector<value_t>(2 * n0 - 1, Monoid::id);\n\
     \    for (size_t i = 0; i < n; i++) dat[i + n0 - 1] = tmp[i];\n    for (long long\
@@ -32,7 +32,7 @@ data:
     \ rval);\n      }\n      if (!(l & 1)) {\n        lval = Monoid::op(lval, dat[l]);\n\
     \        l++;\n      }\n    }\n\n    return Monoid::op(lval, rval);\n  }\n};\n"
   code: "#pragma once\n\n#include <cassert>\n#include <vector>\n\n// Monoid\n// type\
-    \ value_t\n// static var id\n// static (value_t,value_t)->value_t op\n\ntemplate\
+    \ value_t\n// static value_t id\n// static (value_t,value_t)->value_t op\n\ntemplate\
     \ <typename Monoid>\nclass SegmentTree {\n public:\n  using value_t = typename\
     \ Monoid::value_t;\n  using size_t = std::size_t;\n\n private:\n  size_t n, n0;\n\
     \  std::vector<value_t> dat;\n\n public:\n  SegmentTree(size_t n_) : n(n_) {\n\
@@ -56,7 +56,7 @@ data:
   isVerificationFile: false
   path: lib/SegmentTree/SegmentTree.hpp
   requiredBy: []
-  timestamp: '2020-07-31 15:44:20+09:00'
+  timestamp: '2020-12-19 20:24:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/SegmentTree.test.cpp

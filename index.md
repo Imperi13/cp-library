@@ -96,11 +96,17 @@ data:
       path: lib/utility/Monoid.hpp
       title: lib/utility/Monoid.hpp
     - icon: ':heavy_check_mark:'
+      path: lib/utility/bit.hpp
+      title: lib/utility/bit.hpp
+    - icon: ':heavy_check_mark:'
       path: lib/utility/modint.hpp
       title: lib/utility/modint.hpp
     - icon: ':heavy_check_mark:'
       path: lib/utility/runtime_modint.hpp
       title: lib/utility/runtime_modint.hpp
+    - icon: ':heavy_check_mark:'
+      path: lib/utility/type_alias.hpp
+      title: lib/utility/type_alias.hpp
   verificationCategories:
   - name: test
     pages:

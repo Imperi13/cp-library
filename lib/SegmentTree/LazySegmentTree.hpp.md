@@ -99,8 +99,8 @@ data:
   timestamp: '2020-07-31 15:44:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/LazySegmentTree.test.cpp
   - test/LazySegmentTree_2.test.cpp
+  - test/LazySegmentTree.test.cpp
 documentation_of: lib/SegmentTree/LazySegmentTree.hpp
 layout: document
 redirect_from:
