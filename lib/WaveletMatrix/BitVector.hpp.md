@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: lib/utility/bit.hpp
     title: lib/utility/bit.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: lib/utility/type_alias.hpp
     title: lib/utility/type_alias.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: lib/WaveletMatrix/WaveletMatrix.hpp
     title: lib/WaveletMatrix/WaveletMatrix.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/WaveletMatrix.test.cpp
     title: test/WaveletMatrix.test.cpp
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"lib/WaveletMatrix/BitVector.hpp\"\n\n#include <cassert>\n\
@@ -24,9 +24,7 @@ data:
     \nusing u64 = std::uint64_t;\nusing u32 = std::uint32_t;\nusing u16 = std::uint16_t;\n\
     using u8 = std::uint8_t;\n\nusing i64 = std::int64_t;\nusing i32 = std::int32_t;\n\
     using i16 = std::int16_t;\nusing i8 = std::int8_t;\n\nusing usize = std::size_t;\n\
-    using isize = std::ptrdiff_t;\n\ni64 operator\"\" _i64(unsigned long long num){\n\
-    \  return i64(num);\n}\n \nu64 operator\"\" _u64(unsigned long long num){\n  return\
-    \ u64(num);\n}\n#line 2 \"lib/utility/bit.hpp\"\n\n#line 4 \"lib/utility/bit.hpp\"\
+    using isize = std::ptrdiff_t;\n#line 2 \"lib/utility/bit.hpp\"\n\n#line 4 \"lib/utility/bit.hpp\"\
     \n\nconstexpr u32 popcount32(u32 x){\n  #ifdef __GNUC__\n\n  return __builtin_popcount(x);\n\
     \n  #else\n\n  x = (x & 0x55555555) + (x >> 1 & 0x55555555);\n  x = (x & 0x33333333)\
     \ + (x >> 2 & 0x33333333);\n  x = (x & 0x0f0f0f0f) + (x >> 4 & 0x0f0f0f0f);\n\
@@ -82,8 +80,8 @@ data:
   path: lib/WaveletMatrix/BitVector.hpp
   requiredBy:
   - lib/WaveletMatrix/WaveletMatrix.hpp
-  timestamp: '2020-12-19 20:24:34+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-01-01 14:18:17+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/WaveletMatrix.test.cpp
 documentation_of: lib/WaveletMatrix/BitVector.hpp

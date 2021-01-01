@@ -21,6 +21,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: lib/SWAG.hpp
       title: lib/SWAG.hpp
+    - icon: ':warning:'
+      path: lib/SkewBinaryList.hpp
+      title: lib/SkewBinaryList.hpp
     - icon: ':heavy_check_mark:'
       path: lib/SparseTable.hpp
       title: lib/SparseTable.hpp
@@ -57,10 +60,10 @@ data:
       title: lib/UnionFind/UnionFind.hpp
   - name: lib/WaveletMatrix
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: lib/WaveletMatrix/BitVector.hpp
       title: lib/WaveletMatrix/BitVector.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: lib/WaveletMatrix/WaveletMatrix.hpp
       title: lib/WaveletMatrix/WaveletMatrix.hpp
   - name: lib/geometry
@@ -95,7 +98,7 @@ data:
     - icon: ':warning:'
       path: lib/utility/Monoid.hpp
       title: lib/utility/Monoid.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: lib/utility/bit.hpp
       title: lib/utility/bit.hpp
     - icon: ':heavy_check_mark:'
@@ -104,7 +107,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: lib/utility/runtime_modint.hpp
       title: lib/utility/runtime_modint.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: lib/utility/type_alias.hpp
       title: lib/utility/type_alias.hpp
   verificationCategories:
@@ -182,7 +185,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/UnionFind.test.cpp
       title: test/UnionFind.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/WaveletMatrix.test.cpp
       title: test/WaveletMatrix.test.cpp
 layout: toppage
