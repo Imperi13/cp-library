@@ -26,29 +26,40 @@ data:
     \nusing usize = std::size_t;\nusing isize = std::ptrdiff_t;\n\ni64 operator\"\"\
     \ _i64(unsigned long long num) { return i64(num); }\n\nu64 operator\"\" _u64(unsigned\
     \ long long num) { return u64(num); }\n#line 4 \"lib/utility/bit.hpp\"\n\nconstexpr\
-    \ u32 popcount32(u32 x){\n  #ifdef __GNUC__\n\n  return __builtin_popcount(x);\n\
-    \n  #else\n\n  x = (x & 0x55555555) + (x >> 1 & 0x55555555);\n  x = (x & 0x33333333)\
+    \ u32 popcount32(u32 x) {\n#ifdef __GNUC__\n\n  return __builtin_popcount(x);\n\
+    \n#else\n\n  x = (x & 0x55555555) + (x >> 1 & 0x55555555);\n  x = (x & 0x33333333)\
     \ + (x >> 2 & 0x33333333);\n  x = (x & 0x0f0f0f0f) + (x >> 4 & 0x0f0f0f0f);\n\
     \  x = (x & 0x00ff00ff) + (x >> 8 & 0x00ff00ff);\n  return (x & 0x0000ffff) +\
-    \ (x >> 16 & 0x0000ffff);\n\n  #endif\n}\n\nconstexpr u64 popcount64(u64 x){\n\
-    \  #ifdef __GNUC__\n\n  return __builtin_popcountll(x);\n\n  #else\n\n  x = (x\
-    \ & 0x5555555555555555) + (x >> 1 & 0x5555555555555555);\n  x = (x & 0x3333333333333333)\
-    \ + (x >> 2 & 0x3333333333333333);\n  x = (x & 0x0f0f0f0f0f0f0f0f) + (x >> 4 &\
-    \ 0x0f0f0f0f0f0f0f0f);\n  x = (x & 0x00ff00ff00ff00ff) + (x >> 8 & 0x00ff00ff00ff00ff);\n\
-    \  x = (x & 0x0000ffff0000ffff) + (x >> 16 & 0x0000ffff0000ffff);\n  return (x\
-    \ & 0x00000000ffffffff) + (x >> 32 & 0x00000000ffffffff);\n\n  #endif\n}\n"
-  code: "#pragma once\n\n#include \"./type_alias.hpp\"\n\nconstexpr u32 popcount32(u32\
-    \ x){\n  #ifdef __GNUC__\n\n  return __builtin_popcount(x);\n\n  #else\n\n  x\
-    \ = (x & 0x55555555) + (x >> 1 & 0x55555555);\n  x = (x & 0x33333333) + (x >>\
-    \ 2 & 0x33333333);\n  x = (x & 0x0f0f0f0f) + (x >> 4 & 0x0f0f0f0f);\n  x = (x\
-    \ & 0x00ff00ff) + (x >> 8 & 0x00ff00ff);\n  return (x & 0x0000ffff) + (x >> 16\
-    \ & 0x0000ffff);\n\n  #endif\n}\n\nconstexpr u64 popcount64(u64 x){\n  #ifdef\
-    \ __GNUC__\n\n  return __builtin_popcountll(x);\n\n  #else\n\n  x = (x & 0x5555555555555555)\
+    \ (x >> 16 & 0x0000ffff);\n\n#endif\n}\n\nconstexpr u64 popcount64(u64 x) {\n\
+    #ifdef __GNUC__\n\n  return __builtin_popcountll(x);\n\n#else\n\n  x = (x & 0x5555555555555555)\
     \ + (x >> 1 & 0x5555555555555555);\n  x = (x & 0x3333333333333333) + (x >> 2 &\
     \ 0x3333333333333333);\n  x = (x & 0x0f0f0f0f0f0f0f0f) + (x >> 4 & 0x0f0f0f0f0f0f0f0f);\n\
     \  x = (x & 0x00ff00ff00ff00ff) + (x >> 8 & 0x00ff00ff00ff00ff);\n  x = (x & 0x0000ffff0000ffff)\
     \ + (x >> 16 & 0x0000ffff0000ffff);\n  return (x & 0x00000000ffffffff) + (x >>\
-    \ 32 & 0x00000000ffffffff);\n\n  #endif\n}"
+    \ 32 & 0x00000000ffffffff);\n\n#endif\n}\n\n#ifdef __GNUC__\n#include <x86intrin.h>\n\
+    #endif\n\nu64 select64(u64 num, u64 i) {\n#ifdef __AVX2__\n  u64 z = 1_u64 <<\
+    \ i;\n  u64 y = _pdep_u64(z, num);\n  return _tzcnt_u64(y);\n#else\n  u64 ret\
+    \ = 0;\n  for (u64 bitlen = 32; bitlen > 0; bitlen >>= 1) {\n    u64 popcnt =\
+    \ popcount64(num & ((1_u64 << bitlen) - 1) << ret);\n    if (popcnt <= i) {\n\
+    \      i -= popcnt;\n      ret += bitlen;\n    }\n  }\n  return ret;\n#endif\n\
+    }\n"
+  code: "#pragma once\n\n#include \"./type_alias.hpp\"\n\nconstexpr u32 popcount32(u32\
+    \ x) {\n#ifdef __GNUC__\n\n  return __builtin_popcount(x);\n\n#else\n\n  x = (x\
+    \ & 0x55555555) + (x >> 1 & 0x55555555);\n  x = (x & 0x33333333) + (x >> 2 & 0x33333333);\n\
+    \  x = (x & 0x0f0f0f0f) + (x >> 4 & 0x0f0f0f0f);\n  x = (x & 0x00ff00ff) + (x\
+    \ >> 8 & 0x00ff00ff);\n  return (x & 0x0000ffff) + (x >> 16 & 0x0000ffff);\n\n\
+    #endif\n}\n\nconstexpr u64 popcount64(u64 x) {\n#ifdef __GNUC__\n\n  return __builtin_popcountll(x);\n\
+    \n#else\n\n  x = (x & 0x5555555555555555) + (x >> 1 & 0x5555555555555555);\n \
+    \ x = (x & 0x3333333333333333) + (x >> 2 & 0x3333333333333333);\n  x = (x & 0x0f0f0f0f0f0f0f0f)\
+    \ + (x >> 4 & 0x0f0f0f0f0f0f0f0f);\n  x = (x & 0x00ff00ff00ff00ff) + (x >> 8 &\
+    \ 0x00ff00ff00ff00ff);\n  x = (x & 0x0000ffff0000ffff) + (x >> 16 & 0x0000ffff0000ffff);\n\
+    \  return (x & 0x00000000ffffffff) + (x >> 32 & 0x00000000ffffffff);\n\n#endif\n\
+    }\n\n#ifdef __GNUC__\n#include <x86intrin.h>\n#endif\n\nu64 select64(u64 num,\
+    \ u64 i) {\n#ifdef __AVX2__\n  u64 z = 1_u64 << i;\n  u64 y = _pdep_u64(z, num);\n\
+    \  return _tzcnt_u64(y);\n#else\n  u64 ret = 0;\n  for (u64 bitlen = 32; bitlen\
+    \ > 0; bitlen >>= 1) {\n    u64 popcnt = popcount64(num & ((1_u64 << bitlen) -\
+    \ 1) << ret);\n    if (popcnt <= i) {\n      i -= popcnt;\n      ret += bitlen;\n\
+    \    }\n  }\n  return ret;\n#endif\n}"
   dependsOn:
   - lib/utility/type_alias.hpp
   isVerificationFile: false
@@ -56,7 +67,7 @@ data:
   requiredBy:
   - lib/WaveletMatrix/BitVector.hpp
   - lib/WaveletMatrix/WaveletMatrix.hpp
-  timestamp: '2021-01-01 14:31:41+09:00'
+  timestamp: '2021-01-13 21:11:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/WaveletMatrix.test.cpp
