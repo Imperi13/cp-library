@@ -3,13 +3,13 @@
 #include <cassert>
 #include <vector>
 
-#include "../utility/type_alias.hpp"
 #include "../utility/bit.hpp"
+#include "../utility/type_alias.hpp"
 
 class BitVector {
  private:
-  constexpr static std::size_t LBLOCK = 1ul << 16;
-  constexpr static std::size_t SBLOCK = 64;
+  constexpr static usize LBLOCK = 1ul << 16;
+  constexpr static usize SBLOCK = 64;
 
   usize n;
   usize bitcnt;
@@ -50,15 +50,67 @@ class BitVector {
     build_flag = true;
   }
 
-  bool operator[](usize pos){
+  bool operator[](usize pos) {
     assert(build_flag);
     assert(pos < n);
-    return (raw_bit[pos/SBLOCK] >> (pos % SBLOCK)) & 1;
+    return (raw_bit[pos / SBLOCK] >> (pos % SBLOCK)) & 1;
   }
 
-  usize rank(usize pos){
+  usize rank(usize pos) {
     assert(build_flag);
     assert(pos <= n);
-    return rank_l[pos/LBLOCK] + rank_s[pos / SBLOCK] + popcount64(raw_bit[pos/SBLOCK] & ((1_u64 << (pos % SBLOCK))-1) );
+    return rank_l[pos / LBLOCK] + rank_s[pos / SBLOCK] +
+           popcount64(raw_bit[pos / SBLOCK] & ((1_u64 << (pos % SBLOCK)) - 1));
+  }
+
+  usize select1(usize i) {
+    assert(build_flag);
+    assert(bitcnt > i);
+    usize l = 0, r = n / LBLOCK + 1;
+    while (r - l > 1) {
+      usize mid = (l + r) >> 1;
+      if (rank_l[mid] <= i)
+        l = mid;
+      else
+        r = mid;
+    }
+    i -= rank_l[l];
+    l *= (LBLOCK / SBLOCK);
+    r = std::min(r * (LBLOCK / SBLOCK), n / SBLOCK + 1);
+    while (r - l > 1) {
+      usize mid = (l + r) >> 1;
+      if (rank_s[mid] <= i)
+        l = mid;
+      else
+        r = mid;
+    }
+    i -= rank_s[l];
+    return l * SBLOCK + select64(raw_bit[l], i);
+  }
+
+  usize select0(usize i) {
+    assert(build_flag);
+    assert(n - bitcnt > i);
+    usize l = 0, r = n / LBLOCK + 1;
+    while (r - l > 1) {
+      usize mid = (l + r) >> 1;
+      if (mid * LBLOCK - rank_l[mid] <= i)
+        l = mid;
+      else
+        r = mid;
+    }
+    i -= l * LBLOCK - rank_l[l];
+    l *= (LBLOCK / SBLOCK);
+    r = std::min(r * (LBLOCK / SBLOCK), n / SBLOCK + 1);
+    usize offset = l;
+    while (r - l > 1) {
+      usize mid = (l + r) >> 1;
+      if ((mid - offset) * SBLOCK - rank_s[mid] <= i)
+        l = mid;
+      else
+        r = mid;
+    }
+    i -= (l - offset) * SBLOCK - rank_s[l];
+    return l * SBLOCK + select64(~raw_bit[l], i);
   }
 };
