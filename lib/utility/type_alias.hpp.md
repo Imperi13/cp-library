@@ -12,9 +12,36 @@ data:
     path: lib/WaveletMatrix/WaveletMatrix.hpp
     title: lib/WaveletMatrix/WaveletMatrix.hpp
   - icon: ':heavy_check_mark:'
+    path: lib/math/FactorialTable.hpp
+    title: lib/math/FactorialTable.hpp
+  - icon: ':heavy_check_mark:'
+    path: lib/math/FormalPowerSeries.hpp
+    title: lib/math/FormalPowerSeries.hpp
+  - icon: ':heavy_check_mark:'
     path: lib/utility/bit.hpp
     title: lib/utility/bit.hpp
+  - icon: ':heavy_check_mark:'
+    path: lib/utility/modint.hpp
+    title: lib/utility/modint.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/DynamicMatrix_2.test.cpp
+    title: test/DynamicMatrix_2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/FPSexp.test.cpp
+    title: test/FPSexp.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/FPSinv.test.cpp
+    title: test/FPSinv.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/FPSlog.test.cpp
+    title: test/FPSlog.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/FPSmultiply.test.cpp
+    title: test/FPSmultiply.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/FactorialTable.test.cpp
+    title: test/FactorialTable.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/WaveletMatrix.test.cpp
     title: test/WaveletMatrix.test.cpp
@@ -96,12 +123,21 @@ data:
   requiredBy:
   - lib/SkewBinaryList.hpp
   - lib/utility/bit.hpp
-  - lib/WaveletMatrix/BitVector.hpp
+  - lib/utility/modint.hpp
   - lib/WaveletMatrix/WaveletMatrix.hpp
+  - lib/WaveletMatrix/BitVector.hpp
+  - lib/math/FormalPowerSeries.hpp
+  - lib/math/FactorialTable.hpp
   timestamp: '2021-01-01 14:31:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/FPSinv.test.cpp
+  - test/FactorialTable.test.cpp
+  - test/DynamicMatrix_2.test.cpp
   - test/WaveletMatrix.test.cpp
+  - test/FPSmultiply.test.cpp
+  - test/FPSlog.test.cpp
+  - test/FPSexp.test.cpp
 documentation_of: lib/utility/type_alias.hpp
 layout: document
 redirect_from:
