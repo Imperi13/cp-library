@@ -11,12 +11,13 @@
 */
 
 #include <cstdint>
+#include "./type_alias.hpp"
 
-template <std::uint_fast64_t Modulus>
+template <u64 Modulus>
 class modint {
-  using u64 = std::uint_fast64_t;
 
  public:
+  constexpr static u64 mod = Modulus;
   u64 a;
 
   constexpr modint(const u64 x = 0) noexcept : a(x % Modulus) {}
