@@ -6,6 +6,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/RBST_Seq.test.cpp
     title: test/RBST_Seq.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:

@@ -6,6 +6,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/DynamicMatrix.test.cpp
     title: test/DynamicMatrix.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:

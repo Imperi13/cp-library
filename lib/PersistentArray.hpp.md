@@ -15,6 +15,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/PersistentUnionFind.test.cpp
     title: test/PersistentUnionFind.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -62,9 +63,9 @@ data:
   timestamp: '2020-07-31 15:44:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/PersistentUnionFind.test.cpp
   - test/PersistentArray_2.test.cpp
   - test/PersistentArray.test.cpp
+  - test/PersistentUnionFind.test.cpp
 documentation_of: lib/PersistentArray.hpp
 layout: document
 redirect_from:

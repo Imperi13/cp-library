@@ -45,6 +45,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/WaveletMatrix.test.cpp
     title: test/WaveletMatrix.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -122,22 +123,22 @@ data:
   path: lib/utility/type_alias.hpp
   requiredBy:
   - lib/SkewBinaryList.hpp
+  - lib/math/FactorialTable.hpp
+  - lib/math/FormalPowerSeries.hpp
+  - lib/WaveletMatrix/BitVector.hpp
+  - lib/WaveletMatrix/WaveletMatrix.hpp
   - lib/utility/bit.hpp
   - lib/utility/modint.hpp
-  - lib/WaveletMatrix/WaveletMatrix.hpp
-  - lib/WaveletMatrix/BitVector.hpp
-  - lib/math/FormalPowerSeries.hpp
-  - lib/math/FactorialTable.hpp
   timestamp: '2021-01-01 14:31:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/FPSinv.test.cpp
+  - test/FPSexp.test.cpp
+  - test/FPSlog.test.cpp
   - test/FactorialTable.test.cpp
-  - test/DynamicMatrix_2.test.cpp
   - test/WaveletMatrix.test.cpp
   - test/FPSmultiply.test.cpp
-  - test/FPSlog.test.cpp
-  - test/FPSexp.test.cpp
+  - test/DynamicMatrix_2.test.cpp
+  - test/FPSinv.test.cpp
 documentation_of: lib/utility/type_alias.hpp
 layout: document
 redirect_from:

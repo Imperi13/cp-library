@@ -6,6 +6,7 @@ data:
     path: lib/geometry/convex.hpp
     title: lib/geometry/convex.hpp
   _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
