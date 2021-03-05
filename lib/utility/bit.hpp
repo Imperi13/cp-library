@@ -2,6 +2,12 @@
 
 #include "./type_alias.hpp"
 
+constexpr u64 next_combination(u64 num) {
+  u64 x = num & (-num);
+  u64 y = x + num;
+  return y | (((num & ~y) / x) >> 1);
+}
+
 constexpr u32 popcount32(u32 x) {
 #ifdef __GNUC__
 
