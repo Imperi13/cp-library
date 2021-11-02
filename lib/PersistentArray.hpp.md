@@ -64,8 +64,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/PersistentArray_2.test.cpp
-  - test/PersistentArray.test.cpp
   - test/PersistentUnionFind.test.cpp
+  - test/PersistentArray.test.cpp
 documentation_of: lib/PersistentArray.hpp
 layout: document
 redirect_from:

@@ -61,7 +61,7 @@ data:
     \    }\n    return *this;\n  }\n};\n#line 87 \"test/DynamicMatrix.test.cpp\"\n\
     \n#line 2 \"lib/math/DynamicMatrix.hpp\"\n\n#line 6 \"lib/math/DynamicMatrix.hpp\"\
     \n\ntemplate <typename Field>\nclass DynamicMatrix {\n public:\n  using value_t\
-    \ = Field;\n  using size_t = std::size_t;\n\n private:\n  size_t row, column;\n\
+    \ = Field;\n  using size_t = std::size_t;\n  size_t row, column;\n\n private:\n\
     \  std::vector<std::vector<value_t>> a;\n\n public:\n  explicit DynamicMatrix(size_t\
     \ row_ = 0, size_t column_ = 0,\n                         value_t init_ = value_t())\n\
     \      : row(row_),\n        column(column_),\n        a(row, std::vector<value_t>(column,\
@@ -161,7 +161,7 @@ data:
   isVerificationFile: true
   path: test/DynamicMatrix.test.cpp
   requiredBy: []
-  timestamp: '2020-07-31 15:44:20+09:00'
+  timestamp: '2021-11-02 10:46:31+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/DynamicMatrix.test.cpp

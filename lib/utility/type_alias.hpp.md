@@ -79,10 +79,10 @@ data:
     using isize = std::ptrdiff_t;
 
 
-    i64 operator"" _i64(unsigned long long num) { return i64(num); }
+    constexpr i64 operator"" _i64(unsigned long long num) { return i64(num); }
 
 
-    u64 operator"" _u64(unsigned long long num) { return u64(num); }
+    constexpr u64 operator"" _u64(unsigned long long num) { return u64(num); }
 
     '
   code: '#pragma once
@@ -114,31 +114,31 @@ data:
     using isize = std::ptrdiff_t;
 
 
-    i64 operator"" _i64(unsigned long long num) { return i64(num); }
+    constexpr i64 operator"" _i64(unsigned long long num) { return i64(num); }
 
 
-    u64 operator"" _u64(unsigned long long num) { return u64(num); }'
+    constexpr u64 operator"" _u64(unsigned long long num) { return u64(num); }'
   dependsOn: []
   isVerificationFile: false
   path: lib/utility/type_alias.hpp
   requiredBy:
-  - lib/SkewBinaryList.hpp
-  - lib/math/FactorialTable.hpp
   - lib/math/FormalPowerSeries.hpp
-  - lib/WaveletMatrix/BitVector.hpp
-  - lib/WaveletMatrix/WaveletMatrix.hpp
+  - lib/math/FactorialTable.hpp
   - lib/utility/bit.hpp
   - lib/utility/modint.hpp
-  timestamp: '2021-01-01 14:31:41+09:00'
+  - lib/WaveletMatrix/WaveletMatrix.hpp
+  - lib/WaveletMatrix/BitVector.hpp
+  - lib/SkewBinaryList.hpp
+  timestamp: '2021-11-02 10:46:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/FPSexp.test.cpp
-  - test/FPSlog.test.cpp
-  - test/FactorialTable.test.cpp
-  - test/WaveletMatrix.test.cpp
-  - test/FPSmultiply.test.cpp
   - test/DynamicMatrix_2.test.cpp
+  - test/FPSmultiply.test.cpp
+  - test/FPSlog.test.cpp
+  - test/WaveletMatrix.test.cpp
+  - test/FactorialTable.test.cpp
   - test/FPSinv.test.cpp
+  - test/FPSexp.test.cpp
 documentation_of: lib/utility/type_alias.hpp
 layout: document
 redirect_from:

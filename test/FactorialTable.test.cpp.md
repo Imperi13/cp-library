@@ -53,28 +53,30 @@ data:
     \ u32 = std::uint32_t;\nusing u16 = std::uint16_t;\nusing u8 = std::uint8_t;\n\
     \nusing i64 = std::int64_t;\nusing i32 = std::int32_t;\nusing i16 = std::int16_t;\n\
     using i8 = std::int8_t;\n\nusing usize = std::size_t;\nusing isize = std::ptrdiff_t;\n\
-    \ni64 operator\"\" _i64(unsigned long long num) { return i64(num); }\n\nu64 operator\"\
-    \" _u64(unsigned long long num) { return u64(num); }\n#line 15 \"lib/utility/modint.hpp\"\
-    \n\ntemplate <u64 Modulus>\nclass modint {\n\n public:\n  constexpr static u64\
-    \ mod = Modulus;\n  u64 a;\n\n  constexpr modint(const u64 x = 0) noexcept : a(x\
-    \ % Modulus) {}\n  constexpr u64 &value() noexcept { return a; }\n  constexpr\
-    \ const u64 &value() const noexcept { return a; }\n  constexpr bool operator==(const\
-    \ modint rhs) const noexcept {\n    return a == rhs.a;\n  }\n  constexpr bool\
-    \ operator!=(const modint rhs) const noexcept {\n    return !(*this == rhs);\n\
-    \  }\n  constexpr modint operator+(const modint rhs) const noexcept {\n    return\
-    \ modint(*this) += rhs;\n  }\n  constexpr modint operator-(const modint rhs) const\
-    \ noexcept {\n    return modint(*this) -= rhs;\n  }\n  constexpr modint operator*(const\
-    \ modint rhs) const noexcept {\n    return modint(*this) *= rhs;\n  }\n  constexpr\
-    \ modint operator/(const modint rhs) const noexcept {\n    return modint(*this)\
-    \ /= rhs;\n  }\n  constexpr modint &operator+=(const modint rhs) noexcept {\n\
-    \    a += rhs.a;\n    if (a >= Modulus) {\n      a -= Modulus;\n    }\n    return\
-    \ *this;\n  }\n  constexpr modint &operator-=(const modint rhs) noexcept {\n \
-    \   if (a < rhs.a) {\n      a += Modulus;\n    }\n    a -= rhs.a;\n    return\
-    \ *this;\n  }\n  constexpr modint &operator*=(const modint rhs) noexcept {\n \
-    \   a = a * rhs.a % Modulus;\n    return *this;\n  }\n  constexpr modint &operator/=(modint\
-    \ rhs) noexcept {\n    u64 exp = Modulus - 2;\n    while (exp) {\n      if (exp\
-    \ % 2) {\n        *this *= rhs;\n      }\n      rhs *= rhs;\n      exp /= 2;\n\
-    \    }\n    return *this;\n  }\n};\n#line 8 \"lib/math/FactorialTable.hpp\"\n\n\
+    \nconstexpr i64 operator\"\" _i64(unsigned long long num) { return i64(num); }\n\
+    \nconstexpr u64 operator\"\" _u64(unsigned long long num) { return u64(num); }\n\
+    #line 16 \"lib/utility/modint.hpp\"\n\ntemplate <u64 Modulus>\nclass modint {\n\
+    \n public:\n  constexpr static u64 mod = Modulus;\n  u64 a;\n\n  constexpr modint(const\
+    \ u64 x = 0) noexcept : a(x % Modulus) {}\n  constexpr u64 &value() noexcept {\
+    \ return a; }\n  constexpr const u64 &value() const noexcept { return a; }\n \
+    \ constexpr bool operator==(const modint rhs) const noexcept {\n    return a ==\
+    \ rhs.a;\n  }\n  constexpr bool operator!=(const modint rhs) const noexcept {\n\
+    \    return !(*this == rhs);\n  }\n  constexpr modint operator+(const modint rhs)\
+    \ const noexcept {\n    return modint(*this) += rhs;\n  }\n  constexpr modint\
+    \ operator-(const modint rhs) const noexcept {\n    return modint(*this) -= rhs;\n\
+    \  }\n  constexpr modint operator*(const modint rhs) const noexcept {\n    return\
+    \ modint(*this) *= rhs;\n  }\n  constexpr modint operator/(const modint rhs) const\
+    \ noexcept {\n    return modint(*this) /= rhs;\n  }\n  constexpr modint &operator+=(const\
+    \ modint rhs) noexcept {\n    a += rhs.a;\n    if (a >= Modulus) {\n      a -=\
+    \ Modulus;\n    }\n    return *this;\n  }\n  constexpr modint &operator-=(const\
+    \ modint rhs) noexcept {\n    if (a < rhs.a) {\n      a += Modulus;\n    }\n \
+    \   a -= rhs.a;\n    return *this;\n  }\n  constexpr modint &operator*=(const\
+    \ modint rhs) noexcept {\n    a = a * rhs.a % Modulus;\n    return *this;\n  }\n\
+    \  constexpr modint &operator/=(modint rhs) noexcept {\n    u64 exp = Modulus\
+    \ - 2;\n    while (exp) {\n      if (exp % 2) {\n        *this *= rhs;\n     \
+    \ }\n      rhs *= rhs;\n      exp /= 2;\n    }\n    return *this;\n  }\n};\n\n\
+    template <u64 MOD>\nstd::ostream& operator<<(std::ostream& os, modint<MOD> a)\
+    \ {\n  return os << a.value();\n}\n#line 8 \"lib/math/FactorialTable.hpp\"\n\n\
     template <std::uint_fast64_t MOD>\nclass Factorial {\n public:\n  using mint =\
     \ modint<MOD>;\n  using size_t = std::size_t;\n\n private:\n  std::size_t n;\n\
     \  std::vector<mint> factorial, factorial_inv;\n\n public:\n  Factorial(std::size_t\
@@ -130,7 +132,7 @@ data:
   isVerificationFile: true
   path: test/FactorialTable.test.cpp
   requiredBy: []
-  timestamp: '2021-01-16 18:13:22+09:00'
+  timestamp: '2021-11-02 10:46:31+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/FactorialTable.test.cpp

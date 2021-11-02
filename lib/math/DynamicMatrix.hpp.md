@@ -16,10 +16,10 @@ data:
     links: []
   bundledCode: "#line 2 \"lib/math/DynamicMatrix.hpp\"\n\n#include <cassert>\n#include\
     \ <utility>\n#include <vector>\n\ntemplate <typename Field>\nclass DynamicMatrix\
-    \ {\n public:\n  using value_t = Field;\n  using size_t = std::size_t;\n\n private:\n\
-    \  size_t row, column;\n  std::vector<std::vector<value_t>> a;\n\n public:\n \
-    \ explicit DynamicMatrix(size_t row_ = 0, size_t column_ = 0,\n              \
-    \           value_t init_ = value_t())\n      : row(row_),\n        column(column_),\n\
+    \ {\n public:\n  using value_t = Field;\n  using size_t = std::size_t;\n  size_t\
+    \ row, column;\n\n private:\n  std::vector<std::vector<value_t>> a;\n\n public:\n\
+    \  explicit DynamicMatrix(size_t row_ = 0, size_t column_ = 0,\n             \
+    \            value_t init_ = value_t())\n      : row(row_),\n        column(column_),\n\
     \        a(row, std::vector<value_t>(column, init_)) {}\n\n  constexpr value_t&\
     \ operator()(size_t i, size_t j) {\n    assert(0 <= i && i < row && 0 <= j &&\
     \ j < column);\n    return a[i][j];\n  }\n  constexpr bool operator==(const DynamicMatrix&\
@@ -70,7 +70,7 @@ data:
     \ = 0; i < row; i++) ret *= u.a[i][i];\n    return ret;\n  }\n};\n"
   code: "#pragma once\n\n#include <cassert>\n#include <utility>\n#include <vector>\n\
     \ntemplate <typename Field>\nclass DynamicMatrix {\n public:\n  using value_t\
-    \ = Field;\n  using size_t = std::size_t;\n\n private:\n  size_t row, column;\n\
+    \ = Field;\n  using size_t = std::size_t;\n  size_t row, column;\n\n private:\n\
     \  std::vector<std::vector<value_t>> a;\n\n public:\n  explicit DynamicMatrix(size_t\
     \ row_ = 0, size_t column_ = 0,\n                         value_t init_ = value_t())\n\
     \      : row(row_),\n        column(column_),\n        a(row, std::vector<value_t>(column,\
@@ -126,11 +126,11 @@ data:
   isVerificationFile: false
   path: lib/math/DynamicMatrix.hpp
   requiredBy: []
-  timestamp: '2020-07-31 15:44:20+09:00'
+  timestamp: '2021-11-02 10:46:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/DynamicMatrix.test.cpp
   - test/DynamicMatrix_2.test.cpp
+  - test/DynamicMatrix.test.cpp
 documentation_of: lib/math/DynamicMatrix.hpp
 layout: document
 redirect_from:
