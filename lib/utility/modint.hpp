@@ -11,6 +11,7 @@
 */
 
 #include <cstdint>
+#include <iostream>
 #include "./type_alias.hpp"
 
 template <u64 Modulus>
@@ -71,3 +72,8 @@ class modint {
     return *this;
   }
 };
+
+template <u64 MOD>
+std::ostream& operator<<(std::ostream& os, modint<MOD> a) {
+  return os << a.value();
+}

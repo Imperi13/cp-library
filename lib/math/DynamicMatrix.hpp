@@ -9,9 +9,9 @@ class DynamicMatrix {
  public:
   using value_t = Field;
   using size_t = std::size_t;
+  size_t row, column;
 
  private:
-  size_t row, column;
   std::vector<std::vector<value_t>> a;
 
  public:

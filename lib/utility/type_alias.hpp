@@ -15,6 +15,6 @@ using i8 = std::int8_t;
 using usize = std::size_t;
 using isize = std::ptrdiff_t;
 
-i64 operator"" _i64(unsigned long long num) { return i64(num); }
+constexpr i64 operator"" _i64(unsigned long long num) { return i64(num); }
 
-u64 operator"" _u64(unsigned long long num) { return u64(num); }
+constexpr u64 operator"" _u64(unsigned long long num) { return u64(num); }
