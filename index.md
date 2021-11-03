@@ -93,6 +93,11 @@ data:
     - icon: ':warning:'
       path: lib/math/Matrix.hpp
       title: lib/math/Matrix.hpp
+  - name: lib/template
+    pages:
+    - icon: ':warning:'
+      path: lib/template/template.cpp
+      title: lib/template/template.cpp
   - name: lib/utility
     pages:
     - icon: ':warning:'
