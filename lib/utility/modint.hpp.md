@@ -106,11 +106,11 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/DynamicMatrix_2.test.cpp
-  - test/FPSmultiply.test.cpp
-  - test/FPSlog.test.cpp
   - test/FactorialTable.test.cpp
+  - test/FPSmultiply.test.cpp
   - test/FPSinv.test.cpp
   - test/FPSexp.test.cpp
+  - test/FPSlog.test.cpp
 documentation_of: lib/utility/modint.hpp
 layout: document
 redirect_from:

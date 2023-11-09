@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: lib/SegmentTree/DynamicSegmentTree.hpp
-    title: lib/SegmentTree/DynamicSegmentTree.hpp
+    path: lib/data_structure/SegmentTree/DynamicSegmentTree.hpp
+    title: lib/data_structure/SegmentTree/DynamicSegmentTree.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -15,7 +15,7 @@ data:
     links:
     - https://judge.yosupo.jp/problem/point_set_range_composite
   bundledCode: "#line 1 \"test/DynamicSegmentTree.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
-    \n\n#include <iostream>\n#include <vector>\n\n#line 2 \"lib/SegmentTree/DynamicSegmentTree.hpp\"\
+    \n\n#include <iostream>\n#include <vector>\n\n#line 2 \"lib/data_structure/SegmentTree/DynamicSegmentTree.hpp\"\
     \n\n#include <cassert>\n#include <memory>\n\n// Monoid\n// type value_t\n// static\
     \ var id\n// static (value_t,value_t)->value_t op\n\ntemplate <typename Monoid>\n\
     class DynamicSegmentTree {\n public:\n  using value_t = typename Monoid::value_t;\n\
@@ -68,7 +68,7 @@ data:
     \      std::cout<<(fold.first*x%MOD+fold.second)%MOD<<\"\\n\";\n    }\n  }\n\n\
     \  return 0; \n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
-    \n\n#include <iostream>\n#include <vector>\n\n#include \"../lib/SegmentTree/DynamicSegmentTree.hpp\"\
+    \n\n#include <iostream>\n#include <vector>\n\n#include \"../lib/data_structure/SegmentTree/DynamicSegmentTree.hpp\"\
     \n\nconstexpr long long MOD=998244353;\n\nstruct Monoid{\n  using value_t=std::pair<long\
     \ long,long long>;\n  static constexpr value_t id={1,0};\n  static constexpr value_t\
     \ op(value_t a,value_t b){\n    return {a.first*b.first%MOD,(a.second*b.first%MOD\
@@ -82,11 +82,11 @@ data:
     \      std::cout<<(fold.first*x%MOD+fold.second)%MOD<<\"\\n\";\n    }\n  }\n\n\
     \  return 0; \n}"
   dependsOn:
-  - lib/SegmentTree/DynamicSegmentTree.hpp
+  - lib/data_structure/SegmentTree/DynamicSegmentTree.hpp
   isVerificationFile: true
   path: test/DynamicSegmentTree.test.cpp
   requiredBy: []
-  timestamp: '2020-07-31 15:44:20+09:00'
+  timestamp: '2023-11-10 04:19:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/DynamicSegmentTree.test.cpp

@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: lib/SparseTable.hpp
-    title: lib/SparseTable.hpp
+    path: lib/data_structure/SparseTable.hpp
+    title: lib/data_structure/SparseTable.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -16,7 +16,7 @@ data:
     - https://judge.yosupo.jp/problem/staticrmq
   bundledCode: "#line 1 \"test/SparseTable.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\
     \n\n#include <iostream>\n#include <cassert>\n#include <algorithm>\n\n#include\
-    \ <vector>\n\n#line 2 \"lib/SparseTable.hpp\"\n\n#line 5 \"lib/SparseTable.hpp\"\
+    \ <vector>\n\n#line 2 \"lib/data_structure/SparseTable.hpp\"\n\n#line 5 \"lib/data_structure/SparseTable.hpp\"\
     \n\n// Semigroup\n// type value_t\n// static (value_t ,value_t)->value_t op\n\n\
     // a op a == a\n\ntemplate <typename Semigroup>\nclass SparseTable {\n public:\n\
     \  using value_t = typename Semigroup::value_t;\n  using size_t = std::size_t;\n\
@@ -41,20 +41,20 @@ data:
     \ << sp.fold(l, r) << \"\\n\";\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\n\n#include\
     \ <iostream>\n#include <cassert>\n#include <algorithm>\n\n#include <vector>\n\n\
-    #include \"../lib/SparseTable.hpp\"\n\nstruct Semigroup{\n  using value_t = long\
-    \ long;\n  static constexpr value_t op(const value_t &a, const value_t &b){\n\
-    \    return std::min(a, b);\n  }\n};\n\nusing ll = long long;\nusing P = std::pair<ll,\
-    \ ll>;\n\nint main()\n{\n  std::cin.tie(nullptr);\n  std::ios::sync_with_stdio(false);\n\
+    #include \"../lib/data_structure/SparseTable.hpp\"\n\nstruct Semigroup{\n  using\
+    \ value_t = long long;\n  static constexpr value_t op(const value_t &a, const\
+    \ value_t &b){\n    return std::min(a, b);\n  }\n};\n\nusing ll = long long;\n\
+    using P = std::pair<ll, ll>;\n\nint main()\n{\n  std::cin.tie(nullptr);\n  std::ios::sync_with_stdio(false);\n\
     \n  ll n, q;\n  std::cin >> n >> q;\n\n  std::vector<ll> a(n);\n  for (auto &&e\
     \ : a)\n    std::cin >> e;\n\n  SparseTable<Semigroup> sp(a);\n\n  while (q--)\n\
     \  {\n    ll l, r;\n    std::cin >> l >> r;\n    std::cout << sp.fold(l, r) <<\
     \ \"\\n\";\n  }\n\n  return 0;\n}"
   dependsOn:
-  - lib/SparseTable.hpp
+  - lib/data_structure/SparseTable.hpp
   isVerificationFile: true
   path: test/SparseTable.test.cpp
   requiredBy: []
-  timestamp: '2020-07-31 15:44:20+09:00'
+  timestamp: '2023-11-10 04:27:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/SparseTable.test.cpp

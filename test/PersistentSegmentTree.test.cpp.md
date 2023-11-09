@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: lib/SegmentTree/PersistentSegmentTree.hpp
-    title: lib/SegmentTree/PersistentSegmentTree.hpp
+    path: lib/data_structure/SegmentTree/PersistentSegmentTree.hpp
+    title: lib/data_structure/SegmentTree/PersistentSegmentTree.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -16,7 +16,7 @@ data:
     - https://judge.yosupo.jp/problem/rectangle_sum
   bundledCode: "#line 1 \"test/PersistentSegmentTree.test.cpp\"\n#define PROBLEM \"\
     https://judge.yosupo.jp/problem/rectangle_sum\"\n\n#include <iostream>\n#include\
-    \ <algorithm>\n#include <vector>\n\n#line 2 \"lib/SegmentTree/PersistentSegmentTree.hpp\"\
+    \ <algorithm>\n#include <vector>\n\n#line 2 \"lib/data_structure/SegmentTree/PersistentSegmentTree.hpp\"\
     \n\n#include <cassert>\n#include <memory>\n\ntemplate <typename Monoid>\nclass\
     \ PersistentSegmentTree {\n public:\n  using value_t = typename Monoid::value_t;\n\
     \  using size_t = std::size_t;\n\n private:\n  struct Node {\n    value_t val;\n\
@@ -67,7 +67,7 @@ data:
     \    ans-=seg[std::lower_bound(all(points),Point(r,-1,-1),comp)-points.begin()].fold(d,u);\n\
     \    std::cout<<ans<<\"\\n\";\n  }\n\n  return 0; \n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/rectangle_sum\"\n\n#include\
-    \ <iostream>\n#include <algorithm>\n#include <vector>\n\n#include \"../lib/SegmentTree/PersistentSegmentTree.hpp\"\
+    \ <iostream>\n#include <algorithm>\n#include <vector>\n\n#include \"../lib/data_structure/SegmentTree/PersistentSegmentTree.hpp\"\
     \n\n#define rep(i, a, b) for (long long i = (a); (i) < (b); (i)++)\n#define all(a)\
     \ a.begin(),a.end()\n\nconstexpr long long MOD=998244353;\n\nstruct Monoid{\n\
     \  using value_t=long long;\n  static constexpr value_t id=0;\n  static constexpr\
@@ -84,11 +84,11 @@ data:
     \    ans-=seg[std::lower_bound(all(points),Point(r,-1,-1),comp)-points.begin()].fold(d,u);\n\
     \    std::cout<<ans<<\"\\n\";\n  }\n\n  return 0; \n}"
   dependsOn:
-  - lib/SegmentTree/PersistentSegmentTree.hpp
+  - lib/data_structure/SegmentTree/PersistentSegmentTree.hpp
   isVerificationFile: true
   path: test/PersistentSegmentTree.test.cpp
   requiredBy: []
-  timestamp: '2020-07-31 15:44:20+09:00'
+  timestamp: '2023-11-10 04:27:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/PersistentSegmentTree.test.cpp

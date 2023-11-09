@@ -167,9 +167,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/FPSmultiply.test.cpp
-  - test/FPSlog.test.cpp
   - test/FPSinv.test.cpp
   - test/FPSexp.test.cpp
+  - test/FPSlog.test.cpp
 documentation_of: lib/math/FormalPowerSeries.hpp
 layout: document
 redirect_from:

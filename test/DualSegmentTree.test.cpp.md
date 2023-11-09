@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: lib/SegmentTree/DualSegmentTree.hpp
-    title: lib/SegmentTree/DualSegmentTree.hpp
+    path: lib/data_structure/SegmentTree/DualSegmentTree.hpp
+    title: lib/data_structure/SegmentTree/DualSegmentTree.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -16,16 +16,16 @@ data:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_E
   bundledCode: "#line 1 \"test/DualSegmentTree.test.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_E\"\
     \n\n#include <iostream>\n#include <algorithm>\n#include <vector>\n\n#line 2 \"\
-    lib/SegmentTree/DualSegmentTree.hpp\"\n\n#include <cassert>\n#include <memory>\n\
-    \n// commutative Monoid\n// type value_t\n// static value_t id\n// static (value_t,value_t)->value_t\
-    \ op\n\ntemplate <typename Monoid>\nclass DualSegmentTree {\n public:\n  using\
-    \ value_t = typename Monoid::value_t;\n  using size_t = std::size_t;\n\n private:\n\
-    \  struct Node {\n    value_t val;\n    std::shared_ptr<Node> left, right;\n \
-    \   Node(value_t val_) : val(val_), left(), right() {}\n  };\n\n  using node_ptr\
-    \ = std::shared_ptr<Node>;\n\n  size_t n, n0;\n  node_ptr root;\n\n  void update(size_t\
-    \ a, size_t b, value_t value, const node_ptr& now, size_t l,\n              size_t\
-    \ r) {\n    if (a <= l && r <= b) {\n      now->val = Monoid::op(now->val, value);\n\
-    \      return;\n    }\n    if (b <= l || r <= a) return;\n\n    if (!now->left)\
+    lib/data_structure/SegmentTree/DualSegmentTree.hpp\"\n\n#include <cassert>\n#include\
+    \ <memory>\n\n// commutative Monoid\n// type value_t\n// static value_t id\n//\
+    \ static (value_t,value_t)->value_t op\n\ntemplate <typename Monoid>\nclass DualSegmentTree\
+    \ {\n public:\n  using value_t = typename Monoid::value_t;\n  using size_t = std::size_t;\n\
+    \n private:\n  struct Node {\n    value_t val;\n    std::shared_ptr<Node> left,\
+    \ right;\n    Node(value_t val_) : val(val_), left(), right() {}\n  };\n\n  using\
+    \ node_ptr = std::shared_ptr<Node>;\n\n  size_t n, n0;\n  node_ptr root;\n\n \
+    \ void update(size_t a, size_t b, value_t value, const node_ptr& now, size_t l,\n\
+    \              size_t r) {\n    if (a <= l && r <= b) {\n      now->val = Monoid::op(now->val,\
+    \ value);\n      return;\n    }\n    if (b <= l || r <= a) return;\n\n    if (!now->left)\
     \ now->left = std::make_shared<Node>(Monoid::id);\n    if (!now->right) now->right\
     \ = std::make_shared<Node>(Monoid::id);\n    update(a, b, value, now->left, l,\
     \ l + (r - l) / 2);\n    update(a, b, value, now->right, l + (r - l) / 2, r);\n\
@@ -50,21 +50,21 @@ data:
     \ }\n  }\n\n  return 0; \n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_E\"\
     \n\n#include <iostream>\n#include <algorithm>\n#include <vector>\n\n#include \"\
-    ../lib/SegmentTree/DualSegmentTree.hpp\"\n\n#define rep(i, a, b) for (long long\
-    \ i = (a); (i) < (b); (i)++)\n#define all(a) a.begin(),a.end()\n\nstruct Monoid{\n\
-    \  using value_t=long long;\n  static constexpr value_t id=0;\n  static constexpr\
-    \ value_t op(value_t a,value_t b){\n    return a+b;\n  }\n};\n\nusing ll=long\
-    \ long;\n\nint main(){\n  std::cin.tie(nullptr);\n  std::ios::sync_with_stdio(false);\n\
+    ../lib/data_structure/SegmentTree/DualSegmentTree.hpp\"\n\n#define rep(i, a, b)\
+    \ for (long long i = (a); (i) < (b); (i)++)\n#define all(a) a.begin(),a.end()\n\
+    \nstruct Monoid{\n  using value_t=long long;\n  static constexpr value_t id=0;\n\
+    \  static constexpr value_t op(value_t a,value_t b){\n    return a+b;\n  }\n};\n\
+    \nusing ll=long long;\n\nint main(){\n  std::cin.tie(nullptr);\n  std::ios::sync_with_stdio(false);\n\
     \n  ll n,q;\n  std::cin>>n>>q;\n\n  DualSegmentTree<Monoid> seg(n);\n\n  while(q--){\n\
     \    ll mode;\n    std::cin>>mode;\n    if(mode==0){\n      ll s,t,x;\n      std::cin>>s>>t>>x;\n\
     \      seg.update(s-1,t,x);\n    }else{\n      ll t;\n      std::cin>>t;\n   \
     \   std::cout<<seg.at(t-1)<<\"\\n\";\n    }\n  }\n\n  return 0; \n}"
   dependsOn:
-  - lib/SegmentTree/DualSegmentTree.hpp
+  - lib/data_structure/SegmentTree/DualSegmentTree.hpp
   isVerificationFile: true
   path: test/DualSegmentTree.test.cpp
   requiredBy: []
-  timestamp: '2020-07-31 15:44:20+09:00'
+  timestamp: '2023-11-10 04:19:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/DualSegmentTree.test.cpp

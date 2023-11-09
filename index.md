@@ -1,71 +1,71 @@
 ---
 data:
   libraryCategories:
-  - name: lib
+  - name: lib/data_structure
     pages:
     - icon: ':heavy_check_mark:'
-      path: lib/DisjointSparseTable.hpp
-      title: lib/DisjointSparseTable.hpp
+      path: lib/data_structure/DisjointSparseTable.hpp
+      title: lib/data_structure/DisjointSparseTable.hpp
     - icon: ':heavy_check_mark:'
-      path: lib/PersistentArray.hpp
-      title: lib/PersistentArray.hpp
+      path: lib/data_structure/PersistentArray.hpp
+      title: lib/data_structure/PersistentArray.hpp
     - icon: ':warning:'
-      path: lib/PersistentStack.hpp
-      title: lib/PersistentStack.hpp
+      path: lib/data_structure/PersistentStack.hpp
+      title: lib/data_structure/PersistentStack.hpp
     - icon: ':warning:'
-      path: lib/RBST_Multiset.hpp
-      title: lib/RBST_Multiset.hpp
+      path: lib/data_structure/RBST_Multiset.hpp
+      title: lib/data_structure/RBST_Multiset.hpp
     - icon: ':heavy_check_mark:'
-      path: lib/RBST_Seq.hpp
-      title: lib/RBST_Seq.hpp
+      path: lib/data_structure/RBST_Seq.hpp
+      title: lib/data_structure/RBST_Seq.hpp
     - icon: ':heavy_check_mark:'
-      path: lib/SWAG.hpp
-      title: lib/SWAG.hpp
+      path: lib/data_structure/SWAG.hpp
+      title: lib/data_structure/SWAG.hpp
     - icon: ':warning:'
-      path: lib/SkewBinaryList.hpp
-      title: lib/SkewBinaryList.hpp
+      path: lib/data_structure/SkewBinaryList.hpp
+      title: lib/data_structure/SkewBinaryList.hpp
     - icon: ':heavy_check_mark:'
-      path: lib/SparseTable.hpp
-      title: lib/SparseTable.hpp
-  - name: lib/SegmentTree
+      path: lib/data_structure/SparseTable.hpp
+      title: lib/data_structure/SparseTable.hpp
+  - name: lib/data_structure/SegmentTree
     pages:
     - icon: ':heavy_check_mark:'
-      path: lib/SegmentTree/DualSegmentTree.hpp
-      title: lib/SegmentTree/DualSegmentTree.hpp
+      path: lib/data_structure/SegmentTree/DualSegmentTree.hpp
+      title: lib/data_structure/SegmentTree/DualSegmentTree.hpp
     - icon: ':heavy_check_mark:'
-      path: lib/SegmentTree/DynamicSegmentTree.hpp
-      title: lib/SegmentTree/DynamicSegmentTree.hpp
+      path: lib/data_structure/SegmentTree/DynamicSegmentTree.hpp
+      title: lib/data_structure/SegmentTree/DynamicSegmentTree.hpp
     - icon: ':heavy_check_mark:'
-      path: lib/SegmentTree/LazySegmentTree.hpp
-      title: lib/SegmentTree/LazySegmentTree.hpp
+      path: lib/data_structure/SegmentTree/LazySegmentTree.hpp
+      title: lib/data_structure/SegmentTree/LazySegmentTree.hpp
     - icon: ':heavy_check_mark:'
-      path: lib/SegmentTree/LiChaoSegmentTree.hpp
-      title: lib/SegmentTree/LiChaoSegmentTree.hpp
+      path: lib/data_structure/SegmentTree/LiChaoSegmentTree.hpp
+      title: lib/data_structure/SegmentTree/LiChaoSegmentTree.hpp
     - icon: ':heavy_check_mark:'
-      path: lib/SegmentTree/PersistentSegmentTree.hpp
-      title: lib/SegmentTree/PersistentSegmentTree.hpp
+      path: lib/data_structure/SegmentTree/PersistentSegmentTree.hpp
+      title: lib/data_structure/SegmentTree/PersistentSegmentTree.hpp
     - icon: ':heavy_check_mark:'
-      path: lib/SegmentTree/SegmentTree.hpp
-      title: lib/SegmentTree/SegmentTree.hpp
-  - name: lib/UnionFind
+      path: lib/data_structure/SegmentTree/SegmentTree.hpp
+      title: lib/data_structure/SegmentTree/SegmentTree.hpp
+  - name: lib/data_structure/UnionFind
     pages:
     - icon: ':heavy_check_mark:'
-      path: lib/UnionFind/PersistentUnionFind.hpp
-      title: lib/UnionFind/PersistentUnionFind.hpp
+      path: lib/data_structure/UnionFind/PersistentUnionFind.hpp
+      title: lib/data_structure/UnionFind/PersistentUnionFind.hpp
     - icon: ':heavy_check_mark:'
-      path: lib/UnionFind/PotentialUnionFind.hpp
-      title: lib/UnionFind/PotentialUnionFind.hpp
+      path: lib/data_structure/UnionFind/PotentialUnionFind.hpp
+      title: lib/data_structure/UnionFind/PotentialUnionFind.hpp
     - icon: ':heavy_check_mark:'
-      path: lib/UnionFind/UnionFind.hpp
-      title: lib/UnionFind/UnionFind.hpp
-  - name: lib/WaveletMatrix
+      path: lib/data_structure/UnionFind/UnionFind.hpp
+      title: lib/data_structure/UnionFind/UnionFind.hpp
+  - name: lib/data_structure/WaveletMatrix
     pages:
     - icon: ':heavy_check_mark:'
-      path: lib/WaveletMatrix/BitVector.hpp
-      title: lib/WaveletMatrix/BitVector.hpp
+      path: lib/data_structure/WaveletMatrix/BitVector.hpp
+      title: lib/data_structure/WaveletMatrix/BitVector.hpp
     - icon: ':heavy_check_mark:'
-      path: lib/WaveletMatrix/WaveletMatrix.hpp
-      title: lib/WaveletMatrix/WaveletMatrix.hpp
+      path: lib/data_structure/WaveletMatrix/WaveletMatrix.hpp
+      title: lib/data_structure/WaveletMatrix/WaveletMatrix.hpp
   - name: lib/geometry
     pages:
     - icon: ':warning:'
@@ -93,11 +93,6 @@ data:
     - icon: ':warning:'
       path: lib/math/Matrix.hpp
       title: lib/math/Matrix.hpp
-  - name: lib/template
-    pages:
-    - icon: ':warning:'
-      path: lib/template/template.cpp
-      title: lib/template/template.cpp
   - name: lib/utility
     pages:
     - icon: ':warning:'

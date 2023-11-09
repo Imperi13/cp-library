@@ -11,10 +11,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"lib/RBST_Seq.hpp\"\n\n#include <memory>\n#include <utility>\n\
-    #include <vector>\n\ntemplate <typename Monoid>\nclass RBST_Seq {\n public:\n\
-    \  using value_t = typename Monoid::value_t;\n  using size_t = std::size_t;\n\n\
-    \ private:\n  unsigned int rnd() {\n    static unsigned int x(123456789), y(362436069),\
+  bundledCode: "#line 2 \"lib/data_structure/RBST_Seq.hpp\"\n\n#include <memory>\n\
+    #include <utility>\n#include <vector>\n\ntemplate <typename Monoid>\nclass RBST_Seq\
+    \ {\n public:\n  using value_t = typename Monoid::value_t;\n  using size_t = std::size_t;\n\
+    \n private:\n  unsigned int rnd() {\n    static unsigned int x(123456789), y(362436069),\
     \ z(521288629), w(88675123);\n    unsigned int t = (x ^ (x << 11));\n    x = y;\n\
     \    y = z;\n    z = w;\n    return w = (w ^ (w >> 19)) ^ (t ^ (t >> 8));\n  }\n\
     \n  struct Node {\n    value_t val, sum;\n    size_t cnt;\n    std::shared_ptr<Node>\
@@ -125,16 +125,16 @@ data:
     \ ret;\n  }\n};"
   dependsOn: []
   isVerificationFile: false
-  path: lib/RBST_Seq.hpp
+  path: lib/data_structure/RBST_Seq.hpp
   requiredBy: []
-  timestamp: '2020-07-31 15:44:20+09:00'
+  timestamp: '2023-11-10 03:27:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/RBST_Seq.test.cpp
-documentation_of: lib/RBST_Seq.hpp
+documentation_of: lib/data_structure/RBST_Seq.hpp
 layout: document
 redirect_from:
-- /library/lib/RBST_Seq.hpp
-- /library/lib/RBST_Seq.hpp.html
-title: lib/RBST_Seq.hpp
+- /library/lib/data_structure/RBST_Seq.hpp
+- /library/lib/data_structure/RBST_Seq.hpp.html
+title: lib/data_structure/RBST_Seq.hpp
 ---

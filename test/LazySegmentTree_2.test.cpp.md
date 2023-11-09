@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: lib/SegmentTree/LazySegmentTree.hpp
-    title: lib/SegmentTree/LazySegmentTree.hpp
+    path: lib/data_structure/SegmentTree/LazySegmentTree.hpp
+    title: lib/data_structure/SegmentTree/LazySegmentTree.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -15,10 +15,10 @@ data:
     links:
     - https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_H
   bundledCode: "#line 1 \"test/LazySegmentTree_2.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_H\"\
-    \n\n#include <iostream>\n#include <vector>\n\n#line 2 \"lib/SegmentTree/LazySegmentTree.hpp\"\
-    \n\n#include <cassert>\n#line 5 \"lib/SegmentTree/LazySegmentTree.hpp\"\n\n//\
-    \ Lazy\n// type value_t\n// type lazy_t\n// static value_t id_val\n// static value_t\
-    \ id_lazy\n// static (value_t,value_t) -> value_t f\n// static (value_t,lazy_t)\
+    \n\n#include <iostream>\n#include <vector>\n#include <cstdint>\n\n#line 2 \"lib/data_structure/SegmentTree/LazySegmentTree.hpp\"\
+    \n\n#include <cassert>\n#line 5 \"lib/data_structure/SegmentTree/LazySegmentTree.hpp\"\
+    \n\n// Lazy\n// type value_t\n// type lazy_t\n// static value_t id_val\n// static\
+    \ value_t id_lazy\n// static (value_t,value_t) -> value_t f\n// static (value_t,lazy_t)\
     \ -> value_t g\n// static (lazy_t,lazy_t) -> lazy_t h\n// static (lazy_t,size_t)\
     \ -> lazy_t p\n\n/* Lazy template\n\nstruct Lazy{\n  using value_t= ~~ ;\n  using\
     \ lazy_t= ~~ ;\n  static constexpr value_t id_val= ~~ ;\n  static constexpr lazy_t\
@@ -55,7 +55,7 @@ data:
     \ i >= 0; i--)\n      val[i] = Lazy::f(val[2 * i + 1], val[2 * i + 2]);\n  }\n\
     \n  void update(size_t a, size_t b, lazy_t laz) { update(a, b, laz, 0, n0, 0);\
     \ }\n\n  value_t fold(size_t a, size_t b) { return fold(a, b, 0, n0, 0); }\n};\n\
-    #line 7 \"test/LazySegmentTree_2.test.cpp\"\n\n/* template start */\n \n#define\
+    #line 8 \"test/LazySegmentTree_2.test.cpp\"\n\n/* template start */\n \n#define\
     \ rep(i, a, b) for (long long i = (a); (i) < (b); (i)++)\n#define all(i) i.begin(),\
     \ i.end()\n\nusing i64=std::int_fast64_t;\n\nstruct Lazy{\n  using value_t=i64;\n\
     \  using lazy_t=i64;\n  static constexpr value_t id_val=1e18;\n  static constexpr\
@@ -69,7 +69,7 @@ data:
     \    }else{\n      i64 s,t;\n      std::cin>>s>>t;\n\n      std::cout<<seg.fold(s,t+1)<<\"\
     \\n\";\n    }\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_H\"\n\n\
-    #include <iostream>\n#include <vector>\n\n#include \"../lib/SegmentTree/LazySegmentTree.hpp\"\
+    #include <iostream>\n#include <vector>\n#include <cstdint>\n\n#include \"../lib/data_structure/SegmentTree/LazySegmentTree.hpp\"\
     \n\n/* template start */\n \n#define rep(i, a, b) for (long long i = (a); (i)\
     \ < (b); (i)++)\n#define all(i) i.begin(), i.end()\n\nusing i64=std::int_fast64_t;\n\
     \nstruct Lazy{\n  using value_t=i64;\n  using lazy_t=i64;\n  static constexpr\
@@ -84,11 +84,11 @@ data:
     \     i64 s,t;\n      std::cin>>s>>t;\n\n      std::cout<<seg.fold(s,t+1)<<\"\\\
     n\";\n    }\n  }\n\n  return 0;\n}"
   dependsOn:
-  - lib/SegmentTree/LazySegmentTree.hpp
+  - lib/data_structure/SegmentTree/LazySegmentTree.hpp
   isVerificationFile: true
   path: test/LazySegmentTree_2.test.cpp
   requiredBy: []
-  timestamp: '2020-10-04 14:30:33+09:00'
+  timestamp: '2023-11-10 04:55:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/LazySegmentTree_2.test.cpp

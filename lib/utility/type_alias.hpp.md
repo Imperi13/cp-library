@@ -3,14 +3,14 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: lib/SkewBinaryList.hpp
-    title: lib/SkewBinaryList.hpp
+    path: lib/data_structure/SkewBinaryList.hpp
+    title: lib/data_structure/SkewBinaryList.hpp
   - icon: ':heavy_check_mark:'
-    path: lib/WaveletMatrix/BitVector.hpp
-    title: lib/WaveletMatrix/BitVector.hpp
+    path: lib/data_structure/WaveletMatrix/BitVector.hpp
+    title: lib/data_structure/WaveletMatrix/BitVector.hpp
   - icon: ':heavy_check_mark:'
-    path: lib/WaveletMatrix/WaveletMatrix.hpp
-    title: lib/WaveletMatrix/WaveletMatrix.hpp
+    path: lib/data_structure/WaveletMatrix/WaveletMatrix.hpp
+    title: lib/data_structure/WaveletMatrix/WaveletMatrix.hpp
   - icon: ':heavy_check_mark:'
     path: lib/math/FactorialTable.hpp
     title: lib/math/FactorialTable.hpp
@@ -122,23 +122,23 @@ data:
   isVerificationFile: false
   path: lib/utility/type_alias.hpp
   requiredBy:
-  - lib/math/FormalPowerSeries.hpp
-  - lib/math/FactorialTable.hpp
   - lib/utility/bit.hpp
   - lib/utility/modint.hpp
-  - lib/WaveletMatrix/WaveletMatrix.hpp
-  - lib/WaveletMatrix/BitVector.hpp
-  - lib/SkewBinaryList.hpp
+  - lib/data_structure/SkewBinaryList.hpp
+  - lib/data_structure/WaveletMatrix/WaveletMatrix.hpp
+  - lib/data_structure/WaveletMatrix/BitVector.hpp
+  - lib/math/FormalPowerSeries.hpp
+  - lib/math/FactorialTable.hpp
   timestamp: '2021-11-02 10:46:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/DynamicMatrix_2.test.cpp
-  - test/FPSmultiply.test.cpp
-  - test/FPSlog.test.cpp
-  - test/WaveletMatrix.test.cpp
   - test/FactorialTable.test.cpp
+  - test/FPSmultiply.test.cpp
   - test/FPSinv.test.cpp
+  - test/WaveletMatrix.test.cpp
   - test/FPSexp.test.cpp
+  - test/FPSlog.test.cpp
 documentation_of: lib/utility/type_alias.hpp
 layout: document
 redirect_from:

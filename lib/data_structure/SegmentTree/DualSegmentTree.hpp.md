@@ -11,10 +11,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"lib/SegmentTree/DualSegmentTree.hpp\"\n\n#include <cassert>\n\
-    #include <memory>\n\n// commutative Monoid\n// type value_t\n// static value_t\
-    \ id\n// static (value_t,value_t)->value_t op\n\ntemplate <typename Monoid>\n\
-    class DualSegmentTree {\n public:\n  using value_t = typename Monoid::value_t;\n\
+  bundledCode: "#line 2 \"lib/data_structure/SegmentTree/DualSegmentTree.hpp\"\n\n\
+    #include <cassert>\n#include <memory>\n\n// commutative Monoid\n// type value_t\n\
+    // static value_t id\n// static (value_t,value_t)->value_t op\n\ntemplate <typename\
+    \ Monoid>\nclass DualSegmentTree {\n public:\n  using value_t = typename Monoid::value_t;\n\
     \  using size_t = std::size_t;\n\n private:\n  struct Node {\n    value_t val;\n\
     \    std::shared_ptr<Node> left, right;\n    Node(value_t val_) : val(val_), left(),\
     \ right() {}\n  };\n\n  using node_ptr = std::shared_ptr<Node>;\n\n  size_t n,\
@@ -58,16 +58,16 @@ data:
     \ now->val);\n    }\n    return ret;\n  }\n};"
   dependsOn: []
   isVerificationFile: false
-  path: lib/SegmentTree/DualSegmentTree.hpp
+  path: lib/data_structure/SegmentTree/DualSegmentTree.hpp
   requiredBy: []
-  timestamp: '2020-07-31 15:44:20+09:00'
+  timestamp: '2023-11-10 03:27:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/DualSegmentTree.test.cpp
-documentation_of: lib/SegmentTree/DualSegmentTree.hpp
+documentation_of: lib/data_structure/SegmentTree/DualSegmentTree.hpp
 layout: document
 redirect_from:
-- /library/lib/SegmentTree/DualSegmentTree.hpp
-- /library/lib/SegmentTree/DualSegmentTree.hpp.html
-title: lib/SegmentTree/DualSegmentTree.hpp
+- /library/lib/data_structure/SegmentTree/DualSegmentTree.hpp
+- /library/lib/data_structure/SegmentTree/DualSegmentTree.hpp.html
+title: lib/data_structure/SegmentTree/DualSegmentTree.hpp
 ---

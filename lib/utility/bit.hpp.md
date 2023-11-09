@@ -6,11 +6,11 @@ data:
     title: lib/utility/type_alias.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: lib/WaveletMatrix/BitVector.hpp
-    title: lib/WaveletMatrix/BitVector.hpp
+    path: lib/data_structure/WaveletMatrix/BitVector.hpp
+    title: lib/data_structure/WaveletMatrix/BitVector.hpp
   - icon: ':heavy_check_mark:'
-    path: lib/WaveletMatrix/WaveletMatrix.hpp
-    title: lib/WaveletMatrix/WaveletMatrix.hpp
+    path: lib/data_structure/WaveletMatrix/WaveletMatrix.hpp
+    title: lib/data_structure/WaveletMatrix/WaveletMatrix.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/WaveletMatrix.test.cpp
@@ -69,8 +69,8 @@ data:
   isVerificationFile: false
   path: lib/utility/bit.hpp
   requiredBy:
-  - lib/WaveletMatrix/WaveletMatrix.hpp
-  - lib/WaveletMatrix/BitVector.hpp
+  - lib/data_structure/WaveletMatrix/WaveletMatrix.hpp
+  - lib/data_structure/WaveletMatrix/BitVector.hpp
   timestamp: '2021-11-02 10:46:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

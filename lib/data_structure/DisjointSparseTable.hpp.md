@@ -11,10 +11,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"lib/DisjointSparseTable.hpp\"\n\n#include <cassert>\n#include\
-    \ <vector>\n\ntemplate <typename Semigroup>\nclass DisjointSparseTable {\n public:\n\
-    \  using value_t = typename Semigroup::value_t;\n  using size_t = std::size_t;\n\
-    \n private:\n  size_t n, n0;\n  std::vector<size_t> ln;\n  std::vector<std::vector<value_t>>\
+  bundledCode: "#line 2 \"lib/data_structure/DisjointSparseTable.hpp\"\n\n#include\
+    \ <cassert>\n#include <vector>\n\ntemplate <typename Semigroup>\nclass DisjointSparseTable\
+    \ {\n public:\n  using value_t = typename Semigroup::value_t;\n  using size_t\
+    \ = std::size_t;\n\n private:\n  size_t n, n0;\n  std::vector<size_t> ln;\n  std::vector<std::vector<value_t>>\
     \ table;\n\n public:\n  DisjointSparseTable(const std::vector<value_t>& a) : n(a.size())\
     \ {\n    n0 = 1;\n    while (n0 < n) n0 <<= 1;\n    ln = std::vector<size_t>(n0\
     \ + 1, 0);\n    for (size_t i = 1; i < n0 + 1; i++)\n      ln[i] = ln[i - 1] +\
@@ -47,16 +47,16 @@ data:
     \ + 1][r - 1]);\n  }\n};"
   dependsOn: []
   isVerificationFile: false
-  path: lib/DisjointSparseTable.hpp
+  path: lib/data_structure/DisjointSparseTable.hpp
   requiredBy: []
-  timestamp: '2020-07-31 15:44:20+09:00'
+  timestamp: '2023-11-10 03:27:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/DisjointSparseTable.test.cpp
-documentation_of: lib/DisjointSparseTable.hpp
+documentation_of: lib/data_structure/DisjointSparseTable.hpp
 layout: document
 redirect_from:
-- /library/lib/DisjointSparseTable.hpp
-- /library/lib/DisjointSparseTable.hpp.html
-title: lib/DisjointSparseTable.hpp
+- /library/lib/data_structure/DisjointSparseTable.hpp
+- /library/lib/data_structure/DisjointSparseTable.hpp.html
+title: lib/data_structure/DisjointSparseTable.hpp
 ---

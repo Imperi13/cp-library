@@ -11,13 +11,13 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"lib/SWAG.hpp\"\n\n#include <cassert>\n#include <stack>\n\
-    \ntemplate <typename Semigroup>\nclass SWAG {\n public:\n  using value_t = typename\
-    \ Semigroup::value_t;\n  using size_t = std::size_t;\n\n private:\n  using P =\
-    \ std::pair<value_t, value_t>;\n  std::stack<P> front, back;\n\n public:\n  SWAG()\
-    \ {}\n\n  size_t size() { return front.size() + back.size(); }\n  bool empty()\
-    \ { return size() == 0; }\n\n  value_t fold_all() {\n    assert(!empty());\n \
-    \   if (front.empty()) return back.top().second;\n    if (back.empty()) return\
+  bundledCode: "#line 2 \"lib/data_structure/SWAG.hpp\"\n\n#include <cassert>\n#include\
+    \ <stack>\n\ntemplate <typename Semigroup>\nclass SWAG {\n public:\n  using value_t\
+    \ = typename Semigroup::value_t;\n  using size_t = std::size_t;\n\n private:\n\
+    \  using P = std::pair<value_t, value_t>;\n  std::stack<P> front, back;\n\n public:\n\
+    \  SWAG() {}\n\n  size_t size() { return front.size() + back.size(); }\n  bool\
+    \ empty() { return size() == 0; }\n\n  value_t fold_all() {\n    assert(!empty());\n\
+    \    if (front.empty()) return back.top().second;\n    if (back.empty()) return\
     \ front.top().second;\n    return Semigroup::op(front.top().second, back.top().second);\n\
     \  }\n\n  void push_back(value_t val) {\n    if (back.empty())\n      back.emplace(val,\
     \ val);\n    else {\n      P tmp = back.top();\n      back.emplace(val, Semigroup::op(tmp.second,\
@@ -63,16 +63,16 @@ data:
     \ front.pop();\n  }\n};"
   dependsOn: []
   isVerificationFile: false
-  path: lib/SWAG.hpp
+  path: lib/data_structure/SWAG.hpp
   requiredBy: []
-  timestamp: '2020-07-31 15:44:20+09:00'
+  timestamp: '2023-11-10 03:27:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/SWAG.test.cpp
-documentation_of: lib/SWAG.hpp
+documentation_of: lib/data_structure/SWAG.hpp
 layout: document
 redirect_from:
-- /library/lib/SWAG.hpp
-- /library/lib/SWAG.hpp.html
-title: lib/SWAG.hpp
+- /library/lib/data_structure/SWAG.hpp
+- /library/lib/data_structure/SWAG.hpp.html
+title: lib/data_structure/SWAG.hpp
 ---

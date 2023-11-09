@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: lib/SWAG.hpp
-    title: lib/SWAG.hpp
+    path: lib/data_structure/SWAG.hpp
+    title: lib/data_structure/SWAG.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -15,9 +15,9 @@ data:
     links:
     - https://judge.yosupo.jp/problem/queue_operate_all_composite
   bundledCode: "#line 1 \"test/SWAG.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/queue_operate_all_composite\"\
-    \n\n#include <iostream>\n#line 2 \"lib/SWAG.hpp\"\n\n#include <cassert>\n#include\
-    \ <stack>\n\ntemplate <typename Semigroup>\nclass SWAG {\n public:\n  using value_t\
-    \ = typename Semigroup::value_t;\n  using size_t = std::size_t;\n\n private:\n\
+    \n\n#include <iostream>\n#line 2 \"lib/data_structure/SWAG.hpp\"\n\n#include <cassert>\n\
+    #include <stack>\n\ntemplate <typename Semigroup>\nclass SWAG {\n public:\n  using\
+    \ value_t = typename Semigroup::value_t;\n  using size_t = std::size_t;\n\n private:\n\
     \  using P = std::pair<value_t, value_t>;\n  std::stack<P> front, back;\n\n public:\n\
     \  SWAG() {}\n\n  size_t size() { return front.size() + back.size(); }\n  bool\
     \ empty() { return size() == 0; }\n\n  value_t fold_all() {\n    assert(!empty());\n\
@@ -52,9 +52,9 @@ data:
     \\n\";\n      else{\n        auto tmp=swag.fold_all();\n        std::cout<<(tmp.first*x%MOD+tmp.second)%MOD<<\"\
     \\n\";\n      }\n    }\n  }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/queue_operate_all_composite\"\
-    \n\n#include <iostream>\n#include \"../lib/SWAG.hpp\"\n\n#define rep(i, a, b)\
-    \ for (long long i = (a); (i) < (b); (i)++)\n\nusing ll=long long;\n\nconstexpr\
-    \ long long MOD=998244353;\n\nstruct Semigroup{\n  using value_t=std::pair<long\
+    \n\n#include <iostream>\n#include \"../lib/data_structure/SWAG.hpp\"\n\n#define\
+    \ rep(i, a, b) for (long long i = (a); (i) < (b); (i)++)\n\nusing ll=long long;\n\
+    \nconstexpr long long MOD=998244353;\n\nstruct Semigroup{\n  using value_t=std::pair<long\
     \ long,long long>;\n  static constexpr value_t op(value_t a,value_t b){\n    return\
     \ {a.first*b.first%MOD,(a.second*b.first%MOD + b.second)%MOD};\n  }\n};\n\nint\
     \ main(){\n  std::cin.tie(nullptr);\n  std::ios::sync_with_stdio(false);\n\n \
@@ -65,11 +65,11 @@ data:
     \\n\";\n      else{\n        auto tmp=swag.fold_all();\n        std::cout<<(tmp.first*x%MOD+tmp.second)%MOD<<\"\
     \\n\";\n      }\n    }\n  }\n}"
   dependsOn:
-  - lib/SWAG.hpp
+  - lib/data_structure/SWAG.hpp
   isVerificationFile: true
   path: test/SWAG.test.cpp
   requiredBy: []
-  timestamp: '2020-07-31 15:44:20+09:00'
+  timestamp: '2023-11-10 04:27:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/SWAG.test.cpp

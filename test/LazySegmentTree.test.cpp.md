@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: lib/SegmentTree/LazySegmentTree.hpp
-    title: lib/SegmentTree/LazySegmentTree.hpp
+    path: lib/data_structure/SegmentTree/LazySegmentTree.hpp
+    title: lib/data_structure/SegmentTree/LazySegmentTree.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -15,10 +15,10 @@ data:
     links:
     - https://judge.yosupo.jp/problem/range_affine_range_sum
   bundledCode: "#line 1 \"test/LazySegmentTree.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_range_sum\"\
-    \n\n#include <iostream>\n#include <vector>\n\n#line 2 \"lib/SegmentTree/LazySegmentTree.hpp\"\
-    \n\n#include <cassert>\n#line 5 \"lib/SegmentTree/LazySegmentTree.hpp\"\n\n//\
-    \ Lazy\n// type value_t\n// type lazy_t\n// static value_t id_val\n// static value_t\
-    \ id_lazy\n// static (value_t,value_t) -> value_t f\n// static (value_t,lazy_t)\
+    \n\n#include <iostream>\n#include <vector>\n\n#line 2 \"lib/data_structure/SegmentTree/LazySegmentTree.hpp\"\
+    \n\n#include <cassert>\n#line 5 \"lib/data_structure/SegmentTree/LazySegmentTree.hpp\"\
+    \n\n// Lazy\n// type value_t\n// type lazy_t\n// static value_t id_val\n// static\
+    \ value_t id_lazy\n// static (value_t,value_t) -> value_t f\n// static (value_t,lazy_t)\
     \ -> value_t g\n// static (lazy_t,lazy_t) -> lazy_t h\n// static (lazy_t,size_t)\
     \ -> lazy_t p\n\n/* Lazy template\n\nstruct Lazy{\n  using value_t= ~~ ;\n  using\
     \ lazy_t= ~~ ;\n  static constexpr value_t id_val= ~~ ;\n  static constexpr lazy_t\
@@ -72,7 +72,7 @@ data:
     \      std::cin>>l>>r;\n      std::cout<<seg.fold(l,r).first<<\"\\n\";\n    }\n\
     \  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_range_sum\"\
-    \n\n#include <iostream>\n#include <vector>\n\n#include \"../lib/SegmentTree/LazySegmentTree.hpp\"\
+    \n\n#include <iostream>\n#include <vector>\n\n#include \"../lib/data_structure/SegmentTree/LazySegmentTree.hpp\"\
     \n\n/* template start */\n \n#define rep(i, a, b) for (long long i = (a); (i)\
     \ < (b); (i)++)\n#define all(i) i.begin(), i.end()\n\nusing ll=long long;\n\n\
     constexpr ll MOD=998244353;\n\nstruct Lazy{\n  using value_t=std::pair<ll,ll>;\n\
@@ -90,11 +90,11 @@ data:
     \      std::cin>>l>>r;\n      std::cout<<seg.fold(l,r).first<<\"\\n\";\n    }\n\
     \  }\n\n  return 0;\n}"
   dependsOn:
-  - lib/SegmentTree/LazySegmentTree.hpp
+  - lib/data_structure/SegmentTree/LazySegmentTree.hpp
   isVerificationFile: true
   path: test/LazySegmentTree.test.cpp
   requiredBy: []
-  timestamp: '2020-07-31 15:44:20+09:00'
+  timestamp: '2023-11-10 04:19:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/LazySegmentTree.test.cpp

@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: lib/DisjointSparseTable.hpp
-    title: lib/DisjointSparseTable.hpp
+    path: lib/data_structure/DisjointSparseTable.hpp
+    title: lib/data_structure/DisjointSparseTable.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -38,21 +38,22 @@ data:
     template<typename Num>\nconstexpr Num mypow(Num a, long long b) {\n  if(b==0)return\
     \ 1;\n  if (a==0)return 0;\n  Num x = 1;\n  while (b > 0) {\n    if(b & 1)x*=a;\n\
     \    a*=a;\n    b >>= 1;\n  }\n  return x;\n}\n\n/* template end */\n\nusing ll\
-    \ = long long;\n\n#line 2 \"lib/DisjointSparseTable.hpp\"\n\n#line 5 \"lib/DisjointSparseTable.hpp\"\
-    \n\ntemplate <typename Semigroup>\nclass DisjointSparseTable {\n public:\n  using\
-    \ value_t = typename Semigroup::value_t;\n  using size_t = std::size_t;\n\n private:\n\
-    \  size_t n, n0;\n  std::vector<size_t> ln;\n  std::vector<std::vector<value_t>>\
-    \ table;\n\n public:\n  DisjointSparseTable(const std::vector<value_t>& a) : n(a.size())\
-    \ {\n    n0 = 1;\n    while (n0 < n) n0 <<= 1;\n    ln = std::vector<size_t>(n0\
-    \ + 1, 0);\n    for (size_t i = 1; i < n0 + 1; i++)\n      ln[i] = ln[i - 1] +\
-    \ (i >= (1ull << (ln[i - 1] + 1)));\n    table = std::vector<std::vector<value_t>>(ln[n0]\
-    \ + 1, a);\n    for (size_t i = 1; i < ln[n0] + 1; i++) {\n      for (long long\
-    \ j = 1ll << (i - 1); j < n; j += 1ll << i) {\n        for (long long k = j -\
-    \ 2; k >= j - (1ll << (i - 1)); k--)\n          table[i][k] = Semigroup::op(a[k],\
-    \ table[i][k + 1]);\n        for (long long k = j + 1;\n             k < std::min(j\
-    \ + (1ll << (i - 1)), (long long)n); k++)\n          table[i][k] = Semigroup::op(table[i][k\
-    \ - 1], a[k]);\n      }\n    }\n  }\n\n  value_t fold(size_t l, size_t r) {\n\
-    \    assert(0 <= l && l < r && r <= n);\n    if (r == l + 1) return table[0][l];\n\
+    \ = long long;\n\n#line 2 \"lib/data_structure/DisjointSparseTable.hpp\"\n\n#line\
+    \ 5 \"lib/data_structure/DisjointSparseTable.hpp\"\n\ntemplate <typename Semigroup>\n\
+    class DisjointSparseTable {\n public:\n  using value_t = typename Semigroup::value_t;\n\
+    \  using size_t = std::size_t;\n\n private:\n  size_t n, n0;\n  std::vector<size_t>\
+    \ ln;\n  std::vector<std::vector<value_t>> table;\n\n public:\n  DisjointSparseTable(const\
+    \ std::vector<value_t>& a) : n(a.size()) {\n    n0 = 1;\n    while (n0 < n) n0\
+    \ <<= 1;\n    ln = std::vector<size_t>(n0 + 1, 0);\n    for (size_t i = 1; i <\
+    \ n0 + 1; i++)\n      ln[i] = ln[i - 1] + (i >= (1ull << (ln[i - 1] + 1)));\n\
+    \    table = std::vector<std::vector<value_t>>(ln[n0] + 1, a);\n    for (size_t\
+    \ i = 1; i < ln[n0] + 1; i++) {\n      for (long long j = 1ll << (i - 1); j <\
+    \ n; j += 1ll << i) {\n        for (long long k = j - 2; k >= j - (1ll << (i -\
+    \ 1)); k--)\n          table[i][k] = Semigroup::op(a[k], table[i][k + 1]);\n \
+    \       for (long long k = j + 1;\n             k < std::min(j + (1ll << (i -\
+    \ 1)), (long long)n); k++)\n          table[i][k] = Semigroup::op(table[i][k -\
+    \ 1], a[k]);\n      }\n    }\n  }\n\n  value_t fold(size_t l, size_t r) {\n  \
+    \  assert(0 <= l && l < r && r <= n);\n    if (r == l + 1) return table[0][l];\n\
     \    size_t m = ln[l ^ (r - 1)];\n    return Semigroup::op(table[m + 1][l], table[m\
     \ + 1][r - 1]);\n  }\n};\n#line 87 \"test/DisjointSparseTable.test.cpp\"\n\nstruct\
     \ Semigroup{\n  using value_t=ll;\n  static constexpr value_t op(value_t a,value_t\
@@ -84,7 +85,7 @@ data:
     \ && (a=b,true);}\n\ntemplate<typename Num>\nconstexpr Num mypow(Num a, long long\
     \ b) {\n  if(b==0)return 1;\n  if (a==0)return 0;\n  Num x = 1;\n  while (b >\
     \ 0) {\n    if(b & 1)x*=a;\n    a*=a;\n    b >>= 1;\n  }\n  return x;\n}\n\n/*\
-    \ template end */\n\nusing ll = long long;\n\n#include \"../lib/DisjointSparseTable.hpp\"\
+    \ template end */\n\nusing ll = long long;\n\n#include \"../lib/data_structure/DisjointSparseTable.hpp\"\
     \n\nstruct Semigroup{\n  using value_t=ll;\n  static constexpr value_t op(value_t\
     \ a,value_t b){\n    return a+b;\n  }\n};\n\nint main() {\n  std::cin.tie(nullptr);\n\
     \  std::ios::sync_with_stdio(false);\n\n  ll n,q;\n  std::cin>>n>>q;\n\n  std::vector<ll>\
@@ -92,11 +93,11 @@ data:
     \n  while(q--){\n    ll l,r;\n    std::cin>>l>>r;\n    std::cout<<seq.fold(l,r)<<\"\
     \\n\";\n  }\n\n  return 0;\n}"
   dependsOn:
-  - lib/DisjointSparseTable.hpp
+  - lib/data_structure/DisjointSparseTable.hpp
   isVerificationFile: true
   path: test/DisjointSparseTable.test.cpp
   requiredBy: []
-  timestamp: '2020-07-31 15:44:20+09:00'
+  timestamp: '2023-11-10 04:19:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/DisjointSparseTable.test.cpp
