@@ -6,7 +6,7 @@
 
 #include <vector>
 
-#include "../lib/SparseTable.hpp"
+#include "../lib/data_structure/SparseTable.hpp"
 
 struct Semigroup{
   using value_t = long long;

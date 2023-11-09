@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "../lib/RBST_Seq.hpp"
+#include "../lib/data_structure/RBST_Seq.hpp"
 
 constexpr long long MOD=998244353;
 

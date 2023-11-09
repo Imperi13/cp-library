@@ -98,7 +98,7 @@ std::vector<std::pair<std::size_t, T>> enumerate(const std::vector<T>& data) {
 
 /* template end */
 
-#include "../lib/SegmentTree/LiChaoSegmentTree.hpp"
+#include "../lib/data_structure/SegmentTree/LiChaoSegmentTree.hpp"
 
 constexpr i64 INF=1e9+100;
 

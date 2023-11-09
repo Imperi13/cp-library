@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/queue_operate_all_composite"
 
 #include <iostream>
-#include "../lib/SWAG.hpp"
+#include "../lib/data_structure/SWAG.hpp"
 
 #define rep(i, a, b) for (long long i = (a); (i) < (b); (i)++)
 

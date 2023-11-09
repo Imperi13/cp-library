@@ -36,7 +36,7 @@
 
 using ll=long long;
 
-#include "../lib/PersistentArray.hpp"
+#include "../lib/data_structure/PersistentArray.hpp"
 
 template<typename T>
 class PersistentQueue{
