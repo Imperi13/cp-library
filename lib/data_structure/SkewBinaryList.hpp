@@ -3,7 +3,7 @@
 #include <cassert>
 #include <list>
 
-#include "./utility/type_alias.hpp"
+#include "../utility/type_alias.hpp"
 
 template <typename T>
 class SkewBinaryList {
