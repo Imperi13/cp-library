@@ -20,5 +20,6 @@
 "test/SWAG.test.cpp": "2023-11-10 04:27:52 +0900",
 "test/SegmentTree.test.cpp": "2023-11-10 04:27:52 +0900",
 "test/SparseTable.test.cpp": "2023-11-10 04:27:52 +0900",
-"test/UnionFind.test.cpp": "2023-11-10 04:27:52 +0900"
+"test/UnionFind.test.cpp": "2023-11-10 04:27:52 +0900",
+"test/WaveletMatrix.test.cpp": "2023-11-10 04:43:26 +0900"
 }
