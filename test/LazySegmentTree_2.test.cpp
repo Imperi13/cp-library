@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+#include <cstdint>
 
 #include "../lib/data_structure/SegmentTree/LazySegmentTree.hpp"
 
