@@ -4,8 +4,8 @@
 #include <limits>
 #include <vector>
 
-#include "utility/bit.hpp"
-#include "utility/type_alias.hpp"
+#include "../utility/bit.hpp"
+#include "../utility/type_alias.hpp"
 
 class BitVector {
  private:
