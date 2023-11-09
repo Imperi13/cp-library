@@ -83,7 +83,7 @@ constexpr Num mypow(Num a, long long b) {
 
 using ll = long long;
 
-#include "../lib/WaveletMatrix/WaveletMatrix.hpp"
+#include "../lib/data_structure/WaveletMatrix/WaveletMatrix.hpp"
 
 int main() {
   std::cin.tie(nullptr);

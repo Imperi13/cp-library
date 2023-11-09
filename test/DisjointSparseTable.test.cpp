@@ -83,7 +83,7 @@ constexpr Num mypow(Num a, long long b) {
 
 using ll = long long;
 
-#include "../lib/DisjointSparseTable.hpp"
+#include "../lib/data_structure/DisjointSparseTable.hpp"
 
 struct Semigroup{
   using value_t=ll;

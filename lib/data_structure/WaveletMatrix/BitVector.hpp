@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cassert>
+#include <limits>
 #include <vector>
 
 #include "utility/bit.hpp"
