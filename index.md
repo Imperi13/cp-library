@@ -79,6 +79,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: lib/graph/LowestCommonAncestor.hpp
       title: lib/graph/LowestCommonAncestor.hpp
+  - name: lib/heuristic
+    pages:
+    - icon: ':warning:'
+      path: lib/heuristic/template.hpp
+      title: lib/heuristic/template.hpp
   - name: lib/math
     pages:
     - icon: ':heavy_check_mark:'
@@ -101,12 +106,18 @@ data:
     - icon: ':heavy_check_mark:'
       path: lib/utility/bit.hpp
       title: lib/utility/bit.hpp
+    - icon: ':warning:'
+      path: lib/utility/debug.hpp
+      title: lib/utility/debug.hpp
     - icon: ':heavy_check_mark:'
       path: lib/utility/modint.hpp
       title: lib/utility/modint.hpp
     - icon: ':heavy_check_mark:'
       path: lib/utility/runtime_modint.hpp
       title: lib/utility/runtime_modint.hpp
+    - icon: ':warning:'
+      path: lib/utility/template.hpp
+      title: lib/utility/template.hpp
     - icon: ':heavy_check_mark:'
       path: lib/utility/type_alias.hpp
       title: lib/utility/type_alias.hpp
