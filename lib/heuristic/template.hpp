@@ -35,6 +35,16 @@ struct Xor64 {
     return (long double)((*this)()) / std::numeric_limits<state_type>::max();
   }
 
+  // choice index with prob
+  //  ex) prob = {4,6}; => return 0 : 40% , 1 : 60%
+  size_t choice_with_prob(std::vector<int> prob) {
+    int n = prob.size();
+    rep(i, 1, n) prob[i] += prob[i - 1];
+    int max = prob.back();
+    int r = int_dist(0, max);
+    return std::upper_bound(all(prob), r) - prob.begin();
+  }
+  
   void discard(unsigned long long z) {
     while (z-- > 0) {
       (*this)();
