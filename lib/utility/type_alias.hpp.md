@@ -122,23 +122,23 @@ data:
   isVerificationFile: false
   path: lib/utility/type_alias.hpp
   requiredBy:
+  - lib/math/FactorialTable.hpp
+  - lib/math/FormalPowerSeries.hpp
+  - lib/data_structure/WaveletMatrix/BitVector.hpp
+  - lib/data_structure/WaveletMatrix/WaveletMatrix.hpp
+  - lib/data_structure/SkewBinaryList.hpp
   - lib/utility/bit.hpp
   - lib/utility/modint.hpp
-  - lib/data_structure/SkewBinaryList.hpp
-  - lib/data_structure/WaveletMatrix/WaveletMatrix.hpp
-  - lib/data_structure/WaveletMatrix/BitVector.hpp
-  - lib/math/FormalPowerSeries.hpp
-  - lib/math/FactorialTable.hpp
   timestamp: '2021-11-02 10:46:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/FPSinv.test.cpp
   - test/DynamicMatrix_2.test.cpp
   - test/FactorialTable.test.cpp
-  - test/FPSmultiply.test.cpp
-  - test/FPSinv.test.cpp
-  - test/WaveletMatrix.test.cpp
-  - test/FPSexp.test.cpp
   - test/FPSlog.test.cpp
+  - test/FPSmultiply.test.cpp
+  - test/FPSexp.test.cpp
+  - test/WaveletMatrix.test.cpp
 documentation_of: lib/utility/type_alias.hpp
 layout: document
 redirect_from:
