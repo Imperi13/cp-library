@@ -21,12 +21,18 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"lib/utility/bit.hpp\"\n\n#line 2 \"lib/utility/type_alias.hpp\"\
-    \n\n#include <cstdint>\n\nusing u64 = std::uint64_t;\nusing u32 = std::uint32_t;\n\
-    using u16 = std::uint16_t;\nusing u8 = std::uint8_t;\n\nusing i64 = std::int64_t;\n\
-    using i32 = std::int32_t;\nusing i16 = std::int16_t;\nusing i8 = std::int8_t;\n\
+    \n\n#include <cstdint>\n\nusing i64 = std::int64_t;\nusing i32 = std::int32_t;\n\
+    using i16 = std::int16_t;\nusing i8 = std::int8_t;\n\nusing u64 = std::uint64_t;\n\
+    using u32 = std::uint32_t;\nusing u16 = std::uint16_t;\nusing u8 = std::uint8_t;\n\
     \nusing usize = std::size_t;\nusing isize = std::ptrdiff_t;\n\nconstexpr i64 operator\"\
-    \" _i64(unsigned long long num) { return i64(num); }\n\nconstexpr u64 operator\"\
-    \" _u64(unsigned long long num) { return u64(num); }\n#line 4 \"lib/utility/bit.hpp\"\
+    \" _i64(unsigned long long num) { return i64(num); }\nconstexpr i32 operator\"\
+    \" _i32(unsigned long long num) { return i32(num); }\nconstexpr i16 operator\"\
+    \" _i16(unsigned long long num) { return i16(num); }\nconstexpr i8 operator\"\"\
+    \ _i8(unsigned long long num) { return i8(num); }\n\nconstexpr u64 operator\"\"\
+    \ _u64(unsigned long long num) { return u64(num); }\nconstexpr u32 operator\"\"\
+    \ _u32(unsigned long long num) { return u32(num); }\nconstexpr u16 operator\"\"\
+    \ _u16(unsigned long long num) { return u16(num); }\nconstexpr u8 operator\"\"\
+    \ _u8(unsigned long long num) { return u8(num); }\n#line 4 \"lib/utility/bit.hpp\"\
     \n\nconstexpr u64 next_combination(u64 num) {\n  u64 x = num & (-num);\n  u64\
     \ y = x + num;\n  return y | (((num & ~y) / x) >> 1);\n}\n\nconstexpr u32 popcount32(u32\
     \ x) {\n#ifdef __GNUC__\n\n  return __builtin_popcount(x);\n\n#else\n\n  x = (x\
@@ -69,9 +75,9 @@ data:
   isVerificationFile: false
   path: lib/utility/bit.hpp
   requiredBy:
-  - lib/data_structure/WaveletMatrix/BitVector.hpp
   - lib/data_structure/WaveletMatrix/WaveletMatrix.hpp
-  timestamp: '2021-11-02 10:46:31+09:00'
+  - lib/data_structure/WaveletMatrix/BitVector.hpp
+  timestamp: '2024-07-20 17:36:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/WaveletMatrix.test.cpp

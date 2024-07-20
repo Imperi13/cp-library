@@ -10,33 +10,34 @@ data:
     links: []
   bundledCode: "#line 2 \"lib/utility/debug.hpp\"\n\n#include <iostream>\n#include\
     \ <vector>\n\n#ifdef LOCAL\n#define debug(...)                               \
-    \                     \\\n  std::cerr << \"LINE: \" << __LINE__ << \"  [\" <<\
-    \ #__VA_ARGS__ << \"]:\", \\\n      debug_out(__VA_ARGS__)\n#else\n#define debug(...)\n\
-    #endif\n\nvoid debug_out() { std::cerr << std::endl; }\n\ntemplate <typename T1,\
-    \ typename T2>\nstd::ostream &operator<<(std::ostream &os, std::pair<T1, T2> pa)\
-    \ {\n  return os << pa.first << \" \" << pa.second;\n}\n\ntemplate <typename T>\n\
-    std::ostream &operator<<(std::ostream &os, std::vector<T> vec) {\n  for (std::size_t\
-    \ i = 0; i < vec.size(); i++)\n    os << vec[i] << (i + 1 == vec.size() ? \"\"\
-    \ : \" \");\n  return os;\n}\n\ntemplate <typename Head, typename... Tail>\nvoid\
-    \ debug_out(Head h, Tail... t) {\n  std::cerr << \" \" << h;\n  if (sizeof...(t)\
-    \ > 0) std::cerr << \" :\";\n  debug_out(t...);\n}\n"
-  code: "#pragma once\n\n#include <iostream>\n#include <vector>\n\n#ifdef LOCAL\n\
-    #define debug(...)                                                    \\\n  std::cerr\
-    \ << \"LINE: \" << __LINE__ << \"  [\" << #__VA_ARGS__ << \"]:\", \\\n      debug_out(__VA_ARGS__)\n\
-    #else\n#define debug(...)\n#endif\n\nvoid debug_out() { std::cerr << std::endl;\
+    \                              \\\n  std::cerr << \"LINE: \" << __LINE__ << \"\
+    \  [\" << #__VA_ARGS__ << \"]:\",          \\\n      debug_out(__VA_ARGS__)\n\
+    #else\n#define debug(...)\n#endif\n\ninline void debug_out() { std::cerr << std::endl;\
     \ }\n\ntemplate <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream\
     \ &os, std::pair<T1, T2> pa) {\n  return os << pa.first << \" \" << pa.second;\n\
     }\n\ntemplate <typename T>\nstd::ostream &operator<<(std::ostream &os, std::vector<T>\
     \ vec) {\n  for (std::size_t i = 0; i < vec.size(); i++)\n    os << vec[i] <<\
     \ (i + 1 == vec.size() ? \"\" : \" \");\n  return os;\n}\n\ntemplate <typename\
-    \ Head, typename... Tail>\nvoid debug_out(Head h, Tail... t) {\n  std::cerr <<\
-    \ \" \" << h;\n  if (sizeof...(t) > 0) std::cerr << \" :\";\n  debug_out(t...);\n\
-    }"
+    \ Head, typename... Tail> void debug_out(Head h, Tail... t) {\n  std::cerr <<\
+    \ \" \" << h;\n  if (sizeof...(t) > 0)\n    std::cerr << \" :\";\n  debug_out(t...);\n\
+    }\n"
+  code: "#pragma once\n\n#include <iostream>\n#include <vector>\n\n#ifdef LOCAL\n\
+    #define debug(...)                                                           \
+    \  \\\n  std::cerr << \"LINE: \" << __LINE__ << \"  [\" << #__VA_ARGS__ << \"\
+    ]:\",          \\\n      debug_out(__VA_ARGS__)\n#else\n#define debug(...)\n#endif\n\
+    \ninline void debug_out() { std::cerr << std::endl; }\n\ntemplate <typename T1,\
+    \ typename T2>\nstd::ostream &operator<<(std::ostream &os, std::pair<T1, T2> pa)\
+    \ {\n  return os << pa.first << \" \" << pa.second;\n}\n\ntemplate <typename T>\n\
+    std::ostream &operator<<(std::ostream &os, std::vector<T> vec) {\n  for (std::size_t\
+    \ i = 0; i < vec.size(); i++)\n    os << vec[i] << (i + 1 == vec.size() ? \"\"\
+    \ : \" \");\n  return os;\n}\n\ntemplate <typename Head, typename... Tail> void\
+    \ debug_out(Head h, Tail... t) {\n  std::cerr << \" \" << h;\n  if (sizeof...(t)\
+    \ > 0)\n    std::cerr << \" :\";\n  debug_out(t...);\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: lib/utility/debug.hpp
   requiredBy: []
-  timestamp: '2023-11-10 16:03:52+09:00'
+  timestamp: '2024-07-20 17:36:56+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: lib/utility/debug.hpp
