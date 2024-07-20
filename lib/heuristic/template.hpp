@@ -1,9 +1,11 @@
 #pragma once
 
+#include <algorithm>
 #include <cassert>
 #include <chrono>
 #include <cstdint>
 #include <limits>
+#include <vector>
 
 // https://github.com/niuez/niuristic/blob/main/utility/xorshift.hpp
 struct Xor64 {
@@ -38,13 +40,14 @@ struct Xor64 {
   // choice index with prob
   //  ex) prob = {4,6}; => return 0 : 40% , 1 : 60%
   size_t choice_with_prob(std::vector<int> prob) {
-    int n = prob.size();
-    rep(i, 1, n) prob[i] += prob[i - 1];
+    size_t n = prob.size();
+    for (size_t i = 1; i < n; i++)
+      prob[i] += prob[i - 1];
     int max = prob.back();
     int r = int_dist(0, max);
-    return std::upper_bound(all(prob), r) - prob.begin();
+    return std::upper_bound(prob.begin(), prob.end(), r) - prob.begin();
   }
-  
+
   void discard(unsigned long long z) {
     while (z-- > 0) {
       (*this)();
