@@ -26,7 +26,37 @@ struct BMTask {
 };
 */
 
-template <typename BeamSearchTask, size_t BEAMSEARCH_WIDTH> class BeamSearch {
+template <class T>
+concept TaskState = requires(T &x, T::op_type op) {
+  typename T::op_type;
+  typename T::cost_type;
+
+  { x.enumerate_ops() } -> std::same_as<std::vector<typename T::op_type>>;
+  x.apply(op);
+  { x.calc_cost() } -> std::same_as<typename T::cost_type>;
+  { x.is_finished() } -> std::same_as<bool>;
+};
+
+template <class T>
+concept HashableState = requires(T &x) {
+  typename T::hash_type;
+  { x.calc_hash() } -> std::same_as<typename T::hash_type>;
+};
+
+template <class T>
+concept RollbackableState = requires(T &x, T::op_type op) { x.rollback(op); };
+
+template <class T>
+concept BeamSearchableTask = requires(T &x) {
+  typename T::state_type;
+  requires TaskState<typename T::state_type> &&
+               HashableState<typename T::state_type> &&
+               RollbackableState<typename T::state_type>;
+  requires std::same_as<decltype(T::init_state), typename T::state_type>;
+};
+
+template <BeamSearchableTask BeamSearchTask, size_t BEAMSEARCH_WIDTH>
+class BeamSearch {
 private:
   using state_type = typename BeamSearchTask::state_type;
   using op_type = typename state_type::op_type;
