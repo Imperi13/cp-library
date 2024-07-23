@@ -1,0 +1,6 @@
+-I/home/imperi/cp-library/lib
+-Wall
+-Wextra
+-Wshadow
+-std=gnu++20
+-DLOCAL
