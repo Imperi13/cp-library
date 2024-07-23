@@ -82,6 +82,9 @@ data:
   - name: lib/heuristic
     pages:
     - icon: ':warning:'
+      path: lib/heuristic/BeamSearch.hpp
+      title: lib/heuristic/BeamSearch.hpp
+    - icon: ':warning:'
       path: lib/heuristic/template.hpp
       title: lib/heuristic/template.hpp
   - name: lib/math
