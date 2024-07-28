@@ -8,16 +8,10 @@
 #include <vector>
 
 // https://github.com/niuez/niuristic/blob/main/utility/xorshift.hpp
-struct Xor64 {
+class Xor64 {
+public:
   using state_type = std::uint64_t;
   using result_type = std::uint64_t;
-  state_type a;
-  static constexpr result_type min() {
-    return std::numeric_limits<result_type>::min();
-  }
-  static constexpr result_type max() {
-    return std::numeric_limits<result_type>::max();
-  }
   constexpr Xor64(state_type seed = 88675123) : a(seed) {}
   constexpr void seed(state_type seed = 88675123) { a = seed; }
   constexpr result_type operator()() {
@@ -53,18 +47,29 @@ struct Xor64 {
       (*this)();
     }
   }
+
+private:
+  state_type a;
+  static constexpr result_type min() {
+    return std::numeric_limits<result_type>::min();
+  }
+  static constexpr result_type max() {
+    return std::numeric_limits<result_type>::max();
+  }
 };
 
-struct Timer {
-  std::chrono::system_clock::time_point start;
-
+class Timer {
+public:
   Timer() : start(std::chrono::system_clock::now()) {}
 
-  double now_sec() {
+  double now_sec() const {
     auto now = std::chrono::system_clock::now();
     return static_cast<double>(
                std::chrono::duration_cast<std::chrono::nanoseconds>(now - start)
                    .count()) /
            1000000000;
   }
+
+private:
+  std::chrono::system_clock::time_point start;
 };
