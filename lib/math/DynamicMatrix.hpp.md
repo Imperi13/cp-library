@@ -129,8 +129,8 @@ data:
   timestamp: '2021-11-02 10:46:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/DynamicMatrix_2.test.cpp
   - test/DynamicMatrix.test.cpp
+  - test/DynamicMatrix_2.test.cpp
 documentation_of: lib/math/DynamicMatrix.hpp
 layout: document
 redirect_from:

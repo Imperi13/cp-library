@@ -75,8 +75,8 @@ data:
   isVerificationFile: false
   path: lib/utility/bit.hpp
   requiredBy:
-  - lib/data_structure/WaveletMatrix/WaveletMatrix.hpp
   - lib/data_structure/WaveletMatrix/BitVector.hpp
+  - lib/data_structure/WaveletMatrix/WaveletMatrix.hpp
   timestamp: '2024-07-20 17:36:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

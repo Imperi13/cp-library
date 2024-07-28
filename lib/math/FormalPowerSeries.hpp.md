@@ -172,10 +172,10 @@ data:
   timestamp: '2024-07-20 17:36:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/FPSlog.test.cpp
-  - test/FPSmultiply.test.cpp
   - test/FPSinv.test.cpp
+  - test/FPSmultiply.test.cpp
   - test/FPSexp.test.cpp
+  - test/FPSlog.test.cpp
 documentation_of: lib/math/FormalPowerSeries.hpp
 layout: document
 redirect_from:

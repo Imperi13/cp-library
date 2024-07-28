@@ -106,16 +106,16 @@ data:
   isVerificationFile: false
   path: lib/utility/modint.hpp
   requiredBy:
-  - lib/math/FormalPowerSeries.hpp
   - lib/math/FactorialTable.hpp
+  - lib/math/FormalPowerSeries.hpp
   timestamp: '2024-07-20 17:36:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/FPSinv.test.cpp
+  - test/FPSmultiply.test.cpp
+  - test/FPSexp.test.cpp
   - test/FPSlog.test.cpp
   - test/DynamicMatrix_2.test.cpp
-  - test/FPSmultiply.test.cpp
-  - test/FPSinv.test.cpp
-  - test/FPSexp.test.cpp
   - test/FactorialTable.test.cpp
 documentation_of: lib/utility/modint.hpp
 layout: document
