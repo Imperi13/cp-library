@@ -7,8 +7,10 @@
 #define debug(...)                                                             \
   std::cerr << "LINE: " << __LINE__ << "  [" << #__VA_ARGS__ << "]:",          \
       debug_out(__VA_ARGS__)
+#define debug_assert(e) assert(e)
 #else
 #define debug(...)
+#define debug_assert(e)
 #endif
 
 inline void debug_out() { std::cerr << std::endl; }
