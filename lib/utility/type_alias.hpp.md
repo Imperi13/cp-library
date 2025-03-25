@@ -11,6 +11,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: lib/data_structure/WaveletMatrix/WaveletMatrix.hpp
     title: lib/data_structure/WaveletMatrix/WaveletMatrix.hpp
+  - icon: ':warning:'
+    path: lib/heuristic/BeamSearch.hpp
+    title: lib/heuristic/BeamSearch.hpp
   - icon: ':heavy_check_mark:'
     path: lib/math/FactorialTable.hpp
     title: lib/math/FactorialTable.hpp
@@ -148,23 +151,24 @@ data:
   isVerificationFile: false
   path: lib/utility/type_alias.hpp
   requiredBy:
-  - lib/data_structure/SkewBinaryList.hpp
+  - lib/heuristic/BeamSearch.hpp
+  - lib/math/FormalPowerSeries.hpp
+  - lib/math/FactorialTable.hpp
   - lib/data_structure/WaveletMatrix/BitVector.hpp
   - lib/data_structure/WaveletMatrix/WaveletMatrix.hpp
+  - lib/data_structure/SkewBinaryList.hpp
   - lib/utility/modint.hpp
   - lib/utility/bit.hpp
-  - lib/math/FactorialTable.hpp
-  - lib/math/FormalPowerSeries.hpp
   timestamp: '2024-07-20 17:36:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/FPSinv.test.cpp
   - test/FPSmultiply.test.cpp
-  - test/FPSexp.test.cpp
   - test/FPSlog.test.cpp
+  - test/FactorialTable.test.cpp
+  - test/FPSexp.test.cpp
   - test/DynamicMatrix_2.test.cpp
   - test/WaveletMatrix.test.cpp
-  - test/FactorialTable.test.cpp
 documentation_of: lib/utility/type_alias.hpp
 layout: document
 redirect_from:

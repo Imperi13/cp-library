@@ -174,8 +174,8 @@ data:
   verifiedWith:
   - test/FPSinv.test.cpp
   - test/FPSmultiply.test.cpp
-  - test/FPSexp.test.cpp
   - test/FPSlog.test.cpp
+  - test/FPSexp.test.cpp
 documentation_of: lib/math/FormalPowerSeries.hpp
 layout: document
 redirect_from:
