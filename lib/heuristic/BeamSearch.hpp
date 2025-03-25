@@ -2,231 +2,252 @@
 #include <algorithm>
 #include <cstddef>
 #include <memory>
+#include <numeric>
 #include <set>
 #include <vector>
 
-/*
-struct Ops {};
-struct State {
-  using op_type = Ops;
-  using cost_type = u64;
-  using hash_type = u64;
-  std::vector<op_type> enumerate_ops() {}
-  void apply(Ops op) {}
-  void rollback(Ops op) {}
-  cost_type calc_cost() const {  }
-  hash_type calc_hash() const { }
-  bool is_finished() const {  }
-};
+#include "../utility/type_alias.hpp"
 
-struct BMTask {
-  using state_type = State;
-
-  static state_type init_state;
-};
-*/
+// ref: https://eijirou-kyopro.hatenablog.com/entry/2024/02/01/115639
 
 template <class T>
-concept TaskState = requires(T &x, T::op_type op) {
+concept BeamSearchStateConcept = requires(T &x, T::op_type op,
+                                          T::cand_type cand) {
   typename T::op_type;
-  typename T::cost_type;
-
-  { x.enumerate_ops() } -> std::same_as<std::vector<typename T::op_type>>;
+  typename T::cand_type;
+  typename T::cand_type::score_type;
+  typename T::cand_type::hash_type;
   x.apply(op);
-  { x.calc_cost() } -> std::same_as<typename T::cost_type>;
-  { x.is_finished() } -> std::same_as<bool>;
+  x.rollback(op);
+  { x.enumerate_cands() } -> std::same_as<std::vector<typename T::cand_type>>;
+  requires std::same_as<decltype(T::cand_type::op), typename T::op_type>;
+  requires std::same_as<decltype(T::cand_type::score), typename T::score_type>;
+  requires std::same_as<decltype(T::cand_type::hash), typename T::hash_type>;
 };
 
-template <class T>
-concept HashableState = requires(T &x) {
-  typename T::hash_type;
-  { x.calc_hash() } -> std::same_as<typename T::hash_type>;
-};
-
-template <class T>
-concept RollbackableState = requires(T &x, T::op_type op) { x.rollback(op); };
-
-template <class T>
-concept BeamSearchableTask = requires(T &x) {
-  typename T::state_type;
-  requires TaskState<typename T::state_type> &&
-               HashableState<typename T::state_type> &&
-               RollbackableState<typename T::state_type>;
-  requires std::same_as<decltype(T::init_state), typename T::state_type>;
-};
-
-template <BeamSearchableTask BeamSearchTask, size_t BEAMSEARCH_WIDTH>
-class BeamSearch {
+template <BeamSearchStateConcept State, size_t BEAM_WIDTH> class BeamSearch {
 private:
-  using state_type = typename BeamSearchTask::state_type;
-  using op_type = typename state_type::op_type;
-  using cost_type = typename state_type::cost_type;
-  using hash_type = typename state_type::hash_type;
+  using leaf_idx_type = i32;
+  static_assert(BEAM_WIDTH <= std::numeric_limits<leaf_idx_type>::max());
 
-  struct Node;
-  using node_ptr = Node *;
-  struct Node {
-    op_type op;
-    node_ptr par;
-    node_ptr child;
-    node_ptr right;
-    node_ptr left;
+  using state_type = State;
+  using op_type = state_type::op_type;
+  using cand_type = state_type::cand_type;
+  using score_type = cand_type::score_type;
+  using hash_type = cand_type::hash_type;
 
-    Node() : par(nullptr), child(nullptr), right(nullptr), left(nullptr) {}
-    Node(op_type op_, node_ptr par_, node_ptr child_, node_ptr right_,
-         node_ptr left_)
-        : op(op_), par(par_), child(child_), right(right_), left(left_) {}
+  class NewLeaf {
+    friend BeamSearch;
 
-    node_ptr push_child(op_type op_) {
-      node_ptr newnode = new Node(op_, this, nullptr, child, nullptr);
-      if (child)
-        child->left = newnode;
-      child = newnode;
+  private:
+    leaf_idx_type par_idx;
 
-      return newnode;
-    }
-
-    bool is_root() const { return !par; }
-    bool is_single_child() const { return !right && !left; }
-    bool is_leftest_child() const { return !left; }
-    bool has_child() { return child; }
-
-    ~Node() {
-      if (is_root()) {
-        return;
-      }
-
-      if (is_single_child()) {
-        delete par;
-        return;
-      }
-
-      if (is_leftest_child()) {
-        // replace par->child
-        par->child = right;
-        right->left = nullptr;
-        return;
-      }
-
-      // middle child
-      left->right = right;
-      if (right)
-        right->left = left;
-    }
+  public:
+    cand_type cand;
+    NewLeaf(cand_type cand_, leaf_idx_type par_idx_)
+        : par_idx(par_idx_), cand(cand_) {}
+    NewLeaf() : par_idx(-1) {}
   };
 
-  struct Cand {
-    node_ptr leaf;
+  struct Edge {
     op_type op;
-    cost_type cost;
-    hash_type hash;
-    Cand(node_ptr leaf_, op_type op_, cost_type cost_, hash_type hash_)
-        : leaf(leaf_), op(op_), cost(cost_), hash(hash_) {}
-
-    bool operator<(const Cand &rhs) const { return cost < rhs.cost; }
+    leaf_idx_type leaf_idx; // -1: apply , -2: rollback ,  positive: leaf
+    static constexpr leaf_idx_type APPLY = -1;
+    static constexpr leaf_idx_type ROLLBACK = -2;
+    Edge(op_type op_, leaf_idx_type leaf_idx_) : op(op_), leaf_idx(leaf_idx_) {}
   };
 
-  std::vector<op_type> get_op_seq(node_ptr now) {
-    std::vector<op_type> ops;
-    while (!now->is_root()) {
-      ops.emplace_back(now->op);
-      now = now->par;
-    }
-    std::reverse(ops.begin(), ops.end());
-    return ops;
-  }
+  const state_type init_state;
+  std::vector<Edge> now_tree, next_tree;
+  std::vector<NewLeaf> accept_leaf[BEAM_WIDTH];
 
 public:
-  BeamSearch() {}
+  using leaf_type = NewLeaf;
+  BeamSearch(state_type init_state_) : init_state(init_state_) {}
 
-  std::vector<op_type> run() {
-    node_ptr root = new Node();
-    std::vector<node_ptr> leafs;
-
-    while (true) {
-      state_type state = BeamSearchTask::init_state;
-      std::vector<Cand> cands;
-      std::vector<Cand> finished_cands;
-
-      node_ptr now = root;
-      size_t has_right_cnt = 0;
-      while (true) {
-        // go down to leaf
-        while (now->child) {
-          now = now->child;
-          if (now->right)
-            has_right_cnt++;
-          state.apply(now->op);
-        }
-
-        // gen cands
-        for (op_type op : state.enumerate_ops()) {
-          state.apply(op);
-
-          cost_type cost = state.calc_cost();
-          hash_type hash = state.calc_hash();
-
-          if (state.is_finished()) {
-            finished_cands.emplace_back(now, op, cost, hash);
-          } else {
-            cands.emplace_back(now, op, cost, hash);
-          }
-
-          state.rollback(op);
-        }
-
-        // go upward
-        while (has_right_cnt != 0 && !now->right) {
-          state.rollback(now->op);
-          now = now->par;
-        }
-
-        if (has_right_cnt == 0)
-          break;
-
-        // move right
-        state.rollback(now->op);
-        now = now->right;
-        if (!now->right)
-          has_right_cnt--;
-        state.apply(now->op);
+  void step() {
+    state_type state = init_state;
+    if (now_tree.empty()) {
+      std::vector<cand_type> cands = state.enumerate_cands();
+      std::ranges::sort(cands, std::ranges::greater(), &cand_type::score);
+      cands.resize(std::min(cands.size(), BEAM_WIDTH));
+      for (size_t i = 0; i < cands.size(); i++) {
+        now_tree.emplace_back(cands[i].op, i);
       }
-
-      if (!finished_cands.empty()) {
-        std::sort(finished_cands.begin(), finished_cands.end());
-
-        const auto &[leaf, op, cost, hash] = finished_cands[0];
-        auto ops = get_op_seq(leaf);
-        ops.emplace_back(op);
-
-        for (node_ptr e : leafs) {
-          delete e;
-        }
-        return ops;
-      }
-
-      std::sort(cands.begin(), cands.end());
-
-      std::vector<node_ptr> next_leafs;
-      std::set<hash_type> hash_set;
-      size_t count = 0;
-      for (const auto &[leaf, op, cost, hash] : cands) {
-        if (count == BEAMSEARCH_WIDTH)
-          break;
-        if (hash_set.contains(hash))
-          continue;
-
-        node_ptr newleaf = leaf->push_child(op);
-        next_leafs.emplace_back(newleaf);
-        count++;
-      }
-
-      for (node_ptr e : leafs) {
-        if (!e->has_child())
-          delete e;
-      }
-
-      leafs = next_leafs;
+      return;
     }
+
+    std::vector<NewLeaf> new_leaves;
+    score_type threshold = std::numeric_limits<score_type>::min();
+
+    for (const auto &edge : now_tree) {
+      if (edge.leaf_idx == Edge::APPLY) {
+        state.apply(edge.op);
+      } else if (edge.leaf_idx == Edge::ROLLBACK) {
+        state.rollback(edge.op);
+      } else {
+        state.apply(edge.op);
+
+        std::vector<cand_type> cands = state.enumerate_cands();
+        for (const auto &cand : cands) {
+          if (cand.score >= threshold) {
+            new_leaves.emplace_back(cand, edge.leaf_idx);
+          }
+        }
+        if (new_leaves.size() > BEAM_WIDTH * 2) {
+          std::ranges::sort(new_leaves, std::ranges::greater(),
+                            [](auto &&v) { return v.cand.score; });
+          new_leaves.resize(BEAM_WIDTH);
+          threshold = new_leaves.back().cand.score;
+        }
+        state.rollback(edge.op);
+      }
+    }
+
+    std::ranges::sort(new_leaves, std::ranges::greater(),
+                      [](auto &&v) { return v.cand.score; });
+    std::set<hash_type> hash_set;
+    size_t count = 0;
+    for (const auto &leaf : new_leaves) {
+      if (count == BEAM_WIDTH)
+        break;
+      if (hash_set.contains(leaf.cand.hash))
+        continue;
+
+      accept_leaf[leaf.par_idx].push_back(leaf);
+      hash_set.insert(leaf.cand.hash);
+      count++;
+    }
+
+    leaf_idx_type leaf_idx_cnt = 0;
+    for (const auto &edge : now_tree) {
+      if (edge.leaf_idx == Edge::APPLY) {
+        next_tree.emplace_back(edge.op, Edge::APPLY);
+      } else if (edge.leaf_idx == Edge::ROLLBACK) {
+        if (next_tree.back().leaf_idx == Edge::APPLY) {
+          next_tree.pop_back();
+        } else {
+          next_tree.emplace_back(edge.op, Edge::ROLLBACK);
+        }
+      } else {
+        if (!accept_leaf[edge.leaf_idx].empty()) {
+          next_tree.emplace_back(edge.op, Edge::APPLY);
+          for (const auto &leaf : accept_leaf[edge.leaf_idx]) {
+            next_tree.emplace_back(leaf.cand.op, leaf_idx_cnt);
+            leaf_idx_cnt++;
+          }
+          next_tree.emplace_back(edge.op, Edge::ROLLBACK);
+          accept_leaf[edge.leaf_idx].clear();
+        }
+      }
+    }
+
+    std::swap(now_tree, next_tree);
+    next_tree.clear();
+  }
+
+  std::vector<leaf_type> step_and_get_leaf() {
+    std::vector<leaf_type> ret;
+
+    state_type state = init_state;
+    if (now_tree.empty()) {
+      std::vector<cand_type> cands = state.enumerate_cands();
+      std::ranges::sort(cands, std::ranges::greater(), &cand_type::score);
+      cands.resize(std::min(cands.size(), BEAM_WIDTH));
+      for (size_t i = 0; i < cands.size(); i++) {
+        now_tree.emplace_back(cands[i].op, i);
+        ret.emplace_back(cands[i], i);
+      }
+      return ret;
+    }
+
+    std::vector<NewLeaf> new_leaves;
+    score_type threshold = std::numeric_limits<score_type>::min();
+
+    for (const auto &edge : now_tree) {
+      if (edge.leaf_idx == Edge::APPLY) {
+        state.apply(edge.op);
+      } else if (edge.leaf_idx == Edge::ROLLBACK) {
+        state.rollback(edge.op);
+      } else {
+        state.apply(edge.op);
+
+        std::vector<cand_type> cands = state.enumerate_cands();
+        for (const auto &cand : cands) {
+          if (cand.score >= threshold) {
+            new_leaves.emplace_back(cand, edge.leaf_idx);
+          }
+        }
+        if (new_leaves.size() > BEAM_WIDTH * 2) {
+          std::ranges::sort(new_leaves, std::ranges::greater(),
+                            [](auto &&v) { return v.cand.score; });
+          new_leaves.resize(BEAM_WIDTH);
+          threshold = new_leaves.back().cand.score;
+        }
+        state.rollback(edge.op);
+      }
+    }
+
+    std::ranges::sort(new_leaves, std::ranges::greater(),
+                      [](auto &&v) { return v.cand.score; });
+    std::set<hash_type> hash_set;
+    size_t count = 0;
+    for (const auto &leaf : new_leaves) {
+      if (count == BEAM_WIDTH)
+        break;
+      if (hash_set.contains(leaf.cand.hash))
+        continue;
+
+      accept_leaf[leaf.par_idx].push_back(leaf);
+      hash_set.insert(leaf.cand.hash);
+      count++;
+    }
+
+    leaf_idx_type leaf_idx_cnt = 0;
+    for (const auto &edge : now_tree) {
+      if (edge.leaf_idx == Edge::APPLY) {
+        next_tree.emplace_back(edge.op, Edge::APPLY);
+      } else if (edge.leaf_idx == Edge::ROLLBACK) {
+        if (next_tree.back().leaf_idx == Edge::APPLY) {
+          next_tree.pop_back();
+        } else {
+          next_tree.emplace_back(edge.op, Edge::ROLLBACK);
+        }
+      } else {
+        if (!accept_leaf[edge.leaf_idx].empty()) {
+          next_tree.emplace_back(edge.op, Edge::APPLY);
+          for (const auto &leaf : accept_leaf[edge.leaf_idx]) {
+            next_tree.emplace_back(leaf.cand.op, leaf_idx_cnt);
+            ret.emplace_back(leaf.cand, leaf_idx_cnt);
+            leaf_idx_cnt++;
+          }
+          next_tree.emplace_back(edge.op, Edge::ROLLBACK);
+          accept_leaf[edge.leaf_idx].clear();
+        }
+      }
+    }
+
+    std::swap(now_tree, next_tree);
+    next_tree.clear();
+
+    return ret;
+  }
+
+  std::vector<op_type> get_path(const leaf_type &leaf) {
+    std::vector<op_type> path;
+    for (const auto &edge : now_tree) {
+      if (edge.leaf_idx == leaf.par_idx) {
+        path.push_back(edge.op);
+        break;
+      }
+
+      if (edge.leaf_idx == Edge::APPLY) {
+        path.emplace_back(edge.op);
+      } else if (edge.leaf_idx == Edge::ROLLBACK) {
+        path.pop_back();
+      }
+    }
+
+    return path;
   }
 };
