@@ -11,18 +11,23 @@
 // ref: https://eijirou-kyopro.hatenablog.com/entry/2024/02/01/115639
 
 template <class T>
-concept BeamSearchStateConcept = requires(T &x, T::op_type op,
-                                          T::cand_type cand) {
+concept BeamSearchStateConcept = requires(
+    T &x, T::op_type op, T::leaf_state_type leaf_state, T::cand_type cand) {
   typename T::op_type;
+  typename T::score_type;
+  typename T::hash_type;
+  typename T::leaf_state_type;
   typename T::cand_type;
-  typename T::cand_type::score_type;
-  typename T::cand_type::hash_type;
   x.apply(op);
   x.rollback(op);
-  { x.enumerate_cands() } -> std::same_as<std::vector<typename T::cand_type>>;
+  {
+    x.enumerate_cands(leaf_state)
+  } -> std::same_as<std::vector<typename T::cand_type>>;
   requires std::same_as<decltype(T::cand_type::op), typename T::op_type>;
   requires std::same_as<decltype(T::cand_type::score), typename T::score_type>;
   requires std::same_as<decltype(T::cand_type::hash), typename T::hash_type>;
+  requires std::same_as<decltype(T::cand_type::leaf_state),
+                        typename T::leaf_state_type>;
 };
 
 template <BeamSearchStateConcept State, size_t BEAM_WIDTH> class BeamSearch {
@@ -32,9 +37,10 @@ private:
 
   using state_type = State;
   using op_type = state_type::op_type;
+  using score_type = state_type::score_type;
+  using hash_type = state_type::hash_type;
+  using leaf_state_type = state_type::leaf_state_type;
   using cand_type = state_type::cand_type;
-  using score_type = cand_type::score_type;
-  using hash_type = cand_type::hash_type;
 
   class NewLeaf {
     friend BeamSearch;
@@ -60,19 +66,24 @@ private:
   const state_type init_state;
   std::vector<Edge> now_tree, next_tree;
   std::vector<NewLeaf> accept_leaf[BEAM_WIDTH];
+  std::array<leaf_state_type, BEAM_WIDTH> leaf_states;
 
 public:
   using leaf_type = NewLeaf;
-  BeamSearch(state_type init_state_) : init_state(init_state_) {}
+  BeamSearch(state_type init_state_, leaf_state_type init_leaf_state_)
+      : init_state(init_state_) {
+    leaf_states[0] = init_leaf_state_;
+  }
 
   void step() {
     state_type state = init_state;
     if (now_tree.empty()) {
-      std::vector<cand_type> cands = state.enumerate_cands();
+      std::vector<cand_type> cands = state.enumerate_cands(leaf_states[0]);
       std::ranges::sort(cands, std::ranges::greater(), &cand_type::score);
       cands.resize(std::min(cands.size(), BEAM_WIDTH));
       for (size_t i = 0; i < cands.size(); i++) {
         now_tree.emplace_back(cands[i].op, i);
+        leaf_states[i] = cands[i].leaf_state;
       }
       return;
     }
@@ -88,7 +99,8 @@ public:
       } else {
         state.apply(edge.op);
 
-        std::vector<cand_type> cands = state.enumerate_cands();
+        std::vector<cand_type> cands =
+            state.enumerate_cands(leaf_states[edge.leaf_idx]);
         for (const auto &cand : cands) {
           if (cand.score >= threshold) {
             new_leaves.emplace_back(cand, edge.leaf_idx);
@@ -134,6 +146,7 @@ public:
           next_tree.emplace_back(edge.op, Edge::APPLY);
           for (const auto &leaf : accept_leaf[edge.leaf_idx]) {
             next_tree.emplace_back(leaf.cand.op, leaf_idx_cnt);
+            leaf_states[leaf_idx_cnt] = leaf.cand.leaf_state;
             leaf_idx_cnt++;
           }
           next_tree.emplace_back(edge.op, Edge::ROLLBACK);
@@ -151,11 +164,12 @@ public:
 
     state_type state = init_state;
     if (now_tree.empty()) {
-      std::vector<cand_type> cands = state.enumerate_cands();
+      std::vector<cand_type> cands = state.enumerate_cands(leaf_states[0]);
       std::ranges::sort(cands, std::ranges::greater(), &cand_type::score);
       cands.resize(std::min(cands.size(), BEAM_WIDTH));
       for (size_t i = 0; i < cands.size(); i++) {
         now_tree.emplace_back(cands[i].op, i);
+        leaf_states[i] = cands[i].leaf_state;
         ret.emplace_back(cands[i], i);
       }
       return ret;
@@ -172,7 +186,8 @@ public:
       } else {
         state.apply(edge.op);
 
-        std::vector<cand_type> cands = state.enumerate_cands();
+        std::vector<cand_type> cands =
+            state.enumerate_cands(leaf_states[edge.leaf_idx]);
         for (const auto &cand : cands) {
           if (cand.score >= threshold) {
             new_leaves.emplace_back(cand, edge.leaf_idx);
@@ -218,6 +233,7 @@ public:
           next_tree.emplace_back(edge.op, Edge::APPLY);
           for (const auto &leaf : accept_leaf[edge.leaf_idx]) {
             next_tree.emplace_back(leaf.cand.op, leaf_idx_cnt);
+            leaf_states[leaf_idx_cnt] = leaf.cand.leaf_state;
             ret.emplace_back(leaf.cand, leaf_idx_cnt);
             leaf_idx_cnt++;
           }
